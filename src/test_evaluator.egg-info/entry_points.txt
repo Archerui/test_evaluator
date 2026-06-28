@@ -1,0 +1,2 @@
+[console_scripts]
+test-evaluator = test_evaluator.cli:main
