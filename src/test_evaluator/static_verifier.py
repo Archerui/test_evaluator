@@ -10,8 +10,12 @@ from .schemas import AgentReview, Evidence, Finding, Severity, StaticFacts, Stat
 
 
 GHERKIN_STEP_RE = re.compile(r"^\s*(Given|When|Then|And|But)\s+(.+?)\s*$", re.MULTILINE)
-TEST_ID_RE = re.compile(r"(?:data-testid|data-test-id)\s*[= ]\s*['\"]([^'\"]+)['\"]")
+TEST_ID_RE = re.compile(r"(?:data-testid|data-test-id)\s*[= ]\s*['\"]([^'\"`\r\n]+)['\"]")
 SCENARIO_RE = re.compile(r"^\s*Scenario:\s*(?:\[([^\]]+)\]\s*)?(.+?)\s*$", re.MULTILINE)
+SELECTOR_RE = re.compile(
+    r"By\.(?:CSS_SELECTOR|ID|CLASS_NAME|NAME|TAG_NAME|XPATH)\s*,\s*f?['\"]([^'\"]+)['\"]"
+)
+FILE_URL_RE = re.compile(r"file://[^'\"\s)]+")
 
 
 def _line_for_substring(text: str, needle: str) -> int | None:
@@ -32,6 +36,53 @@ def _decorator_description(decorator: ast.expr) -> str | None:
     if isinstance(first, ast.Constant) and isinstance(first.value, str):
         return f"{decorator.func.id}: {first.value}"
     return decorator.func.id
+
+
+def _resolved_gherkin_steps(scenario: str) -> list[str]:
+    resolved: list[str] = []
+    previous = "given"
+    for keyword, text in GHERKIN_STEP_RE.findall(scenario):
+        kind = keyword.casefold()
+        if kind in {"given", "when", "then"}:
+            previous = kind
+        else:
+            kind = previous
+        resolved.append(f"{kind}: {text}")
+    return resolved
+
+
+def _step_pattern_matches(pattern: str, value: str) -> bool:
+    pattern = pattern.rstrip(":").replace("\\n", "\n")
+    value = value.rstrip(":").replace("\\n", "\n")
+    pieces: list[str] = []
+    cursor = 0
+    for match in re.finditer(r"\{[^{}]+\}", pattern):
+        pieces.append(re.escape(pattern[cursor:match.start()]))
+        pieces.append(".+")
+        cursor = match.end()
+    pieces.append(re.escape(pattern[cursor:]))
+    return bool(re.fullmatch("".join(pieces), value, flags=re.IGNORECASE))
+
+
+def _missing_step_definitions(gherkin_steps: list[str], decorators: list[str]) -> list[str]:
+    parsed_decorators: list[tuple[str, str]] = []
+    wildcard_patterns: list[str] = []
+    for decorator in decorators:
+        if ": " not in decorator:
+            continue
+        kind, pattern = decorator.split(": ", 1)
+        if kind == "step":
+            wildcard_patterns.append(pattern)
+        else:
+            parsed_decorators.append((kind, pattern))
+    missing: list[str] = []
+    for step in gherkin_steps:
+        kind, value = step.split(": ", 1)
+        patterns = [pattern for decorator_kind, pattern in parsed_decorators if decorator_kind == kind]
+        patterns.extend(wildcard_patterns)
+        if not any(_step_pattern_matches(pattern, value) for pattern in patterns):
+            missing.append(step)
+    return missing
 
 
 def _attribute_actions(tree: ast.AST) -> list[str]:
@@ -59,7 +110,7 @@ def extract_static_facts(record: TestRecord) -> StaticFacts:
 
     scenario_match = SCENARIO_RE.search(record.scenario)
     scenario_type = scenario_match.group(1).strip() if scenario_match and scenario_match.group(1) else None
-    gherkin_steps = [f"{kind}: {text}" for kind, text in GHERKIN_STEP_RE.findall(record.scenario)]
+    gherkin_steps = _resolved_gherkin_steps(record.scenario)
     requirement_test_ids = sorted(set(TEST_ID_RE.findall(record.requirement)))
     gherkin_test_ids = sorted(set(TEST_ID_RE.findall(record.scenario)))
     code_test_ids = sorted(set(TEST_ID_RE.findall(record.step_code)))
@@ -92,22 +143,44 @@ def extract_static_facts(record: TestRecord) -> StaticFacts:
         for node in assertions
         if isinstance(node.test, ast.Constant) and node.test.value is True
     ]
+    decorator_counts: dict[str, int] = {}
+    for decorator in decorators:
+        decorator_counts[decorator] = decorator_counts.get(decorator, 0) + 1
+    duplicate_step_definitions = sorted(
+        decorator for decorator, count in decorator_counts.items() if count > 1
+    )
+    missing_step_definitions = _missing_step_definitions(gherkin_steps, decorators)
+    print_calls = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "print"
+    ]
     return StaticFacts(
         python_parseable=True,
         scenario_present=scenario_match is not None,
         scenario_type=scenario_type,
         gherkin_steps=gherkin_steps,
         decorators=decorators,
+        missing_step_definitions=missing_step_definitions,
+        duplicate_step_definitions=duplicate_step_definitions,
         assertion_count=len(assertions),
         trivial_assertion_count=len(trivial_assertions),
+        print_only_oracle_count=len(print_calls) if not assertions else 0,
         requirement_test_ids=requirement_test_ids,
         gherkin_test_ids=gherkin_test_ids,
         code_test_ids=code_test_ids,
         gherkin_ids_missing_from_code=sorted(set(gherkin_test_ids).difference(code_test_ids)),
+        selectors=sorted(set(SELECTOR_RE.findall(record.step_code))),
         actions=_attribute_actions(tree),
         webdriver_wait_count=record.step_code.count("WebDriverWait("),
         sleep_count=record.step_code.count("time.sleep("),
         has_driver_quit=".quit()" in record.step_code,
+        hardcoded_file_paths=sorted(set(FILE_URL_RE.findall(record.step_code))),
+        direct_event_construction=sorted(
+            token
+            for token in ("DataTransfer(", "DragEvent(", "new Event(", "dispatchEvent(")
+            if token in record.step_code
+        ),
     )
 
 
@@ -139,7 +212,7 @@ def static_review(record: TestRecord, facts: StaticFacts) -> AgentReview:
                 suggested_fix="Add a Scenario with explicit Given/When/Then steps.",
             )
         )
-    if not any(step.startswith("Then:") for step in facts.gherkin_steps):
+    if not any(step.startswith("then:") for step in facts.gherkin_steps):
         findings.append(
             Finding(
                 criterion="BDD scenario declares an expected result",
@@ -161,6 +234,23 @@ def static_review(record: TestRecord, facts: StaticFacts) -> AgentReview:
                 evidence=[Evidence(field="excutable_test_step_code", quote="No Python assert statement found")],
                 reasoning="This is a strong oracle-risk signal; the Oracle Critic decides whether another valid observation mechanism exists.",
                 suggested_fix="Assert an observable state that corresponds to the Then outcome.",
+            )
+        )
+    if facts.missing_step_definitions:
+        findings.append(
+            Finding(
+                criterion="Every Gherkin step has a matching Behave implementation",
+                status=Status.FAIL,
+                severity=Severity.CRITICAL,
+                confidence=0.95,
+                evidence=[
+                    Evidence(
+                        field="derived.static_facts",
+                        quote=", ".join(facts.missing_step_definitions[:5]),
+                    )
+                ],
+                reasoning="At least one scenario step could not be matched to a given/when/then/step decorator in this test implementation.",
+                suggested_fix="Add or correct the Behave decorator pattern for each missing Gherkin step.",
             )
         )
     if facts.trivial_assertion_count:

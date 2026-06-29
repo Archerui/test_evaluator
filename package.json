@@ -1,0 +1,8 @@
+{
+  "name": "test-evaluator-instrumentation",
+  "private": true,
+  "description": "Optional JavaScript instrumentation runtime for test-evaluator",
+  "dependencies": {
+    "istanbul-lib-instrument": ">=5.2.0 <7"
+  }
+}

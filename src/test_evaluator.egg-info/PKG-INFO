@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: test-evaluator
-Version: 0.1.0
+Version: 1.0.0
 Summary: Evidence-driven multi-agent evaluator for BDD/Selenium tests.
 Requires-Python: >=3.11
 License-File: LICENSE
@@ -8,4 +8,7 @@ Requires-Dist: openai>=1.109.1
 Requires-Dist: pydantic>=2.0
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0; extra == "dev"
+Provides-Extra: full
+Requires-Dist: behave; extra == "full"
+Requires-Dist: selenium; extra == "full"
 Dynamic: license-file

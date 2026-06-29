@@ -17,7 +17,7 @@ from .schemas import AgentReview, RequirementContract, StaticFacts, SuiteAgentOu
 
 COMMON_GUARDRAILS = """
 You are an evidence-grounded software-test reviewer. Use only the provided
-CSV-derived content and static facts. Never assume access to the application,
+requirements, scenarios, source metadata, and static facts. Never assume access to the application,
 browser, network, or reference URL. Do not claim a test executes successfully.
 Every PASS, WARNING, or FAIL finding must include at least one short verbatim
 quote in evidence from an input field. If the evidence cannot establish a
@@ -39,8 +39,8 @@ quotes as source evidence. Return the project_id and requirement_id exactly as
 provided. Return at most 6 concise behaviours and one short source-evidence
 quote per behaviour. Do not invent error handling, boundary cases, missing-data
 semantics, or implementation details that the requirement does not explicitly
-state. Every source_evidence.field must be `fine_grained_reqs` or
-`requirement_summary`.
+state. Every source_evidence.field must be `fine_grained_reqs`,
+`requirement_summary`, or `source_requirements`.
 """.strip()
 
 
@@ -130,7 +130,14 @@ Evidence fields must be `fine_grained_reqs` or `scenario_corpus`.
 """.strip()
 
 
-def build_requirement_contract(agent: OpenAIJsonAgent, record: TestRecord) -> RequirementContract:
+def build_requirement_contract(
+    agent: OpenAIJsonAgent,
+    record: TestRecord,
+    *,
+    source_requirements: list[str] | None = None,
+    web_application_analysis: dict[str, object] | None = None,
+) -> RequirementContract:
+    source_requirement_text = "\n".join(source_requirements or [])
     contract = agent.run(
         instructions=REQUIREMENT_INSTRUCTIONS,
         payload={
@@ -138,16 +145,25 @@ def build_requirement_contract(agent: OpenAIJsonAgent, record: TestRecord) -> Re
             "requirement_id": record.requirement_id,
             "requirement_summary": record.requirement_summary,
             "fine_grained_reqs": record.requirement,
+            "source_requirements": source_requirements or [],
+            "web_application_analysis": web_application_analysis or {},
         },
         response_model=RequirementContract,
     )
     # Model-provided identity is not authoritative; preserve the CSV identity.
-    contract = contract.model_copy(update={"project_id": record.project_id, "requirement_id": record.requirement_id})
+    contract = contract.model_copy(
+        update={
+            "project_id": record.project_id,
+            "requirement_id": record.requirement_id,
+            "suite_key": record.suite_key,
+        }
+    )
     return validate_contract_evidence(
         contract,
         {
             "fine_grained_reqs": record.requirement,
             "requirement_summary": record.requirement_summary,
+            "source_requirements": source_requirement_text,
         },
     )
 

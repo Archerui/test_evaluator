@@ -12,8 +12,8 @@ import re
 from .schemas import AgentReview, Behavior, Evidence, Finding, RequirementContract, Severity, Status
 
 
-def _normalize(value: str) -> str:
-    return re.sub(r"\s+", " ", value).strip().casefold()
+def _normalize(value: str | None) -> str:
+    return re.sub(r"\s+", " ", value or "").strip().casefold()
 
 
 def _is_supported(evidence: Evidence, sources: dict[str, str]) -> bool:

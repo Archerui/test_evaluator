@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "test-evaluator"
-version = "0.1.0"
+version = "1.0.0"
 description = "Evidence-driven multi-agent evaluator for BDD/Selenium tests."
 requires-python = ">=3.11"
 dependencies = [
@@ -14,6 +14,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+full = ["behave", "selenium"]
 
 [project.scripts]
 test-evaluator = "test_evaluator.cli:main"
@@ -24,3 +25,6 @@ pythonpath = ["src"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+test_evaluator = ["*.cjs"]

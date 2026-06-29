@@ -4,3 +4,5 @@
 __pycache__/
 .pytest_cache/
 reports/
+E2EDev/
+node_modules/
