@@ -8,6 +8,7 @@ from statistics import mean
 from .ingest import TestRecord
 from .schemas import (
     AgentReview,
+    BehaviorCoverageItem,
     Evidence,
     EvaluationRun,
     Finding,
@@ -24,6 +25,7 @@ from .schemas import (
     SelectorGroundingOutput,
     Severity,
     StaticFacts,
+    SuiteStaticAnalysis,
     StabilityReport,
     Status,
     SuiteAssessment,
@@ -37,6 +39,9 @@ DIMENSION_WEIGHTS = {
     "oracle_strength": 0.35,
     "robustness": 0.10,
 }
+
+BASIC_TEST_MIN_KNOWN_WEIGHT = 0.70
+BASIC_REQUIREMENT_MIN_KNOWN_WEIGHT = 0.60
 
 FULL_TEST_WEIGHTS = {
     "spec_alignment": 0.15,
@@ -84,9 +89,65 @@ def unknown_review(agent: str, record_key: str, dimension: str) -> AgentReview:
     )
 
 
+def normalize_review_status(review: AgentReview) -> AgentReview:
+    """Derive a consistent envelope status from evidence-validated findings."""
+
+    if not review.findings:
+        if review.agent == "static_verifier" and review.status is Status.PASS:
+            return review
+        if review.status in {Status.UNKNOWN, Status.SKIPPED}:
+            return review.model_copy(update={"confidence": 0.0})
+        return review.model_copy(update={"status": Status.UNKNOWN, "confidence": 0.0})
+
+    critical_failures = [
+        finding
+        for finding in review.findings
+        if finding.status is Status.FAIL and finding.severity is Severity.CRITICAL
+    ]
+    major_failures = [
+        finding
+        for finding in review.findings
+        if finding.status is Status.FAIL and finding.severity is Severity.MAJOR
+    ]
+    non_unknown = [finding for finding in review.findings if finding.status is not Status.UNKNOWN]
+    unknown = [finding for finding in review.findings if finding.status is Status.UNKNOWN]
+    high_severity_warnings = [
+        finding
+        for finding in non_unknown
+        if finding.status is Status.WARNING
+        and finding.severity in {Severity.MAJOR, Severity.CRITICAL}
+    ]
+    high_severity_unknowns = [
+        finding
+        for finding in unknown
+        if finding.severity in {Severity.MAJOR, Severity.CRITICAL}
+    ]
+    minor_failures = [
+        finding
+        for finding in non_unknown
+        if finding.status is Status.FAIL and finding.severity is Severity.MINOR
+    ]
+    pass_findings = [finding for finding in non_unknown if finding.status is Status.PASS]
+    if critical_failures or len(major_failures) >= 2:
+        status = Status.FAIL
+    elif major_failures or minor_failures or high_severity_warnings or high_severity_unknowns:
+        status = Status.WARNING
+    elif pass_findings:
+        # INFO/MINOR suggestions do not halve an otherwise evidenced semantic
+        # dimension. They remain visible findings and still contribute to risk.
+        status = Status.PASS
+    elif non_unknown:
+        status = Status.WARNING
+    else:
+        status = Status.UNKNOWN
+    confidence = review.confidence if status is not Status.UNKNOWN else 0.0
+    return review.model_copy(update={"status": status, "confidence": confidence})
+
+
 def coordinate_test(record: TestRecord, facts: StaticFacts, reviews: list[AgentReview]) -> TestReport:
     """Produce a score without allowing the coordinator to invent new evidence."""
 
+    reviews = [normalize_review_status(review) for review in reviews]
     by_dimension = {review.dimension: review for review in reviews}
     dimension_scores: dict[str, float | None] = {}
     known_weight = 0.0
@@ -98,9 +159,11 @@ def coordinate_test(record: TestRecord, facts: StaticFacts, reviews: list[AgentR
             known_weight += weight
             weighted_total += score * weight
 
-    # A score based only on static robustness is not a credible overall quality
-    # score. Keep it unavailable until at least half of the rubric is evidenced.
-    test_score = (weighted_total / known_weight * 100.0) if known_weight >= 0.50 else None
+    test_score = (
+        weighted_total / known_weight * 100.0
+        if known_weight >= BASIC_TEST_MIN_KNOWN_WEIGHT
+        else None
+    )
     hard_gates: list[str] = []
     static = by_dimension.get("robustness")
     oracle = by_dimension.get("oracle_strength")
@@ -150,6 +213,7 @@ def coordinate_test(record: TestRecord, facts: StaticFacts, reviews: list[AgentR
             else None
         ),
         confidence_coverage=known_weight,
+        basic_confidence_coverage=known_weight,
         risk=risk,
         hard_gates=hard_gates,
         dimension_scores=dimension_scores,
@@ -164,14 +228,21 @@ def coordinate_requirement(
     test_reports: list[TestReport],
     assessment: SuiteAssessment | None,
     partial_suite: bool,
+    suite_static_analysis: SuiteStaticAnalysis | None = None,
+    static_behavior_coverage: list[BehaviorCoverageItem] | None = None,
 ) -> RequirementReport:
     """Combine suite evidence, test oracle scores, and diversity into a transparent score."""
 
-    behavior_coverage = assessment.behavior_coverage if assessment else {}
+    normalized_assessment = None
+    if assessment:
+        normalized_assessment = assessment.model_copy(
+            update={"review": normalize_review_status(assessment.review)}
+        )
+    behavior_coverage = normalized_assessment.behavior_coverage if normalized_assessment else {}
     behavior_scores = [STATUS_SCORE[status] for status in behavior_coverage.values() if STATUS_SCORE[status] is not None]
     oracle_scores = [report.dimension_scores.get("oracle_strength") for report in test_reports]
     oracle_scores = [score for score in oracle_scores if score is not None]
-    suite_score = STATUS_SCORE[assessment.review.status] if assessment else None
+    suite_score = STATUS_SCORE[normalized_assessment.review.status] if normalized_assessment else None
 
     components: list[tuple[float, float | None]] = [
         (0.50, mean(behavior_scores) if behavior_scores else None),
@@ -181,7 +252,7 @@ def coordinate_requirement(
     known_weight = sum(weight for weight, score in components if score is not None)
     adequacy = (
         sum(weight * score for weight, score in components if score is not None) / known_weight * 100.0
-        if known_weight
+        if known_weight >= BASIC_REQUIREMENT_MIN_KNOWN_WEIGHT
         else None
     )
     distribution = Counter(record.scenario_type or "Unlabelled" for record in records)
@@ -195,8 +266,11 @@ def coordinate_requirement(
         scenario_distribution=dict(sorted(distribution.items())),
         requirement_adequacy_score=adequacy,
         basic_requirement_adequacy_score=adequacy,
-        review=assessment.review if assessment else None,
+        basic_confidence_coverage=known_weight,
+        review=normalized_assessment.review if normalized_assessment else None,
         behavior_coverage=behavior_coverage,
+        behavior_coverage_details=static_behavior_coverage or [],
+        suite_static_analysis=suite_static_analysis or SuiteStaticAnalysis(),
     )
 
 
@@ -213,7 +287,7 @@ def coordinate_projects(test_reports: list[TestReport], requirement_reports: lis
             if report.requirement_adequacy_score is not None
         ]
         risk_counts = Counter(report.risk for report in tests)
-        unknown_weight = sum(1.0 - report.confidence_coverage for report in tests)
+        unknown_weight = sum(1.0 - report.basic_confidence_coverage for report in tests)
         projects.append(
             ProjectReport(
                 project_id=project_id,
@@ -610,6 +684,7 @@ def coordinate_full_scores(run: EvaluationRun) -> EvaluationRun:
         report.full_test_quality_score = score
         report.test_quality_score = score
         report.confidence_coverage = known_weight
+        report.full_confidence_coverage = known_weight
 
     tests_by_suite: dict[str, list[TestReport]] = {}
     for report in run.tests:
@@ -645,9 +720,10 @@ def coordinate_full_scores(run: EvaluationRun) -> EvaluationRun:
             "mutation_score": requirement.mutation_score / 100.0 if requirement.mutation_score is not None else None,
             "scenario_diversity": diversity,
         }
-        score, _ = _weighted_score(values, FULL_REQUIREMENT_WEIGHTS)
+        score, known_weight = _weighted_score(values, FULL_REQUIREMENT_WEIGHTS)
         requirement.full_requirement_adequacy_score = score
         requirement.requirement_adequacy_score = score
+        requirement.full_confidence_coverage = known_weight
 
     for project in run.projects:
         tests = [report for report in run.tests if report.project_id == project.project_id]

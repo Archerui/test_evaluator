@@ -1,3 +1,4 @@
+from test_evaluator.agents import build_requirement_contract
 from test_evaluator.evidence import validate_contract_evidence, validate_review_evidence
 from test_evaluator.schemas import (
     AgentReview,
@@ -8,6 +9,7 @@ from test_evaluator.schemas import (
     Severity,
     Status,
     SuiteAgentOutput,
+    TestRecord as Record,
 )
 
 
@@ -62,3 +64,53 @@ def test_suite_agent_schema_uses_required_array_items() -> None:
 
     assert set(schema["required"]) == {"status", "confidence", "findings", "behavior_coverage"}
     assert schema["properties"]["behavior_coverage"]["type"] == "array"
+
+
+def test_requirement_agent_cannot_promote_summary_context_to_suite_behavior() -> None:
+    record = Record(
+        project_id="p",
+        requirement_id="r",
+        test_id="t",
+        requirement_summary="The broader app also exports reports.",
+        requirement="The user can save the current form.",
+        scenario="Scenario: Save\nWhen the user saves\nThen the form is saved",
+        step_code="assert True",
+    )
+    contract = RequirementContract(
+        project_id="p",
+        requirement_id="r",
+        behaviors=[
+            Behavior(
+                behavior_id="save",
+                kind="normal",
+                expected_observables=["The form is saved."],
+                observability="dom",
+                source_evidence=[
+                    Evidence(
+                        field="fine_grained_reqs",
+                        quote="The user can save the current form.",
+                    )
+                ],
+            ),
+            Behavior(
+                behavior_id="export",
+                kind="other",
+                expected_observables=["A report is exported."],
+                observability="dom",
+                source_evidence=[
+                    Evidence(
+                        field="requirement_summary",
+                        quote="The broader app also exports reports.",
+                    )
+                ],
+            ),
+        ],
+    )
+
+    class FakeAgent:
+        def run(self, **_kwargs):
+            return contract
+
+    checked = build_requirement_contract(FakeAgent(), record)  # type: ignore[arg-type]
+
+    assert [behavior.behavior_id for behavior in checked.behaviors] == ["save"]

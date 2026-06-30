@@ -242,6 +242,53 @@ class AgentReview(BaseModel):
     findings: list[Finding] = Field(default_factory=list)
 
 
+class AssertionDataFlow(BaseModel):
+    """Deterministic approximation of what an assertion actually observes."""
+
+    expression: str
+    sources: list[
+        Literal[
+            "data_transfer",
+            "drag_event",
+            "dom_text",
+            "dom_attribute",
+            "constant",
+            "unknown",
+        ]
+    ] = Field(default_factory=list)
+    classification: Literal[
+        "event_payload_observation",
+        "self_fulfilled_event_payload",
+        "data_transfer_observation",
+        "dom_observation",
+        "element_attribute_proxy",
+        "constant",
+        "mixed",
+        "unknown",
+    ]
+    data_transfer_read_keys: list[str] = Field(default_factory=list)
+    data_transfer_set_keys: list[str] = Field(default_factory=list)
+    drag_event_dispatched: bool = False
+
+
+class DataFlowFacts(BaseModel):
+    """Static DataTransfer/DragEvent/DOM-to-assert flow summary."""
+
+    execute_script_count: int = 0
+    data_transfer_creation_count: int = 0
+    drag_event_creation_count: int = 0
+    drag_event_dispatch_count: int = 0
+    data_transfer_read_keys: list[str] = Field(default_factory=list)
+    data_transfer_set_keys: list[str] = Field(default_factory=list)
+    assertions: list[AssertionDataFlow] = Field(default_factory=list)
+    event_payload_assertion_count: int = 0
+    self_fulfilled_event_payload_assertion_count: int = 0
+    dom_assertion_count: int = 0
+    element_attribute_proxy_assertion_count: int = 0
+    constant_assertion_count: int = 0
+    unknown_assertion_count: int = 0
+
+
 class StaticFacts(BaseModel):
     python_parseable: bool
     syntax_error: str | None = None
@@ -265,6 +312,7 @@ class StaticFacts(BaseModel):
     has_driver_quit: bool = False
     hardcoded_file_paths: list[str] = Field(default_factory=list)
     direct_event_construction: list[str] = Field(default_factory=list)
+    data_flow: DataFlowFacts = Field(default_factory=DataFlowFacts)
 
 
 class AgentEnvelope(BaseModel):
@@ -481,6 +529,65 @@ class MutationAnalysis(BaseModel):
     top_survived_mutants: list[MutantSpec] = Field(default_factory=list)
 
 
+MutationFaultClass = Literal[
+    "event_name",
+    "event_handler",
+    "dom_update",
+    "api_call",
+    "string_literal",
+    "comparison",
+    "boolean_literal",
+    "numeric_literal",
+    "arithmetic",
+]
+
+
+class StaticMutationHypothesis(BaseModel):
+    hypothesis_id: str
+    fault_class: MutationFaultClass
+    behavior_ids: list[str] = Field(default_factory=list)
+    description: str
+    prediction: Literal["likely_detected", "likely_survives", "unknown"]
+    confidence: float = Field(ge=0.0, le=1.0)
+    rationale: str
+
+
+class StaticMutationAssessment(BaseModel):
+    record_key: str
+    hypotheses: list[StaticMutationHypothesis] = Field(default_factory=list)
+    readiness_score: float | None = Field(default=None, ge=0.0, le=100.0)
+    prediction_coverage: float = Field(default=0.0, ge=0.0, le=1.0)
+
+
+class MutationCalibrationObservation(BaseModel):
+    record_key: str
+    hypothesis_id: str
+    mutant_id: str
+    fault_class: MutationFaultClass
+    prediction: Literal["likely_detected", "likely_survives"]
+    actual: Literal["killed", "survived"]
+    matched: bool
+
+
+class MutationCalibrationRecommendation(BaseModel):
+    fault_class: MutationFaultClass
+    issue: Literal["static_overconfidence", "static_underconfidence"]
+    observation_count: int
+    action: str
+
+
+class MutationCalibrationReport(BaseModel):
+    source: Literal["full_mutation_outcomes"] = "full_mutation_outcomes"
+    scoring_effect: Literal["none"] = "none"
+    observation_count: int = 0
+    matched_count: int = 0
+    accuracy: float | None = Field(default=None, ge=0.0, le=1.0)
+    confusion: dict[str, int] = Field(default_factory=dict)
+    by_fault_class: dict[str, dict[str, float | int | None]] = Field(default_factory=dict)
+    observations: list[MutationCalibrationObservation] = Field(default_factory=list)
+    recommendations: list[MutationCalibrationRecommendation] = Field(default_factory=list)
+
+
 class BehaviorCoverage(BaseModel):
     behavior_id: str
     status: Status
@@ -494,6 +601,28 @@ class BehaviorCoverage(BaseModel):
 class BehaviorCoverageItem(BaseModel):
     behavior_id: str
     status: Status
+    covered_by_records: list[str] = Field(default_factory=list)
+    strong_by_records: list[str] = Field(default_factory=list)
+    weak_by_records: list[str] = Field(default_factory=list)
+
+
+class SuiteBehaviorStatusItem(BaseModel):
+    behavior_id: str
+    status: Status
+
+
+class SuiteDuplicateGroup(BaseModel):
+    group_id: str
+    kind: Literal["exact_scenario", "semantic_scenario", "oracle_shape"]
+    record_keys: list[str]
+    signature: str
+    rationale: str
+
+
+class SuiteStaticAnalysis(BaseModel):
+    duplicate_groups: list[SuiteDuplicateGroup] = Field(default_factory=list)
+    unique_contribution_records: list[str] = Field(default_factory=list)
+    semantic_duplicate_ratio: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
 class SuiteAgentOutput(BaseModel):
@@ -502,12 +631,13 @@ class SuiteAgentOutput(BaseModel):
     status: Status
     confidence: float = Field(ge=0.0, le=1.0)
     findings: list[Finding]
-    behavior_coverage: list[BehaviorCoverageItem]
+    behavior_coverage: list[SuiteBehaviorStatusItem]
 
 
 class SuiteAssessment(BaseModel):
     review: AgentReview
     behavior_coverage: dict[str, Status] = Field(default_factory=dict)
+    behavior_coverage_details: list[BehaviorCoverageItem] = Field(default_factory=list)
 
 
 class DimensionScores(BaseModel):
@@ -537,8 +667,11 @@ class TestReport(BaseModel):
         le=100.0,
         description="Static hypothesis only; never a real mutation score.",
     )
+    static_mutation: "StaticMutationAssessment | None" = None
     mutation_score: float | None = Field(default=None, ge=0.0, le=100.0)
     confidence_coverage: float = Field(ge=0.0, le=1.0)
+    basic_confidence_coverage: float = Field(default=0.0, ge=0.0, le=1.0)
+    full_confidence_coverage: float = Field(default=0.0, ge=0.0, le=1.0)
     risk: Literal["low", "medium", "major", "critical", "unknown"]
     hard_gates: list[str] = Field(default_factory=list)
     dimension_scores: dict[str, float | None] = Field(default_factory=dict)
@@ -563,8 +696,12 @@ class RequirementReport(BaseModel):
     full_requirement_adequacy_score: float | None = Field(default=None, ge=0.0, le=100.0)
     runtime_pass_rate: float | None = Field(default=None, ge=0.0, le=1.0)
     mutation_score: float | None = Field(default=None, ge=0.0, le=100.0)
+    basic_confidence_coverage: float = Field(default=0.0, ge=0.0, le=1.0)
+    full_confidence_coverage: float = Field(default=0.0, ge=0.0, le=1.0)
     review: AgentReview | None = None
     behavior_coverage: dict[str, Status] = Field(default_factory=dict)
+    behavior_coverage_details: list[BehaviorCoverageItem] = Field(default_factory=list)
+    suite_static_analysis: SuiteStaticAnalysis = Field(default_factory=SuiteStaticAnalysis)
     dynamic_review: AgentReview | None = None
     dynamic_behavior_coverage: list[BehaviorCoverage] = Field(default_factory=list)
     flaky_test_count: int = 0
@@ -627,21 +764,6 @@ class RunHealth(BaseModel):
     stage_durations_seconds: dict[str, float] = Field(default_factory=dict)
 
 
-class TrendSnapshot(BaseModel):
-    run_id: str
-    created_at: str
-    mode: Mode
-    test_count: int
-    metrics: dict[str, float | None] = Field(default_factory=dict)
-
-
-class TrendReport(BaseModel):
-    history_path: str
-    current: TrendSnapshot
-    previous_run_id: str | None = None
-    deltas: dict[str, float | None] = Field(default_factory=dict)
-
-
 class EvaluationRun(BaseModel):
     run_id: str = ""
     mode: Mode = "basic"
@@ -657,10 +779,10 @@ class EvaluationRun(BaseModel):
     artifacts: list[ArtifactRef] = Field(default_factory=list)
     mutation_analyses: dict[str, MutationAnalysis] = Field(default_factory=dict)
     mutation_results: dict[str, list[MutationRunResult]] = Field(default_factory=dict)
+    mutation_calibration: "MutationCalibrationReport | None" = None
     runtime_traces: dict[str, RuntimeTrace] = Field(default_factory=dict)
     coverage_reports: dict[str, CoverageReport] = Field(default_factory=dict)
     stability_reports: dict[str, StabilityReport] = Field(default_factory=dict)
-    trend: TrendReport | None = None
 
 
 # Agent-specific input/output contracts. The current basic pipeline still uses

@@ -26,6 +26,7 @@ from .ingest import TestRecord, group_by_suite, load_records
 from .llm import OpenAIJsonAgent
 from .materializer import materialize_test
 from .mutation import analyze_mutations, generate_mutation_plan, run_mutant
+from .mutation_calibration import calibrate_static_mutation
 from .reporting import write_reports
 from .runner import run_baseline_test
 from .schemas import (
@@ -83,10 +84,11 @@ from .stability import analyze_stability
 from .runtime_trace import trace_runtime
 from .state_machine import OrchestratorStateStore, file_hash, stable_hash
 from .static_verifier import extract_static_facts, static_review
-from .trends import update_history
+from .static_mutation import assess_static_mutation
+from .suite_analysis import analyze_static_behavior_coverage, analyze_suite_duplicates
 
 
-PIPELINE_VERSION = "1.0.0"
+PIPELINE_VERSION = "1.3.0"
 
 
 def _progress(config: "EvaluationConfig", state: str, completed: int, total: int) -> None:
@@ -155,14 +157,12 @@ class EvaluationConfig:
     mutation_hypotheses: bool = False
     resume: bool = False
     progress: bool = False
-    history_path: Path | None = None
 
     def manifest_config(self) -> dict[str, object]:
         payload = asdict(self)
         payload["input_path"] = str(self.input_path) if self.input_path else None
         payload["output_dir"] = str(self.output_dir)
         payload["e2edev_root"] = str(self.e2edev_root) if self.e2edev_root else None
-        payload["history_path"] = str(self.history_path) if self.history_path else None
         payload["projects"] = list(self.projects)
         payload["requirements"] = list(self.requirements)
         payload["tests"] = list(self.tests)
@@ -908,14 +908,21 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
     runtime_warnings.extend(suite_payload.get("warnings", []))
 
     def coordinate() -> dict[str, object]:
-        test_reports = [
-            coordinate_test(
+        test_reports = []
+        for record in records:
+            report = coordinate_test(
                 record,
                 facts_by_record[record.record_key],
                 reviews_by_record[record.record_key],
             )
-            for record in records
-        ]
+            static_mutation = assess_static_mutation(
+                record,
+                contracts[record.suite_key],
+                facts_by_record[record.record_key],
+            )
+            report.static_mutation = static_mutation
+            report.mutation_readiness = static_mutation.readiness_score
+            test_reports.append(report)
         requirement_reports = []
         for suite_key, suite_records in selected_suites.items():
             partial_suite = len(suite_records) != len(all_suites[suite_key])
@@ -928,6 +935,8 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
                     suite_tests,
                     assessments[suite_key],
                     partial_suite,
+                    analyze_suite_duplicates(suite_records, facts_by_record),
+                    analyze_static_behavior_coverage(suite_records, contracts[suite_key]),
                 )
             )
         run = build_run(
@@ -2061,6 +2070,12 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
                 mutation_results,
                 mutation_analyses,
             )
+            if mutation_plans or mutation_results:
+                coordinated.mutation_calibration = calibrate_static_mutation(
+                    coordinated.tests,
+                    mutation_plans,
+                    mutation_results,
+                )
             coordinated = attach_dynamic_evidence(
                 coordinated,
                 dynamic_test_outputs,
@@ -2145,10 +2160,6 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
     store.start("WRITE_REPORTS", stable_hash(run.model_dump(mode="json")))
     try:
         run.run_health = execution_health()
-        run.trend = update_history(
-            run,
-            config.history_path or (config.output_dir / "history.jsonl"),
-        )
         destination = write_reports(run, config.output_dir)
         store.succeed(
             "WRITE_REPORTS",

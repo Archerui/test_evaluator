@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "test-evaluator"
-version = "1.0.0"
+version = "1.3.0"
 description = "Evidence-driven multi-agent evaluator for BDD/Selenium tests."
 requires-python = ">=3.11"
 dependencies = [
@@ -18,6 +18,7 @@ full = ["behave", "selenium"]
 
 [project.scripts]
 test-evaluator = "test_evaluator.cli:main"
+test-evaluator-calibrate = "test_evaluator.calibration:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

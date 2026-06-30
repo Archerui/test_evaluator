@@ -1,0 +1,210 @@
+[
+  {
+    "case_id": "drag_payload_normal_bdd",
+    "source_record_key": "E2ESD_Bench_01::1::1",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["drag", "normal", "implementation-detail-omission"],
+    "rationale": "The scenario states the user action and exact payload outcomes; it need not restate li/draggable DOM details."
+  },
+  {
+    "case_id": "drag_payload_dom_proxy_bdd",
+    "source_record_key": "E2ESD_Bench_01::1::2",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["drag", "edge", "scenario-code-separation"],
+    "rationale": "The Gherkin itself clearly specifies the selected product and exact title/price outcome despite weak implementation."
+  },
+  {
+    "case_id": "drag_payload_placeholder_bdd",
+    "source_record_key": "E2ESD_Bench_01::1::3",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["drag", "edge", "scenario-code-separation"],
+    "rationale": "Placeholder code must not lower the independently well-formed BDD scenario."
+  },
+  {
+    "case_id": "unspecified_negative_drag_bdd",
+    "source_record_key": "E2ESD_Bench_01::1::4",
+    "focus": "bdd_traceability",
+    "expected_status": "WARNING",
+    "tags": ["drag", "negative", "unspecified-extension"],
+    "rationale": "The negative scenario is plausible but not required by the fine-grained requirement, so it is not a contradiction or full pass."
+  },
+  {
+    "case_id": "markdown_render_bdd",
+    "source_record_key": "E2ESD_Bench_02::2::1",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["dom", "markdown", "exact-output"],
+    "rationale": "The input action and rendered h1 outcome directly cover the normal Markdown behavior."
+  },
+  {
+    "case_id": "local_storage_restore_bdd",
+    "source_record_key": "E2ESD_Bench_02::5::1",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["storage", "persistence", "two-values"],
+    "rationale": "The scenario states stored preconditions, page reload, and both observable restored notes."
+  },
+  {
+    "case_id": "speech_api_bdd",
+    "source_record_key": "E2ESD_Bench_04::5::1",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["browser-api", "speech", "scenario-code-separation"],
+    "rationale": "The BDD scenario specifies text, voice selection, trigger, and spoken output even though code lacks an oracle."
+  },
+  {
+    "case_id": "dictionary_result_bdd",
+    "source_record_key": "E2ESD_Bench_05::3::1",
+    "focus": "bdd_traceability",
+    "expected_status": "PASS",
+    "tags": ["network", "dom", "multi-observable"],
+    "rationale": "The scenario covers the search action and all required result-card observables."
+  },
+  {
+    "case_id": "drag_payload_normal_step",
+    "source_record_key": "E2ESD_Bench_01::1::1",
+    "focus": "step_code",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["event_payload_observation", "event_payload_observation", "event_payload_observation"],
+    "tags": ["drag", "data-transfer", "strong-flow"],
+    "rationale": "The code dispatches dragstart and asserts application-populated DataTransfer types and exact values without test-side setData."
+  },
+  {
+    "case_id": "drag_payload_dom_proxy_step",
+    "source_record_key": "E2ESD_Bench_01::1::2",
+    "focus": "step_code",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": ["dom_observation", "dom_observation", "dom_observation", "dom_observation"],
+    "tags": ["drag", "dom-proxy", "missing-event-oracle"],
+    "rationale": "The drag action is dispatched, but the core Then implementation checks product DOM text rather than the promised transferred payload."
+  },
+  {
+    "case_id": "drag_payload_placeholder_step",
+    "source_record_key": "E2ESD_Bench_01::1::3",
+    "focus": "step_code",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": ["constant", "constant", "dom_observation", "dom_observation"],
+    "tags": ["drag", "constant-helper", "placeholder"],
+    "rationale": "The core drag mechanism is a helper returning True and a constant assertion; DOM reads do not repair that missing action."
+  },
+  {
+    "case_id": "negative_drag_proxy_step",
+    "source_record_key": "E2ESD_Bench_01::1::4",
+    "focus": "step_code",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": ["element_attribute_proxy", "constant", "constant"],
+    "tags": ["drag", "negative", "attribute-proxy", "placeholder"],
+    "rationale": "The code infers event absence from draggable and uses constants for absent title/price."
+  },
+  {
+    "case_id": "markdown_render_step",
+    "source_record_key": "E2ESD_Bench_02::2::1",
+    "focus": "step_code",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["dom_observation"],
+    "tags": ["dom", "markdown", "parsed-html"],
+    "rationale": "Bindings perform input and edit actions, then parse and assert the rendered h1 content."
+  },
+  {
+    "case_id": "local_storage_restore_step",
+    "source_record_key": "E2ESD_Bench_02::5::1",
+    "focus": "step_code",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["dom_observation", "dom_observation"],
+    "tags": ["storage", "reload", "dom"],
+    "rationale": "The code seeds localStorage, refreshes, and checks both restored DOM values."
+  },
+  {
+    "case_id": "speech_api_step",
+    "source_record_key": "E2ESD_Bench_04::5::1",
+    "focus": "step_code",
+    "expected_status": "WARNING",
+    "expected_assertion_classifications": [],
+    "tags": ["browser-api", "speech", "missing-then-mechanism"],
+    "rationale": "Setup and click actions exist, but the Then step only prints and does not implement observation of speechSynthesis."
+  },
+  {
+    "case_id": "dictionary_result_step",
+    "source_record_key": "E2ESD_Bench_05::3::1",
+    "focus": "step_code",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["element_attribute_proxy", "element_attribute_proxy", "dom_observation", "dom_observation", "dom_observation", "dom_observation"],
+    "tags": ["network", "dom", "multiple-then-bindings"],
+    "rationale": "All scenario steps bind to concrete Selenium actions and result-card observations."
+  },
+  {
+    "case_id": "drag_payload_normal_oracle",
+    "source_record_key": "E2ESD_Bench_01::1::1",
+    "focus": "oracle_critic",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["event_payload_observation", "event_payload_observation", "event_payload_observation"],
+    "tags": ["drag", "data-transfer", "exact-values"],
+    "rationale": "A regression that stops or changes application DataTransfer population makes the exact assertions fail."
+  },
+  {
+    "case_id": "drag_payload_dom_proxy_oracle",
+    "source_record_key": "E2ESD_Bench_01::1::2",
+    "focus": "oracle_critic",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": ["dom_observation", "dom_observation", "dom_observation", "dom_observation"],
+    "tags": ["drag", "dom-proxy", "surviving-regression"],
+    "rationale": "The assertions still pass if the dragstart handler never writes DataTransfer because they read static product DOM text."
+  },
+  {
+    "case_id": "drag_payload_placeholder_oracle",
+    "source_record_key": "E2ESD_Bench_01::1::3",
+    "focus": "oracle_critic",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": ["constant", "constant", "dom_observation", "dom_observation"],
+    "tags": ["drag", "constant", "dom-proxy"],
+    "rationale": "Constant and DOM assertions cannot detect missing drag-event payload capture."
+  },
+  {
+    "case_id": "negative_drag_proxy_oracle",
+    "source_record_key": "E2ESD_Bench_01::1::4",
+    "focus": "oracle_critic",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": ["element_attribute_proxy", "constant", "constant"],
+    "tags": ["drag", "negative", "attribute-proxy", "constant"],
+    "rationale": "An attribute proxy and constants cannot observe whether dragstart or transfer capture actually occurred."
+  },
+  {
+    "case_id": "markdown_render_oracle",
+    "source_record_key": "E2ESD_Bench_02::2::1",
+    "focus": "oracle_critic",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["dom_observation"],
+    "tags": ["markdown", "dom", "semantic-html"],
+    "rationale": "The test verifies an h1 element with exact text, which detects failure to render the required Markdown."
+  },
+  {
+    "case_id": "local_storage_restore_oracle",
+    "source_record_key": "E2ESD_Bench_02::5::1",
+    "focus": "oracle_critic",
+    "expected_status": "PASS",
+    "expected_assertion_classifications": ["dom_observation", "dom_observation"],
+    "tags": ["storage", "reload", "two-values"],
+    "rationale": "Both seeded notes must appear after reload, so loss of persistence restoration is detected."
+  },
+  {
+    "case_id": "speech_api_oracle",
+    "source_record_key": "E2ESD_Bench_04::5::1",
+    "focus": "oracle_critic",
+    "expected_status": "FAIL",
+    "expected_assertion_classifications": [],
+    "tags": ["browser-api", "speech", "print-only"],
+    "rationale": "Printing a message does not observe speechSynthesis invocation, text, or selected voice."
+  },
+  {
+    "case_id": "dictionary_result_oracle",
+    "source_record_key": "E2ESD_Bench_05::3::1",
+    "focus": "oracle_critic",
+    "expected_status": "WARNING",
+    "expected_assertion_classifications": ["element_attribute_proxy", "element_attribute_proxy", "dom_observation", "dom_observation", "dom_observation", "dom_observation"],
+    "tags": ["network", "dom", "nonempty-values"],
+    "rationale": "The UI outputs are checked, but pronunciation/meaning/example are only non-empty and do not strongly establish API-derived correctness."
+  }
+]

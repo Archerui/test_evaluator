@@ -5,6 +5,7 @@ from __future__ import annotations
 import ast
 import re
 
+from .dataflow import extract_data_flow
 from .ingest import TestRecord
 from .schemas import AgentReview, Evidence, Finding, Severity, StaticFacts, Status
 
@@ -138,11 +139,12 @@ def extract_static_facts(record: TestRecord) -> StaticFacts:
         if (description := _decorator_description(decorator)) is not None
     )
     assertions = [node for node in ast.walk(tree) if isinstance(node, ast.Assert)]
-    trivial_assertions = [
+    literal_trivial_assertions = [
         node
         for node in assertions
         if isinstance(node.test, ast.Constant) and node.test.value is True
     ]
+    data_flow = extract_data_flow(tree)
     decorator_counts: dict[str, int] = {}
     for decorator in decorators:
         decorator_counts[decorator] = decorator_counts.get(decorator, 0) + 1
@@ -164,7 +166,10 @@ def extract_static_facts(record: TestRecord) -> StaticFacts:
         missing_step_definitions=missing_step_definitions,
         duplicate_step_definitions=duplicate_step_definitions,
         assertion_count=len(assertions),
-        trivial_assertion_count=len(trivial_assertions),
+        trivial_assertion_count=max(
+            len(literal_trivial_assertions),
+            data_flow.constant_assertion_count,
+        ),
         print_only_oracle_count=len(print_calls) if not assertions else 0,
         requirement_test_ids=requirement_test_ids,
         gherkin_test_ids=gherkin_test_ids,
@@ -181,6 +186,7 @@ def extract_static_facts(record: TestRecord) -> StaticFacts:
             for token in ("DataTransfer(", "DragEvent(", "new Event(", "dispatchEvent(")
             if token in record.step_code
         ),
+        data_flow=data_flow,
     )
 
 
@@ -254,15 +260,54 @@ def static_review(record: TestRecord, facts: StaticFacts) -> AgentReview:
             )
         )
     if facts.trivial_assertion_count:
+        constant_expressions = [
+            assertion.expression
+            for assertion in facts.data_flow.assertions
+            if assertion.classification == "constant"
+        ]
         findings.append(
             Finding(
-                criterion="Assertions are non-trivial",
+                criterion="Assertions avoid constant placeholders",
                 status=Status.WARNING,
                 severity=Severity.MAJOR,
                 confidence=1.0,
-                evidence=[Evidence(field="excutable_test_step_code", quote="assert True")],
+                evidence=[
+                    Evidence(
+                        field="derived.static_facts",
+                        quote=(
+                            "Constant-derived assertions: "
+                            + ", ".join(constant_expressions[:5])
+                        ),
+                    )
+                ],
                 reasoning="A constant assertion cannot detect a behavioral regression.",
                 suggested_fix="Replace constant assertions with checks of the requirement's expected observable.",
+            )
+        )
+    if facts.data_flow.self_fulfilled_event_payload_assertion_count:
+        findings.append(
+            Finding(
+                criterion="Event-payload assertions observe application-produced data",
+                status=Status.WARNING,
+                severity=Severity.MAJOR,
+                confidence=0.95,
+                evidence=[
+                    Evidence(
+                        field="derived.static_facts",
+                        quote=(
+                            "Self-fulfilled DataTransfer assertions: "
+                            f"{facts.data_flow.self_fulfilled_event_payload_assertion_count}"
+                        ),
+                    )
+                ],
+                reasoning=(
+                    "The test sets and reads the same DataTransfer payload, so the assertion can pass "
+                    "without the application producing the required data."
+                ),
+                suggested_fix=(
+                    "Dispatch the event without pre-populating the expected payload, then assert what "
+                    "the application handler wrote or the resulting application state."
+                ),
             )
         )
     if facts.sleep_count:

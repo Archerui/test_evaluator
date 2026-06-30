@@ -9,6 +9,14 @@ from pathlib import Path
 from .schemas import EvaluationRun, Finding
 
 
+BASIC_DIMENSIONS = (
+    ("spec_alignment", "Spec alignment"),
+    ("step_traceability", "Step traceability"),
+    ("oracle_strength", "Oracle strength"),
+    ("robustness", "Robustness"),
+)
+
+
 def write_reports(run: EvaluationRun, output_dir: str | Path) -> Path:
     destination = Path(output_dir)
     destination.mkdir(parents=True, exist_ok=True)
@@ -22,6 +30,11 @@ def write_reports(run: EvaluationRun, output_dir: str | Path) -> Path:
         json.dumps([item.model_dump(mode="json") for item in run.inventories], ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    if run.mutation_calibration is not None:
+        (destination / "mutation_calibration.json").write_text(
+            run.mutation_calibration.model_dump_json(indent=2),
+            encoding="utf-8",
+        )
     for project in run.projects:
         project_dir = destination / "projects" / project.project_id
         project_dir.mkdir(parents=True, exist_ok=True)
@@ -51,6 +64,24 @@ def _review_status(report, agent: str) -> str:
     return review.status.value if review else "N/A"
 
 
+def _dimension_cell(report, dimension: str) -> str:
+    score = report.dimension_scores.get(dimension)
+    if score is None:
+        return "UNKNOWN"
+    review = next((item for item in report.reviews if item.dimension == dimension), None)
+    status = review.status.value if review else "EVIDENCED"
+    return f"{status} ({score * 100:.0f})"
+
+
+def _unknown_basic_dimensions(report) -> str:
+    missing = [
+        label
+        for dimension, label in BASIC_DIMENSIONS
+        if report.dimension_scores.get(dimension) is None
+    ]
+    return ", ".join(missing) or "—"
+
+
 def _dynamic_behavior_summary(requirement) -> str:
     if not requirement.dynamic_behavior_coverage:
         return "N/A"
@@ -75,25 +106,49 @@ def render_project_markdown(run: EvaluationRun, project_id: str) -> str:
         f"- Tests: {len(tests)}",
         f"- Requirement suites: {len(requirements)}",
         f"- Basic test quality: {_format_score(project.average_basic_test_quality_score)}",
-        f"- Full test quality: {_format_score(project.average_full_test_quality_score)}",
         f"- Requirement adequacy: {_format_score(project.average_requirement_adequacy_score)}",
-        f"- Runtime pass rate: {f'{project.runtime_pass_rate:.0%}' if project.runtime_pass_rate is not None else 'N/A'}",
-        f"- Mutation score: {_format_score(project.mutation_score)}",
-        "",
-        "## Tests",
-        "",
-        "| Test | Basic | Full | Runtime | Stability | Dynamic Oracle | Mutation | Risk |",
-        "|---|---:|---:|---|---|---|---:|---|",
     ]
-    for report in tests:
-        lines.append(
-            f"| {report.record_key} | {_format_score(report.basic_test_quality_score)} | "
-            f"{_format_score(report.full_test_quality_score)} | "
-            f"{report.runtime.status if report.runtime else 'N/A'} | "
-            f"{_stability_summary(report)} | "
-            f"{_review_status(report, 'dynamic_oracle')} | "
-            f"{_format_score(report.mutation_score)} | {report.risk} |"
+    if run.mode == "full":
+        lines.extend(
+            [
+                f"- Full test quality: {_format_score(project.average_full_test_quality_score)}",
+                f"- Runtime pass rate: {f'{project.runtime_pass_rate:.0%}' if project.runtime_pass_rate is not None else 'N/A'}",
+                f"- Mutation score: {_format_score(project.mutation_score)}",
+            ]
         )
+    lines.extend(["", "## Tests", ""])
+    if run.mode == "basic":
+        lines.extend(
+            [
+                "| Test | Basic | Basic Evidence | Unknown dimensions | Risk |",
+                "|---|---:|---:|---|---|",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "| Test | Basic | Full | Basic Evidence | Full Evidence | Runtime | Stability | Dynamic Oracle | Mutation | Risk |",
+                "|---|---:|---:|---:|---:|---|---|---|---:|---|",
+            ]
+        )
+    for report in tests:
+        if run.mode == "basic":
+            lines.append(
+                f"| {report.record_key} | {_format_score(report.basic_test_quality_score)} | "
+                f"{report.basic_confidence_coverage:.0%} | "
+                f"{_unknown_basic_dimensions(report)} | {report.risk} |"
+            )
+        else:
+            lines.append(
+                f"| {report.record_key} | {_format_score(report.basic_test_quality_score)} | "
+                f"{_format_score(report.full_test_quality_score)} | "
+                f"{report.basic_confidence_coverage:.0%} | "
+                f"{report.full_confidence_coverage:.0%} | "
+                f"{report.runtime.status if report.runtime else 'N/A'} | "
+                f"{_stability_summary(report)} | "
+                f"{_review_status(report, 'dynamic_oracle')} | "
+                f"{_format_score(report.mutation_score)} | {report.risk} |"
+            )
 
     lines.append("")
     return "\n".join(lines)
@@ -112,39 +167,85 @@ def render_markdown(run: EvaluationRun) -> str:
         "",
         "## Project Summary",
         "",
-        "| Project | Tests | Requirements | Basic Test Quality | Full Test Quality | Requirement Adequacy | Runtime Pass | Mutation | Unknown Rate | Risks |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
+    if run.mode == "basic":
+        lines.extend(
+            [
+                "| Project | Tests | Requirements | Basic Test Quality | Basic Requirement Adequacy | Basic Test Unknown Rate | Risks |",
+                "|---|---:|---:|---:|---:|---:|---|",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "| Project | Tests | Requirements | Basic Test Quality | Full Test Quality | Requirement Adequacy | Runtime Pass | Mutation | Unknown Rate | Risks |",
+                "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+            ]
+        )
     for project in run.projects:
         risks = ", ".join(f"{kind}: {count}" for kind, count in project.risk_counts.items()) or "none"
         runtime_pass = f"{project.runtime_pass_rate:.0%}" if project.runtime_pass_rate is not None else "N/A"
-        lines.append(
-            "| "
-            f"{project.project_id} | {project.test_count} | {project.requirement_count} | "
-            f"{_format_score(project.average_basic_test_quality_score)} | "
-            f"{_format_score(project.average_full_test_quality_score)} | "
-            f"{_format_score(project.average_requirement_adequacy_score)} | "
-            f"{runtime_pass} | "
-            f"{_format_score(project.mutation_score)} | "
-            f"{project.unknown_rate:.0%} | {risks} |"
-        )
-
-    if run.trend:
-        lines.extend(["", "## Historical Trend", ""])
-        if run.trend.previous_run_id:
-            lines.append(f"Compared with run `{run.trend.previous_run_id}`.")
-            lines.extend(["", "| Metric | Current | Delta |", "|---|---:|---:|"])
-            for name, value in run.trend.current.metrics.items():
-                delta = run.trend.deltas.get(name)
-                current_text = "N/A" if value is None else f"{value:.2f}"
-                delta_text = "N/A" if delta is None else f"{delta:+.2f}"
-                lines.append(f"| {name} | {current_text} | {delta_text} |")
+        if run.mode == "basic":
+            lines.append(
+                "| "
+                f"{project.project_id} | {project.test_count} | {project.requirement_count} | "
+                f"{_format_score(project.average_basic_test_quality_score)} | "
+                f"{_format_score(project.average_requirement_adequacy_score)} | "
+                f"{project.unknown_rate:.0%} | {risks} |"
+            )
         else:
-            lines.append("No previous compatible run exists yet; this run is the trend baseline.")
+            lines.append(
+                "| "
+                f"{project.project_id} | {project.test_count} | {project.requirement_count} | "
+                f"{_format_score(project.average_basic_test_quality_score)} | "
+                f"{_format_score(project.average_full_test_quality_score)} | "
+                f"{_format_score(project.average_requirement_adequacy_score)} | "
+                f"{runtime_pass} | "
+                f"{_format_score(project.mutation_score)} | "
+                f"{project.unknown_rate:.0%} | {risks} |"
+            )
 
     if run.runtime_warnings:
         lines.extend(["", "## Runtime Warnings", ""])
         lines.extend(f"- {warning}" for warning in run.runtime_warnings)
+
+    lines.extend(["", "## Test Results", ""])
+    if run.mode == "basic":
+        lines.extend(
+            [
+                "| Test | Scenario | Basic Score | Basic Evidence | Risk | Hard Gates |",
+                "|---|---|---:|---:|---|---|",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "| Test | Scenario | Basic Score | Full Score | Source Grounding | Runtime | Stability | Dynamic Oracle | Mutation | Basic Evidence | Full Evidence | Risk | Hard Gates |",
+                "|---|---|---:|---:|---|---|---|---|---:|---:|---:|---|---|",
+            ]
+        )
+    for report in run.tests:
+        hard_gates = ", ".join(report.hard_gates) or "—"
+        if run.mode == "basic":
+            lines.append(
+                f"| {report.record_key} | {report.scenario_type or 'Unlabelled'} | "
+                f"{_format_score(report.basic_test_quality_score)} | "
+                f"{report.basic_confidence_coverage:.0%} | "
+                f"{report.risk} | {hard_gates} |"
+            )
+        else:
+            lines.append(
+                f"| {report.record_key} | {report.scenario_type or 'Unlabelled'} | "
+                f"{_format_score(report.basic_test_quality_score)} | "
+                f"{_format_score(report.full_test_quality_score)} | "
+                f"{_review_status(report, 'selector_grounding')} | "
+                f"{report.runtime.status if report.runtime else 'N/A'} | "
+                f"{_stability_summary(report)} | "
+                f"{_review_status(report, 'dynamic_oracle')} | {_format_score(report.mutation_score)} | "
+                f"{report.basic_confidence_coverage:.0%} | "
+                f"{report.full_confidence_coverage:.0%} | "
+                f"{report.risk} | {hard_gates} |"
+            )
 
     if run.run_health:
         state_counts = ", ".join(
@@ -171,39 +272,28 @@ def render_markdown(run: EvaluationRun) -> str:
         if run.run_health.failed_reasons:
             lines.append("- Failed stages:")
             lines.extend(f"  - {reason}" for reason in run.run_health.failed_reasons)
-        measured = [
-            (state, seconds)
-            for state, seconds in run.run_health.stage_durations_seconds.items()
-            if seconds > 0
-        ]
-        if measured:
-            lines.extend(["", "### Stage Cost", "", "| Stage | Seconds |", "|---|---:|"])
-            lines.extend(
-                f"| {state} | {seconds:.2f} |"
-                for state, seconds in sorted(measured, key=lambda item: item[1], reverse=True)
-            )
 
     lines.extend(
         [
             "",
-            "## Test Results",
+            "## Basic Evaluation Details",
             "",
-            "| Test | Scenario | Basic Score | Full Score | Source Grounding | Runtime | Stability | Dynamic Oracle | Mutation | Evidence Coverage | Risk | Hard Gates |",
-            "|---|---|---:|---:|---|---|---|---|---:|---:|---|---|",
+            "Dimension cells show the normalized evidence status and its score out of 100. `UNKNOWN` is excluded from scoring.",
+            "",
+            "| Test | Spec alignment | Step traceability | Oracle strength | Robustness | Basic Evidence | Basic Score | Unknown dimensions |",
+            "|---|---|---|---|---|---:|---:|---|",
         ]
     )
     for report in run.tests:
-        hard_gates = ", ".join(report.hard_gates) or "—"
         lines.append(
-            f"| {report.record_key} | {report.scenario_type or 'Unlabelled'} | "
+            f"| {report.record_key} | "
+            f"{_dimension_cell(report, 'spec_alignment')} | "
+            f"{_dimension_cell(report, 'step_traceability')} | "
+            f"{_dimension_cell(report, 'oracle_strength')} | "
+            f"{_dimension_cell(report, 'robustness')} | "
+            f"{report.basic_confidence_coverage:.0%} | "
             f"{_format_score(report.basic_test_quality_score)} | "
-            f"{_format_score(report.full_test_quality_score)} | "
-            f"{_review_status(report, 'selector_grounding')} | "
-            f"{report.runtime.status if report.runtime else 'N/A'} | "
-            f"{_stability_summary(report)} | "
-            f"{_review_status(report, 'dynamic_oracle')} | {_format_score(report.mutation_score)} | "
-            f"{report.confidence_coverage:.0%} | "
-            f"{report.risk} | {hard_gates} |"
+            f"{_unknown_basic_dimensions(report)} |"
         )
 
     runtime_reports = [report for report in run.tests if report.runtime is not None]
@@ -229,15 +319,21 @@ def render_markdown(run: EvaluationRun) -> str:
                 f"{runtime.failed_step or '—'} | N/A |"
             )
 
-    lines.extend(
-        [
-            "",
-            "## Requirement Suites",
-            "",
-            "| Suite | Tests | Scenario types | Basic Adequacy | Full Adequacy | Runtime Pass | Flaky | Dynamic Behaviors | Mutation | Partial input |",
-            "|---|---:|---|---:|---:|---:|---:|---|---:|---|",
-        ]
-    )
+    lines.extend(["", "## Requirement Suites", ""])
+    if run.mode == "basic":
+        lines.extend(
+            [
+                "| Suite | Tests | Scenario types | Basic Adequacy | Basic Evidence | Partial input |",
+                "|---|---:|---|---:|---:|---|",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "| Suite | Tests | Scenario types | Basic Adequacy | Basic Evidence | Full Adequacy | Full Evidence | Runtime Pass | Flaky | Dynamic Behaviors | Mutation | Partial input |",
+                "|---|---:|---|---:|---:|---:|---:|---:|---:|---|---:|---|",
+            ]
+        )
     for requirement in run.requirements:
         distribution = ", ".join(f"{kind}: {count}" for kind, count in requirement.scenario_distribution.items())
         runtime_pass = (
@@ -245,16 +341,73 @@ def render_markdown(run: EvaluationRun) -> str:
             if requirement.runtime_pass_rate is not None
             else "N/A"
         )
-        lines.append(
-            f"| {requirement.suite_key} | {requirement.test_count} | {distribution} | "
-            f"{_format_score(requirement.basic_requirement_adequacy_score)} | "
-            f"{_format_score(requirement.full_requirement_adequacy_score)} | {runtime_pass} | "
-            f"{requirement.flaky_test_count} | "
-            f"{_dynamic_behavior_summary(requirement)} | "
-            f"{_format_score(requirement.mutation_score)} | "
-            f"{requirement.partial_suite} |"
-        )
+        if run.mode == "basic":
+            lines.append(
+                f"| {requirement.suite_key} | {requirement.test_count} | {distribution} | "
+                f"{_format_score(requirement.basic_requirement_adequacy_score)} | "
+                f"{requirement.basic_confidence_coverage:.0%} | "
+                f"{requirement.partial_suite} |"
+            )
+        else:
+            lines.append(
+                f"| {requirement.suite_key} | {requirement.test_count} | {distribution} | "
+                f"{_format_score(requirement.basic_requirement_adequacy_score)} | "
+                f"{requirement.basic_confidence_coverage:.0%} | "
+                f"{_format_score(requirement.full_requirement_adequacy_score)} | "
+                f"{requirement.full_confidence_coverage:.0%} | {runtime_pass} | "
+                f"{requirement.flaky_test_count} | "
+                f"{_dynamic_behavior_summary(requirement)} | "
+                f"{_format_score(requirement.mutation_score)} | "
+                f"{requirement.partial_suite} |"
+            )
 
+    behavior_details = [
+        (requirement, detail)
+        for requirement in run.requirements
+        for detail in requirement.behavior_coverage_details
+    ]
+    if behavior_details:
+        lines.extend(
+            [
+                "",
+                "## Static Behavior Coverage",
+                "",
+                "Coverage is requirement-level. Data variants do not count as independent behaviors.",
+                "",
+                "| Suite | Behavior | Status | Strong tests | Weak tests | All declaring tests |",
+                "|---|---|---|---|---|---|",
+            ]
+        )
+        for requirement, detail in behavior_details:
+            lines.append(
+                f"| {requirement.suite_key} | {detail.behavior_id} | {detail.status.value} | "
+                f"{', '.join(detail.strong_by_records) or '—'} | "
+                f"{', '.join(detail.weak_by_records) or '—'} | "
+                f"{', '.join(detail.covered_by_records) or '—'} |"
+            )
+
+    duplicate_requirements = [
+        requirement
+        for requirement in run.requirements
+        if requirement.suite_static_analysis.duplicate_groups
+    ]
+    if duplicate_requirements:
+        lines.extend(
+            [
+                "",
+                "## Suite Duplicate Analysis",
+                "",
+                "| Suite | Semantic duplicate ratio | Kind | Tests | Reason |",
+                "|---|---:|---|---|---|",
+            ]
+        )
+        for requirement in duplicate_requirements:
+            analysis = requirement.suite_static_analysis
+            for group in analysis.duplicate_groups:
+                lines.append(
+                    f"| {requirement.suite_key} | {analysis.semantic_duplicate_ratio:.0%} | "
+                    f"{group.kind} | {', '.join(group.record_keys)} | {group.rationale} |"
+                )
     repeated = [
         report for report in run.tests if report.stability and report.stability.requested_runs > 1
     ]
@@ -316,7 +469,7 @@ def render_markdown(run: EvaluationRun) -> str:
                     f"  - `{mutant.mutant_id}` — {mutant.operator} at `{mutant.file_path}:{mutant.line_start or '?'}`"
                 )
 
-    mutation_readiness = [report for report in run.tests if report.mutation_readiness is not None]
+    mutation_readiness = [report for report in run.tests if report.static_mutation is not None]
     if mutation_readiness:
         lines.extend(
             [
@@ -325,12 +478,55 @@ def render_markdown(run: EvaluationRun) -> str:
                 "",
                 "This is a requirement/oracle-based hypothesis, not a mutation score. No application code was mutated or executed.",
                 "",
-                "| Test | Mutation readiness |",
-                "|---|---:|",
+                "| Test | Mutation readiness | Prediction coverage | Likely detected | Likely survives | Unknown |",
+                "|---|---:|---:|---:|---:|---:|",
             ]
         )
         for report in mutation_readiness:
-            lines.append(f"| {report.record_key} | {_format_score(report.mutation_readiness)} |")
+            assessment = report.static_mutation
+            counts = Counter(item.prediction for item in assessment.hypotheses)
+            lines.append(
+                f"| {report.record_key} | {_format_score(report.mutation_readiness)} | "
+                f"{assessment.prediction_coverage:.0%} | {counts['likely_detected']} | "
+                f"{counts['likely_survives']} | {counts['unknown']} |"
+            )
+
+    if run.mutation_calibration is not None:
+        calibration = run.mutation_calibration
+        lines.extend(
+            [
+                "",
+                "## Static-to-Real Mutation Calibration",
+                "",
+                "This offline diagnostic compares generic static fault-class predictions with full-mode mutation outcomes. It has no scoring effect on basic or full quality scores.",
+                "",
+                f"- Comparable observations: {calibration.observation_count}",
+                f"- Prediction accuracy: {f'{calibration.accuracy:.0%}' if calibration.accuracy is not None else 'N/A'}",
+                f"- Scoring effect: `{calibration.scoring_effect}`",
+            ]
+        )
+        if calibration.by_fault_class:
+            lines.extend(
+                [
+                    "",
+                    "| Generic fault class | Observations | Matched | Accuracy |",
+                    "|---|---:|---:|---:|",
+                ]
+            )
+            for fault_class, metrics in calibration.by_fault_class.items():
+                accuracy = metrics.get("accuracy")
+                lines.append(
+                    f"| {fault_class} | {metrics.get('observations', 0)} | "
+                    f"{metrics.get('matched', 0)} | "
+                    f"{f'{accuracy:.0%}' if isinstance(accuracy, float) else 'N/A'} |"
+                )
+        if calibration.recommendations:
+            lines.extend(["", "### General Calibration Actions", ""])
+            for recommendation in calibration.recommendations:
+                lines.append(
+                    f"- `{recommendation.fault_class}` / {recommendation.issue} "
+                    f"({recommendation.observation_count}): {recommendation.action}"
+                )
 
     high_risk = _high_risk_findings(run)
     lines.extend(["", "## Major and Critical Findings", ""])
@@ -357,12 +553,28 @@ def render_markdown(run: EvaluationRun) -> str:
             "## Interpretation",
             "",
             f"Test quality scores: {score_count['available']} available, {score_count['unavailable']} unavailable.",
-            "`N/A` means fewer than half of the weighted rubric had evidence; it is not a passing result.",
             (
-                "Full scores use the proposal's BDD, step, oracle, runtime, mutation, and robustness weights. "
-                "Source grounding, optional CDP coverage, and dynamic evidence feedback remain explicit supporting evidence rather than hidden score inputs."
+                "`N/A` means the applicable evidence threshold was not met; it is not a passing result. "
+                "Basic test scores require 70% of weighted dimensions, basic requirement scores require 60%, and full scores require 50%."
             ),
             "",
         ]
     )
+    if run.mode == "full":
+        lines.insert(
+            -1,
+            "Full scores use BDD, step, oracle, runtime, mutation, and robustness weights. Source grounding, optional CDP coverage, and dynamic evidence feedback remain explicit supporting evidence rather than hidden score inputs.",
+        )
+    if run.run_health:
+        measured = [
+            (state, seconds)
+            for state, seconds in run.run_health.stage_durations_seconds.items()
+            if seconds > 0
+        ]
+        if measured:
+            lines.extend(["", "## Stage Cost", "", "| Stage | Seconds |", "|---|---:|"])
+            lines.extend(
+                f"| {state} | {seconds:.2f} |"
+                for state, seconds in sorted(measured, key=lambda item: item[1], reverse=True)
+            )
     return "\n".join(lines)

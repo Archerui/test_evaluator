@@ -54,7 +54,9 @@ def test_full_scoring_uses_proposal_weights_and_requirement_components() -> None
 
     assert coordinated.tests[0].full_test_quality_score == 87.5
     assert coordinated.tests[0].test_quality_score == 87.5
+    assert coordinated.tests[0].full_confidence_coverage == 1.0
     assert coordinated.requirements[0].full_requirement_adequacy_score == 90.0
+    assert coordinated.requirements[0].full_confidence_coverage == 1.0
     assert coordinated.projects[0].average_full_test_quality_score == 87.5
 
 
@@ -95,4 +97,5 @@ def test_full_scoring_requires_half_the_weight_and_applies_hard_gate() -> None:
 
     assert insufficient.full_test_quality_score is None
     assert insufficient.confidence_coverage == 0.25
+    assert insufficient.full_confidence_coverage == 0.25
     assert gated.full_test_quality_score == 65.0

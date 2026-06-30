@@ -18,9 +18,18 @@
 
 ## 2. 当前仓库状态
 
-当前实现版本为 `1.0.0`，Phase 0–10 已全部落地：
+当前实现版本为 `1.3.0`，Phase 0–10 已全部落地，并完成基础评测 P0–P2 加固：
 
 - basic：CSV / JSONL / project JSON ingestion、静态检查、OpenAI semantic agents、基础评分。
+- basic P0：从 finding 严重度统一推导 agent 状态；test/requirement 分别要求
+  70%/60% 加权证据才出分；报告独立展示基础证据覆盖率、各维状态和 `UNKNOWN`。
+- basic P1：静态抽取 DataTransfer/DragEvent/DOM 到 assert 的数据流，区分
+  event payload、DOM proxy、attribute proxy、constant 与 self-fulfilled oracle；
+  BDD/Step/Oracle prompts 使用统一判定准则，并建立 24 条 golden calibration labels。
+- basic P2：Requirement suite 输出 data-variant/semantic duplicate clusters 和逐行为
+  strong/weak coverage；基础模式始终生成通用 fault taxonomy 的静态 mutation
+  readiness；full mutation outcomes 只生成离线 calibration metrics，显式保持
+  `scoring_effect=none`，不进入基础分或完整分。
 - full：source model、selector grounding、隔离 materialization、Behave/Selenium baseline、Runtime Trace。
 - 可选 `--coverage`：Chrome DevTools precise coverage。
 - 可选 `--mutation`：有限 JS/HTML mutation operators、执行、分析和 test/requirement/project 聚合。
@@ -2068,7 +2077,7 @@ reports/<run-id>/
 验收结果：带 external JS 的项目生成 Istanbul coverage；inline-script 项目使用
 CDP fallback；真实 Chrome run 能生成 storage 和 Network evidence。
 
-### Phase 10：全量稳定性、预算与趋势
+### Phase 10：全量稳定性与预算
 
 已完成：
 
@@ -2078,7 +2087,6 @@ CDP fallback；真实 Chrome run 能生成 storage 和 Network evidence。
 - `--runtime-budget` / `--mutation-budget` 提供 soft wall-clock budget，超预算任务
   明确记为 skipped。
 - CLI 输出阶段进度；`RunHealth` 和 summary 输出各 state wall-clock cost。
-- `--history-file` 维护可 upsert 的 JSONL snapshot，并计算相邻 compatible run delta。
 - `--max-tests-per-project` 支持公平的多项目 smoke sampling。
 
 验收结果：5-project smoke 每项目 1 条 baseline 全部通过，4 个项目使用 Istanbul、
@@ -2202,7 +2210,6 @@ python -m test_evaluator.cli \
 | `--runtime-budget` | baseline/stability soft budget |
 | `--mutation-budget` | mutation soft budget |
 | `--max-tests-per-project` | 每项目独立测试上限 |
-| `--history-file` | 跨运行 JSONL history |
 | `--resume` | 复用已有 artifacts |
 | `--keep-workspaces` | 调试时保留临时 workspace |
 | `--headless/--no-headless` | Chrome 运行模式 |

@@ -85,7 +85,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--mutation-hypotheses",
         action="store_true",
-        help="Add the optional static Mutation Hypothesis Agent in --live mode; this is not real mutation testing.",
+        help="Add optional LLM commentary to deterministic static mutation readiness; this is not real mutation testing.",
     )
     parser.add_argument(
         "--mutation",
@@ -132,11 +132,6 @@ def _parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument("--resume", action="store_true", help="Reuse compatible checkpoints from the output directory.")
-    parser.add_argument(
-        "--history-file",
-        type=Path,
-        help="Shared JSONL history file for cross-run trend deltas (default: <output>/history.jsonl).",
-    )
     parser.add_argument("--quiet", action="store_true", help="Suppress per-stage progress lines.")
     return parser
 
@@ -226,7 +221,6 @@ def main() -> None:
             mutation_hypotheses=args.mutation_hypotheses,
             resume=args.resume,
             progress=not args.quiet,
-            history_path=args.history_file,
         )
     )
     print(f"Completed {len(run.tests)} tests across {len(run.requirements)} requirement suites.")
