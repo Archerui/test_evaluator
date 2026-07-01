@@ -1,0 +1,50 @@
+[
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/img/img1.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928332081
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/img/img2.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928332081
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/img/img3.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928332081
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/img/img4.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928332086
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/index.html 36:28 Uncaught TypeError: ev.dataTransfer.setDragImage is not a function",
+    "source": "javascript",
+    "timestamp": 1782928333127
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/index.html 36:28 Uncaught TypeError: ev.dataTransfer.setDragImage is not a function",
+    "source": "javascript",
+    "timestamp": 1782928334143
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/index.html 36:28 Uncaught TypeError: ev.dataTransfer.setDragImage is not a function",
+    "source": "javascript",
+    "timestamp": 1782928335158
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/a2bcc24ed354c8eb/ab076e8a0bb1a6bf/app/index.html 36:28 Uncaught TypeError: ev.dataTransfer.setDragImage is not a function",
+    "source": "javascript",
+    "timestamp": 1782928336173
+  }
+]

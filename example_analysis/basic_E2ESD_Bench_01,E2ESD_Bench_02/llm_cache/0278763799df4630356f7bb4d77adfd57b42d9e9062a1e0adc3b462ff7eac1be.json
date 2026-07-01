@@ -1,0 +1,63 @@
+{
+  "agent": "bdd_traceability",
+  "record_key": "E2ESD_Bench_02::2::1",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "spec_alignment",
+  "status": "WARNING",
+  "confidence": 0.85,
+  "findings": [
+    {
+      "criterion": "Scenario expresses the normal Markdown-rendering behaviour (valid input -> rendered HTML).",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "gherkin_scenario",
+          "quote": "When the user enters \"# Heading\" into the textarea with data-testid \"note-textarea\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "then: the main display area with data-testid \"note-main\" should render \"<h1>Heading</h1>\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The scenario includes a clear precondition (Notes page loaded and a new note added), the core action (entering \"# Heading\" into data-testid \"note-textarea\" and clicking the Edit button), and a concrete Then outcome asserting the main area renders \"<h1>Heading</h1>\". This directly matches the requirement that Markdown input should be rendered as HTML in the main display.",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "Missing coverage for the edge contract: invalid/unmatched Markdown should display raw input on exit without crashing.",
+      "status": "WARNING",
+      "severity": "major",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "When the user enters \"# Heading\" into the textarea with data-testid \"note-textarea\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The provided behaviour contract requires an explicit edge-case: when the textarea contains invalid/unmatched Markdown (e.g., unmatched **), exiting edit mode must show the raw input and not crash. The current scenario only exercises a valid Markdown input (\"# Heading\") and its rendered HTML outcome; it does not exercise or claim the invalid-markdown-on-exit behaviour, so the contract is not covered by this scenario.",
+      "suggested_fix": "Add a separate scenario for the invalid-markdown edge case. Example: Given a note in edit mode; When the user enters \"unmatched **bold\" into data-testid \"note-textarea\" and clicks the \"Edit\" button (data-testid \"edit-note-button\"); Then the main display area (data-testid \"note-main\") should display the raw text \"unmatched **bold\" and the app remains responsive (no crash)."
+    }
+  ]
+}

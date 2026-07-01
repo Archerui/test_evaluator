@@ -1,0 +1,124 @@
+{
+  "status": "WARNING",
+  "confidence": 0.78,
+  "findings": [
+    {
+      "criterion": "3.normal_add_item_on_drop — user drags a product into the drop area and a cart entry appears",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "Multiple Normal scenarios (e.g. scenario 1 and 2) perform a drag-and-drop of product items into the declared drop area and then assert that the cart display shows the product — this demonstrates the add-on-drop observable is exercised by the suite.",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "Selector-level mapping for cart fields (.box1/.box2/.box3) is not asserted by scenarios",
+      "status": "UNKNOWN",
+      "severity": "major",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "the product title appears in .box2, the unit price in .box3, and the quantity in .box1.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "Then the cart display should show a product with title \"The Essence of JavaScript\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "Requirement text explicitly requires mapping title->.box2, price->.box3, quantity->.box1, but scenario assertions only validate that the cart display contains title/price/quantity values. Scenarios do not assert that those values are rendered specifically in elements matching selectors .box2, .box3, or .box1, so the selector-level contract cannot be established from the corpus.",
+      "suggested_fix": "Add assertions in scenarios that verify the product title is rendered in '.box2', the unit price in '.box3', and the quantity in '.box1' (e.g., locate .box2 and assert its text equals the expected title)."
+    },
+    {
+      "criterion": "3.normal_increment_quantity_for_repeated_products & 3.normal_show_multiple_different_products — functional values present but selector mapping unproven",
+      "status": "UNKNOWN",
+      "severity": "major",
+      "confidence": 0.72,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "Then the cart display should show a product with title \"Mastering JavaScript\"\\n    And the price \"$35\"\\n    And the quantity \"2\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the user drags the product with data-testid \"product-item-2\" and drops it into the cart container with data-testid \"drop-area\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "Scenario 3 demonstrates the quantity increments (quantity \"2\") when the same product is added twice, and scenario 2 shows two different products added. However, like other mapping behaviors, these scenarios do not tie the observed quantity or separate entries to the specific selector .box1 (or .box2/.box3 for distinct entries). The functional outcome is exercised, but the contract that the UI maps these to the specified selectors is unproven.",
+      "suggested_fix": "Extend scenarios to assert both the value and its container selector (e.g., assert the quantity '2' is the text content of '.box1' for the relevant cart row)."
+    },
+    {
+      "criterion": "Suite composition: near-duplicate / low negative-case coverage",
+      "status": "WARNING",
+      "severity": "minor",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "Scenario: [Edge] Add a product with a high price\\n    ...\\n    Then the cart display should show a product with title \"JavaScript: The Definitive Guide\"\\n    And the price \"$120\"\\n    And the quantity \"1\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "Scenario: [Normal] Add multiple different products to the cart\\n    ...\\n    And the cart display should show a product with title \"JavaScript: The Definitive Guide\"\\n    And the price \"$120\"\\n    And the quantity \"1\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The Edge scenario (high-price) exercises the same product and same price assertion as a Normal scenario (product-item-2 / \"$120\"). This appears to be a near-duplicate example rather than an orthogonal edge case. Additionally the suite has only Normal and one Edge scenario and contains no explicit negative/error scenarios (e.g. dropping outside the drop area, invalid items), which is a candidate gap for robustness testing.",
+      "suggested_fix": "Consolidate or rework the Edge scenario to target a true edge condition distinct from Normal coverage (e.g., very large quantity, currency formatting edge cases). Add negative/error scenarios such as dropping outside the drop area, dragging non-product elements, or network/cart persistence failures."
+    }
+  ],
+  "behavior_coverage": [
+    {
+      "behavior_id": "3.normal_add_item_on_drop",
+      "status": "PASS"
+    },
+    {
+      "behavior_id": "3.normal_show_product_title_in_box2",
+      "status": "UNKNOWN"
+    },
+    {
+      "behavior_id": "3.normal_show_unit_price_in_box3",
+      "status": "UNKNOWN"
+    },
+    {
+      "behavior_id": "3.normal_increment_quantity_for_repeated_products",
+      "status": "UNKNOWN"
+    },
+    {
+      "behavior_id": "3.normal_show_multiple_different_products",
+      "status": "UNKNOWN"
+    }
+  ]
+}

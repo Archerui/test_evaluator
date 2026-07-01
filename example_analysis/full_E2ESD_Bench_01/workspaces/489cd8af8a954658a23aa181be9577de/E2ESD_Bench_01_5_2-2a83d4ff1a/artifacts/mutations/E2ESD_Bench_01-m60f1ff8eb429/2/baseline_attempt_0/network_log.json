@@ -1,0 +1,274 @@
+[
+  {
+    "method": "Network.policyUpdated",
+    "params": {}
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "encodedDataLength": 0,
+      "requestId": "022C1B779C9A1F45D1A3A88071D3655A",
+      "timestamp": 3927184.617293
+    }
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "documentURL": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html",
+      "frameId": "129169D99B7E9B6317661F8F8F1FD69E",
+      "hasUserGesture": false,
+      "initiator": {
+        "type": "other"
+      },
+      "loaderId": "4E41373C4ABD52A03963E69BF550B209",
+      "redirectHasExtraInfo": false,
+      "request": {
+        "headers": {
+          "sec-ch-ua": "\"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"150\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Linux\""
+        },
+        "initialPriority": "VeryHigh",
+        "isSameSite": true,
+        "method": "GET",
+        "mixedContentType": "none",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html"
+      },
+      "requestId": "4E41373C4ABD52A03963E69BF550B209",
+      "timestamp": 3927184.721166,
+      "type": "Document",
+      "wallTime": 1782931552.914085
+    }
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "frameId": "129169D99B7E9B6317661F8F8F1FD69E",
+      "hasExtraInfo": false,
+      "loaderId": "4E41373C4ABD52A03963E69BF550B209",
+      "requestId": "4E41373C4ABD52A03963E69BF550B209",
+      "response": {
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "charset": "",
+        "connectionId": 0,
+        "connectionReused": false,
+        "encodedDataLength": -1,
+        "fromDiskCache": false,
+        "fromPrefetchCache": false,
+        "fromServiceWorker": false,
+        "headers": {
+          "Content-Type": "text/html",
+          "Last-Modified": "Wed, 01 Jul 2026 18:45:52 GMT"
+        },
+        "mimeType": "text/html",
+        "protocol": "file",
+        "remoteIPAddress": "",
+        "remotePort": 0,
+        "securityState": "secure",
+        "status": 200,
+        "statusText": "OK",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html"
+      },
+      "timestamp": 3927184.72423,
+      "type": "Document"
+    }
+  },
+  {
+    "method": "Network.policyUpdated",
+    "params": {}
+  },
+  {
+    "method": "Network.dataReceived",
+    "params": {
+      "dataLength": 4413,
+      "encodedDataLength": 0,
+      "requestId": "4E41373C4ABD52A03963E69BF550B209",
+      "timestamp": 3927184.754036
+    }
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "documentURL": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html",
+      "frameId": "129169D99B7E9B6317661F8F8F1FD69E",
+      "hasUserGesture": false,
+      "initiator": {
+        "columnNumber": 55,
+        "lineNumber": 105,
+        "type": "parser",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html"
+      },
+      "loaderId": "4E41373C4ABD52A03963E69BF550B209",
+      "redirectHasExtraInfo": false,
+      "request": {
+        "headers": {
+          "Referer": "",
+          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36"
+        },
+        "initialPriority": "Medium",
+        "isSameSite": true,
+        "method": "GET",
+        "mixedContentType": "none",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/img/img1.jpg"
+      },
+      "requestId": "2047123.2",
+      "timestamp": 3927184.754391,
+      "type": "Image",
+      "wallTime": 1782931552.947353
+    }
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "documentURL": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html",
+      "frameId": "129169D99B7E9B6317661F8F8F1FD69E",
+      "hasUserGesture": false,
+      "initiator": {
+        "columnNumber": 55,
+        "lineNumber": 110,
+        "type": "parser",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html"
+      },
+      "loaderId": "4E41373C4ABD52A03963E69BF550B209",
+      "redirectHasExtraInfo": false,
+      "request": {
+        "headers": {
+          "Referer": "",
+          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36"
+        },
+        "initialPriority": "Medium",
+        "isSameSite": true,
+        "method": "GET",
+        "mixedContentType": "none",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/img/img2.jpg"
+      },
+      "requestId": "2047123.3",
+      "timestamp": 3927184.754714,
+      "type": "Image",
+      "wallTime": 1782931552.947635
+    }
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "documentURL": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html",
+      "frameId": "129169D99B7E9B6317661F8F8F1FD69E",
+      "hasUserGesture": false,
+      "initiator": {
+        "columnNumber": 55,
+        "lineNumber": 115,
+        "type": "parser",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html"
+      },
+      "loaderId": "4E41373C4ABD52A03963E69BF550B209",
+      "redirectHasExtraInfo": false,
+      "request": {
+        "headers": {
+          "Referer": "",
+          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36"
+        },
+        "initialPriority": "Medium",
+        "isSameSite": true,
+        "method": "GET",
+        "mixedContentType": "none",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/img/img3.jpg"
+      },
+      "requestId": "2047123.4",
+      "timestamp": 3927184.754831,
+      "type": "Image",
+      "wallTime": 1782931552.947754
+    }
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "documentURL": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html",
+      "frameId": "129169D99B7E9B6317661F8F8F1FD69E",
+      "hasUserGesture": false,
+      "initiator": {
+        "columnNumber": 55,
+        "lineNumber": 120,
+        "type": "parser",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/index.html"
+      },
+      "loaderId": "4E41373C4ABD52A03963E69BF550B209",
+      "redirectHasExtraInfo": false,
+      "request": {
+        "headers": {
+          "Referer": "",
+          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36"
+        },
+        "initialPriority": "Medium",
+        "isSameSite": true,
+        "method": "GET",
+        "mixedContentType": "none",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "url": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4254cea75e286273/2a83d4ff1adfa53a/app/img/img4.jpg"
+      },
+      "requestId": "2047123.5",
+      "timestamp": 3927184.754926,
+      "type": "Image",
+      "wallTime": 1782931552.947953
+    }
+  },
+  {
+    "method": "Network.loadingFailed",
+    "params": {
+      "canceled": false,
+      "errorText": "net::ERR_FILE_NOT_FOUND",
+      "requestId": "2047123.2",
+      "timestamp": 3927184.755352,
+      "type": "Image"
+    }
+  },
+  {
+    "method": "Network.loadingFailed",
+    "params": {
+      "canceled": false,
+      "errorText": "net::ERR_FILE_NOT_FOUND",
+      "requestId": "2047123.3",
+      "timestamp": 3927184.7554,
+      "type": "Image"
+    }
+  },
+  {
+    "method": "Network.loadingFailed",
+    "params": {
+      "canceled": false,
+      "errorText": "net::ERR_FILE_NOT_FOUND",
+      "requestId": "2047123.4",
+      "timestamp": 3927184.755426,
+      "type": "Image"
+    }
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "encodedDataLength": 4413,
+      "requestId": "4E41373C4ABD52A03963E69BF550B209",
+      "timestamp": 3927184.722318
+    }
+  },
+  {
+    "method": "Network.resourceChangedPriority",
+    "params": {
+      "newPriority": "High",
+      "requestId": "2047123.5",
+      "timestamp": 3927184.764312
+    }
+  },
+  {
+    "method": "Network.loadingFailed",
+    "params": {
+      "canceled": false,
+      "errorText": "net::ERR_FILE_NOT_FOUND",
+      "requestId": "2047123.5",
+      "timestamp": 3927184.764559,
+      "type": "Image"
+    }
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "project_id": "E2ESD_Bench_01",
+    "project_root": "/home/rkr/siemens/test_evaluator/E2EDev/E2EDev_data/E2ESD_Bench_01",
+    "source_root": "/home/rkr/siemens/test_evaluator/E2EDev/E2EDev_data/E2ESD_Bench_01/source_projcet",
+    "entry_html": "index.html",
+    "tests_file": "/home/rkr/siemens/test_evaluator/E2EDev/E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json",
+    "requirements_file": "/home/rkr/siemens/test_evaluator/E2EDev/E2EDev_data/E2ESD_Bench_01/source_projcet/requirements.json",
+    "web_application_analysis_file": "/home/rkr/siemens/test_evaluator/E2EDev/E2EDev_data/E2ESD_Bench_01/source_projcet/web_application_analysis.json",
+    "source_files": [
+      "index.html",
+      "info/info.json",
+      "requirements.json",
+      "web_application_analysis.json"
+    ],
+    "asset_files": [
+      "info/info.txt"
+    ],
+    "test_count": 12,
+    "requirement_count": 3,
+    "discovery_status": "PASS",
+    "warnings": []
+  }
+]

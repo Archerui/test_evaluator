@@ -1,0 +1,48 @@
+{
+  "input_hash": "457494ed4308fe0cd60e9bd89c52fbc0cc7fcb1566bd7a20a0ac84dc529c8acd",
+  "item_key": "E2ESD_Bench_01::1::3",
+  "payload": {
+    "runtime": {
+      "behave_json": {
+        "description": "Behave JSON result",
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/behave.json",
+        "sha256": "2231e367cd7c01b34da1e01970834677be0c55f1304b62941f25f7e16bd56537"
+      },
+      "browser_trace": {
+        "description": "Storage/network/browser API trace",
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/browser_trace.json",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "console_log": null,
+      "dom_snapshot": null,
+      "duration_seconds": 5.009690855164081,
+      "error_type": null,
+      "failed_step": null,
+      "network_log": {
+        "description": "Chrome DevTools Network events",
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/network_log.json",
+        "sha256": "b98f2ae30884b9e985f29877fd86706a3e911c1d30be68b39dae79fa193b31e9"
+      },
+      "record_key": "E2ESD_Bench_01::1::3",
+      "screenshot": null,
+      "status": "pass",
+      "stderr": {
+        "description": "Behave standard error",
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "description": "Behave standard output",
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/stdout.txt",
+        "sha256": "e9bd9aaf9264a8f0e59175d2bcb2e6993a24ee595cad759d3209a2396d26c1a4"
+      }
+    },
+    "warnings": []
+  },
+  "state": "RUN_BASELINE_TESTS"
+}

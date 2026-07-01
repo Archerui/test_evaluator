@@ -5,8 +5,10 @@ from test_evaluator.mutation.generator import generate_mutation_plan
 from test_evaluator.mutation.operators import generate_candidates
 from test_evaluator.mutation.runner import run_mutant
 from test_evaluator.orchestrator import _impacted_record_keys
+from test_evaluator.scoring import attach_mutation_results
 from test_evaluator.schemas import (
     Behavior,
+    EvaluationRun,
     MutationAnalystInput,
     MutationGeneratorInput,
     MutationPlan,
@@ -14,11 +16,15 @@ from test_evaluator.schemas import (
     MutationRunnerInput,
     MutantSpec,
     ProjectInventory,
+    ProjectReport,
     RequirementContract,
+    RequirementReport,
     RuntimeResult,
     SourceModel,
+    StaticFacts,
     Status,
     TestRecord as Record,
+    TestReport as Report,
     TestRunnerOutput as RunnerOutput,
     WorkspaceSpec,
 )
@@ -214,6 +220,56 @@ def test_behavior_grounding_limits_impacted_tests_with_conservative_fallback() -
         first.record_key,
         second.record_key,
     ]
+
+
+def test_attached_surviving_mutant_finding_does_not_claim_it_was_killed() -> None:
+    record = _record()
+    mutant = MutantSpec(
+        mutant_id="m-survivor",
+        project_id=record.project_id,
+        operator="dom_update",
+        file_path="index.html",
+        original="output.textContent = 'ready'",
+        mutated="output.textContent = ''",
+    )
+    result = MutationRunResult(
+        mutant_id=mutant.mutant_id,
+        status="survived",
+        survived_record_keys=[record.record_key],
+    )
+    run = EvaluationRun(
+        mode="full",
+        tests=[
+            Report(
+                record_key=record.record_key,
+                project_id=record.project_id,
+                requirement_id=record.requirement_id,
+                test_id=record.test_id,
+                confidence_coverage=1.0,
+                risk="low",
+                static_facts=StaticFacts(python_parseable=True, scenario_present=True),
+            )
+        ],
+        requirements=[
+            RequirementReport(
+                suite_key=record.suite_key,
+                project_id=record.project_id,
+                requirement_id=record.requirement_id,
+                test_count=1,
+            )
+        ],
+        projects=[ProjectReport(project_id=record.project_id, test_count=1, requirement_count=1)],
+    )
+
+    attach_mutation_results(
+        run,
+        {record.project_id: MutationPlan(project_id=record.project_id, mutants=[mutant])},
+        {record.project_id: [result]},
+        {},
+    )
+
+    review = next(item for item in run.tests[0].reviews if item.agent == "mutation_runner")
+    assert review.findings[0].criterion == "Mutant m-survivor survives this test"
 
 
 def test_mutation_analyzer_excludes_invalid_results() -> None:

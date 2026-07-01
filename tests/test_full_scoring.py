@@ -1,8 +1,11 @@
-from test_evaluator.scoring import coordinate_full_scores
+from test_evaluator.scoring import attach_runtime_results, coordinate_full_scores
 from test_evaluator.schemas import (
     EvaluationRun,
+    FailureAttribution,
     ProjectReport,
     RequirementReport,
+    RuntimeResult,
+    RuntimeTrace,
     StaticFacts,
     Status,
     TestReport as Report,
@@ -99,3 +102,60 @@ def test_full_scoring_requires_half_the_weight_and_applies_hard_gate() -> None:
     assert insufficient.confidence_coverage == 0.25
     assert insufficient.full_confidence_coverage == 0.25
     assert gated.full_test_quality_score == 65.0
+
+
+def test_runtime_score_penalizes_only_failures_attributed_to_the_test() -> None:
+    def report(test_id: str, origin: str, effect: str) -> Report:
+        runtime = RuntimeResult(
+            record_key=f"Bench::1::{test_id}",
+            status="fail",
+            error_type="assertion_failure",
+        )
+        return Report(
+            record_key=runtime.record_key,
+            project_id="Bench",
+            requirement_id="1",
+            test_id=test_id,
+            confidence_coverage=1.0,
+            risk="low",
+            dimension_scores={"robustness": 1.0},
+            static_facts=_facts(),
+            runtime_trace=RuntimeTrace(
+                record_key=runtime.record_key,
+                execution_status=runtime,
+                failure_attribution=FailureAttribution(
+                    origin=origin,
+                    confidence=0.9,
+                    test_quality_effect=effect,
+                    reasoning="Attribution fixture.",
+                ),
+            ),
+        )
+
+    application = report("1", "application_defect", "neutral")
+    test_defect = report("2", "test_defect", "penalize")
+    requirement = RequirementReport(
+        suite_key="Bench::1",
+        project_id="Bench",
+        requirement_id="1",
+        test_count=2,
+    )
+    run = EvaluationRun(
+        mode="full",
+        tests=[application, test_defect],
+        requirements=[requirement],
+        projects=[ProjectReport(project_id="Bench", test_count=2, requirement_count=1)],
+    )
+    runtimes = {
+        item.record_key: item.runtime_trace.execution_status for item in run.tests
+    }
+
+    attach_runtime_results(run, runtimes)
+
+    assert application.dimension_scores["runtime_result"] is None
+    assert "baseline_test_failed" not in application.hard_gates
+    assert application.risk == "low"
+    assert test_defect.dimension_scores["runtime_result"] == 0.0
+    assert "baseline_test_failed" in test_defect.hard_gates
+    assert test_defect.risk == "major"
+    assert requirement.runtime_pass_rate == 0.0

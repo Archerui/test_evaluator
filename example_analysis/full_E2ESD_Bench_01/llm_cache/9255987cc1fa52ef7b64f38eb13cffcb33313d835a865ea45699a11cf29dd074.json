@@ -1,0 +1,216 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "requirement_id": "1",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "1.1",
+      "kind": "normal",
+      "preconditions": [
+        "Page is loaded"
+      ],
+      "actor_actions": [
+        "Observe the product list on page load"
+      ],
+      "expected_observables": [
+        "A list of product entries is visible",
+        "Each product entry shows an image, a title, and a price"
+      ],
+      "state_effects": [
+        "UI displays product entries with image, title and price"
+      ],
+      "ui_anchors": [
+        "product list",
+        "product-item-1",
+        "product-title-1",
+        "product-price-1"
+      ],
+      "constraints": [
+        "This behavior only asserts visibility of image, title, and price for each product"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "When the page loads, the user can see a list of products, each with an image, title, and price.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "1.2",
+      "kind": "normal",
+      "preconditions": [
+        "Product list is present"
+      ],
+      "actor_actions": [
+        "Inspect a product 'li' element's attributes"
+      ],
+      "expected_observables": [
+        "Each product 'li' element has the attribute draggable set to 'true'"
+      ],
+      "state_effects": [
+        "Product list items are marked as draggable in the DOM"
+      ],
+      "ui_anchors": [
+        "product-item-1",
+        "product-item-* (li elements)"
+      ],
+      "constraints": [
+        "Only the presence of the 'draggable' attribute is asserted (value must be 'true')"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The product items are represented as 'li' elements with the attribute 'draggable' set to 'true'.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "1.3",
+      "kind": "normal",
+      "preconditions": [
+        "A draggable product item is available"
+      ],
+      "actor_actions": [
+        "Initiate a drag (dragstart) on a product 'li' element"
+      ],
+      "expected_observables": [
+        "The drag event's transfer data contains the product's title and price"
+      ],
+      "state_effects": [
+        "DataTransfer payload includes title and price for the dragged product"
+      ],
+      "ui_anchors": [
+        "product-title-1",
+        "product-price-1",
+        "product-item-1"
+      ],
+      "constraints": [
+        "Only the product title and price are required to be captured in the drag payload"
+      ],
+      "observability": "browser_api",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "1.4",
+      "kind": "normal",
+      "preconditions": [
+        "A drag event carrying a product title and price is in progress"
+      ],
+      "actor_actions": [
+        "Drop the dragged product into the designated drop area (shopping cart)"
+      ],
+      "expected_observables": [
+        "The cart area contains an entry showing the product title, its quantity, and its price"
+      ],
+      "state_effects": [
+        "Cart UI is updated to include a line item with title, quantity and price"
+      ],
+      "ui_anchors": [
+        "shopping cart (cart area)",
+        "cart line item (title, quantity, price)"
+      ],
+      "constraints": [
+        "This behavior asserts that the cart displays title, quantity and price after a drop"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "Upon dropping a product into the shopping cart, the system adds the product to the cart and displays the product title, quantity, and price in the cart area.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "1.5",
+      "kind": "persistence",
+      "preconditions": [
+        "A product entry already exists in the cart with quantity >= 1"
+      ],
+      "actor_actions": [
+        "Drop the same product into the cart again"
+      ],
+      "expected_observables": [
+        "The product's quantity shown in the cart increments (increases by 1) rather than creating a duplicate line"
+      ],
+      "state_effects": [
+        "Cart state reflects incremented quantity for the existing product line"
+      ],
+      "ui_anchors": [
+        "cart line item quantity",
+        "cart area"
+      ],
+      "constraints": [
+        "Quantity must increase rather than adding a separate line for the same product"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "If the user drops the same product into the cart multiple times, the system increments the quantity of that product in the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "1.6",
+      "kind": "normal",
+      "preconditions": [
+        "One or more products are present in the cart"
+      ],
+      "actor_actions": [
+        "Add additional products to the cart (via drop or other supported means)"
+      ],
+      "expected_observables": [
+        "A total cost is shown at the bottom of the cart area formatted with a currency symbol and two decimal places",
+        "The displayed total updates as items are added"
+      ],
+      "state_effects": [
+        "Cart total equals the sum of (price * quantity) for all cart line items and is reflected in the UI"
+      ],
+      "ui_anchors": [
+        "cart total element",
+        "cart area"
+      ],
+      "constraints": [
+        "Total must use an appropriate currency symbol and two decimal places"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "The system calculates the total cost of all products in the cart and displays it at the bottom of the cart area, formatted with the appropriate currency symbol and two decimal places.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

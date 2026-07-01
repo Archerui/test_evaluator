@@ -1,0 +1,1238 @@
+{
+  "E2ESD_Bench_01::1::1": {
+    "record_key": "E2ESD_Bench_01::1::1",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::1::1",
+      "status": "pass",
+      "duration_seconds": 5.026373684871942,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "e7816efe43f3924964447ee5d3335542b874be6ee44660ba4ed55d4205f6a9c2"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "e10f5b827af09f863ff7ffac73276e754ba98a5456665c152ffa055fba79735b"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "154248c1cde624153f48c93d48c3da43c68e8d15e019ec5f4f4b8f3455cdbda7"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 13 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "154248c1cde624153f48c93d48c3da43c68e8d15e019ec5f4f4b8f3455cdbda7"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::1::2": {
+    "record_key": "E2ESD_Bench_01::1::2",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::1::2",
+      "status": "pass",
+      "duration_seconds": 7.113856738898903,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "40b8e57e380c8e6ee5e2545f442a990f072d50105fc31f1b226f5c0bc2b63e68"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "b7452b881d70f9c0d64622a3e621758d6bf544447cb464f693a4cedd27366168"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "1861bc3f14129a1f0934d486634fe84692541ecb807f4532ca42e7629c199844"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 19 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "1861bc3f14129a1f0934d486634fe84692541ecb807f4532ca42e7629c199844"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::1::3": {
+    "record_key": "E2ESD_Bench_01::1::3",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::1::3",
+      "status": "pass",
+      "duration_seconds": 5.009690855164081,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "e9bd9aaf9264a8f0e59175d2bcb2e6993a24ee595cad759d3209a2396d26c1a4"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "2231e367cd7c01b34da1e01970834677be0c55f1304b62941f25f7e16bd56537"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "b98f2ae30884b9e985f29877fd86706a3e911c1d30be68b39dae79fa193b31e9"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 15 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "b98f2ae30884b9e985f29877fd86706a3e911c1d30be68b39dae79fa193b31e9"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::1::4": {
+    "record_key": "E2ESD_Bench_01::1::4",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::1::4",
+      "status": "pass",
+      "duration_seconds": 2.8570497441105545,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "f755f7808ea208056f67fe168a863dc101be351f672ff8bb2714d8b7e32f0e07"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "4ae747b104370087d2d9c1b8c5250a4c2a7967cb6d0c72f2267d85f40b3bbd1f"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "4e3b512e4574e1a74bbaef3918fb4cb03a0b49534b76aeb2a107af7a2a39268d"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 17 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "4e3b512e4574e1a74bbaef3918fb4cb03a0b49534b76aeb2a107af7a2a39268d"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::3::1": {
+    "record_key": "E2ESD_Bench_01::3::1",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "status": "pass",
+      "duration_seconds": 7.449377448298037,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "637d62d0d9c65edab2f0488cad24b2f2de6f48d981808ad1c561f87ddd3ed760"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "978442ae81102b58c3ea741f0b2be459a9300f47005434f1304ef97e76b5c584"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "8fb9adfd1df750ab8736729a764c9eb8b2e811d7e6625f55325d9b205a3939aa"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 13 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "8fb9adfd1df750ab8736729a764c9eb8b2e811d7e6625f55325d9b205a3939aa"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::3::2": {
+    "record_key": "E2ESD_Bench_01::3::2",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "status": "pass",
+      "duration_seconds": 11.639151079114527,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "7a7a45c1e06cdf95f92fd9b92de6ab6bf828da33971f14243a53090ccd55e6b9"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "634fb52f0a6c0ce720cd64b59762b28e1430cb5f25de447e9adb3684d04f85e1"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "32c983f9572e261454278bb26fcbecb67151a98f906a4c01d9214a3074fff619"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 15 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "32c983f9572e261454278bb26fcbecb67151a98f906a4c01d9214a3074fff619"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::3::3": {
+    "record_key": "E2ESD_Bench_01::3::3",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "status": "pass",
+      "duration_seconds": 7.92188631510362,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "484469823fb314f51c5687bec673f659162eeebd1612c3888ac4ef0547e6c70d"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "10a542db949bb9b5fa679bd3b6c3015bca5e068bf6dc954d00085a35f0f4e815"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "2c3ab9a869cc2a69039fcd373b6815e89c9e458f2104b9fedde5cd9dcf4fa1e4"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 15 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "2c3ab9a869cc2a69039fcd373b6815e89c9e458f2104b9fedde5cd9dcf4fa1e4"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::3::4": {
+    "record_key": "E2ESD_Bench_01::3::4",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "status": "pass",
+      "duration_seconds": 7.192113815806806,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "2b4d900533abaf7cf56a470b36b16f541257d7d43adb4a208d6d9087691d02b7"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "bc366ab5f8d61704a766d4acf26258d2aa3079a2f84dc1de9e506d95d9fffcb6"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "e85de3e7877bacc223db6c1c323a95917db5133014baabc97d2afc5878275e40"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 19 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "e85de3e7877bacc223db6c1c323a95917db5133014baabc97d2afc5878275e40"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::5::1": {
+    "record_key": "E2ESD_Bench_01::5::1",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "status": "pass",
+      "duration_seconds": 2.856928605120629,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "7fa9acb5b8731c19319100352fe267cbdb5093cea3c1ef83412660702b32c396"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "e856e7c2d3dc91b0577667297148404c21a91ee51f4f6944bdfac3152fad6b2d"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "00556f6b71f31242db931743068204b3adb0440ab62d69001c98e3f6738c6574"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 15 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "00556f6b71f31242db931743068204b3adb0440ab62d69001c98e3f6738c6574"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::5::2": {
+    "record_key": "E2ESD_Bench_01::5::2",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "status": "pass",
+      "duration_seconds": 4.019236888736486,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "cb733412105b326da08b779a1f09f9a87db4e44973bffcd0d55fba8a165a752c"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "7a5765f10a69df99ebc84af2b9c8646c16cd6a31bd446ba55e973773eaf5532f"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "12ac18d04de226df20ad48a09fac2cd493a6966c722da7ae94c87a093f65110e"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 13 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "12ac18d04de226df20ad48a09fac2cd493a6966c722da7ae94c87a093f65110e"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::5::3": {
+    "record_key": "E2ESD_Bench_01::5::3",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "status": "pass",
+      "duration_seconds": 5.017728365957737,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "037400f24cf53eb4a8c306678086eafe9bd33ff819f68e0e0a5c7023fed3c25f"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "791d745721b24093fa6ea6ecdb8b7fa16ce7218a579ac4a8d11f8997a58a33d9"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "06e3d405108e74cf7106a3b229b5b606d2c4c45f62f8e48378cca658811b3610"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 15 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "06e3d405108e74cf7106a3b229b5b606d2c4c45f62f8e48378cca658811b3610"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  },
+  "E2ESD_Bench_01::5::4": {
+    "record_key": "E2ESD_Bench_01::5::4",
+    "execution_status": {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "status": "pass",
+      "duration_seconds": 5.903946068603545,
+      "failed_step": null,
+      "error_type": null,
+      "stdout": {
+        "kind": "stdout",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/stdout.txt",
+        "description": "Behave standard output",
+        "sha256": "154c37577f538c9f22160fe3b951f654ed3b954671e3464e1052541367cbcc5b"
+      },
+      "stderr": {
+        "kind": "stderr",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/stderr.txt",
+        "description": "Behave standard error",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "behave_json": {
+        "kind": "behave_json",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/behave.json",
+        "description": "Behave JSON result",
+        "sha256": "e1dcd951cbdd5c30f0392f4f20a570b075d0cb1c0412f777473300adc98a7e2a"
+      },
+      "screenshot": null,
+      "dom_snapshot": null,
+      "console_log": null,
+      "browser_trace": {
+        "kind": "browser_trace",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/browser_trace.json",
+        "description": "Storage/network/browser API trace",
+        "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+      },
+      "network_log": {
+        "kind": "network_log",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/network_log.json",
+        "description": "Chrome DevTools Network events",
+        "sha256": "6479e283f9f629bb136178e3c885ccee6659ed16b7d205655120fde385ca5268"
+      }
+    },
+    "observations": [
+      {
+        "kind": "step_result",
+        "summary": "Baseline status=pass",
+        "evidence": []
+      },
+      {
+        "kind": "network",
+        "summary": "Chrome DevTools captured 15 Network domain event(s).",
+        "evidence": [
+          {
+            "field": "runtime.network_log",
+            "quote": null,
+            "file_path": null,
+            "line_start": null,
+            "line_end": null,
+            "artifact": {
+              "kind": "network_log",
+              "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/network_log.json",
+              "description": "Chrome DevTools Network events",
+              "sha256": "6479e283f9f629bb136178e3c885ccee6659ed16b7d205655120fde385ca5268"
+            }
+          }
+        ]
+      }
+    ],
+    "likely_failure_cause": "no_failure",
+    "flaky_risk": "medium",
+    "failure_attribution": {
+      "origin": "no_failure",
+      "confidence": 1.0,
+      "test_quality_effect": "pass",
+      "reasoning": "The unchanged baseline test completed successfully.",
+      "signals": [
+        "baseline_passed"
+      ],
+      "evidence": [
+        {
+          "field": "runtime.result",
+          "quote": "status=pass",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "runtime.stderr",
+          "quote": null,
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": {
+            "kind": "stderr",
+            "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/stderr.txt",
+            "description": "Behave standard error",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ]
+    }
+  }
+}

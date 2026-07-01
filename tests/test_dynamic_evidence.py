@@ -122,6 +122,7 @@ def test_dynamic_oracle_reports_observed_survivor() -> None:
     assert output.killed_mutants == ["killed"]
     assert output.survived_mutants == ["survived"]
     assert output.findings[0].evidence[0].file_path == "index.html"
+    assert output.findings[0].criterion == "Dynamic oracle fails to distinguish mutant survived"
 
 
 def test_dynamic_suite_builds_behavior_level_evidence() -> None:

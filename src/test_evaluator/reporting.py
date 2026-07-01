@@ -96,6 +96,22 @@ def _stability_summary(report) -> str:
     return f"{report.stability.status.value} ({rate})"
 
 
+def _failure_attribution(report):
+    if report.runtime_trace is None:
+        return None
+    return report.runtime_trace.failure_attribution
+
+
+def _failure_origin(report) -> str:
+    attribution = _failure_attribution(report)
+    return attribution.origin if attribution else "N/A"
+
+
+def _runtime_score_effect(report) -> str:
+    attribution = _failure_attribution(report)
+    return attribution.test_quality_effect if attribution else "N/A"
+
+
 def render_project_markdown(run: EvaluationRun, project_id: str) -> str:
     project = next(item for item in run.projects if item.project_id == project_id)
     tests = [item for item in run.tests if item.project_id == project_id]
@@ -220,8 +236,8 @@ def render_markdown(run: EvaluationRun) -> str:
     else:
         lines.extend(
             [
-                "| Test | Scenario | Basic Score | Full Score | Source Grounding | Runtime | Stability | Dynamic Oracle | Mutation | Basic Evidence | Full Evidence | Risk | Hard Gates |",
-                "|---|---|---:|---:|---|---|---|---|---:|---:|---:|---|---|",
+                "| Test | Scenario | Basic Score | Full Score | Source Grounding | Runtime | Failure origin | Stability | Dynamic Oracle | Mutation | Basic Evidence | Full Evidence | Risk | Hard Gates |",
+                "|---|---|---:|---:|---|---|---|---|---|---:|---:|---:|---|---|",
             ]
         )
     for report in run.tests:
@@ -240,6 +256,7 @@ def render_markdown(run: EvaluationRun) -> str:
                 f"{_format_score(report.full_test_quality_score)} | "
                 f"{_review_status(report, 'selector_grounding')} | "
                 f"{report.runtime.status if report.runtime else 'N/A'} | "
+                f"{_failure_origin(report)} | "
                 f"{_stability_summary(report)} | "
                 f"{_review_status(report, 'dynamic_oracle')} | {_format_score(report.mutation_score)} | "
                 f"{report.basic_confidence_coverage:.0%} | "
@@ -303,21 +320,48 @@ def render_markdown(run: EvaluationRun) -> str:
                 "",
                 "## Baseline Runtime Details",
                 "",
-                "`env_error` means the runtime dependency/browser setup was unavailable; it is not a failed test assertion.",
+                "Raw execution status is separated from failure ownership. Only `test_defect` with effect `penalize` lowers the test runtime score; application, environment, evaluator, contract, and indeterminate failures remain neutral or `UNKNOWN`.",
                 "",
-                "| Test | Status | Error type | Failed step | Duration (s) |",
-                "|---|---|---|---|---:|",
+                "| Test | Status | Error type | Failure origin | Test-quality effect | Attribution confidence | Failed step | Duration (s) |",
+                "|---|---|---|---|---|---:|---|---:|",
             ]
         )
         for report in runtime_reports:
             runtime = report.runtime
+            attribution = _failure_attribution(report)
+            confidence = f"{attribution.confidence:.0%}" if attribution else "N/A"
             lines.append(
                 f"| {report.record_key} | {runtime.status} | {runtime.error_type or '—'} | "
+                f"{_failure_origin(report)} | {_runtime_score_effect(report)} | {confidence} | "
                 f"{runtime.failed_step or '—'} | "
                 f"{runtime.duration_seconds:.2f} |" if runtime.duration_seconds is not None else
                 f"| {report.record_key} | {runtime.status} | {runtime.error_type or '—'} | "
+                f"{_failure_origin(report)} | {_runtime_score_effect(report)} | {confidence} | "
                 f"{runtime.failed_step or '—'} | N/A |"
             )
+
+        attributed_failures = [
+            report
+            for report in runtime_reports
+            if _failure_attribution(report)
+            and _failure_attribution(report).origin != "no_failure"
+        ]
+        if attributed_failures:
+            lines.extend(
+                [
+                    "",
+                    "### Failure Attribution Details",
+                    "",
+                    "| Test | Origin | Signals | Reasoning |",
+                    "|---|---|---|---|",
+                ]
+            )
+            for report in attributed_failures:
+                attribution = _failure_attribution(report)
+                lines.append(
+                    f"| {report.record_key} | {attribution.origin} | "
+                    f"{', '.join(attribution.signals) or '—'} | {attribution.reasoning} |"
+                )
 
     lines.extend(["", "## Requirement Suites", ""])
     if run.mode == "basic":

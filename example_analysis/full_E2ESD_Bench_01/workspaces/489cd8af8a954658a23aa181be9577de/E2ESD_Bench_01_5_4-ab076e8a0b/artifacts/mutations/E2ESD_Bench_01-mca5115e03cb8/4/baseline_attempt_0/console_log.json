@@ -1,0 +1,50 @@
+[
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/img/img1.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782931366867
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/img/img2.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782931366868
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/img/img3.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782931366868
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/img/img4.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782931366868
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/index.html 51:43 Uncaught TypeError: Cannot read properties of undefined (reading 'replace')",
+    "source": "javascript",
+    "timestamp": 1782931367941
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/index.html 51:43 Uncaught TypeError: Cannot read properties of undefined (reading 'replace')",
+    "source": "javascript",
+    "timestamp": 1782931368956
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/index.html 51:43 Uncaught TypeError: Cannot read properties of undefined (reading 'replace')",
+    "source": "javascript",
+    "timestamp": 1782931369969
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/57a4517c605462e4/ab076e8a0bb1a6bf/app/index.html 51:43 Uncaught TypeError: Cannot read properties of undefined (reading 'replace')",
+    "source": "javascript",
+    "timestamp": 1782931370985
+  }
+]

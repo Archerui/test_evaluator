@@ -1,0 +1,53 @@
+{
+  "agent": "oracle_critic",
+  "record_key": "E2ESD_Bench_02::2::2",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "oracle_strength",
+  "status": "PASS",
+  "confidence": 0.9,
+  "findings": [
+    {
+      "criterion": "Behaviour 2.2-inline-formatting-html: main display renders inline Markdown as corresponding HTML elements (strong, em, a).",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>)",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "Then the main display area with data-testid \"note-main\" should render \"<strong>Bold</strong> and <em>italic</em> text with <a href='http://example.com'>link</a>\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "step_code",
+          "quote": "rendered_html = main_display.get_attribute(\"innerHTML\").strip()",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "rendered_soup.find('strong') and rendered_soup.find('strong').text == expected_soup.find('strong').text",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The test reads the note-main element's innerHTML and parses it with BeautifulSoup, then asserts the presence and exact text/href of <strong>, <em>, and <a> elements. These are concrete DOM observations (innerHTML -> parsed elements) that directly verify the rendered HTML tags and values, providing a strong oracle for the inline Markdown rendering targeted by this scenario. The assertions are exact (text and href comparisons) rather than loose existence checks, so they will fail if the HTML formatting is not produced as required.",
+      "suggested_fix": null
+    }
+  ]
+}

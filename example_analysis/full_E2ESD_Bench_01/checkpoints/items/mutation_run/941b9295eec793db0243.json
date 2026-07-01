@@ -1,0 +1,160 @@
+{
+  "input_hash": "1c5d869c9ba4f014f634ef6b8bbc4a1e858ec63b745745cc19b54affa1519a0e",
+  "item_key": "E2ESD_Bench_01-ma7e0eb5c1fe0",
+  "payload": {
+    "result": {
+      "error_summary": null,
+      "killed_by_record_keys": [
+        "E2ESD_Bench_01::3::3"
+      ],
+      "mutant_id": "E2ESD_Bench_01-ma7e0eb5c1fe0",
+      "runtime_artifacts": [
+        {
+          "description": "Behave standard output",
+          "kind": "stdout",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/1/baseline_attempt_0/stdout.txt",
+          "sha256": "c4862fa1226e1e653e8f446ca53d7b369256c1523b688c7529e936d4c25f341b"
+        },
+        {
+          "description": "Behave standard error",
+          "kind": "stderr",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/1/baseline_attempt_0/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "description": "Behave JSON result",
+          "kind": "behave_json",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/1/baseline_attempt_0/behave.json",
+          "sha256": "755cef0a9237fd7110535f9519637bdacfda0e8fcd531955c95795e6fbf61f66"
+        },
+        {
+          "description": "Storage/network/browser API trace",
+          "kind": "browser_trace",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/1/baseline_attempt_0/browser_trace.json",
+          "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+        },
+        {
+          "description": "Chrome DevTools Network events",
+          "kind": "network_log",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/1/baseline_attempt_0/network_log.json",
+          "sha256": "0a4f8d1f598cce52984b9c00386f50bd4ff15f09b0778a015243686ebe30b231"
+        },
+        {
+          "description": "Behave standard output",
+          "kind": "stdout",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/2/baseline_attempt_0/stdout.txt",
+          "sha256": "0dba7e787578ecb9643f9ef3bca20fa99a7893dbf9cf5c79cbb1e4dbd614744d"
+        },
+        {
+          "description": "Behave standard error",
+          "kind": "stderr",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/2/baseline_attempt_0/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "description": "Behave JSON result",
+          "kind": "behave_json",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/2/baseline_attempt_0/behave.json",
+          "sha256": "86a68c768967e52d042dc7b1d8b2dde033615f21943d8a3cccedc2a1a4968bdf"
+        },
+        {
+          "description": "Storage/network/browser API trace",
+          "kind": "browser_trace",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/2/baseline_attempt_0/browser_trace.json",
+          "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+        },
+        {
+          "description": "Chrome DevTools Network events",
+          "kind": "network_log",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/2/baseline_attempt_0/network_log.json",
+          "sha256": "ab0afc798bca98728766ad981ea034d9b6fad289ffd22230b6c22c03d187c37a"
+        },
+        {
+          "description": "Behave standard output",
+          "kind": "stdout",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/stdout.txt",
+          "sha256": "4534d6c703514eb5868021490d09dca78eaf237d0db321ed15975b3ba2cbd08c"
+        },
+        {
+          "description": "Behave standard error",
+          "kind": "stderr",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "description": "Behave JSON result",
+          "kind": "behave_json",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/behave.json",
+          "sha256": "525e02572d4655ffddae747dcc27df4e1172b841a402b5a475c05db50d9d9524"
+        },
+        {
+          "description": "Browser screenshot at failed step",
+          "kind": "screenshot",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/failure.png",
+          "sha256": "86d1fde4d38f82f38bd7a58138ccc9142b8fd0a90542bf927e8b0324e092fdad"
+        },
+        {
+          "description": "DOM at failed step",
+          "kind": "dom_snapshot",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/dom_snapshot.html",
+          "sha256": "1b9e1270891b9432a88f2b78334c83d14038f953d2fc90a4a9a455adfe08b8b8"
+        },
+        {
+          "description": "Browser console at failed step",
+          "kind": "console_log",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/console_log.json",
+          "sha256": "52f7872d801ff898685c3ed9e3d03f29f9eaa082f6981e8c3219a8380fa4fe69"
+        },
+        {
+          "description": "Storage/network/browser API trace",
+          "kind": "browser_trace",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/browser_trace.json",
+          "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+        },
+        {
+          "description": "Chrome DevTools Network events",
+          "kind": "network_log",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/3/baseline_attempt_0/network_log.json",
+          "sha256": "02e98facb3e0d3e3ac46f4352f2b147feac878321193f6a935fb7cbf1c9ec7e7"
+        },
+        {
+          "description": "Behave standard output",
+          "kind": "stdout",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/4/baseline_attempt_0/stdout.txt",
+          "sha256": "418c5177035c5dcf4491a092969e2026377bae467174ea2c7547ccbaaa8ad87b"
+        },
+        {
+          "description": "Behave standard error",
+          "kind": "stderr",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/4/baseline_attempt_0/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "description": "Behave JSON result",
+          "kind": "behave_json",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/4/baseline_attempt_0/behave.json",
+          "sha256": "5e2d0b90c09c7d833da5b298943fb72d82353ebbd25b9fd14ad9b8f7f6a24be9"
+        },
+        {
+          "description": "Storage/network/browser API trace",
+          "kind": "browser_trace",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/4/baseline_attempt_0/browser_trace.json",
+          "sha256": "c936fee0ec4f5553db4949cdf68348511317a61bf18ee0643740d933823d98c3"
+        },
+        {
+          "description": "Chrome DevTools Network events",
+          "kind": "network_log",
+          "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/mutations/E2ESD_Bench_01-ma7e0eb5c1fe0/4/baseline_attempt_0/network_log.json",
+          "sha256": "537d9fe6cbb4bc5cb49e5b2d8482ef9f36d633804baa8f372ba4e68bcd33e915"
+        }
+      ],
+      "status": "killed",
+      "survived_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::4"
+      ]
+    }
+  },
+  "state": "MUTATION_RUN"
+}

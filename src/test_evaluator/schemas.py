@@ -209,6 +209,7 @@ class AgentReview(BaseModel):
         "test_materializer",
         "test_runner",
         "runtime_trace",
+        "failure_attribution",
         "coverage",
         "mutation_generator",
         "mutation_runner",
@@ -231,6 +232,7 @@ class AgentReview(BaseModel):
         "suite_adequacy",
         "source_grounding",
         "runtime_result",
+        "runtime_attribution",
         "coverage",
         "mutation_effectiveness",
         "dynamic_oracle_evidence",
@@ -430,6 +432,30 @@ class RuntimeObservation(BaseModel):
     evidence: list[Evidence] = Field(default_factory=list)
 
 
+class FailureAttribution(BaseModel):
+    """Conservative ownership decision for a raw runtime failure.
+
+    The attribution is explicitly about the quality of the evaluated test. A
+    failed application, environment, or evaluator does not automatically make
+    the test defective.
+    """
+
+    origin: Literal[
+        "no_failure",
+        "test_defect",
+        "application_defect",
+        "environment_issue",
+        "evaluator_issue",
+        "contract_or_dataset_mismatch",
+        "indeterminate",
+    ]
+    confidence: float = Field(ge=0.0, le=1.0)
+    test_quality_effect: Literal["pass", "penalize", "neutral", "unknown"]
+    reasoning: str
+    signals: list[str] = Field(default_factory=list)
+    evidence: list[Evidence] = Field(default_factory=list)
+
+
 class RuntimeTrace(BaseModel):
     record_key: str
     execution_status: RuntimeResult
@@ -442,9 +468,14 @@ class RuntimeTrace(BaseModel):
         "path_issue",
         "environment_issue",
         "timeout_or_flaky",
+        "contract_or_dataset_mismatch",
+        "evaluator_issue",
+        "indeterminate",
+        "no_failure",
         "unknown",
     ] = "unknown"
     flaky_risk: Literal["low", "medium", "high", "unknown"] = "unknown"
+    failure_attribution: FailureAttribution | None = None
 
 
 class StabilityAttempt(BaseModel):
@@ -985,6 +1016,10 @@ class RuntimeTraceInput(BaseModel):
     runtime: RuntimeResult
     static_facts: StaticFacts
     source_model: SourceModel | None = None
+    contract: RequirementContract | None = None
+    reviews: list[AgentReview] = Field(default_factory=list)
+    selector_grounding: SelectorGroundingOutput | None = None
+    stability: StabilityReport | None = None
 
 
 class RuntimeTraceOutput(AgentEnvelope):

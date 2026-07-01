@@ -1,0 +1,2554 @@
+{
+  "facts": {
+    "E2ESD_Bench_01::1::1": {
+      "actions": [
+        "execute_script",
+        "find_element",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "product-item-1"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "event_payload_observation",
+            "data_transfer_read_keys": [
+              "money",
+              "title"
+            ],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": true,
+            "expression": "drag_data",
+            "sources": [
+              "data_transfer",
+              "drag_event"
+            ]
+          },
+          {
+            "classification": "event_payload_observation",
+            "data_transfer_read_keys": [
+              "title"
+            ],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": true,
+            "expression": "product_title == 'The Essence of JavaScript'",
+            "sources": [
+              "data_transfer",
+              "drag_event"
+            ]
+          },
+          {
+            "classification": "event_payload_observation",
+            "data_transfer_read_keys": [
+              "money"
+            ],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": true,
+            "expression": "product_price == '$40'",
+            "sources": [
+              "data_transfer",
+              "drag_event"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 4,
+        "data_transfer_read_keys": [
+          "money",
+          "title"
+        ],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 4,
+        "drag_event_dispatch_count": 4,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 3,
+        "execute_script_count": 5,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a product list",
+        "then: the drag event should be initiated",
+        "then: the product price \"$40\" should be captured",
+        "then: the product title \"The Essence of JavaScript\" should be captured",
+        "when: the user drags the product item with data-testid \"product-item-1\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a product list",
+        "when: the user drags the product item with data-testid \"product-item-1\"",
+        "then: the drag event should be initiated",
+        "then: the product title \"The Essence of JavaScript\" should be captured",
+        "then: the product price \"$40\" should be captured"
+      ],
+      "gherkin_test_ids": [
+        "product-item-1"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 3,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_01::1::2": {
+      "actions": [
+        "execute_script",
+        "find_element",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 4,
+      "code_test_ids": [
+        "product-item-1",
+        "product-item-2",
+        "product-price-2",
+        "product-title-2"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "title == 'JavaScript: The Definitive Guide'",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "price == '$120'",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "title == 'JavaScript: The Definitive Guide'",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "price == '$120'",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 1,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 4,
+        "drag_event_creation_count": 1,
+        "drag_event_dispatch_count": 1,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a product list",
+        "then: the drag event should be initiated",
+        "then: the product price \"$120\" should be captured",
+        "then: the product title \"JavaScript: The Definitive Guide\" should be captured",
+        "when: the user drags the product item with data-testid \"product-item-2\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a product list",
+        "when: the user drags the product item with data-testid \"product-item-2\"",
+        "then: the drag event should be initiated",
+        "then: the product title \"JavaScript: The Definitive Guide\" should be captured",
+        "then: the product price \"$120\" should be captured"
+      ],
+      "gherkin_test_ids": [
+        "product-item-2"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 5,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 2
+    },
+    "E2ESD_Bench_01::1::3": {
+      "actions": [
+        "execute_script",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 4,
+      "code_test_ids": [
+        "product-item-3"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_drag_event_initiated(context.driver, product_item)",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "True",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_title in product_title",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_price in product_price",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 2,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 2,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 2,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a product list",
+        "then: the drag event should be initiated",
+        "then: the product price \"$35\" should be captured",
+        "then: the product title \"Mastering JavaScript\" should be captured",
+        "when: the user drags the product item with data-testid \"product-item-3\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a product list",
+        "when: the user drags the product item with data-testid \"product-item-3\"",
+        "then: the drag event should be initiated",
+        "then: the product title \"Mastering JavaScript\" should be captured",
+        "then: the product price \"$35\" should be captured"
+      ],
+      "gherkin_test_ids": [
+        "product-item-3"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 4,
+      "syntax_error": null,
+      "trivial_assertion_count": 2,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_01::1::4": {
+      "actions": [
+        "get",
+        "quit"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "drop-area"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "not context.drag_event_initiated",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "True",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "True",
+            "sources": [
+              "constant"
+            ]
+          }
+        ],
+        "constant_assertion_count": 2,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 1,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a product list",
+        "then: no drag event should be initiated",
+        "then: no product price should be captured",
+        "then: no product title should be captured",
+        "when: the user attempts to drag the non-draggable element with data-testid \"drop-area\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a product list",
+        "when: the user attempts to drag the non-draggable element with data-testid \"drop-area\"",
+        "then: no drag event should be initiated",
+        "then: no product title should be captured",
+        "then: no product price should be captured"
+      ],
+      "gherkin_test_ids": [
+        "drop-area"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Error",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 2,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_01::3::1": {
+      "actions": [
+        "execute_script",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 4,
+      "code_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "{data_testid}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_visible(product_item)",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any((expected_title in title for title in titles))",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any((expected_price in price for price in prices))",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any((expected_quantity in quantity for quantity in quantities))",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 1,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 3,
+        "drag_event_creation_count": 5,
+        "drag_event_dispatch_count": 5,
+        "element_attribute_proxy_assertion_count": 1,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the product item with data-testid \"{data_testid}\" is visible",
+        "given: the webpage is loaded",
+        "then: the cart display should show a product with title \"{expected_title}\"",
+        "then: the price \"{expected_price}\"",
+        "then: the quantity \"{expected_quantity}\"",
+        "when: the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded",
+        "given: the product item with data-testid \"product-item-1\" is visible",
+        "when: the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"",
+        "then: the cart display should show a product with title \"The Essence of JavaScript\"",
+        "then: the price \"$40\"",
+        "then: the quantity \"1\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-1"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3",
+        "[data-testid="
+      ],
+      "sleep_count": 6,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_01::3::2": {
+      "actions": [
+        "execute_script",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 8,
+      "code_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2",
+        "{cart_id}",
+        "{product_item}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_visible(product_item_1)",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_visible(product_item_2)",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'The Essence of JavaScript' in titles",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'$40' in prices or '$40.00'",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'1' in quantities",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'JavaScript: The Definitive Guide' in titles",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'$120' in prices or '$120.00'",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "quantities.count('1') == 2",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 1,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 6,
+        "drag_event_creation_count": 5,
+        "drag_event_dispatch_count": 5,
+        "element_attribute_proxy_assertion_count": 2,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the product items with data-testid \"product-item-1\" and \"product-item-2\" are visible",
+        "given: the webpage is loaded",
+        "then: the cart display should show a product with title \"JavaScript: The Definitive Guide\"",
+        "then: the cart display should show a product with title \"The Essence of JavaScript\"",
+        "then: the price \"$120\"",
+        "then: the price \"$40\"",
+        "then: the quantity \"1\"",
+        "then: the quantity \"1\" for the second product",
+        "when: drops it into the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product item with data-testid \"product-item-1\"",
+        "when: the user drags the product item with data-testid \"product-item-2\"",
+        "when: the user drags the product with data-testid \"{product_item}\" and drops it into the cart container with data-testid \"{cart_id}\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded",
+        "given: the product items with data-testid \"product-item-1\" and \"product-item-2\" are visible",
+        "when: the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"",
+        "when: the user drags the product with data-testid \"product-item-2\" and drops it into the cart container with data-testid \"drop-area\"",
+        "then: the cart display should show a product with title \"The Essence of JavaScript\"",
+        "then: the price \"$40\"",
+        "then: the quantity \"1\"",
+        "then: the cart display should show a product with title \"JavaScript: The Definitive Guide\"",
+        "then: the price \"$120\"",
+        "then: the quantity \"1\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3",
+        "[data-testid="
+      ],
+      "sleep_count": 12,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 2
+    },
+    "E2ESD_Bench_01::3::3": {
+      "actions": [
+        "execute_script",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 4,
+      "code_test_ids": [
+        "product-item-3",
+        "{cart_id}",
+        "{product_id}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_visible(product_item)",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'Mastering JavaScript' in titles",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'$35' in prices or '$35.00' in prices",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'2' in quantities",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 1,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 3,
+        "drag_event_creation_count": 5,
+        "drag_event_dispatch_count": 5,
+        "element_attribute_proxy_assertion_count": 1,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the product item with data-testid \"product-item-3\" is visible",
+        "given: the webpage is loaded",
+        "then: the cart display should show a product with title \"Mastering JavaScript\"",
+        "then: the price \"$35\"",
+        "then: the quantity \"2\"",
+        "when: the user drags the product item with data-testid \"{product_id}\" and drops it into the drop area with data-testid \"{cart_id}\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [
+        "drop-area"
+      ],
+      "gherkin_steps": [
+        "given: the webpage is loaded",
+        "given: the product item with data-testid \"product-item-3\" is visible",
+        "when: the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\"",
+        "then: the cart display should show a product with title \"Mastering JavaScript\"",
+        "then: the price \"$35\"",
+        "then: the quantity \"2\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-3"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3",
+        "[data-testid="
+      ],
+      "sleep_count": 6,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_01::3::4": {
+      "actions": [
+        "execute_script",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 5,
+      "code_test_ids": [
+        "drop-area",
+        "{data_testid}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_visible(product_item)",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any((expected_title in title for title in titles))",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any((expected_price in price for price in prices))",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_value in normalized_prices",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'1' in quantities",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 4,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 1,
+        "element_attribute_proxy_assertion_count": 1,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the product item with data-testid \"{data_testid}\" is visible",
+        "given: the webpage is loaded",
+        "then: the cart display should show a product with title \"{expected_title}\"",
+        "then: the price \"{expected_price}\"",
+        "then: the quantity \"1\"",
+        "then: the unit price \"{expected_price}\"",
+        "when: the user drags the product item with data-testid \"{data_testid}\" and drops it into the drop area with data-testid \"drop-area\""
+      ],
+      "direct_event_construction": [
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [
+        "product-item-2"
+      ],
+      "gherkin_steps": [
+        "given: the webpage is loaded",
+        "given: the product item with data-testid \"product-item-2\" is visible",
+        "when: the user drags the product item with data-testid \"product-item-2\" and drops it into the drop area with data-testid \"drop-area\"",
+        "then: the cart display should show a product with title \"JavaScript: The Definitive Guide\"",
+        "then: the price \"$120\"",
+        "then: the quantity \"1\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-2"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3",
+        "[data-testid="
+      ],
+      "sleep_count": 7,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_01::5::1": {
+      "actions": [
+        "execute_script",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "drop-area",
+        "product-item-1"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_price in actual_price",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 1,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a list of products",
+        "then: the total price displayed in the element with id \"allMoney\" should be \"$40.00\"",
+        "when: the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\""
+      ],
+      "direct_event_construction": [
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a list of products",
+        "when: the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\"",
+        "then: the total price displayed in the element with id \"allMoney\" should be \"$40.00\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-1"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid=",
+        "allMoney"
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 3
+    },
+    "E2ESD_Bench_01::5::2": {
+      "actions": [
+        "execute_script",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "{drop_area_testid}",
+        "{product_testid}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_total in actual_total",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 1,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 2,
+        "drag_event_dispatch_count": 2,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a list of products",
+        "then: the total price displayed in the element with id \"{total_id}\" should be \"{expected_total}\"",
+        "when: the user drags the product with data-testid \"{product_testid}\" to the drop area with data-testid \"{drop_area_testid}\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a list of products",
+        "when: the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product with data-testid \"product-item-2\" to the drop area with data-testid \"drop-area\"",
+        "then: the total price displayed in the element with id \"allMoney\" should be \"$160.00\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 3
+    },
+    "E2ESD_Bench_01::5::3": {
+      "actions": [
+        "execute_script",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "{drop_area_testid}",
+        "{product_testid}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_price in actual_price",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 1,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 2,
+        "drag_event_dispatch_count": 2,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a list of products",
+        "then: the total price displayed in the element with id \"{total_price_id}\" should be \"{expected_price}\"",
+        "when: the user drags the product with data-testid \"{product_testid}\" to the drop area with data-testid \"{drop_area_testid}\""
+      ],
+      "direct_event_construction": [
+        "DataTransfer(",
+        "DragEvent(",
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [
+        "drop-area",
+        "product-item-3"
+      ],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a list of products",
+        "when: the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"",
+        "then: the total price displayed in the element with id \"allMoney\" should be \"$70.00\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-3"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 3,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 3
+    },
+    "E2ESD_Bench_01::5::4": {
+      "actions": [
+        "execute_script",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "{drop_area_testid}",
+        "{product_testid}"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_total in actual_total",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 1,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the webpage is loaded with a list of products",
+        "then: the total price displayed in the element with id \"allMoney\" should be \"{expected_total}\"",
+        "when: the user drags the product with data-testid \"{product_testid}\" to the drop area with data-testid \"{drop_area_testid}\""
+      ],
+      "direct_event_construction": [
+        "dispatchEvent("
+      ],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2",
+        "product-item-3",
+        "product-item-4"
+      ],
+      "gherkin_steps": [
+        "given: the webpage is loaded with a list of products",
+        "when: the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product with data-testid \"product-item-2\" to the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"",
+        "when: the user drags the product with data-testid \"product-item-4\" to the drop area with data-testid \"drop-area\"",
+        "then: the total price displayed in the element with id \"allMoney\" should be \"$240.00\""
+      ],
+      "gherkin_test_ids": [
+        "drop-area",
+        "product-item-1",
+        "product-item-2",
+        "product-item-3",
+        "product-item-4"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "[data-testid=",
+        "allMoney"
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 3
+    },
+    "E2ESD_Bench_02::1::1": {
+      "actions": [
+        "click",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "add-note-button",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "len(notes) > 0",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.get_attribute('value') == ''",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          }
+        ],
+        "constant_assertion_count": 1,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 1,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the Notes App page is loaded",
+        "then: a new note is displayed on the page",
+        "then: the new note contains an empty textarea with data-testid 'note-textarea'",
+        "then: the textarea is visible",
+        "when: the user clicks the 'Add note' button with data-testid 'add-note-button'"
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "when: the user clicks the 'Add note' button with data-testid 'add-note-button'",
+        "then: a new note is displayed on the page",
+        "then: the new note contains an empty textarea with data-testid 'note-textarea'",
+        "then: the textarea is visible"
+      ],
+      "gherkin_test_ids": [
+        "add-note-button",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "add-note-button",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        ".note",
+        "[data-testid="
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 1,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_02::1::2": {
+      "actions": [
+        "click",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "add-note-button",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "len(notes) > 1",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.get_attribute('value') == ''",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          }
+        ],
+        "constant_assertion_count": 1,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 1,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the Notes App page is loaded",
+        "then: all textareas are visible",
+        "then: each new note contains an empty textarea with data-testid 'note-textarea'",
+        "then: multiple new notes are displayed on the page",
+        "when: the user clicks the 'Add note' button with data-testid 'add-note-button' rapidly"
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "when: the user clicks the 'Add note' button with data-testid 'add-note-button' rapidly",
+        "then: multiple new notes are displayed on the page",
+        "then: each new note contains an empty textarea with data-testid 'note-textarea'",
+        "then: all textareas are visible"
+      ],
+      "gherkin_test_ids": [
+        "add-note-button",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "add-note-button",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 1,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_02::2::1": {
+      "actions": [
+        "clear",
+        "click",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "h1_tag and h1_tag.text == expected_text",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the Notes App page is loaded",
+        "given: the user clicks the 'Add note' button with data-testid 'add-note-button' to add a new note",
+        "then: the main display area with data-testid \"note-main\" should render \"<h1>Heading</h1>\"",
+        "when: The user clicks the \"Edit\" button with data-testid \"edit-note-button\" to exit edit mode",
+        "when: the user enters \"# Heading\" into the textarea with data-testid \"note-textarea\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: the user clicks the 'Add note' button with data-testid 'add-note-button' to add a new note",
+        "when: the user enters \"# Heading\" into the textarea with data-testid \"note-textarea\"",
+        "when: The user clicks the \"Edit\" button with data-testid \"edit-note-button\" to exit edit mode",
+        "then: the main display area with data-testid \"note-main\" should render \"<h1>Heading</h1>\""
+      ],
+      "gherkin_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 4,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 4
+    },
+    "E2ESD_Bench_02::2::2": {
+      "actions": [
+        "clear",
+        "click",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "rendered_soup.find('strong') and rendered_soup.find('strong').text == expected_soup.find('strong').text",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "rendered_soup.find('em') and rendered_soup.find('em').text == expected_soup.find('em').text",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "rendered_soup.find('a') and rendered_soup.find('a')['href'] == expected_soup.find('a')['href']",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 3,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: a note is present with a textarea having data-testid \"note-textarea\"",
+        "given: the Notes App page is loaded",
+        "then: the main display area with data-testid \"note-main\" should render \"<strong>Bold</strong> and <em>italic</em> text with <a href='http://example.com'>link</a>\"",
+        "when: the user 'Edit' button with data-testid 'edit-note-button' to exit edit mode",
+        "when: the user enters \"**Bold** and _italic_ text with [link](http://example.com)\" into the textarea with data-testid \"note-textarea\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: a note is present with a textarea having data-testid \"note-textarea\"",
+        "when: the user enters \"**Bold** and _italic_ text with [link](http://example.com)\" into the textarea with data-testid \"note-textarea\"",
+        "when: the user 'Edit' button with data-testid 'edit-note-button' to exit edit mode",
+        "then: the main display area with data-testid \"note-main\" should render \"<strong>Bold</strong> and <em>italic</em> text with <a href='http://example.com'>link</a>\""
+      ],
+      "gherkin_test_ids": [
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 5,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 4
+    },
+    "E2ESD_Bench_02::2::3": {
+      "actions": [
+        "clear",
+        "click",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "expected_text in rendered_text",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the Notes App page is loaded",
+        "given: the user click the button with data-testid 'add-note-button' to add a new note",
+        "then: the main display area with data-testid \"note-main\" should render \"This is not **valid Markdown\"",
+        "when: the user clicks the 'Edit' button with data-testid 'edit-note-button' to exit edit mode",
+        "when: the user enters \"This is not **valid Markdown\" into the textarea with data-testid \"note-textarea\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: the user click the button with data-testid 'add-note-button' to add a new note",
+        "when: the user enters \"This is not **valid Markdown\" into the textarea with data-testid \"note-textarea\"",
+        "when: the user clicks the 'Edit' button with data-testid 'edit-note-button' to exit edit mode",
+        "then: the main display area with data-testid \"note-main\" should render \"This is not **valid Markdown\""
+      ],
+      "gherkin_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Error",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 4,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 4
+    },
+    "E2ESD_Bench_02::3::1": {
+      "actions": [
+        "click",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "add-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "len(notes) > 0",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "not main_content.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          }
+        ],
+        "constant_assertion_count": 1,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 2,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the Notes App page is loaded",
+        "then: a new note should be created",
+        "then: the note's main content area with data-testid \"note-main\" should be hidden",
+        "then: the note's textarea with data-testid \"note-textarea\" should be visible",
+        "when: the user clicks the \"Add note\" button with data-testid \"add-note-button\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "when: the user clicks the \"Add note\" button with data-testid \"add-note-button\"",
+        "then: a new note should be created",
+        "then: the note's textarea with data-testid \"note-textarea\" should be visible",
+        "then: the note's main content area with data-testid \"note-main\" should be hidden"
+      ],
+      "gherkin_test_ids": [
+        "add-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        ".note",
+        "[data-testid="
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 1,
+      "webdriver_wait_count": 2
+    },
+    "E2ESD_Bench_02::3::2": {
+      "actions": [
+        "click",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 2,
+      "code_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "not is_visible(text_area)",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "is_visible(main_content)",
+            "sources": [
+              "dom_attribute"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 2,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: a note is created with text \"Sample Note\"",
+        "given: the Notes App page is loaded",
+        "then: the note's main content area with data-testid \"note-main\" should be visible",
+        "then: the note's textarea with data-testid \"note-textarea\" should be hidden",
+        "when: the user clicks the \"Edit\" button with data-testid \"edit-note-button\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: a note is created with text \"Sample Note\"",
+        "when: the user clicks the \"Edit\" button with data-testid \"edit-note-button\"",
+        "then: the note's textarea with data-testid \"note-textarea\" should be hidden",
+        "then: the note's main content area with data-testid \"note-main\" should be visible"
+      ],
+      "gherkin_test_ids": [
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 5,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 5
+    },
+    "E2ESD_Bench_02::3::3": {
+      "actions": [
+        "click",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 2,
+      "code_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "not main_content.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 2,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: a note is created with text \"Sample Note\"",
+        "given: the Notes App page is loaded",
+        "given: the user clicks the \"Edit\" button with data-testid \"edit-note-button\"",
+        "then: the note's main content area with data-testid \"note-main\" should be hidden",
+        "then: the note's textarea with data-testid \"note-textarea\" should be visible",
+        "when: the user clicks the \"Edit\" button with data-testid \"edit-note-button\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: a note is created with text \"Sample Note\"",
+        "given: the user clicks the \"Edit\" button with data-testid \"edit-note-button\"",
+        "when: the user clicks the \"Edit\" button with data-testid \"edit-note-button\"",
+        "then: the note's textarea with data-testid \"note-textarea\" should be visible",
+        "then: the note's main content area with data-testid \"note-main\" should be hidden"
+      ],
+      "gherkin_test_ids": [
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 5,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 6
+    },
+    "E2ESD_Bench_02::3::4": {
+      "actions": [
+        "click",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 3,
+      "code_test_ids": [
+        "add-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "len(notes) > 0",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "textarea.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          },
+          {
+            "classification": "element_attribute_proxy",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "not main_content.is_displayed()",
+            "sources": [
+              "dom_attribute"
+            ]
+          }
+        ],
+        "constant_assertion_count": 1,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 2,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 0,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the Notes App page is loaded",
+        "then: a new note should be created",
+        "then: the note's main content area with data-testid \"note-main\" should be hidden",
+        "then: the note's textarea with data-testid \"note-textarea\" should be visible",
+        "when: the user clicks the \"Add note\" button with data-testid \"add-note-button\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "when: the user clicks the \"Add note\" button with data-testid \"add-note-button\"",
+        "then: a new note should be created",
+        "then: the note's textarea with data-testid \"note-textarea\" should be visible",
+        "then: the note's main content area with data-testid \"note-main\" should be hidden"
+      ],
+      "gherkin_test_ids": [
+        "add-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "add-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        ".note",
+        "[data-testid="
+      ],
+      "sleep_count": 5,
+      "syntax_error": null,
+      "trivial_assertion_count": 1,
+      "webdriver_wait_count": 2
+    },
+    "E2ESD_Bench_02::4::1": {
+      "actions": [
+        "click",
+        "execute_script",
+        "find_elements",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 2,
+      "code_test_ids": [
+        "add-note-button",
+        "delete-note-button",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "len(notes) == 0",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'Sample Note' not in notes",
+            "sources": [
+              "constant"
+            ]
+          }
+        ],
+        "constant_assertion_count": 2,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: a note is created with the text \"Sample Note\"",
+        "given: the Notes App page is loaded",
+        "then: localStorage does not contain \"Sample Note\"",
+        "then: the note is removed from the page",
+        "when: the user clicks the 'Delete' button with data-testid 'delete-note-button'"
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: a note is created with the text \"Sample Note\"",
+        "when: the user clicks the 'Delete' button with data-testid 'delete-note-button'",
+        "then: the note is removed from the page",
+        "then: localStorage does not contain \"Sample Note\""
+      ],
+      "gherkin_test_ids": [
+        "delete-note-button"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "delete-note-button"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        ".note",
+        "[data-testid="
+      ],
+      "sleep_count": 4,
+      "syntax_error": null,
+      "trivial_assertion_count": 2,
+      "webdriver_wait_count": 3
+    },
+    "E2ESD_Bench_02::4::2": {
+      "actions": [
+        "click",
+        "execute_script",
+        "find_element",
+        "find_elements",
+        "get",
+        "quit",
+        "send_keys"
+      ],
+      "assertion_count": 4,
+      "code_test_ids": [
+        "add-note-button",
+        "delete-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'Note 2' not in note_texts",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'Note 1' in local_storage_notes",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'Note 3' in local_storage_notes",
+            "sources": [
+              "constant"
+            ]
+          },
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "'Note 2' not in local_storage_notes",
+            "sources": [
+              "constant"
+            ]
+          }
+        ],
+        "constant_assertion_count": 3,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 1,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: multiple notes are created with texts \"Note 1\", \"Note 2\", \"Note 3\"",
+        "given: the Notes App page is loaded",
+        "then: localStorage contains \"Note 1\" and \"Note 3\" but not \"Note 2\"",
+        "then: the note with text \"Note 2\" is removed from the page",
+        "when: the user clicks the 'Delete' button on the note with text \"Note 2\""
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the Notes App page is loaded",
+        "given: multiple notes are created with texts \"Note 1\", \"Note 2\", \"Note 3\"",
+        "when: the user clicks the 'Delete' button on the note with text \"Note 2\"",
+        "then: the note with text \"Note 2\" is removed from the page",
+        "then: localStorage contains \"Note 1\" and \"Note 3\" but not \"Note 2\""
+      ],
+      "gherkin_test_ids": [],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "delete-note-button"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        ".note",
+        "[data-testid="
+      ],
+      "sleep_count": 5,
+      "syntax_error": null,
+      "trivial_assertion_count": 3,
+      "webdriver_wait_count": 1
+    },
+    "E2ESD_Bench_02::5::1": {
+      "actions": [
+        "execute_script",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 2,
+      "code_test_ids": [
+        "note-main"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any(('Note 1' in note_text for note_text in note_texts))",
+            "sources": [
+              "dom_text"
+            ]
+          },
+          {
+            "classification": "dom_observation",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "any(('Note 2' in note_text for note_text in note_texts))",
+            "sources": [
+              "dom_text"
+            ]
+          }
+        ],
+        "constant_assertion_count": 0,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 2,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the localStorage contains notes with values \"Note 1\" and \"Note 2\"",
+        "then: the page should display a note with text \"Note 1\" in a div with data-testid \"note-main\"",
+        "then: the page should display a note with text \"Note 2\" in a div with data-testid \"note-main\"",
+        "when: the user opens the Notes App webpage"
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the localStorage contains notes with values \"Note 1\" and \"Note 2\"",
+        "when: the user opens the Notes App webpage",
+        "then: the page should display a note with text \"Note 1\" in a div with data-testid \"note-main\"",
+        "then: the page should display a note with text \"Note 2\" in a div with data-testid \"note-main\""
+      ],
+      "gherkin_test_ids": [
+        "note-main"
+      ],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "delete-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Normal",
+      "selectors": [
+        "[data-testid="
+      ],
+      "sleep_count": 2,
+      "syntax_error": null,
+      "trivial_assertion_count": 0,
+      "webdriver_wait_count": 2
+    },
+    "E2ESD_Bench_02::5::2": {
+      "actions": [
+        "execute_script",
+        "find_elements",
+        "get",
+        "quit"
+      ],
+      "assertion_count": 1,
+      "code_test_ids": [
+        "note-main"
+      ],
+      "data_flow": {
+        "assertions": [
+          {
+            "classification": "constant",
+            "data_transfer_read_keys": [],
+            "data_transfer_set_keys": [],
+            "drag_event_dispatched": false,
+            "expression": "len(notes) == 0",
+            "sources": [
+              "constant"
+            ]
+          }
+        ],
+        "constant_assertion_count": 1,
+        "data_transfer_creation_count": 0,
+        "data_transfer_read_keys": [],
+        "data_transfer_set_keys": [],
+        "dom_assertion_count": 0,
+        "drag_event_creation_count": 0,
+        "drag_event_dispatch_count": 0,
+        "element_attribute_proxy_assertion_count": 0,
+        "event_payload_assertion_count": 0,
+        "execute_script_count": 1,
+        "self_fulfilled_event_payload_assertion_count": 0,
+        "unknown_assertion_count": 0
+      },
+      "decorators": [
+        "given: the localStorage is empty",
+        "then: no notes should be displayed on the page",
+        "when: the user opens the Notes App webpage"
+      ],
+      "direct_event_construction": [],
+      "duplicate_step_definitions": [],
+      "gherkin_ids_missing_from_code": [],
+      "gherkin_steps": [
+        "given: the localStorage is empty",
+        "when: the user opens the Notes App webpage",
+        "then: no notes should be displayed on the page"
+      ],
+      "gherkin_test_ids": [],
+      "hardcoded_file_paths": [
+        "file://index.html"
+      ],
+      "has_driver_quit": true,
+      "missing_step_definitions": [],
+      "print_only_oracle_count": 0,
+      "python_parseable": true,
+      "requirement_test_ids": [
+        "delete-note-button",
+        "edit-note-button",
+        "note-main",
+        "note-textarea"
+      ],
+      "scenario_present": true,
+      "scenario_type": "Edge",
+      "selectors": [
+        "[data-testid=",
+        "body"
+      ],
+      "sleep_count": 1,
+      "syntax_error": null,
+      "trivial_assertion_count": 1,
+      "webdriver_wait_count": 1
+    }
+  }
+}

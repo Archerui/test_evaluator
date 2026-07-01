@@ -1,0 +1,158 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "requirement_id": "5",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "B-5-1-add-single-product-updates-total",
+      "kind": "normal",
+      "preconditions": [
+        "When the page loads, the user can see a list of products, each with an image, title, and price.",
+        "The shopping cart (designated drop area) is visible and initially empty."
+      ],
+      "actor_actions": [
+        "drag a product item from the list by clicking and holding the mouse button on the item.",
+        "drop the dragged product item into the designated drop area (shopping cart) by releasing the mouse button over the area."
+      ],
+      "expected_observables": [
+        "The cart area displays the product title, quantity '1', and the product price.",
+        "The <div id=\"allMoney\"> element displays the product price formatted with the appropriate currency symbol and two decimal places (e.g., '$X.XX')."
+      ],
+      "state_effects": [
+        "Cart state contains one entry for the product with quantity = 1.",
+        "Cart total state equals the product price and is reflected in the UI element #allMoney."
+      ],
+      "ui_anchors": [
+        "list of products",
+        "designated drop area (shopping cart)",
+        "<div id=\"allMoney\">"
+      ],
+      "constraints": [
+        "Products show a predefined title and price in the product list as loaded on page load."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "Upon dropping a product into the shopping cart, the system adds the product to the cart and displays the product title, quantity, and price in the cart area.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "B-5-2-sum-multiple-products-updates-total",
+      "kind": "normal",
+      "preconditions": [
+        "When the page loads, the user can see a list of products, each with an image, title, and price.",
+        "The shopping cart (designated drop area) is visible."
+      ],
+      "actor_actions": [
+        "drag and drop product A into the shopping cart.",
+        "drag and drop product B into the shopping cart."
+      ],
+      "expected_observables": [
+        "The cart lists both product A and product B with their prices and quantities.",
+        "The <div id=\"allMoney\"> element displays the sum of product A and product B prices formatted with the appropriate currency symbol and two decimal places (e.g., '$80.00')."
+      ],
+      "state_effects": [
+        "Cart state contains entries for each added product with their respective quantities.",
+        "Cart total state equals the arithmetic sum of all product prices and is shown in #allMoney."
+      ],
+      "ui_anchors": [
+        "list of products",
+        "designated drop area (shopping cart)",
+        "<div id=\"allMoney\">"
+      ],
+      "constraints": [
+        "The system formats the displayed total to two decimal places with the appropriate currency symbol."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+      "kind": "edge",
+      "preconditions": [
+        "When the page loads, the user can see a list of products, each with an image, title, and price.",
+        "A specific product (Product X) is present in the product list."
+      ],
+      "actor_actions": [
+        "drag and drop Product X into the shopping cart multiple times (repeat the drag-drop action)."
+      ],
+      "expected_observables": [
+        "The cart shows Product X with an incremented quantity reflecting the number of drops.",
+        "The <div id=\"allMoney\"> element displays the total equal to (unit price of Product X * quantity) formatted with currency symbol and two decimal places."
+      ],
+      "state_effects": [
+        "Cart state increments the quantity for Product X for each drop.",
+        "Cart total state increases accordingly and is reflected in #allMoney."
+      ],
+      "ui_anchors": [
+        "list of products",
+        "designated drop area (shopping cart)",
+        "<div id=\"allMoney\">"
+      ],
+      "constraints": [
+        "If the user drops the same product into the cart multiple times, the system increments the quantity of that product in the cart."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "If the user drops the same product into the cart multiple times, the system increments the quantity of that product in the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "B-5-4-real-time-total-update-on-add",
+      "kind": "persistence",
+      "preconditions": [
+        "When the page loads, the user can see a list of products, each with an image, title, and price.",
+        "The shopping cart and the <div id=\"allMoney\"> total element are visible."
+      ],
+      "actor_actions": [
+        "perform a sequence of drag-and-drop operations adding products to the cart (one after another)."
+      ],
+      "expected_observables": [
+        "After each drop action, the <div id=\"allMoney\"> element updates immediately to reflect the new summed total, formatted with the currency symbol and two decimal places."
+      ],
+      "state_effects": [
+        "Cart total state is updated incrementally after each add and persisted in the UI element #allMoney."
+      ],
+      "ui_anchors": [
+        "designated drop area (shopping cart)",
+        "<div id=\"allMoney\">"
+      ],
+      "constraints": [
+        "The user can see the total cost update in real-time as they add more products to the cart."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "The user can see the total cost update in real-time as they add more products to the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+[
+{
+  "description": [
+    "The system should initiate a drag event when a user drags a product item from the product list, capturing the product's title and price for transfer."
+  ],
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "features/test.feature:5",
+      "name": "[Edge] Dragging a product item with the lowest price",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "features/test.feature:6",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:16"
+          },
+          "name": "the webpage is loaded with a product list",
+          "result": {
+            "duration": 1.5220646858215332,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "When",
+          "location": "features/test.feature:7",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:22"
+          },
+          "name": "the user drags the product item with data-testid \"product-item-3\"",
+          "result": {
+            "duration": 1.0079870223999023,
+            "status": "passed"
+          },
+          "step_type": "when"
+        },
+        {
+          "keyword": "Then",
+          "location": "features/test.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:32"
+          },
+          "name": "the drag event should be initiated",
+          "result": {
+            "duration": 0.0001270771026611328,
+            "status": "passed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "And",
+          "location": "features/test.feature:9",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:38"
+          },
+          "name": "the product title \"Mastering JavaScript\" should be captured",
+          "result": {
+            "duration": 1.0036370754241943,
+            "status": "passed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "And",
+          "location": "features/test.feature:10",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:47"
+          },
+          "name": "the product price \"$35\" should be captured",
+          "result": {
+            "duration": 1.0037500858306885,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "features/test.feature:1",
+  "name": "Drag and Drop Product Item",
+  "status": "passed",
+  "tags": []
+}
+]

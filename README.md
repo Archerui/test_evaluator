@@ -177,6 +177,8 @@ test-evaluator \
 
 This static smoke run does not require an API key, but the BDD, Step-Code, and Oracle dimensions remain `UNKNOWN`. Their missing weight normally leaves less than 70% known evidence, so Basic Test Quality is reported as `N/A`. Use this form to validate ingestion and deterministic analysis, not as a complete Basic evaluation.
 
+A pre-generated Basic Mode example for `E2ESD_Bench_01` and `E2ESD_Bench_02` is available in [`example_analysis/basic_E2ESD_Bench_01,E2ESD_Bench_02/summary.md`](example_analysis/basic_E2ESD_Bench_01,E2ESD_Bench_02/summary.md). The corresponding machine-readable output is [`evaluation.json`](example_analysis/basic_E2ESD_Bench_01,E2ESD_Bench_02/evaluation.json).
+
 ### 2.3 Basic multi-agent system
 
 ```mermaid
@@ -388,6 +390,8 @@ test-evaluator \
   --max-mutants-per-project 30
 ```
 
+A pre-generated Full Mode example for `E2ESD_Bench_01` is available in [`example_analysis/full_E2ESD_Bench_01/summary.md`](example_analysis/full_E2ESD_Bench_01/summary.md). The corresponding machine-readable output is [`evaluation.json`](example_analysis/full_E2ESD_Bench_01/evaluation.json).
+
 Useful controls include:
 
 | Option | Purpose |
@@ -421,6 +425,9 @@ flowchart TD
     RUN --> STAB[Stability Analyzer]
     RUN --> TRACE[Runtime Trace]
     RUN --> COV[Coverage Collector]
+    BASIC --> ATTR[Failure Attribution]
+    GROUND --> ATTR
+    TRACE --> ATTR
 
     MODEL --> MGEN[Mutation Generator]
     BASIC --> MGEN
@@ -436,6 +443,7 @@ flowchart TD
     RUN --> FULL
     STAB --> FULL
     GROUND --> FULL
+    ATTR --> FULL
     MAN --> FULL
     DYN --> FULL
     COV -. supporting evidence .-> FULL
@@ -449,6 +457,7 @@ flowchart TD
 | Test Runner | Executes a baseline with Behave and Chrome and separates `pass`, `fail`, `timeout`, and `env_error` |
 | Stability Analyzer | Repeats an unchanged baseline and identifies flaky tests |
 | Runtime Trace | Collects failed steps, DOM snapshots, console data, storage calls, network events, and browser API evidence |
+| Failure Attribution | Separates test defects from application, environment, evaluator, contract, and indeterminate failures before scoring |
 | Coverage Collector | Collects Istanbul or Chrome DevTools JavaScript coverage |
 | Mutation Generator | Produces bounded mutations for events, DOM updates, API calls, literals, comparisons, booleans, and arithmetic |
 | Mutation Runner | Executes each mutant in a private workspace and records killed, survived, invalid, or timeout outcomes |
@@ -463,6 +472,30 @@ The execution and failure-evidence design is informed by:
 - [YATE: The Role of Test Repair in LLM-Based Unit Test Generation](<references/YATE- The Role of Test Repair in LLM-Based Unit Test Generation.pdf>), which highlights the syntactic and semantic invalidity of generated tests and the value of static checks plus runtime feedback.
 
 This evaluator implements static checks, runtime classification, retry handling, and feedback evidence. It does not currently rewrite or repair the evaluated tests, so it is not a reproduction of TestPilot or YATE.
+
+#### Test-focused failure attribution
+
+A raw baseline failure is not automatically treated as a defective test. The deterministic attribution layer combines:
+
+- Basic Spec, Step-Code, and Oracle review statuses
+- Python syntax and missing-step facts
+- The failed Gherkin step and runtime error type
+- Selector grounding and required source anchors
+- Browser console and runtime artifacts
+
+It produces one of the following origins:
+
+| Origin | Test-quality treatment |
+|---|---|
+| `test_defect` | Runtime score is 0 and a baseline hard gate is added |
+| `application_defect` | Neutral; runtime evidence remains unavailable for test scoring |
+| `environment_issue` | Neutral |
+| `evaluator_issue` | Neutral |
+| `contract_or_dataset_mismatch` | Neutral pending contract/source review |
+| `indeterminate` | `UNKNOWN`; no test penalty without decisive evidence |
+| `no_failure` | Runtime score is 1 |
+
+For example, an assertion failure is classified as an application defect only when the independently normalized Spec, Step-Code, and Oracle dimensions pass and source grounding supports the test. If a failed assertion coincides with an evidence-backed Step-Code or Oracle failure, it is classified as a test defect. Ambiguous selector failures and timeouts remain indeterminate rather than being charged to the test.
 
 ### 3.4 Full Test Quality
 
@@ -479,6 +512,8 @@ Full Mode preserves the Basic score and calculates a separate Full Test Quality 
 
 At least 50% of the weight must be known; otherwise, Full Test Quality is `N/A`. Known dimensions use the same normalized weighted formula as Basic Mode.
 
+The Runtime result dimension is test-focused: only a passing baseline contributes 1, and only an evidence-backed `test_defect` contributes 0. Application failures, environment failures, contract/source mismatches, evaluator failures, and indeterminate outcomes contribute `UNKNOWN` and are excluded by the evidence threshold.
+
 The mutation-effectiveness dimension is inspired by [Mutation-Guided Unit Test Generation with a Large Language Model](<references/Mutation-Guided Unit Test Generation with a Large Language Model.pdf>), which argues that mutation outcomes are more informative about fault-detection capability than line or branch coverage alone. The 25% weight and mutation operators are project-specific decisions, not the paper's original configuration.
 
 Full hard gates cap the final numerical score:
@@ -493,6 +528,8 @@ Full hard gates cap the final numerical score:
 | `baseline_test_timeout` | 60 |
 | `mutation_score_zero` | 65 |
 | `flaky_runtime` | 75 |
+
+`baseline_test_failed` and `baseline_test_timeout` are added only when failure attribution assigns the outcome to `test_defect`. A raw application failure does not cap the evaluated test's score. Likewise, `flaky_runtime` is added only when mixed repeated outcomes have a test-owned signal, such as a fixed sleep or an already attributed test defect; otherwise, instability remains `UNKNOWN`.
 
 Coverage is reported explicitly but is not a direct Full Test Quality dimension. This avoids equating execution volume with verified behavior. [TESTEVAL: Benchmarking Large Language Models for Test Case Generation](<references/TESTEVAL- Benchmarking Large Language Models for Test Case Generation.pdf>) demonstrates that overall and targeted line, branch, and path coverage expose different test-generation capabilities. This project collects runtime coverage but does not reproduce TESTEVAL's targeted-path benchmark.
 
@@ -512,6 +549,8 @@ Full Requirement Adequacy uses:
 At least 50% of the weight must be known; otherwise, Full Requirement Adequacy is `N/A`.
 
 Behavior coverage remains independent because source coverage, passing execution, and mutation score cannot individually prove that every expected requirement behavior was validated. This continues the behavioral-gap perspective described earlier.
+
+For test-focused scoring, Runtime pass rate is calculated only over scoreable runtime outcomes: passing baselines and failures attributed to `test_defect`. Application, environment, evaluator, contract/source, and indeterminate outcomes are excluded rather than counted as failed tests. Likewise, a required source anchor that is absent from the application is reported as a contract/source mismatch and does not lower the evaluated test's source-grounding score; a selector invented only by the test can still be penalized.
 
 Mutation score is calculated as:
 

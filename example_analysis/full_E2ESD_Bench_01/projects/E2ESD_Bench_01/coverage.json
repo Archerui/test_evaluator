@@ -1,0 +1,896 @@
+{
+  "E2ESD_Bench_01::1::1": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::1::1",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 73.96198830409357,
+        "branch_coverage": null,
+        "function_coverage": 60.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 4,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 0,
+            "end": 2404,
+            "start": 673
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "1328ff9d6c2f18459c2ca868526411fd566a44253bec0edf5e97934a1b4e6ca1"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::1::2": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::1::2",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 73.96198830409357,
+        "branch_coverage": null,
+        "function_coverage": 60.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 1,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 0,
+            "end": 2404,
+            "start": 673
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "b524dd5969c24b39178cc88db3671b2a80c132579cd4c74e6af344843fa50485"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::1::3": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::1::3",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 70.1608187134503,
+        "branch_coverage": null,
+        "function_coverage": 40.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 0,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 0,
+            "end": 2404,
+            "start": 673
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_3-cff23841ba/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "fef9243ec069ed7a0f465cb42517996b0aaa4cbf56d44a07bc5e90f60e927763"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::1::4": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::1::4",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 70.1608187134503,
+        "branch_coverage": null,
+        "function_coverage": 40.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 0,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 0,
+            "end": 2404,
+            "start": 673
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_4-3af15993f7/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "0593981837b175c27a5bf14e831e18bc30e964421688ef278a467db9d145823b"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::3::1": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::3::1",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 94.82456140350877,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 1,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 1,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 1,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 0,
+            "end": 2110,
+            "start": 1756
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "50fe3e9b95f68ea98226c62d14da7745024a32f9be917b7eb46cf57af77ec130"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::3::2": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::3::2",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 94.82456140350877,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 2,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 2,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 2,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 1,
+            "end": 1104,
+            "start": 1038
+          },
+          {
+            "count": 0,
+            "end": 2110,
+            "start": 1756
+          },
+          {
+            "count": 1,
+            "end": 2238,
+            "start": 2135
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "44af64364688bae1a30b56913211a5000f9eebf21a1cf6dea6a1f76e6eee95e3"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::3::3": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::3::3",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 2,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 2,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 2,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 1,
+            "end": 1104,
+            "start": 1038
+          },
+          {
+            "count": 1,
+            "end": 2110,
+            "start": 1132
+          },
+          {
+            "count": 1,
+            "end": 2238,
+            "start": 2135
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "fb3fa57a06b8bb51a7dc629885d114108c61dbd9f2c91dd3c4b32e2a142da05c"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::3::4": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::3::4",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 94.09356725146199,
+        "branch_coverage": null,
+        "function_coverage": 80.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 1,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 1,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 0,
+            "end": 2110,
+            "start": 1756
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "0d9d83b332c02b7bfb284e8af043dd65b2d1b69678d037b9f3af29d6e548fa36"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::5::1": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::5::1",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 94.09356725146199,
+        "branch_coverage": null,
+        "function_coverage": 80.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 1,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 1,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 0,
+            "end": 2110,
+            "start": 1756
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "bec5aa76c801c362628eb090fa60fca21ad4d9fcc7d03022a5efed845386ece6"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::5::2": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::5::2",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 94.09356725146199,
+        "branch_coverage": null,
+        "function_coverage": 80.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 2,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 2,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 1,
+            "end": 1104,
+            "start": 1038
+          },
+          {
+            "count": 0,
+            "end": 2110,
+            "start": 1756
+          },
+          {
+            "count": 1,
+            "end": 2238,
+            "start": 2135
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_2-2a83d4ff1a/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "a70a81099a3edd88b32fd88572592ef57091427c5b05f5b90f0c142d4f10de49"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::5::3": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::5::3",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 99.26900584795322,
+        "branch_coverage": null,
+        "function_coverage": 80.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 2,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 2,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 1,
+            "end": 1104,
+            "start": 1038
+          },
+          {
+            "count": 1,
+            "end": 2110,
+            "start": 1132
+          },
+          {
+            "count": 1,
+            "end": 2238,
+            "start": 2135
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_3-cd1576b12d/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "b2ad5822ef678e43168c8ae5d92b8501ab84acafd1c405b66e284921b01ae095"
+      }
+    ]
+  },
+  "E2ESD_Bench_01::5::4": {
+    "project_id": "E2ESD_Bench_01",
+    "record_key": "E2ESD_Bench_01::5::4",
+    "method": "cdp_precise_coverage",
+    "status": "PASS",
+    "files": [
+      {
+        "file_path": "index.html",
+        "statement_coverage": 100.0,
+        "branch_coverage": null,
+        "function_coverage": 100.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 16,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "file_path": "index.html",
+        "statement_coverage": 94.09356725146199,
+        "branch_coverage": null,
+        "function_coverage": 80.0,
+        "executed_ranges": [
+          {
+            "count": 1,
+            "end": 2409,
+            "start": 0
+          },
+          {
+            "count": 1,
+            "end": 2407,
+            "start": 17
+          },
+          {
+            "count": 4,
+            "end": 578,
+            "start": 280
+          },
+          {
+            "count": 4,
+            "end": 571,
+            "start": 311
+          },
+          {
+            "count": 0,
+            "end": 652,
+            "start": 602
+          },
+          {
+            "count": 4,
+            "end": 2404,
+            "start": 673
+          },
+          {
+            "count": 1,
+            "end": 1104,
+            "start": 1038
+          },
+          {
+            "count": 0,
+            "end": 2110,
+            "start": 1756
+          },
+          {
+            "count": 1,
+            "end": 2238,
+            "start": 2135
+          }
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "kind": "coverage",
+        "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/coverage_run/baseline_attempt_0/coverage.json",
+        "description": "Chrome precise JavaScript coverage",
+        "sha256": "96f48d0655c0b055ad4ee53e88782a7b2aafe5d8a19a985babc4bd45d2232b02"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2481 @@
+{
+  "reviews": {
+    "E2ESD_Bench_01::1::1": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 14,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::1",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.8,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "Scenario expresses the required precondition, action, and observable outcome: initiating a drag on a product-item and capturing its title and price in the drag event.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-1\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"The Essence of JavaScript\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product price \"$40\" should be captured"
+              }
+            ],
+            "reasoning": "The behaviour contract requires initiating a drag on a product item and capturing its title and price in the drag payload. The scenario provides a clear precondition ('the webpage is loaded with a product list'), an explicit action ('When the user drags the product item with data-testid \"product-item-1\"'), and Then outcomes that assert the drag event initiation and that the title and price are captured. These map directly to the contract's preconditions, actor action, and expected observables, so the scenario aligns with the contract.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::1",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.9,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Step definitions implement the Given/When/Then steps and observe the dragstart DataTransfer payload for 'title' and 'money'.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-1\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "return dataTransfer.getData('title');"
+              }
+            ],
+            "reasoning": "Every Gherkin step has a matching step definition. The When step locates the element by data-testid and dispatches a DragEvent with a freshly constructed DataTransfer. The Then steps dispatch a dragstart and directly read dataTransfer.types and dataTransfer.getData('title') / getData('money'). Per the provided browser data-flow rules, creating a DataTransfer, dispatching dragstart, and then reading that same DataTransfer is a valid observation of what the application's dragstart handler populated, so these assertions directly implement the contract to capture title and price.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::1",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Behaviour 1.3: Drag event payload must include product title and price",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"The Essence of JavaScript\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "return dataTransfer.getData('title');"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "return dataTransfer.getData('money');"
+              }
+            ],
+            "reasoning": "The test constructs a DataTransfer, dispatches a DragEvent, and then reads exact keys from the DataTransfer (getData('title') and getData('money')). static_facts classifies these assertions as event_payload_observation with data_transfer_read_keys ['money','title'], which constitutes a strong oracle for the required drag payload contents.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::1",
+        "status": "PASS",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::1::2": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 23,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::2",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.8,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Behaviour 1.3: Dragging a product item should initiate a drag event that captures the product's title and price.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-2\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"JavaScript: The Definitive Guide\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product price \"$120\" should be captured"
+              }
+            ],
+            "reasoning": "The scenario includes the required precondition (product list loaded), a clear action (drag the product with data-testid \"product-item-2\"), and explicit Then outcomes that assert the drag event is initiated and that the product's title and price are captured. These steps match the behaviour contract's preconditions, actor action, and expected observables (capture of title and price).",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.7,
+            "criterion": "Test implementation coverage for DataTransfer payload verification",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the drag event should be initiated"
+              }
+            ],
+            "reasoning": "Although the scenario expresses the expected observable (the drag event and captured title/price), the provided static_facts show no assertions that check the event payload (event_payload_assertion_count = 0) and indicate drag event dispatch was not observed in the recorded assertions (drag_event_dispatched = false). This suggests the scenario's claim to capture DataTransfer payload may not be verified by the test implementation.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add explicit assertions that read the drag event's DataTransfer payload (or its test double) and verify the title and price keys/values are set when the item is dragged. Ensure the test dispatches a dragstart with a DataTransfer containing the title and price, or that the test reads those keys from the actual drag event."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::2",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.9,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "When step dispatches a dragstart event on the targeted product element",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "var dragEvent = new DragEvent('dragstart', {\n            dataTransfer: new DataTransfer()\n        });\n        arguments[0].dispatchEvent(dragEvent);"
+              }
+            ],
+            "reasoning": "The When step uses execute_script to construct a DataTransfer and create/dispatch a DragEvent('dragstart') on the element located by data-testid 'product-item-2'. This implements the user action (dragstart) via a synthetic browser event, which matches the Gherkin 'When' intent.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.92,
+            "criterion": "Then steps must prove the drag event's transfer data contains the product title and price",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"JavaScript: The Definitive Guide\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert title == \"JavaScript: The Definitive Guide\", f\"Expected title 'JavaScript: The Definitive Guide', but got '{title}'\""
+              }
+            ],
+            "reasoning": "The Gherkin expectation is that the drag event's transfer data contains title and price. The implemented Then steps only read DOM text (asserting title and price strings from product-item-2's children) and do not read or assert any DataTransfer payload. static_facts shows no data_transfer read assertions (\"data_transfer_read_keys\": []). Therefore the test cannot establish that the drag event's transfer data actually captured the title and price.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Add assertions that read the event's DataTransfer payload populated by the application's dragstart handler. Options: (a) attach a test listener or use execute_script to observe the application's dragstart handler storing payload (e.g. on a global variable or DOM node) and assert that contains the title/price, or (b) after dispatch, read the relevant DataTransfer keys (e.g. event.dataTransfer.getData(...)) if the application sets them. Ensure the test asserts on the DataTransfer content rather than only DOM text."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::2",
+        "status": "FAIL",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "The test must assert the DragEvent.dataTransfer payload contains the dragged product's title and price (e.g. via reading event.dataTransfer.getData or inspecting the dispatched DataTransfer).",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert title == \"JavaScript: The Definitive Guide\", f\"Expected title 'JavaScript: The Definitive Guide', but got '{title}'\""
+              }
+            ],
+            "reasoning": "The test constructs and dispatches a DragEvent with a new DataTransfer, but it never reads or asserts any values from the event.dataTransfer object. All assertions are DOM observations of the product title/price text. According to the static facts, there are zero event-payload assertions and four DOM assertions, so the test cannot detect regressions where the application fails to put title/price into the DataTransfer payload.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Make the oracle read the DataTransfer content produced by the dragstart handler and assert the title and price are present. For example, add a temporary dragstart listener (via execute_script) that captures event.dataTransfer.getData('text/plain') or event.dataTransfer.getData('application/json') into window.__lastDragPayload, then dispatch the synthetic DragEvent and assert window.__lastDragPayload contains the expected title and price. Alternatively, after dispatching, run execute_script to inspect the dispatched event's DataTransfer (or set and later read a known key via dataTransfer.setData/getData) and assert exactly the expected payload."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::2",
+        "status": "FAIL",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::1::3": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Assertions avoid constant placeholders",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Constant-derived assertions: is_drag_event_initiated(context.driver, product_item), True"
+              }
+            ],
+            "reasoning": "A constant assertion cannot detect a behavioral regression.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Replace constant assertions with checks of the requirement's expected observable."
+          },
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 20,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::3",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.82,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario expresses the core user action (dragging a specific product) and asserts capture of title and price.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-3\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"Mastering JavaScript\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product price \"$35\" should be captured"
+              }
+            ],
+            "reasoning": "The scenario specifies the concrete drag action on a product item and contains Then steps that assert both the product title and price are captured, matching the contract's user-observable outcome.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.78,
+            "criterion": "Scenario does not explicitly assert that the captured title and price are present in the drag event's transfer (DataTransfer) payload as required by the behaviour contract.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the drag event should be initiated"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"Mastering JavaScript\" should be captured"
+              }
+            ],
+            "reasoning": "The requirement explicitly targets the drag event's transfer data (DataTransfer payload) as the observable that must contain title and price. The scenario asserts that the title and price are \"captured\" but does not explicitly state they are placed into the drag event's transfer payload, leaving the exact observable unspecified.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Make the Then steps explicit about the transfer payload, e.g. \"Then the drag event's transfer data should contain the product title 'Mastering JavaScript' and price '$35'\"."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::3",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.85,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "The When/Then steps that assert the drag event was initiated are implemented as placeholders/constants rather than observing a real dragstart or DataTransfer payload.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "def is_drag_event_initiated(driver, product_item):\n    # This function checks if the drag event is initiated by checking the dataTransfer object\n    # Since Selenium does not support drag and drop natively, this is a placeholder for actual implementation\n    # In a real-world scenario, you might need to use JavaScript to simulate drag and drop\n    return True"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert is_drag_event_initiated(context.driver, product_item), \"Drag event was not initiated\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert True, \"Drag event was not initiated\""
+              }
+            ],
+            "reasoning": "Both the When step and the Then step that claim the drag event was initiated rely on a constant-return placeholder (is_drag_event_initiated returns True) and an unconditional assertion (assert True). There is no creation or dispatch of a drag event, nor any reading of event.dataTransfer in the test code, so the test cannot actually verify that a dragstart occurred or that the application populated a DataTransfer payload.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Replace the placeholder with a concrete mechanism: simulate a user drag (e.g., dispatch a real dragstart on the target element via execute_script or use a library that triggers drag events) and capture/return the page-side event.dataTransfer contents (attach a temporary dragstart listener in the page that records dataTransfer keys/values so the test can assert them). Remove constant True returns and assert actual observed payloads."
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "The assertions that the product title and price were \"captured\" observe DOM text only and do not read the drag event's DataTransfer payload required by the behavior contract.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the drag event should be initiated\n    And the product title \"Mastering JavaScript\" should be captured\n    And the product price \"$35\" should be captured"
+              }
+            ],
+            "reasoning": "The behaviour contract requires that the drag event's transfer data contains title and price. The test only reads the page DOM (innerText of product-title-3 and product-price-3). DOM text presence proves the page shows those values but does not prove that a dragstart handler populated the DataTransfer with them. The test contains no code that reads event.dataTransfer or any page-side record of the drag payload.",
+            "severity": "major",
+            "status": "FAIL",
+            "suggested_fix": "Assert the transfer payload directly: install a page-side dragstart listener (via execute_script) that captures event.dataTransfer contents when the dragstart occurs and exposes them (e.g., by returning the captured payload or writing it to a known DOM element). Then assert that the captured payload includes \"Mastering JavaScript\" and \"$35\". Alternatively, if the app persists the drag payload somewhere observable, read that persisted value instead of only checking DOM labels."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::3",
+        "status": "FAIL",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "The test must assert that the drag event's DataTransfer payload contains the product title and price.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              }
+            ],
+            "reasoning": "The requirement expects the test to observe the browser drag event payload (DataTransfer) containing title and price. The test only reads DOM text nodes for title and price (dom_observation) and has no creation/reading of a DataTransfer or assertions against event payload (static_facts shows event_payload_assertion_count = 0). A DOM read does not prove that the drag event transfer data captured those values, so the oracle is too weak to detect a regression in the drag payload behavior.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Replace or augment the DOM assertions with a concrete browser-API observation: simulate/dispatch a dragstart in-page and read the DataTransfer keys/values (via execute_script), or install an in-page dragstart listener that records event.dataTransfer.getData(...) for assertion. Ensure test asserts exact DataTransfer keys/values for title and price."
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "The test must verify that a real dragstart event was initiated (not by returning a constant).",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert is_drag_event_initiated(context.driver, product_item), \"Drag event was not initiated\""
+              }
+            ],
+            "reasoning": "The helper is_drag_event_initiated is a placeholder that returns True unconditionally (constant). Static analysis classifies the assertion as coming from a constant. Thus the test would pass even if no dragstart event occurred in the browser, making the oracle ineffective at catching regressions that break dragstart dispatch or handling.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Implement a real check: either trigger a synthetic dragstart and observe the event (e.g. install a one-time dragstart listener that records event existence and payload on the page and read it via execute_script), or use browser APIs to inspect DataTransfer after dispatch. Avoid returning fixed constants for event verification."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::3",
+        "status": "FAIL",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::1::4": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Assertions avoid constant placeholders",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Constant-derived assertions: True, True"
+              }
+            ],
+            "reasoning": "A constant assertion cannot detect a behavioral regression.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Replace constant assertions with checks of the requirement's expected observable."
+          },
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 18,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::4",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.85,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario does not exercise the requirement's core positive behavior: initiating a drag on a draggable product li and capturing title and price.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user attempts to drag the non-draggable element with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then no drag event should be initiated"
+              }
+            ],
+            "reasoning": "The behaviour contract requires a scenario where the actor initiates a drag on a draggable product 'li' and the drag transfer contains the product title and price. The provided scenario is an error/negative case that attempts to drag a non-draggable element ('drop-area') and asserts no drag or capture occurs. That negative case neither verifies nor contradicts the required positive behaviour, so it does not satisfy the contract's core observable outcome.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add a complementary positive scenario that performs: Given a product list with a draggable product item, When the user initiates a drag on the product li (e.g. data-testid 'product-item-1'), Then the drag event transfer data contains the product title and price (e.g. values from 'product-title-1' and 'product-price-1')."
+          },
+          {
+            "confidence": 0.8,
+            "criterion": "The scenario correctly specifies a clear precondition, core action, and observable negative outcome for the non-draggable case.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Given the webpage is loaded with a product list"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user attempts to drag the non-draggable element with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then no drag event should be initiated"
+              }
+            ],
+            "reasoning": "For an error scenario, the steps provide a clear precondition ('webpage is loaded with a product list'), a specific action (attempt to drag the non-draggable element identified by data-testid 'drop-area'), and observable expected outcomes (no drag event and no title/price captured). These elements are coherent and testable for the negative case.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::4",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.8,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "The Then steps that claim no product title/price are captured are implemented as constant assertions and do not observe application state or DataTransfer payload.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And no product title should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert True, \"No product title should be captured.\""
+              }
+            ],
+            "reasoning": "Both Then steps for title and price return constant True assertions rather than reading DOM text, executing JS to inspect DataTransfer, or otherwise observing application state. Constant assertions cannot establish that the drag payload did or did not contain title/price.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Replace the placeholder asserts with concrete checks: either execute page JS to read any recorded drag payload (e.g. inspection of an application-visible store or event-captured element), or assert absence/presence of DOM changes that the app uses to record a drag. Avoid assert True placeholders."
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "The When step does not perform or simulate a dragstart; it only inspects the element's 'draggable' attribute (an attribute proxy) to decide whether a drag was initiated.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user attempts to drag the non-draggable element with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "context.drag_event_initiated = is_drag_event_initiated(context.driver, drop_area)"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "def is_drag_event_initiated(driver, element):\n    # This function checks if a drag event is initiated by checking if the element is draggable\n    return element.get_attribute(\"draggable\") == \"true\""
+              }
+            ],
+            "reasoning": "The step claims to 'attempt to drag' but the implementation merely reads the element's 'draggable' attribute. Per the review rules, 'draggable' is a proxy for capability and does not prove a dragstart event was initiated or that the application's dragstart handler ran. There is no synthetic dragstart dispatch, no DataTransfer creation/read, and no execute_script usage to observe event payload.",
+            "severity": "major",
+            "status": "FAIL",
+            "suggested_fix": "Either simulate the dragstart (construct DataTransfer and dispatch a dragstart event) and then inspect application-observable effects, or instrument the page (via execute_script) to confirm whether a real dragstart handler ran and what it populated in DataTransfer. Do not rely solely on the 'draggable' attribute to prove a drag occurred."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::4",
+        "status": "FAIL",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.88,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Then 'no drag event should be initiated' is automatically observed by the test.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "return element.get_attribute(\"draggable\") == \"true\""
+              }
+            ],
+            "reasoning": "The test infers whether a drag event was initiated solely by reading the element's draggable attribute (element_attribute_proxy). This does not observe browser dragstart events or the DataTransfer API; an application could still dispatch a dragstart/DataTransfer programmatically or set payloads even if the attribute differs, so the oracle is not strong enough to rule out a drag event.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Replace the attribute-only check with a concrete browser-API observation: attach a JS listener for 'dragstart' and record the event, or synthesize the drag and read the DataTransfer contents (via execute_script) to confirm no event was dispatched."
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "Then 'no product title should be captured' is automatically observed by the test.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert True, \"No product title should be captured.\""
+              }
+            ],
+            "reasoning": "The step uses a constant assertion (assert True) as a placeholder rather than inspecting any DataTransfer payload or application state. A constant cannot prove that no title was captured, so this oracle is absent/too weak to detect the regression targeted by the requirement.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Assert the absence of title in the drag payload by reading the DataTransfer data during/after dragstart (e.g. via a JS listener that records event.dataTransfer.getData('text/plain') or specific keys), or verify handlers did not set a title key."
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "Then 'no product price should be captured' is automatically observed by the test.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert True, \"No product price should be captured.\""
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer."
+              }
+            ],
+            "reasoning": "Like the title check, the price check is a placeholder constant and does not inspect the browser's DataTransfer payload or any event-recording mechanism. The test therefore cannot prove that no price was captured during a drag.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Capture and assert the contents (or absence) of the price key on the DataTransfer object during dragstart (e.g. via a JS dragstart listener that stores event.dataTransfer.getData for the test to read)."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::1::4",
+        "status": "FAIL",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::3::1": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 39,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::1",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario expresses the required precondition, user action, and observable outcomes for adding a single product via drag-and-drop as specified by the behaviour contract 3.normal.add_single_product_via_drag_and_drop.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"The Essence of JavaScript\""
+              }
+            ],
+            "reasoning": "The behaviour contract requires (1) product items be draggable into the drop area (data-testid=\"drop-area\") and (2) after drop the cart shows title, unit price, and quantity (quantity = 1). The scenario provides the precondition (page loaded and product visible), the explicit action (drag product-item-1 and drop into data-testid \"drop-area\"), and asserts the expected user-observable outcomes: title, price, and quantity. The scenario's drop target uses the required data-testid and the Then steps assert the same observable fields required by the contract (title, price, quantity = 1).",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::1",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.86,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.86,
+            "criterion": "Each Gherkin step has a concrete step implementation that performs the described setup (page load & visibility), executes an HTML5-style drag-and-drop by constructing and dispatching DragEvent/DataTransfer, and verifies cart DOM fields (.box2/.box3/.box1) under #div1.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "drag_and_drop_html5(context.driver, product, cart_container)"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_items = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box2\")"
+              }
+            ],
+            "reasoning": "The Behave steps present implement the Given (page load and visibility), When (drag_and_drop_html5 called with the product and drop-area elements), and Then assertions that search #div1 .box2, #div1 .box3, and #div1 .box1 for title, price, and quantity. The drag implementation constructs a DataTransfer and dispatches dragstart/dragenter/dragover/drop/dragend events in-page, which is a valid mechanism to trigger application drop handlers. The verification steps assert DOM text under #div1 selectors that match the requirement's expected observables.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::1",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario Then-steps assert cart UI values after drop",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"The Essence of JavaScript\""
+              },
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "any((expected_title in title for title in titles))"
+              },
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "any((expected_price in price for price in prices))"
+              },
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "any((expected_quantity in quantity for quantity in quantities))"
+              }
+            ],
+            "reasoning": "The scenario's Then steps perform direct DOM observations for the three required cart fields: title (.box2), price (.box3), and quantity (.box1). Each assertion checks for the expected text value (e.g. contains the exact expected title/price/quantity), which constitutes a strong oracle for the UI state targeted by this scenario. The test therefore reliably observes the stated post-drop cart display outcomes.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::1",
+        "status": "PASS",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::3::2": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 39,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::2",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario aligns with behaviour contract 3.normal.add_single_product_via_drag_and_drop for adding distinct products via drag-and-drop",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"The Essence of JavaScript\"\nAnd the price \"$40\"\nAnd the quantity \"1\""
+              }
+            ],
+            "reasoning": "The scenario includes the required preconditions (page loaded; product items visible), performs the core user action (drag product-item-1 and product-item-2 and drop them onto the element identified by data-testid \"drop-area\"), and asserts the user-observable outcomes (product title, price, and quantity = \"1\" for each added product). Although the contract names specific cart field selectors (.box2/.box3/.box1), the scenario verifies the same user-visible values (title, unit price, quantity) after dropping to the designated drop-area, which satisfies the behavior-focused contract.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::2",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.9,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "When step implements drag-and-drop using synthetic DragEvent/DataTransfer sequence that can exercise app handlers",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "const dataTransfer = new DataTransfer();"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "source.dispatchEvent(dragStartEvent);"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "@when('the user drags the product with data-testid \"{product_item}\" and drops it into the cart container with data-testid \"{cart_id}\"')"
+              }
+            ],
+            "reasoning": "The parameterized When step exists and calls drag_and_drop_html5, which constructs a DataTransfer and dispatches dragstart/dragenter/dragover/drop/dragend events. Per the data-flow rules, synthetic DragEvent + DataTransfer dispatch is an acceptable mechanism to exercise the application's drag handlers.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.95,
+            "criterion": "Then steps asserting product prices use correct boolean logic to fail when price is missing",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"$40\" in prices or \"$40.00\", \"Price '$40' not found in cart\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"$120\" in prices or \"$120.00\", \"Price '$120' not found in cart\""
+              }
+            ],
+            "reasoning": "Both price assertions use the expression `assert A or \"literal\", \"msg\"`. In Python this yields a truthy value even when A is False (the right-hand string is truthy), causing the assertion to always pass and therefore not actually verify the expected prices. Because price checks are core Then expectations for this scenario, this is a critical verification bug.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Change to explicit boolean assertions, e.g. `assert \"$40\" in prices or \"$40.00\" in prices, \"Price '$40' not found in cart\"` or `assert any(p in (\"$40\",\"$40.00\") for p in prices), ...`."
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "Then steps asserting product titles and quantities rely on DOM text queries",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"The Essence of JavaScript\" in titles, \"Title 'The Essence of JavaScript' not found in cart\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert quantities.count(\"1\") == 2, \"Quantity '1' not found twice in cart\""
+              }
+            ],
+            "reasoning": "The title and quantity Then-steps query '#div1 .box2' and '#div1 .box1' and assert on element.text, which is an appropriate DOM observation to verify visible cart entries. These assertions are implemented as DOM checks (not as event-payload reads), which aligns with the scenario's observability.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::2",
+        "status": "FAIL",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.88,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Cart product titles are asserted by exact DOM text checks",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "'The Essence of JavaScript' in titles"
+              },
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "'JavaScript: The Definitive Guide' in titles"
+              }
+            ],
+            "reasoning": "The step implementations collect #div1 .box2 text and assert containment of the exact product title strings. Static facts classify these assertions as dom_observation, which concretely verifies the cart DOM shows the expected titles after the drop.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "Cart unit price checks use a partially constrained assertion and can pass without matching DOM text",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"$40\" in prices or \"$40.00\", \"Price '$40' not found in cart\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"$120\" in prices or \"$120.00\", \"Price '$120' not found in cart\""
+              }
+            ],
+            "reasoning": "The price assertions are written as e.g. '\"$40\" in prices or \"$40.00\"' which, due to Python operator semantics, does not reliably assert that either '$40' or '$40.00' is present in the collected prices list. Static facts mark these as dom_observation, but the logical expression is weak/incorrect and could pass even when the DOM lacks the expected price text.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Change the assertions to actually check membership in the DOM-derived list, e.g. 'any(p in prices for p in [\"$40\",\"$40.00\"])' or '\"$40\" in prices or \"$40.00\" in prices' so the test fails when the expected price text is absent."
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "Cart quantity assertions verify DOM text counts for the added items",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "'1' in quantities"
+              },
+              {
+                "artifact": null,
+                "field": "static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "quantities.count('1') == 2"
+              }
+            ],
+            "reasoning": "The test reads #div1 .box1 text and asserts the presence of '1' and that it appears twice for two distinct dropped products. These are dom_observation assertions that concretely check the cart DOM quantity values.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::2",
+        "status": "WARNING",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::3::3": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 39,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          },
+          {
+            "confidence": 0.75,
+            "criterion": "Gherkin UI anchors are traceable in step code",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Gherkin test IDs absent as literal code selectors: drop-area"
+              }
+            ],
+            "reasoning": "Literal selector mismatch is a candidate risk only; helpers or parent locators can be valid alternatives.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Have the Step-Code Agent confirm that each important UI anchor is reached by an equivalent locator."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::3",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario aligns with the drag-and-drop add-to-cart behaviour: preconditions, drag/drop action targeting the drop-area, and user-observable cart outcomes (title, price, quantity including repeated additions).",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"Mastering JavaScript\""
+              }
+            ],
+            "reasoning": "The scenario provides the required preconditions ('the webpage is loaded' and the product is visible), performs the explicit drag-and-drop action into the declared drop target ('data-testid \"drop-area\"'), and asserts the user-observable outcomes: product title, price, and an incremented quantity of \"2\" after two drops. The use of product-item-3 is consistent with the requirement's pattern of product-item-N identifiers. The scenario therefore covers the behaviour contract's core action and expected observable effects.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::3",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.85,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.85,
+            "criterion": "Step definitions provide concrete bindings for Given/When/Then and implement an HTML5-style drag-and-drop via synthetic DragEvent/DataTransfer, with DOM assertions that check the cart content.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "const dataTransfer = new DataTransfer();"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_items = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box2\")"
+              }
+            ],
+            "reasoning": "The code defines Given steps to load the page and wait for the product item, a parameterized When step that locates the product and drop-area by data-testid and invokes a helper that constructs a DataTransfer and dispatches dragstart/dragenter/dragover/drop/dragend events, and Then steps that assert DOM text under #div1 (.box2/.box3/.box1). These provide concrete mechanisms for the scripted action and for observing the expected DOM changes (title, price, quantity).",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.7,
+            "criterion": "Risk: the action locates the drop target by data-testid while the Then assertions inspect #div1; if the drop-area element does not also have id=\"div1\" the test may not observe the cart update.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_items = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box2\")"
+              }
+            ],
+            "reasoning": "The When implementation dispatches drag/drop to the element found by [data-testid='{cart_id}'] (the action target uses the data-testid value), but the Then assertions query children of #div1. If the element identified by data-testid=\"drop-area\" is not the same DOM element with id=\"div1\", the test's DOM assertions will not observe the cart changes even though the drag/drop events were dispatched to a different element.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Use the same selector family for action and verification (e.g., locate the drop area by data-testid everywhere, or ensure the element with data-testid=\"drop-area\" also has id=\"div1\"). Update Then steps to assert relative to the same element used in the When step (e.g., find the drop-area element and then query its .box2/.box3/.box1 children)."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::3",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Behavior 3.normal.add_single_product_via_drag_and_drop: cart display shows title in .box2, price in .box3, and quantity in .box1 after drop",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"Mastering JavaScript\" in titles, \"Product title not found in cart display\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"$35\" in prices or \"$35.00\" in prices, \"Product price not found in cart display\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert \"2\" in quantities, \"Product quantity not found in cart display\""
+              }
+            ],
+            "reasoning": "The test code asserts exact expected text values in the DOM selectors '#div1 .box2' (title), '#div1 .box3' (price), and '#div1 .box1' (quantity). static_facts classifies these assertions as 'dom_observation', and the script also synthesizes DragEvent/DataTransfer and dispatches them to the target element via execute_script. Because the requirement's observability is the DOM update, the direct assertions of specific title/price/quantity strings constitute strong oracles for the cart display update. Note: the test does not inspect DataTransfer payload contents (no event_payload assertions), but that is not required to verify the DOM-side observable mandated by the behaviour contract.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::3",
+        "status": "PASS",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::3::4": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 17,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          },
+          {
+            "confidence": 0.75,
+            "criterion": "Gherkin UI anchors are traceable in step code",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Gherkin test IDs absent as literal code selectors: product-item-2"
+              }
+            ],
+            "reasoning": "Literal selector mismatch is a candidate risk only; helpers or parent locators can be valid alternatives.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Have the Step-Code Agent confirm that each important UI anchor is reached by an equivalent locator."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::4",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario should specify the drag-and-drop of a product item into the designated drop area and assert that the cart shows title, unit price, and quantity.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-2\" and drops it into the drop area with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"JavaScript: The Definitive Guide\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the price \"$120\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the quantity \"1\""
+              }
+            ],
+            "reasoning": "The requirement's preconditions (page loaded, visible product items, presence of the drop area) and actor action (drag product item into drop area) are reflected by the Given/When steps. The Then steps assert the observable outcomes required by the contract: product title, price, and quantity appear in the cart display. The scenario targets product-item-2 and the drop-area (data-testid), which matches the requirement's UI anchors (data-testid and/or id) and the expected cart fields (title, unit price, quantity).",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::4",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.78,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.78,
+            "criterion": "Gherkin Given/When/Then steps have concrete step implementations that perform the drag/drop action and assert the cart DOM for title, price, and quantity.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-2\" and drops it into the drop area with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_items = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box2\")"
+              }
+            ],
+            "reasoning": "The feature's When step is implemented by executing an in-page JavaScript drag/drop simulation (evidence: \"context.driver.execute_script(... simulateHTML5DragAndDrop(source, target); ...)\"), and the Then steps assert the cart DOM under #div1 for title, price, and quantity (evidence: \"cart_items = context.driver.find_elements(By.CSS_SELECTOR, \\\"#div1 .box2\\\")\" and static facts showing \"dom_assertion_count\": 4). According to the provided browser data-flow rules, synthetic drag events dispatched this way are an acceptable mechanism; the test then observes DOM text content which is the declared observability channel for the behavior.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::4",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Then steps assert cart title, unit price, and quantity by directly reading #div1 .box2/.box3/.box1 and comparing values",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"JavaScript: The Definitive Guide\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_items = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box2\")"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_quantities = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box1\")"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "cart_prices = context.driver.find_elements(By.CSS_SELECTOR, \"#div1 .box3\")"
+              }
+            ],
+            "reasoning": "The scenario's Then steps perform direct DOM observations of #div1 .box2 (title), .box3 (price), and .box1 (quantity) and assert expected values (including numeric normalization for price). These are concrete assertions against the cart DOM, so the oracles automatically verify the expected observable cart state after the drop action.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::3::4",
+        "status": "PASS",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::5::1": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 17,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::1",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario contains the required precondition, a clear user action, and a precise observable outcome for a single-product add.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$40.00\""
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element."
+              }
+            ],
+            "reasoning": "The scenario includes the page-load precondition, a concrete drag action for a named product, and an explicit assertion that #allMoney shows a currency-formatted value ($40.00). These elements satisfy the requirement's observable formatting and display constraint for the single-product addition slice.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario does not exercise the multi-product summation behaviour required by the contract B-5-2.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system calculates the total price by summing the prices of all products in the cart"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Scenario: [Normal] Add a single product to the cart and verify total price"
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\""
+              }
+            ],
+            "reasoning": "The behaviour contract B-5-2 specifically requires adding multiple products (e.g., product A and product B) and verifying that #allMoney displays the arithmetic sum. The provided scenario only adds a single product and asserts a single-item total, so it does not validate the multi-product summation or the cart listing of multiple items.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add a complementary scenario that drags at least two distinct products into the cart (e.g., product-item-1 and product-item-2) and asserts that the element with id \"allMoney\" displays the correctly formatted sum (currency symbol + two decimal places) of their prices."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::1",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.8,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "Each Gherkin Given/When/Then step has a concrete step implementation that maps selectors and actions to the scenario's intent.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\""
+              }
+            ],
+            "reasoning": "The Given step constructs a WebDriver and navigates to the test HTML. The When step locates the product and drop-area using the same data-testid selectors from the Gherkin and executes an in-page JavaScript helper that dispatches dragstart/drop/dragend events. The Then step waits for the element with id \"allMoney\" and asserts the expected \"$40.00\" text via a DOM text comparison (the assertion expression is \"expected_price in actual_price\"). These implementations provide concrete mechanisms for setup, action, and verification required by the scenario. Note: the final verification is a DOM text observation of #allMoney (sufficient to confirm the displayed total), not an assertion of any drag event payload readout.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::1",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.78,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "The test asserts the formatted total price is shown in #allMoney",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "expected_price = \"$40.00\"\nactual_price = total_price_element.text.strip()\nassert expected_price in actual_price"
+              }
+            ],
+            "reasoning": "The step implementation reads the DOM text of the element with id 'allMoney' and asserts the presence of the exact formatted string \"$40.00\", which is a concrete DOM observation that verifies the displayed total and its currency formatting for this scenario.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.7,
+            "criterion": "Drag-and-drop payload and cart contents are not strongly asserted (no DataTransfer inspection or cart item checks)",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$40.00\""
+              }
+            ],
+            "reasoning": "The test simulates a drag/drop via injected JS but static analysis shows no DataTransfer creation/inspection. The only verification is the #allMoney DOM text. This means the test would not detect regressions where the drag payload is malformed or the app fails to record individual cart entries (e.g., product list and quantities), even though the displayed total might still be (accidentally) correct or incorrect in ways the test can't distinguish.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add a concrete assertion that inspects the DataTransfer payload or instrument the application handler (spy/mock) to confirm the dragged product id/price was delivered; also assert cart DOM entries (product names/prices/quantities) after the drop to strengthen the oracle."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::1",
+        "status": "WARNING",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::5::2": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 17,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          },
+          {
+            "confidence": 0.75,
+            "criterion": "Gherkin UI anchors are traceable in step code",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Gherkin test IDs absent as literal code selectors: drop-area, product-item-1, product-item-2"
+              }
+            ],
+            "reasoning": "Literal selector mismatch is a candidate risk only; helpers or parent locators can be valid alternatives.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Have the Step-Code Agent confirm that each important UI anchor is reached by an equivalent locator."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::2",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario verifies that adding two different products updates the cart total (#allMoney) to the correctly formatted sum as required by B-5-2-sum-multiple-products-updates-total.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$160.00\""
+              }
+            ],
+            "reasoning": "The scenario's Given step 'the webpage is loaded with a list of products' satisfies the contract precondition that a product list is visible. The When steps explicitly perform the two drag-and-drop actions for distinct products (product-item-1 and product-item-2), matching the actor_actions. The Then step asserts the #allMoney element equals \"$160.00\", which directly exercises the contract's required formatted-sum outcome (currency symbol and two decimal places). The scenario therefore targets and expresses the core action and observable outcome required by behavior B-5-2. The scenario does not assert the cart's itemized listing, but that UI detail is not required here because the scenario's Then explicitly targets the total display.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::2",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.8,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "Gherkin steps map to concrete step implementations that perform the described setup, actions, and DOM verification.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "var dataTransfer = new DataTransfer();\n        product.dispatchEvent(new DragEvent('dragstart', {dataTransfer: dataTransfer}));\n        dropArea.dispatchEvent(new DragEvent('drop', {dataTransfer: dataTransfer}));"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert expected_total in actual_total, f\"Expected total '{expected_total}', but got '{actual_total}'\""
+              }
+            ],
+            "reasoning": "The Given step creates a browser context and loads the page. The When step locates elements by data-testid via CSS selectors and uses an injected script to construct a DataTransfer and dispatch DragEvent('dragstart') and DragEvent('drop') to simulate the drag-and-drop. Per the provided browser data-flow rules, constructing a DataTransfer and dispatching drag events is an acceptable mechanism for exercising the application's drag handlers. The Then step locates the #allMoney element and asserts that the expected total string appears in its text, which is a DOM observation of the visible result. The static facts show a DOM assertion present and direct event construction in the code, confirming the intended data flow (user action -> app handler -> DOM update) is exercised by the step code.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::2",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.72,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "B-5-2-sum-multiple-products-updates-total — The <div id=\"allMoney\"> element displays the formatted sum",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$160.00\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert expected_total in actual_total, f\"Expected total '{expected_total}', but got '{actual_total}'\""
+              }
+            ],
+            "reasoning": "The test locates the element with id 'allMoney' and asserts that the exact expected string (e.g. \"$160.00\") is contained in its text. Static facts classify this as a dom_observation, so the displayed total string is directly checked by the implementation.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "B-5-2-sum-multiple-products-updates-total — The cart lists both product A and product B with their prices and quantities",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element."
+              }
+            ],
+            "reasoning": "Although the scenario exercises drag/drop and then checks the displayed total, there is no automated assertion in the provided step code that verifies the cart lists both products with their prices/quantities. The only assertion present targets the #allMoney DOM text. Therefore the test cannot be said to automatically observe or verify the cart contents.",
+            "severity": "major",
+            "status": "UNKNOWN",
+            "suggested_fix": "Add explicit assertions that check the cart DOM after drops — for example, locate the cart entries (by data-testid or selector) and assert both product-item-1 and product-item-2 appear with expected price text and expected quantity values."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::2",
+        "status": "WARNING",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::5::3": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 49,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          },
+          {
+            "confidence": 0.75,
+            "criterion": "Gherkin UI anchors are traceable in step code",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Gherkin test IDs absent as literal code selectors: drop-area, product-item-3"
+              }
+            ],
+            "reasoning": "Literal selector mismatch is a candidate risk only; helpers or parent locators can be valid alternatives.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Have the Step-Code Agent confirm that each important UI anchor is reached by an equivalent locator."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::3",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.9,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Scenario verifies that adding products updates the formatted cart total shown in #allMoney",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$70.00\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\""
+              }
+            ],
+            "reasoning": "The scenario provides the required precondition (page loaded with products), performs the core user action (dragging items into the drop area — performed twice), and asserts the user-observable outcome: the formatted total in #allMoney is \"$70.00\". That directly exercises the requirement that the system sums item prices and displays a currency-formatted total to two decimal places. The scenario chooses the same product twice, which still exercises the 'sum multiple products' behavior slice; the contract's alternate wording (dragging distinct product A and B) is not required to be repeated by this scenario.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::3",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.8,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Each Gherkin step has a concrete step definition with a plausible mechanism for setup, action, and verification.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "@given('the webpage is loaded with a list of products')"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "context.driver = webdriver.Chrome()\n    context.driver.get(f\"file://index.html\")"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "@when('the user drags the product with data-testid \"{product_testid}\" to the drop area with data-testid \"{drop_area_testid}\"')"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "var dataTransfer = new DataTransfer();\n        product.dispatchEvent(new DragEvent('dragstart', {dataTransfer: dataTransfer}));\n        dropArea.dispatchEvent(new DragEvent('drop', {dataTransfer: dataTransfer}));"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert expected_price in actual_price, f\"Expected price '{expected_price}', but got '{actual_price}'\""
+              }
+            ],
+            "reasoning": "The feature's Given/When/Then steps are backed by matching behave step definitions. The Given creates a WebDriver and opens the page; the When injects synthetic drag events via execute_script using a DataTransfer and dispatchEvent; the Then reads the DOM text from the element with the provided id and asserts the expected formatted price string. These provide concrete setup, action, and verification mechanisms that correspond to the Gherkin steps.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.6,
+            "criterion": "The test dispatches synthetic drag events but does not inspect any DragEvent/DataTransfer payload; observability relies on DOM text only.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "var dataTransfer = new DataTransfer();"
+              }
+            ],
+            "reasoning": "The When step creates a DataTransfer and dispatches dragstart/drop events, but static facts show no test-side reads or set operations on the DataTransfer. The verification step asserts the DOM text of #allMoney, which is sufficient to confirm the visible total, but the test does not independently observe the event payload that an application's drag handler might populate. This is an observability note (not a failure) because the requirement's observable is DOM (#allMoney) and that is asserted.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "If you need to prove the drag event payload itself (beyond the resulting DOM), add assertions that read event-populated data (e.g., inspect application state exposed in the DOM or instrument event handlers to expose payloads). Otherwise the current DOM assertion already verifies the visible total."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::3",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.85,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.85,
+            "criterion": "The test asserts that the visible total in #allMoney equals the expected formatted price string (e.g. \"$70.00\").",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert expected_price in actual_price, f\"Expected price '{expected_price}', but got '{actual_price}'\""
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$70.00\""
+              }
+            ],
+            "reasoning": "The test performs a direct DOM observation of the #allMoney element's text and asserts that the exact formatted string \"$70.00\" appears. This directly verifies the user-visible requirement: the displayed total includes the currency symbol and two decimal places. The assertion is concrete (string equality/containment on DOM text) and therefore a strong oracle for the displayed total value.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::3",
+        "status": "PASS",
+        "suite_key": null
+      }
+    ],
+    "E2ESD_Bench_01::5::4": [
+      {
+        "agent": "static_verifier",
+        "confidence": 1.0,
+        "dimension": "robustness",
+        "findings": [
+          {
+            "confidence": 1.0,
+            "criterion": "Synchronization uses deterministic waits",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "excutable_test_step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": 49,
+                "quote": "time.sleep("
+              }
+            ],
+            "reasoning": "Fixed sleeps can make browser tests slow and flaky; they are not proof that the awaited state occurred.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Prefer a targeted WebDriverWait condition for the state asserted by the test."
+          },
+          {
+            "confidence": 0.75,
+            "criterion": "Gherkin UI anchors are traceable in step code",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "derived.static_facts",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Gherkin test IDs absent as literal code selectors: drop-area, product-item-1, product-item-2, product-item-3, product-item-4"
+              }
+            ],
+            "reasoning": "Literal selector mismatch is a candidate risk only; helpers or parent locators can be valid alternatives.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Have the Step-Code Agent confirm that each important UI anchor is reached by an equivalent locator."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::4",
+        "status": "WARNING",
+        "suite_key": null
+      },
+      {
+        "agent": "bdd_traceability",
+        "confidence": 0.8,
+        "dimension": "spec_alignment",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "Scenario expresses the required precondition, core drag actions, and verifies the formatted cart total in #allMoney as required by the behaviour contract and requirement.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element."
+              },
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$240.00\""
+              }
+            ],
+            "reasoning": "The Given step matches the behaviour contract precondition that a list of products is visible. The When steps perform the user-visible actions of dragging multiple product items into the drop area (shopping cart), satisfying the actor_actions. The Then step asserts the displayed value in the element with id \"allMoney\" equals \"$240.00\", which directly verifies the requirement's formatting constraint (currency symbol and two decimal places) and the cart total outcome. The scenario focuses on the total-value observable required by the contract and therefore aligns with the behaviour slice described.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::4",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "step_code",
+        "confidence": 0.9,
+        "dimension": "step_traceability",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Every Gherkin step has a matching step implementation that performs page setup, simulates drag-and-drop, and verifies the #allMoney DOM text.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$240.00\""
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "@when('the user drags the product with data-testid \"{product_testid}\" to the drop area with data-testid \"{drop_area_testid}\"')"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "context.driver.execute_script(\"\"\"\n        function createEvent(typeOfEvent) {\n            var event = document.createEvent(\"CustomEvent\");\n            event.initCustomEvent(typeOfEvent, true, true, null);\n            event.dataTransfer = {\n                data: {},\n                setData: function(key, value) {\n                    this.data[key] = value;\n                },\n                getData: function(key) {\n                    return this.data[key];\n                }\n            };\n            return event;\n        }"
+              },
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert expected_total in actual_total, f\"Expected total '{expected_total}', but got '{actual_total}'\""
+              }
+            ],
+            "reasoning": "The given step opens a browser and navigates to the page. The when-step is parameterized and locates elements by data-testid, then runs an in-page script that constructs events with a dataTransfer object and dispatches dragstart/drop/dragend. The then-step explicitly waits for the element with id 'allMoney' and asserts the expected total is present in its text, which matches the behavior contract's observable (DOM text in #allMoney).",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::4",
+        "status": "PASS",
+        "suite_key": null
+      },
+      {
+        "agent": "oracle_critic",
+        "confidence": 0.9,
+        "dimension": "oracle_strength",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "The <div id=\"allMoney\"> element displays the sum of product prices formatted with the appropriate currency symbol and two decimal places (e.g., \"$240.00\").",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "step_code",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "assert expected_total in actual_total, f\"Expected total '{expected_total}', but got '{actual_total}'\""
+              }
+            ],
+            "reasoning": "The test contains a direct DOM assertion that the expected formatted total string (e.g. \"$240.00\") appears in the text of the #allMoney element. This is a concrete, exact DOM observation of the displayed formatted total.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "The cart lists both added products with their prices and quantities (the UI shows entries for each added product).",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "gherkin_scenario",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$240.00\""
+              }
+            ],
+            "reasoning": "The behaviour contract expects the cart to list both products with their prices/quantities, but the test contains no assertions that inspect the cart contents. The only assertion present targets #allMoney text. Because there is no DOM assertion verifying product entries, prices, or quantities in the cart, the test does not observe this required behaviour and a regression affecting cart listing would not be caught.",
+            "severity": "critical",
+            "status": "FAIL",
+            "suggested_fix": "Add explicit assertions after the drops to verify cart item elements (e.g., select cart rows/elements and assert presence of product titles, per-item price text, and quantity values) so the cart contents and per-item prices/quantities are concretely observed."
+          }
+        ],
+        "project_id": null,
+        "record_key": "E2ESD_Bench_01::5::4",
+        "status": "FAIL",
+        "suite_key": null
+      }
+    ]
+  },
+  "warnings": []
+}

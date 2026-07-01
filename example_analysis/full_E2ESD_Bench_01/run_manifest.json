@@ -1,0 +1,698 @@
+{
+  "checkpoints": [
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:34:08.957100+00:00",
+      "input_hash": null,
+      "output_artifacts": [],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:34:08.957084+00:00",
+      "state": "CREATED",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:34:08.978261+00:00",
+      "input_hash": "fe09ece496651b3ec588bb05a2981219bd09aea63aea7ecfbcc36de79ead1451",
+      "output_artifacts": [
+        {
+          "description": "DISCOVER_INPUTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/01_discover_inputs.json",
+          "sha256": "ef7cd8e39c0c37fa85c0054e5fe021d147686348ba3a6cd617344841afce35c3"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:34:08.976602+00:00",
+      "state": "DISCOVER_INPUTS",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:34:08.979585+00:00",
+      "input_hash": "d0869e6cec1c19a481d6650b288ea0c2a8ef3d45c4eb7d268b6a64a748103ad5",
+      "output_artifacts": [
+        {
+          "description": "LOAD_RECORDS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/02_load_records.json",
+          "sha256": "94017e4eb7758ef2cd036952042558cb2c9517c7fdb2baec25f86f7ed7694676"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:34:08.978591+00:00",
+      "state": "LOAD_RECORDS",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:34:09.034987+00:00",
+      "input_hash": "6ebb315d6ca646b7647e3dc68144dbf1cdca1da602680279a479e63dfca9a128",
+      "output_artifacts": [
+        {
+          "description": "STATIC_VERIFY checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/03_static_verify.json",
+          "sha256": "70ca09868e92c15c6ccf56f9dd502752b046cf31156d420e923b43785e971648"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:34:08.980471+00:00",
+      "state": "STATIC_VERIFY",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:37:52.631607+00:00",
+      "input_hash": "d6d1c57b2404aeb79b595173d25ffc42397fbcc11086174451a4ee4734c8e835",
+      "output_artifacts": [
+        {
+          "description": "BUILD_REQUIREMENT_CONTRACTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/04_build_requirement_contracts.json",
+          "sha256": "b3c20a634d839e41287102e9f3471db93eca9bc852ecbfd7dbaccafa88d0c32c"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:34:09.035932+00:00",
+      "state": "BUILD_REQUIREMENT_CONTRACTS",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:42:31.082547+00:00",
+      "input_hash": "7a3cf79fd8dfe7de15c5a4fad40d630a54849f28c1bd91ce6a3c96a056c498a2",
+      "output_artifacts": [
+        {
+          "description": "BASIC_PARALLEL_REVIEWS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/05_basic_parallel_reviews.json",
+          "sha256": "08659691faf6f20d78ec6d25dec61588395a1ef4192afcc97340f6c921fd3a10"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:37:52.633089+00:00",
+      "state": "BASIC_PARALLEL_REVIEWS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:43:39.206892+00:00",
+      "input_hash": "334566960c4c242f356308cd2bd1bedf712ef7d22dcc39185192e0d3affba7d9",
+      "output_artifacts": [
+        {
+          "description": "BASIC_SUITE_REVIEW checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/06_basic_suite_review.json",
+          "sha256": "d8f47e96db76f7d8c3fcedcfd1e5b69d7355d1778a60bd23cdc31fb56d9d4777"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:42:31.084222+00:00",
+      "state": "BASIC_SUITE_REVIEW",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:43:39.215765+00:00",
+      "input_hash": "d9dee56b4a923e82c70ddbb7eaf637a118f9527ec4cbfc430f60f6e0809bb812",
+      "output_artifacts": [
+        {
+          "description": "BASIC_COORDINATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/07_basic_coordinate.json",
+          "sha256": "a360e64467984e2fb7d537c11bd60a2148bbdc1678cf26eba4590b45729f30a5"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:43:39.208359+00:00",
+      "state": "BASIC_COORDINATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:43:39.221367+00:00",
+      "input_hash": "bb9a939948c1350b025237d399fade2630bb0d9df6c364281c5958d302508e3e",
+      "output_artifacts": [
+        {
+          "description": "SOURCE_MODEL checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/08_source_model.json",
+          "sha256": "2f22753eaa9bf4c06fbcc13749047f0d182c21ae033088474bf34b23fda45b2e"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:43:39.217495+00:00",
+      "state": "SOURCE_MODEL",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:43:39.232168+00:00",
+      "input_hash": "bcdee56dbd2b6cf7fca5368c067676a865d5befe49ad3454a37b0aed81a4e0e9",
+      "output_artifacts": [
+        {
+          "description": "SOURCE_GROUNDING checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/09_source_grounding.json",
+          "sha256": "ea5e75904afd90a6d44d5de9eb597edc2069f88633094c726d8890c1e13b8d36"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:43:39.222692+00:00",
+      "state": "SOURCE_GROUNDING",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:43:39.246514+00:00",
+      "input_hash": "9c588419cfde5c4ec5f1c7ef3da3071405da737d954153c6538c677c4c49567e",
+      "output_artifacts": [
+        {
+          "description": "MATERIALIZE_TESTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/10_materialize_tests.json",
+          "sha256": "c95079e9b99bc9ead02ee82af2230579db8e121b4eb0a8b6e7136ef0d5c4fd53"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:43:39.234254+00:00",
+      "state": "MATERIALIZE_TESTS",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:44:17.410442+00:00",
+      "input_hash": "d26e1ad19c83c151d76ab7087e331cc0ffd93dc37cc2291e41b9c7a55a1b6d30",
+      "output_artifacts": [
+        {
+          "description": "RUN_BASELINE_TESTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/11_run_baseline_tests.json",
+          "sha256": "9f7e05cc0b67fcf31714b63f60e19a50dba3188e0ea9e4aebb14a52f5fa099f7"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:43:39.246894+00:00",
+      "state": "RUN_BASELINE_TESTS",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:44:55.055339+00:00",
+      "input_hash": "a1181078e45a744583d73c4be1ceb097d1dbadfd5934e16ba2b96e6229f06a6d",
+      "output_artifacts": [
+        {
+          "description": "STABILITY_ANALYZE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/12_stability_analyze.json",
+          "sha256": "0847dbb63205a63cac436d4cc88c407fdaaa190c718aa5f7a25ac3217543f376"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:44:17.418650+00:00",
+      "state": "STABILITY_ANALYZE",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:44:55.125182+00:00",
+      "input_hash": "0485618c2d9b64e121cdae36bdef4a53beb893e4665bbfd57e5acb643c378fbd",
+      "output_artifacts": [
+        {
+          "description": "RUNTIME_TRACE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/13_runtime_trace.json",
+          "sha256": "b8aca9cac8914688a21879aed21699ad50573164335c3ea57c309a24c5b6cb25"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:44:55.103367+00:00",
+      "state": "RUNTIME_TRACE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:45:33.530430+00:00",
+      "input_hash": "24ebed3a6602dbd16941257c38f2c2791f8257a6caae1f26cefe044471e1b1c9",
+      "output_artifacts": [
+        {
+          "description": "COVERAGE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/14_coverage.json",
+          "sha256": "593987c8aed728f76b6c40b66bc6ea11cd3358d24d106c8c63e8cec0dd1aef1b"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:44:55.127288+00:00",
+      "state": "COVERAGE",
+      "status": "cached"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:45:33.565908+00:00",
+      "input_hash": "df8fb3260025397358a79871b6ad966935fb629f3d7c983e046a610be1563532",
+      "output_artifacts": [
+        {
+          "description": "MUTATION_GENERATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/15_mutation_generate.json",
+          "sha256": "ad29f361b34fb47c9af5f9628836d6b87925d7b8a5e681b9a665ab0ecd099ad6"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:45:33.532634+00:00",
+      "state": "MUTATION_GENERATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:57:07.597197+00:00",
+      "input_hash": "1e24efeda3e4d9f065264137d2fb62f01ed5e554c8737c6559207dc70b08235b",
+      "output_artifacts": [
+        {
+          "description": "MUTATION_RUN checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/16_mutation_run.json",
+          "sha256": "0c432edea4aaf71acbdb8f9e7e70a4a99e7bb0315a5d1498497da4acbad38fe8"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:45:33.567338+00:00",
+      "state": "MUTATION_RUN",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:57:07.605801+00:00",
+      "input_hash": "311514240854168822dbf378682b20b06140147758c13dbae8c0e90c5e892850",
+      "output_artifacts": [
+        {
+          "description": "MUTATION_ANALYZE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/17_mutation_analyze.json",
+          "sha256": "0f418e166b5291c95b29dc920e5694e9679a3ba0ce51048a5e2ee9ff5fedc399"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:57:07.602022+00:00",
+      "state": "MUTATION_ANALYZE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:57:07.631686+00:00",
+      "input_hash": "808f1af31fba87eacb077b5999b45da2b5f0114bfed8c9112d963c4aab404de6",
+      "output_artifacts": [
+        {
+          "description": "DYNAMIC_EVIDENCE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/18_dynamic_evidence.json",
+          "sha256": "6d9b7524584a26377a1e50a64557e0853486ab82cd591549231e06fb29d9b158"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:57:07.621845+00:00",
+      "state": "DYNAMIC_EVIDENCE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:57:08.517297+00:00",
+      "input_hash": "59c92a188cb82e66ab4b093eb916603c738e0b1f5397b05edbf4d1d926a47c38",
+      "output_artifacts": [
+        {
+          "description": "FULL_COORDINATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/19_full_coordinate.json",
+          "sha256": "61719b83aad8dfc6e59be0f5b06c814cf40155a8dfaa74173bc8ef185f2fdab9"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:57:08.501525+00:00",
+      "state": "FULL_COORDINATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:57:08.539928+00:00",
+      "input_hash": "fcafbea86766a4bd18f0f8f6d22f5c33fa46d21cd19ee1c2b838813199abce99",
+      "output_artifacts": [
+        {
+          "description": "WRITE_REPORTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/20_write_reports.json",
+          "sha256": "e01d02ccd9b04513c850f383e468d31c72629ced65a97ce988e9dde2db52681c"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:57:08.531375+00:00",
+      "state": "WRITE_REPORTS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T17:57:08.540283+00:00",
+      "input_hash": null,
+      "output_artifacts": [],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T17:57:08.540279+00:00",
+      "state": "COMPLETED",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:38:08.185644+00:00",
+      "input_hash": "d6d1c57b2404aeb79b595173d25ffc42397fbcc11086174451a4ee4734c8e835",
+      "output_artifacts": [
+        {
+          "description": "BUILD_REQUIREMENT_CONTRACTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/04_build_requirement_contracts.json",
+          "sha256": "4dd49e291917338777d5ee53a3ab20ef3518b0a4ab74d79ebb8028e1f005144a"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:37:31.888099+00:00",
+      "state": "BUILD_REQUIREMENT_CONTRACTS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:40:34.394201+00:00",
+      "input_hash": "b0e62a5d4a9b9524a538187d4c3767b6d4a46d94bc2a0d31276bb3ff0e55fa99",
+      "output_artifacts": [
+        {
+          "description": "BASIC_PARALLEL_REVIEWS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/05_basic_parallel_reviews.json",
+          "sha256": "208551dfc582016403e838ac2207cfae43aa518a9700851f93bdd06abedca239"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:38:08.187065+00:00",
+      "state": "BASIC_PARALLEL_REVIEWS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:41:42.580988+00:00",
+      "input_hash": "26a24b76548c0af8a3c6c6694a5c3ea3766e94cf2bd67224440dc337934ecb91",
+      "output_artifacts": [
+        {
+          "description": "BASIC_SUITE_REVIEW checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/06_basic_suite_review.json",
+          "sha256": "db38c00a5f84661761707069486eafc7cac436a8c3de17dfd4bf748e78eaa803"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:40:34.396165+00:00",
+      "state": "BASIC_SUITE_REVIEW",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:41:42.597654+00:00",
+      "input_hash": "6a93277db997387440f9dca28ec6be9fb80ca27ad443f8d25c528dd178e2f8ad",
+      "output_artifacts": [
+        {
+          "description": "BASIC_COORDINATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/07_basic_coordinate.json",
+          "sha256": "cac2d30b58dd69fdb2772c4d7bf371bad345e3e65ecfa17087ce4f94bb666c09"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:41:42.583002+00:00",
+      "state": "BASIC_COORDINATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:41:42.610852+00:00",
+      "input_hash": "4d11864748ceca57055f5cdb419cfd2ce516abf7560364964003c80a02034e0f",
+      "output_artifacts": [
+        {
+          "description": "SOURCE_GROUNDING checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/09_source_grounding.json",
+          "sha256": "3868af4dcc3e88e40208973825ab0165faef38bc048ce082483574772506ccb4"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:41:42.600830+00:00",
+      "state": "SOURCE_GROUNDING",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:41:42.623832+00:00",
+      "input_hash": "68b35a5b9cab3caa2f7e579ad390f96bb8bb045622f66415c02612bb1fde3115",
+      "output_artifacts": [
+        {
+          "description": "RUNTIME_TRACE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/13_runtime_trace.json",
+          "sha256": "b8aca9cac8914688a21879aed21699ad50573164335c3ea57c309a24c5b6cb25"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:41:42.620240+00:00",
+      "state": "RUNTIME_TRACE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:41:42.646131+00:00",
+      "input_hash": "43abb6b8aef1a893e34bfc5b081ac39e3997a33abd8a49cc9403197df46a96f7",
+      "output_artifacts": [
+        {
+          "description": "MUTATION_GENERATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/15_mutation_generate.json",
+          "sha256": "a0f9900f369fccddf09ce012708b4a64a726e42a777ac318222549345e3fd56a"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:41:42.626765+00:00",
+      "state": "MUTATION_GENERATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:47:15.016937+00:00",
+      "input_hash": "d60e1f5b4120d319666b95e1fe1853f8ce6e08a9bd67ea04aa28150657281821",
+      "output_artifacts": [
+        {
+          "description": "MUTATION_RUN checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/16_mutation_run.json",
+          "sha256": "f8589186db5cfd936d32f52cc1ae13dae8693ab6d5c6ad82b0a50e1c4a24e465"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:41:42.647451+00:00",
+      "state": "MUTATION_RUN",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:47:15.114907+00:00",
+      "input_hash": "42674663aa5c0f691a574aec9a653e67c86d919fae77d2085195d83ec2f95593",
+      "output_artifacts": [
+        {
+          "description": "MUTATION_ANALYZE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/17_mutation_analyze.json",
+          "sha256": "16843b2d9a63bdae6eb39bd786ff1c2f84cf405debb371264eebf6cc7996192c"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:47:15.104966+00:00",
+      "state": "MUTATION_ANALYZE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:47:15.167705+00:00",
+      "input_hash": "9073c45bc4dc2e9d76231a3e01ffc27a0a1084c1ff3c014cdaacfe27244a6d89",
+      "output_artifacts": [
+        {
+          "description": "DYNAMIC_EVIDENCE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/18_dynamic_evidence.json",
+          "sha256": "abef6467dda64fcf353611ec976b961ca8d29ce188618673375821bba7d39e8b"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:47:15.149138+00:00",
+      "state": "DYNAMIC_EVIDENCE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:47:15.238991+00:00",
+      "input_hash": "2cf231fe35b4868b1099771c7da2ac8530c10faa098e9c434c536308cf42b211",
+      "output_artifacts": [
+        {
+          "description": "FULL_COORDINATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/19_full_coordinate.json",
+          "sha256": "55b5f1815d2e44ba7d1c04149baa33d6abb93c05b0bacf41ad276253ec11512f"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:47:15.188381+00:00",
+      "state": "FULL_COORDINATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 2,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:47:16.246639+00:00",
+      "input_hash": "1671669c443336e75fca31f7773a50b1b39f9ab97790205ec0d5d01077918b11",
+      "output_artifacts": [
+        {
+          "description": "WRITE_REPORTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/20_write_reports.json",
+          "sha256": "e01d02ccd9b04513c850f383e468d31c72629ced65a97ce988e9dde2db52681c"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:47:16.233924+00:00",
+      "state": "WRITE_REPORTS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T18:47:16.247121+00:00",
+      "input_hash": null,
+      "output_artifacts": [],
+      "recoverable": true,
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "started_at": "2026-07-01T18:47:16.247114+00:00",
+      "state": "COMPLETED",
+      "status": "succeeded"
+    }
+  ],
+  "config_hash": "27d3b0affd706ba96867ec0ca49395a2cb0265b35d34d22b83d0eb5fa84d3b2d",
+  "current_state": "COMPLETED",
+  "mode": "full",
+  "mutant_status": {
+    "E2ESD_Bench_01-m0cec907a22db": "succeeded",
+    "E2ESD_Bench_01-m137c2855bb5b": "succeeded",
+    "E2ESD_Bench_01-m1a63cbe1144f": "succeeded",
+    "E2ESD_Bench_01-m1a7468a55232": "succeeded",
+    "E2ESD_Bench_01-m1da5859e33ed": "succeeded",
+    "E2ESD_Bench_01-m33557c7e5dc6": "succeeded",
+    "E2ESD_Bench_01-m385c97ea419c": "succeeded",
+    "E2ESD_Bench_01-m3a3759d24959": "succeeded",
+    "E2ESD_Bench_01-m4f3d9524fe2a": "succeeded",
+    "E2ESD_Bench_01-m5972e8c6ca40": "succeeded",
+    "E2ESD_Bench_01-m60f1ff8eb429": "succeeded",
+    "E2ESD_Bench_01-m6c3c5fe4be37": "succeeded",
+    "E2ESD_Bench_01-m6c6926cf32e9": "succeeded",
+    "E2ESD_Bench_01-m76d462f36706": "succeeded",
+    "E2ESD_Bench_01-m819be1db6300": "succeeded",
+    "E2ESD_Bench_01-m976254f1b78e": "succeeded",
+    "E2ESD_Bench_01-ma456a4d75b65": "succeeded",
+    "E2ESD_Bench_01-ma7e0eb5c1fe0": "succeeded",
+    "E2ESD_Bench_01-mb178dd83a3e6": "succeeded",
+    "E2ESD_Bench_01-mb448823926e0": "succeeded",
+    "E2ESD_Bench_01-mbb6fadc93d33": "succeeded",
+    "E2ESD_Bench_01-mc59b50551451": "succeeded",
+    "E2ESD_Bench_01-mc5efa4ace1b0": "succeeded",
+    "E2ESD_Bench_01-mca040c016b3e": "succeeded",
+    "E2ESD_Bench_01-mca5115e03cb8": "succeeded",
+    "E2ESD_Bench_01-md72a1bf9a3c3": "succeeded",
+    "E2ESD_Bench_01-mf968e5b179f6": "succeeded"
+  },
+  "output_dir": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01",
+  "project_status": {},
+  "record_status": {
+    "E2ESD_Bench_01::1::1": "succeeded",
+    "E2ESD_Bench_01::1::2": "succeeded",
+    "E2ESD_Bench_01::1::3": "succeeded",
+    "E2ESD_Bench_01::1::4": "succeeded",
+    "E2ESD_Bench_01::3::1": "succeeded",
+    "E2ESD_Bench_01::3::2": "succeeded",
+    "E2ESD_Bench_01::3::3": "succeeded",
+    "E2ESD_Bench_01::3::4": "succeeded",
+    "E2ESD_Bench_01::5::1": "succeeded",
+    "E2ESD_Bench_01::5::2": "succeeded",
+    "E2ESD_Bench_01::5::3": "succeeded",
+    "E2ESD_Bench_01::5::4": "succeeded"
+  },
+  "run_id": "489cd8af8a954658a23aa181be9577de",
+  "semantic_mode": "live"
+}

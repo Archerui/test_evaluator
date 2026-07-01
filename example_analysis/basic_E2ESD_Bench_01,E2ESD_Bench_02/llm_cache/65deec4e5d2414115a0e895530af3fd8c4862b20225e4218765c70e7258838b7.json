@@ -1,0 +1,109 @@
+{
+  "project_id": "E2ESD_Bench_02",
+  "requirement_id": "1",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "add_note_appends_div_note",
+      "kind": "normal",
+      "preconditions": [
+        "Application is loaded and the Add note button is present (id=\"add\", class=\"add\", data-testid=\"add-note-button\")"
+      ],
+      "actor_actions": [
+        "Click the Add note button (id=\"add\", class=\"add\", data-testid=\"add-note-button\")"
+      ],
+      "expected_observables": [
+        "A new <div> element with class \"note\" is added as a child of the document body"
+      ],
+      "state_effects": [
+        "Document body contains one additional element matching div.note"
+      ],
+      "ui_anchors": [
+        "button#add (id=\"add\", class=\"add\", data-testid=\"add-note-button\")",
+        "body > div.note"
+      ],
+      "constraints": [
+        "The created element must be a <div> whose class attribute includes \"note\" and it must be appended to document.body (not only elsewhere in the DOM)"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "a new note is created and appended to the document body as a <div> element with the class \"note\".",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "note_contains_visible_empty_textarea",
+      "kind": "normal",
+      "preconditions": [
+        "A note element (div.note) exists after activating Add note"
+      ],
+      "actor_actions": [
+        "Inspect the content of the newly created note element"
+      ],
+      "expected_observables": [
+        "Inside the note there is a visible <textarea> element with data-testid=\"note-textarea\" and its value/text is empty"
+      ],
+      "state_effects": [
+        "The note contains an empty textarea ready for user input"
+      ],
+      "ui_anchors": [
+        "div.note textarea[data-testid=\"note-textarea\"]"
+      ],
+      "constraints": [
+        "The textarea must be visible to the user and contain zero-length content (empty)"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Inside each note, there is a visible, empty <textarea> (data-testid=\"note-textarea\") for user input.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "multiple_rapid_clicks_create_separate_notes",
+      "kind": "edge",
+      "preconditions": [
+        "Application is loaded and the Add note button is present (id=\"add\", class=\"add\", data-testid=\"add-note-button\")"
+      ],
+      "actor_actions": [
+        "Click the Add note button multiple times in rapid succession"
+      ],
+      "expected_observables": [
+        "For each rapid click, a separate div.note is created and appended to document.body; the count of div.note increases by the number of clicks and each created note includes its own textarea[data-testid=\"note-textarea\"]"
+      ],
+      "state_effects": [
+        "Multiple distinct note elements exist in the DOM, each containing its own textarea"
+      ],
+      "ui_anchors": [
+        "button#add (data-testid=\"add-note-button\")",
+        "body > div.note",
+        "div.note textarea[data-testid=\"note-textarea\"]"
+      ],
+      "constraints": [
+        "Each click must produce a distinct note element (no replacement of existing notes); each created note must include its own textarea element"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The application supports multiple rapid clicks on the \"Add note\" button, with each click creating a separate note, each containing its own textarea.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

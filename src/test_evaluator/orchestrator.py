@@ -32,6 +32,7 @@ from .runner import run_baseline_test
 from .schemas import (
     AgentReview,
     ArtifactRef,
+    Behavior,
     CoverageInput,
     CoverageOutput,
     CoverageReport,
@@ -39,6 +40,7 @@ from .schemas import (
     DynamicOracleOutput,
     DynamicSuiteCoverageInput,
     DynamicSuiteCoverageOutput,
+    Evidence,
     EvaluationRun,
     MutationAnalysis,
     MutationAnalystInput,
@@ -88,7 +90,7 @@ from .static_mutation import assess_static_mutation
 from .suite_analysis import analyze_static_behavior_coverage, analyze_suite_duplicates
 
 
-PIPELINE_VERSION = "1.3.0"
+PIPELINE_VERSION = "1.4.0"
 
 
 def _progress(config: "EvaluationConfig", state: str, completed: int, total: int) -> None:
@@ -174,12 +176,40 @@ class EvaluationConfig:
         return payload
 
 
-def _fallback_contract(record: TestRecord) -> RequirementContract:
+def _empty_contract(record: TestRecord) -> RequirementContract:
     return RequirementContract(
         project_id=record.project_id,
         requirement_id=record.requirement_id,
         suite_key=record.suite_key,
         behaviors=[],
+    )
+
+
+def _degraded_contract(record: TestRecord) -> RequirementContract:
+    """Preserve scoreable semantic review after Requirement Agent failure.
+
+    This deliberately keeps one broad behavior instead of attempting to infer
+    a detailed decomposition. The downstream agents still receive the exact
+    requirement and scenario, while the fallback remains fully evidence-backed.
+    """
+
+    requirement = " ".join(record.requirement.split())
+    return RequirementContract(
+        project_id=record.project_id,
+        requirement_id=record.requirement_id,
+        suite_key=record.suite_key,
+        behaviors=[
+            Behavior(
+                behavior_id=f"{record.requirement_id}.fallback.explicit_requirement",
+                kind="other",
+                actor_actions=["Perform the user interaction described by the requirement."],
+                expected_observables=[requirement],
+                observability="unknown",
+                source_evidence=[
+                    Evidence(field="fine_grained_reqs", quote=record.requirement)
+                ],
+            )
+        ],
     )
 
 
@@ -734,25 +764,35 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
         contracts: dict[str, RequirementContract] = {}
         warnings: list[str] = list(semantic_context_warnings)
         for suite_key, suite_records in selected_suites.items():
+            record = suite_records[0]
             if config.live:
                 try:
                     source_requirements, web_analysis = semantic_context_by_project.get(
-                        suite_records[0].project_id,
+                        record.project_id,
                         ([], {}),
                     )
-                    contracts[suite_key] = build_requirement_contract(
+                    contract = build_requirement_contract(
                         get_llm(),
-                        suite_records[0],
+                        record,
                         source_requirements=source_requirements,
                         web_application_analysis=web_analysis,
                     )
+                    if contract.behaviors:
+                        contracts[suite_key] = contract
+                    else:
+                        contracts[suite_key] = _degraded_contract(record)
+                        warnings.append(
+                            f"Requirement Agent returned no evidence-backed behaviors for {suite_key}; "
+                            "a conservative requirement-level contract was used and semantic reviews continued."
+                        )
                 except Exception:
-                    contracts[suite_key] = _fallback_contract(suite_records[0])
+                    contracts[suite_key] = _degraded_contract(record)
                     warnings.append(
-                        f"Requirement Agent returned no valid structured contract for {suite_key}; dependent semantic reviews were skipped."
+                        f"Requirement Agent returned no valid structured contract for {suite_key}; "
+                        "a conservative requirement-level contract was used and semantic reviews continued."
                     )
             else:
-                contracts[suite_key] = _fallback_contract(suite_records[0])
+                contracts[suite_key] = _empty_contract(record)
         return {
             "contracts": {
                 suite_key: contract.model_dump(mode="json")
@@ -760,6 +800,23 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
             },
             "warnings": warnings,
         }
+
+    def contracts_cache_is_usable(payload: dict[str, object]) -> bool:
+        """Reject old live checkpoints whose empty fallback skipped a suite."""
+
+        raw_contracts = payload.get("contracts")
+        if not isinstance(raw_contracts, dict):
+            return False
+        try:
+            cached_contracts = [
+                RequirementContract.model_validate(item)
+                for item in raw_contracts.values()
+            ]
+        except Exception:
+            return False
+        return not config.live or bool(cached_contracts) and all(
+            contract.behaviors for contract in cached_contracts
+        )
 
     contracts_payload = _state_payload(
         store,
@@ -777,6 +834,12 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
         ),
         build_contracts,
         recoverable=True,
+        degraded_reason=lambda payload: (
+            "Requirement contracts used degraded recovery or source-context warnings."
+            if payload.get("warnings")
+            else None
+        ),
+        cached_validator=contracts_cache_is_usable,
     )
     contracts = {
         suite_key: RequirementContract.model_validate(payload)
@@ -965,6 +1028,7 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
         coordinate,
     )
     run = EvaluationRun.model_validate(coordinate_payload["run"])
+    basic_report_by_record = {report.record_key: report for report in run.tests}
 
     if config.mode == "full":
         inventory_by_project = {inventory.project_id: inventory for inventory in inventories}
@@ -1460,6 +1524,10 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
                             runtime=runtime_by_record[record.record_key],
                             static_facts=facts_by_record[record.record_key],
                             source_model=source_models.get(record.project_id),
+                            contract=contracts.get(record.suite_key),
+                            reviews=basic_report_by_record[record.record_key].reviews,
+                            selector_grounding=grounding_by_record.get(record.record_key),
+                            stability=stability_by_record.get(record.record_key),
                         )
                     )
                     outputs[record.record_key] = output.model_dump(mode="json")
@@ -1487,6 +1555,14 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
                 {
                     "runtime": baseline_payload["results"],
                     "facts": static_payload["facts"],
+                    "contracts": contracts_payload["contracts"],
+                    "reviews": {
+                        record_key: [review.model_dump(mode="json") for review in report.reviews]
+                        for record_key, report in basic_report_by_record.items()
+                    },
+                    "grounding": grounding_payload["outputs"],
+                    "stability": stability_payload["reports"],
+                    "source_models": source_payload["models"],
                 }
             ),
             build_runtime_traces,
@@ -2060,9 +2136,9 @@ def evaluate(config: EvaluationConfig) -> EvaluationRun:
 
         def coordinate_full() -> dict[str, object]:
             coordinated = attach_source_grounding(run, grounding_by_record)
+            coordinated = attach_runtime_traces(coordinated, runtime_trace_outputs)
             coordinated = attach_runtime_results(coordinated, runtime_by_record)
             coordinated = attach_stability_results(coordinated, stability_by_record)
-            coordinated = attach_runtime_traces(coordinated, runtime_trace_outputs)
             coordinated = attach_coverage_results(coordinated, coverage_reports)
             coordinated = attach_mutation_results(
                 coordinated,

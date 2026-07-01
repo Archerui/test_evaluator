@@ -1,0 +1,36 @@
+[
+  {
+    "project_id": "E2ESD_Bench_01",
+    "project_root": null,
+    "source_root": null,
+    "entry_html": null,
+    "tests_file": "/home/rkr/siemens/test_evaluator/e2edev_sample.csv",
+    "requirements_file": null,
+    "web_application_analysis_file": null,
+    "source_files": [],
+    "asset_files": [],
+    "test_count": 12,
+    "requirement_count": 3,
+    "discovery_status": "PASS",
+    "warnings": [
+      "CSV-only input: application source was not discovered."
+    ]
+  },
+  {
+    "project_id": "E2ESD_Bench_02",
+    "project_root": null,
+    "source_root": null,
+    "entry_html": null,
+    "tests_file": "/home/rkr/siemens/test_evaluator/e2edev_sample.csv",
+    "requirements_file": null,
+    "web_application_analysis_file": null,
+    "source_files": [],
+    "asset_files": [],
+    "test_count": 13,
+    "requirement_count": 5,
+    "discovery_status": "PASS",
+    "warnings": [
+      "CSV-only input: application source was not discovered."
+    ]
+  }
+]

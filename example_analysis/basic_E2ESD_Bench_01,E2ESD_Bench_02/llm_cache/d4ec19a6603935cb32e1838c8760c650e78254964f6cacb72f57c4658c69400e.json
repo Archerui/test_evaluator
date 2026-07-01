@@ -1,0 +1,144 @@
+{
+  "project_id": "E2ESD_Bench_02",
+  "requirement_id": "2",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "2.1-realtime-render",
+      "kind": "normal",
+      "preconditions": [
+        "The note is in edit mode and the textarea (data-testid=\"note-textarea\") is visible and focused"
+      ],
+      "actor_actions": [
+        "User types Markdown text into the textarea (data-testid=\"note-textarea\")"
+      ],
+      "expected_observables": [
+        "The main display area (data-testid=\"note-main\") updates continuously as the user types, showing rendered HTML corresponding to the Markdown input (real-time update)"
+      ],
+      "state_effects": [
+        "Visible content of note-main reflects latest typed Markdown without requiring an explicit save"
+      ],
+      "ui_anchors": [
+        "data-testid=\"note-textarea\"",
+        "data-testid=\"note-main\""
+      ],
+      "constraints": [
+        "Rendering must occur in real-time as characters are entered (no manual toggle or save required to see updates)",
+        "This behavior addresses user-observable updates only (DOM rendering), not verification of underlying Markdown library calls"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "As the user types Markdown (e.g., # Heading, **bold**, _italic_, [link](...)), the content is dynamically rendered in the main display area (data-testid=\"note-main\") in real-time, with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>).",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "2.2-inline-formatting-html",
+      "kind": "normal",
+      "preconditions": [
+        "The note is in edit mode with the textarea (data-testid=\"note-textarea\") visible"
+      ],
+      "actor_actions": [
+        "User enters inline Markdown such as **Bold** or _italic_ into the textarea"
+      ],
+      "expected_observables": [
+        "The main display area (data-testid=\"note-main\") renders the corresponding HTML tags for inline styles (e.g., **Bold** appears as <strong>Bold</strong>)"
+      ],
+      "state_effects": [
+        "Displayed note content contains HTML elements representing the Markdown semantics"
+      ],
+      "ui_anchors": [
+        "data-testid=\"note-textarea\"",
+        "data-testid=\"note-main\""
+      ],
+      "constraints": [
+        "Rendered output must show HTML formatting rather than escaped literal Markdown for supported inline syntax"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>)",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "2.3-handle-invalid-markdown-on-exit",
+      "kind": "edge",
+      "preconditions": [
+        "The textarea (data-testid=\"note-textarea\") contains invalid or unmatched Markdown syntax (e.g., an unmatched **)"
+      ],
+      "actor_actions": [
+        "User exits edit mode by clicking the Edit button (data-testid=\"edit-note-button\")"
+      ],
+      "expected_observables": [
+        "The main display area (data-testid=\"note-main\") shows the raw input text (verbatim), and the app remains responsive (no crash or unhandled error visible to the user)"
+      ],
+      "state_effects": [
+        "Displayed note content reflects the raw/unchanged input when exiting edit mode with invalid Markdown"
+      ],
+      "ui_anchors": [
+        "data-testid=\"note-textarea\"",
+        "data-testid=\"edit-note-button\"",
+        "data-testid=\"note-main\""
+      ],
+      "constraints": [
+        "If the Markdown is invalid (e.g., unmatched symbols), the app must not crash or show an unhandled error; it should display the raw input on exit as the user-observable outcome"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "2.4-immediate-localstorage-persistence",
+      "kind": "persistence",
+      "preconditions": [
+        "A note is being edited in the textarea (data-testid=\"note-textarea\")"
+      ],
+      "actor_actions": [
+        "User modifies the note content by typing or deleting characters in the textarea"
+      ],
+      "expected_observables": [
+        "localStorage reflects the current state of the note immediately after changes (the stored note content matches the latest textarea content without requiring an explicit save)"
+      ],
+      "state_effects": [
+        "localStorage keys representing the note contain the updated content corresponding to the latest edits"
+      ],
+      "ui_anchors": [
+        "data-testid=\"note-textarea\""
+      ],
+      "constraints": [
+        "This behavior concerns observable storage state; it does not assert internal implementation details beyond the presence of updated content in localStorage"
+      ],
+      "observability": "storage",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "All changes should be reflected immediately in local storage to persist the current state of the note.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

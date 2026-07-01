@@ -1,0 +1,3383 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "tests": {
+    "E2ESD_Bench_01::1::1": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::1",
+      "record_key": "E2ESD_Bench_01::1::1",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m137c2855bb5b",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mc5efa4ace1b0",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 63,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m385c97ea419c",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sTitle;",
+              "file_path": "index.html",
+              "line_start": 67,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "[data-testid=\"product-item-1\"]"
+      ],
+      "mutation_score": 16.666666666666664,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::1::2": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::1",
+      "record_key": "E2ESD_Bench_01::1::2",
+      "status": "FAIL",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m33557c7e5dc6",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mca5115e03cb8",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m137c2855bb5b",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "[data-testid=\"product-item-2\"]",
+        "[data-testid=\"product-price-2\"]",
+        "[data-testid=\"product-title-2\"]"
+      ],
+      "mutation_score": 0.0,
+      "killed_mutants": [],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::1::3": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::1",
+      "record_key": "E2ESD_Bench_01::1::3",
+      "status": "FAIL",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m33557c7e5dc6",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mca5115e03cb8",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m137c2855bb5b",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [],
+      "mutation_score": 0.0,
+      "killed_mutants": [],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::1::4": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::1",
+      "record_key": "E2ESD_Bench_01::1::4",
+      "status": "FAIL",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m33557c7e5dc6",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mca5115e03cb8",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m137c2855bb5b",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [],
+      "mutation_score": 0.0,
+      "killed_mutants": [],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::3::1": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::3",
+      "record_key": "E2ESD_Bench_01::3::1",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1da5859e33ed",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;",
+              "file_path": "index.html",
+              "line_start": 84,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m976254f1b78e",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            var box1 = document.getElementsByClassName('box1');",
+              "file_path": "index.html",
+              "line_start": 79,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the string_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mca040c016b3e",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            var box2 = document.getElementsByClassName('box2');",
+              "file_path": "index.html",
+              "line_start": 80,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the string_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c6926cf32e9",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "                if (box2[i].innerHTML == sTitle) {",
+              "file_path": "index.html",
+              "line_start": 83,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the comparison mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3"
+      ],
+      "mutation_score": 52.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m0cec907a22db",
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m1da5859e33ed",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c6926cf32e9",
+        "E2ESD_Bench_01-m976254f1b78e",
+        "E2ESD_Bench_01-ma456a4d75b65",
+        "E2ESD_Bench_01-ma7e0eb5c1fe0",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mca040c016b3e"
+      ]
+    },
+    "E2ESD_Bench_01::3::2": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::3",
+      "record_key": "E2ESD_Bench_01::3::2",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mbb6fadc93d33",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sMoney;",
+              "file_path": "index.html",
+              "line_start": 72,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mc59b50551451",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 73,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1da5859e33ed",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;",
+              "file_path": "index.html",
+              "line_start": 84,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m976254f1b78e",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            var box1 = document.getElementsByClassName('box1');",
+              "file_path": "index.html",
+              "line_start": 79,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the string_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3"
+      ],
+      "mutation_score": 44.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m0cec907a22db",
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m1da5859e33ed",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c6926cf32e9",
+        "E2ESD_Bench_01-m976254f1b78e",
+        "E2ESD_Bench_01-ma456a4d75b65",
+        "E2ESD_Bench_01-ma7e0eb5c1fe0",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mca040c016b3e"
+      ]
+    },
+    "E2ESD_Bench_01::3::3": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::3",
+      "record_key": "E2ESD_Bench_01::3::3",
+      "status": "PASS",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m3a3759d24959",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    var iNum = 0; // 总金额",
+              "file_path": "index.html",
+              "line_start": 26,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the numeric_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-md72a1bf9a3c3",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the numeric_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m60f1ff8eb429",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the numeric_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m4f3d9524fe2a",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the numeric_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3"
+      ],
+      "mutation_score": 80.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m0cec907a22db",
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1da5859e33ed",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-m6c6926cf32e9",
+        "E2ESD_Bench_01-m976254f1b78e",
+        "E2ESD_Bench_01-ma456a4d75b65",
+        "E2ESD_Bench_01-ma7e0eb5c1fe0",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca040c016b3e",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-md72a1bf9a3c3"
+      ]
+    },
+    "E2ESD_Bench_01::3::4": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::3",
+      "record_key": "E2ESD_Bench_01::3::4",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1da5859e33ed",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;",
+              "file_path": "index.html",
+              "line_start": 84,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m976254f1b78e",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            var box1 = document.getElementsByClassName('box1');",
+              "file_path": "index.html",
+              "line_start": 79,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the string_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mca040c016b3e",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            var box2 = document.getElementsByClassName('box2');",
+              "file_path": "index.html",
+              "line_start": 80,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the string_literal mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c6926cf32e9",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "                if (box2[i].innerHTML == sTitle) {",
+              "file_path": "index.html",
+              "line_start": 83,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the comparison mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "#div1 .box1",
+        "#div1 .box2",
+        "#div1 .box3"
+      ],
+      "mutation_score": 48.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m0cec907a22db",
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m1da5859e33ed",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c6926cf32e9",
+        "E2ESD_Bench_01-m976254f1b78e",
+        "E2ESD_Bench_01-ma456a4d75b65",
+        "E2ESD_Bench_01-ma7e0eb5c1fe0",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mca040c016b3e",
+        "E2ESD_Bench_01-md72a1bf9a3c3"
+      ]
+    },
+    "E2ESD_Bench_01::5::1": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::5",
+      "record_key": "E2ESD_Bench_01::5::1",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mc5efa4ace1b0",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 63,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m385c97ea419c",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sTitle;",
+              "file_path": "index.html",
+              "line_start": 67,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a63cbe1144f",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 68,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "#allMoney"
+      ],
+      "mutation_score": 35.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m76d462f36706",
+        "E2ESD_Bench_01-m819be1db6300",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::5::2": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::5",
+      "record_key": "E2ESD_Bench_01::5::2",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mc5efa4ace1b0",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 63,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m385c97ea419c",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sTitle;",
+              "file_path": "index.html",
+              "line_start": 67,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a63cbe1144f",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 68,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [],
+      "mutation_score": 35.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m76d462f36706",
+        "E2ESD_Bench_01-m819be1db6300",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::5::3": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::5",
+      "record_key": "E2ESD_Bench_01::5::3",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m385c97ea419c",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sTitle;",
+              "file_path": "index.html",
+              "line_start": 67,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a63cbe1144f",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 68,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mbb6fadc93d33",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sMoney;",
+              "file_path": "index.html",
+              "line_start": 72,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [],
+      "mutation_score": 35.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m76d462f36706",
+        "E2ESD_Bench_01-m819be1db6300",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mca5115e03cb8"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-md72a1bf9a3c3",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    },
+    "E2ESD_Bench_01::5::4": {
+      "agent": "dynamic_oracle",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::5",
+      "record_key": "E2ESD_Bench_01::5::4",
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a7468a55232",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the event_name mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m6c3c5fe4be37",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = 1;",
+              "file_path": "index.html",
+              "line_start": 62,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-mc5efa4ace1b0",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 63,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m385c97ea419c",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oSpan.innerHTML = sTitle;",
+              "file_path": "index.html",
+              "line_start": 67,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        },
+        {
+          "criterion": "Dynamic oracle fails to distinguish mutant E2ESD_Bench_01-m1a63cbe1144f",
+          "status": "FAIL",
+          "severity": "major",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            oP.appendChild(oSpan);",
+              "file_path": "index.html",
+              "line_start": 68,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "The baseline test passed and also passed after the dom_update mutation; the observed oracle did not distinguish this injected fault.",
+          "suggested_fix": "Assert the exact observable state that this source mutation changes."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_oracle_evidence",
+      "runtime_confirmed": true,
+      "oracle_selectors": [
+        "#allMoney"
+      ],
+      "mutation_score": 35.0,
+      "killed_mutants": [
+        "E2ESD_Bench_01-m137c2855bb5b",
+        "E2ESD_Bench_01-m33557c7e5dc6",
+        "E2ESD_Bench_01-m3a3759d24959",
+        "E2ESD_Bench_01-m76d462f36706",
+        "E2ESD_Bench_01-m819be1db6300",
+        "E2ESD_Bench_01-mca5115e03cb8",
+        "E2ESD_Bench_01-md72a1bf9a3c3"
+      ],
+      "survived_mutants": [
+        "E2ESD_Bench_01-m1a63cbe1144f",
+        "E2ESD_Bench_01-m1a7468a55232",
+        "E2ESD_Bench_01-m385c97ea419c",
+        "E2ESD_Bench_01-m4f3d9524fe2a",
+        "E2ESD_Bench_01-m5972e8c6ca40",
+        "E2ESD_Bench_01-m60f1ff8eb429",
+        "E2ESD_Bench_01-m6c3c5fe4be37",
+        "E2ESD_Bench_01-mb178dd83a3e6",
+        "E2ESD_Bench_01-mb448823926e0",
+        "E2ESD_Bench_01-mbb6fadc93d33",
+        "E2ESD_Bench_01-mc59b50551451",
+        "E2ESD_Bench_01-mc5efa4ace1b0",
+        "E2ESD_Bench_01-mf968e5b179f6"
+      ]
+    }
+  },
+  "requirements": {
+    "E2ESD_Bench_01::1": {
+      "agent": "dynamic_suite_coverage",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::1",
+      "record_key": null,
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic coverage for behavior 1.1",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 1.2",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 1.3",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "4 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 1.4",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "4 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 1.5",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "2 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 1.6",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "2 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_behavior_coverage",
+      "behavior_coverage": [
+        {
+          "behavior_id": "1.1",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::1::1",
+            "E2ESD_Bench_01::1::2",
+            "E2ESD_Bench_01::1::3",
+            "E2ESD_Bench_01::1::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::1::1",
+            "E2ESD_Bench_01::1::2"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m33557c7e5dc6",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e10f5b827af09f863ff7ffac73276e754ba98a5456665c152ffa055fba79735b"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "b7452b881d70f9c0d64622a3e621758d6bf544447cb464f693a4cedd27366168"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            for (var i = 0; i < box2.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 82,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "1.2",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::1::1",
+            "E2ESD_Bench_01::1::2",
+            "E2ESD_Bench_01::1::3",
+            "E2ESD_Bench_01::1::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::1::1",
+            "E2ESD_Bench_01::1::2"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-mca5115e03cb8"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e10f5b827af09f863ff7ffac73276e754ba98a5456665c152ffa055fba79735b"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "b7452b881d70f9c0d64622a3e621758d6bf544447cb464f693a4cedd27366168"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "1.3",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::1::1",
+            "E2ESD_Bench_01::1::2",
+            "E2ESD_Bench_01::1::3",
+            "E2ESD_Bench_01::1::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::1::1",
+            "E2ESD_Bench_01::1::2"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m33557c7e5dc6",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_1-6defe0f615/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e10f5b827af09f863ff7ffac73276e754ba98a5456665c152ffa055fba79735b"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_1_2-10bcfc199c/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "b7452b881d70f9c0d64622a3e621758d6bf544447cb464f693a4cedd27366168"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "1.4",
+          "status": "WARNING",
+          "covered_by_records": [],
+          "runtime_confirmed_by_records": [],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-mca5115e03cb8"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+              "file_path": "index.html",
+              "line_start": 37,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "1.5",
+          "status": "WARNING",
+          "covered_by_records": [],
+          "runtime_confirmed_by_records": [],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            for (var i = 0; i < box2.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 82,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "1.6",
+          "status": "WARNING",
+          "covered_by_records": [],
+          "runtime_confirmed_by_records": [],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            for (var i = 0; i < box2.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 82,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        }
+      ]
+    },
+    "E2ESD_Bench_01::3": {
+      "agent": "dynamic_suite_coverage",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::3",
+      "record_key": null,
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic coverage for behavior 3.normal.add_single_product_via_drag_and_drop",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 3.normal.add_same_product_multiple_times_increments_quantity",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 3.normal.add_multiple_distinct_products_create_separate_entries",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior 3.normal.cart_total_updates_and_formats_currency",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_behavior_coverage",
+      "behavior_coverage": [
+        {
+          "behavior_id": "3.normal.product_list_visible_on_load",
+          "status": "PASS",
+          "covered_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m33557c7e5dc6"
+          ],
+          "survived_mutants": [],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "978442ae81102b58c3ea741f0b2be459a9300f47005434f1304ef97e76b5c584"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "634fb52f0a6c0ce720cd64b59762b28e1430cb5f25de447e9adb3684d04f85e1"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-2\"]",
+              "file_path": "index.html",
+              "line_start": 110,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "3.normal.add_single_product_via_drag_and_drop",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m0cec907a22db",
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m1da5859e33ed",
+            "E2ESD_Bench_01-m6c6926cf32e9",
+            "E2ESD_Bench_01-m976254f1b78e",
+            "E2ESD_Bench_01-ma456a4d75b65",
+            "E2ESD_Bench_01-ma7e0eb5c1fe0",
+            "E2ESD_Bench_01-mb178dd83a3e6",
+            "E2ESD_Bench_01-mca040c016b3e",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "978442ae81102b58c3ea741f0b2be459a9300f47005434f1304ef97e76b5c584"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"drop-area\"]",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "634fb52f0a6c0ce720cd64b59762b28e1430cb5f25de447e9adb3684d04f85e1"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-1\"]",
+              "file_path": "index.html",
+              "line_start": 105,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "[data-testid=\"product-item-2\"]",
+              "file_path": "index.html",
+              "line_start": 110,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "10a542db949bb9b5fa679bd3b6c3015bca5e068bf6dc954d00085a35f0f4e815"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "bc366ab5f8d61704a766d4acf26258d2aa3079a2f84dc1de9e506d95d9fffcb6"
+              }
+            }
+          ]
+        },
+        {
+          "behavior_id": "3.normal.add_same_product_multiple_times_increments_quantity",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m1da5859e33ed",
+            "E2ESD_Bench_01-m6c6926cf32e9",
+            "E2ESD_Bench_01-m976254f1b78e",
+            "E2ESD_Bench_01-ma456a4d75b65",
+            "E2ESD_Bench_01-ma7e0eb5c1fe0",
+            "E2ESD_Bench_01-mb178dd83a3e6",
+            "E2ESD_Bench_01-mca040c016b3e",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "978442ae81102b58c3ea741f0b2be459a9300f47005434f1304ef97e76b5c584"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "634fb52f0a6c0ce720cd64b59762b28e1430cb5f25de447e9adb3684d04f85e1"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "10a542db949bb9b5fa679bd3b6c3015bca5e068bf6dc954d00085a35f0f4e815"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "bc366ab5f8d61704a766d4acf26258d2aa3079a2f84dc1de9e506d95d9fffcb6"
+              }
+            }
+          ]
+        },
+        {
+          "behavior_id": "3.normal.add_multiple_distinct_products_create_separate_entries",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::3::1",
+            "E2ESD_Bench_01::3::2",
+            "E2ESD_Bench_01::3::3",
+            "E2ESD_Bench_01::3::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m1da5859e33ed",
+            "E2ESD_Bench_01-m6c6926cf32e9",
+            "E2ESD_Bench_01-m976254f1b78e",
+            "E2ESD_Bench_01-ma456a4d75b65",
+            "E2ESD_Bench_01-ma7e0eb5c1fe0",
+            "E2ESD_Bench_01-mb178dd83a3e6",
+            "E2ESD_Bench_01-mca040c016b3e",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_1-23e78118e9/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "978442ae81102b58c3ea741f0b2be459a9300f47005434f1304ef97e76b5c584"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_2-6635b25ebc/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "634fb52f0a6c0ce720cd64b59762b28e1430cb5f25de447e9adb3684d04f85e1"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_3-e08014813e/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "10a542db949bb9b5fa679bd3b6c3015bca5e068bf6dc954d00085a35f0f4e815"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#div1",
+              "file_path": "index.html",
+              "line_start": 126,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_3_4-7952514204/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "bc366ab5f8d61704a766d4acf26258d2aa3079a2f84dc1de9e506d95d9fffcb6"
+              }
+            }
+          ]
+        },
+        {
+          "behavior_id": "3.normal.cart_total_updates_and_formats_currency",
+          "status": "WARNING",
+          "covered_by_records": [],
+          "runtime_confirmed_by_records": [],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-mb178dd83a3e6",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "            for (var i = 0; i < box2.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 82,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        }
+      ]
+    },
+    "E2ESD_Bench_01::5": {
+      "agent": "dynamic_suite_coverage",
+      "run_id": "489cd8af8a954658a23aa181be9577de",
+      "mode": "full",
+      "project_id": "E2ESD_Bench_01",
+      "suite_key": "E2ESD_Bench_01::5",
+      "record_key": null,
+      "status": "WARNING",
+      "confidence": 1.0,
+      "findings": [
+        {
+          "criterion": "Dynamic coverage for behavior B-5-1-add-single-product-updates-total",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "4 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior B-5-2-sum-multiple-products-updates-total",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "4 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior B-5-3-repeated-drops-increment-quantity-and-affect-total",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "4 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        },
+        {
+          "criterion": "Dynamic coverage for behavior B-5-4-real-time-total-update-on-add",
+          "status": "WARNING",
+          "severity": "minor",
+          "confidence": 1.0,
+          "evidence": [
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ],
+          "reasoning": "3 behavior-related mutant(s) survived the suite.",
+          "suggested_fix": "Add a scenario and exact oracle that fails for the survived behavior mutation."
+        }
+      ],
+      "artifacts": [],
+      "warnings": [],
+      "dimension": "dynamic_behavior_coverage",
+      "behavior_coverage": [
+        {
+          "behavior_id": "B-5-1-add-single-product-updates-total",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::2",
+            "E2ESD_Bench_01::5::3",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m33557c7e5dc6",
+            "E2ESD_Bench_01-m76d462f36706",
+            "E2ESD_Bench_01-m819be1db6300",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e856e7c2d3dc91b0577667297148404c21a91ee51f4f6944bdfac3152fad6b2d"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e1dcd951cbdd5c30f0392f4f20a570b075d0cb1c0412f777473300adc98a7e2a"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "window.onload = function () {",
+              "file_path": "index.html",
+              "line_start": 21,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        allMoney.innerHTML = `${currencySymbol}${iNum.toFixed(2)}`; // 显示两位小数",
+              "file_path": "index.html",
+              "line_start": 97,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        oDiv.appendChild(allMoney);",
+              "file_path": "index.html",
+              "line_start": 98,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "B-5-2-sum-multiple-products-updates-total",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::2",
+            "E2ESD_Bench_01::5::3",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m76d462f36706",
+            "E2ESD_Bench_01-m819be1db6300",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e856e7c2d3dc91b0577667297148404c21a91ee51f4f6944bdfac3152fad6b2d"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e1dcd951cbdd5c30f0392f4f20a570b075d0cb1c0412f777473300adc98a7e2a"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        allMoney.innerHTML = `${currencySymbol}${iNum.toFixed(2)}`; // 显示两位小数",
+              "file_path": "index.html",
+              "line_start": 97,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        oDiv.appendChild(allMoney);",
+              "file_path": "index.html",
+              "line_start": 98,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+          "status": "WARNING",
+          "covered_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::2",
+            "E2ESD_Bench_01::5::3",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m76d462f36706",
+            "E2ESD_Bench_01-m819be1db6300",
+            "E2ESD_Bench_01-mca5115e03cb8",
+            "E2ESD_Bench_01-md72a1bf9a3c3"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429",
+            "E2ESD_Bench_01-mb178dd83a3e6"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e856e7c2d3dc91b0577667297148404c21a91ee51f4f6944bdfac3152fad6b2d"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e1dcd951cbdd5c30f0392f4f20a570b075d0cb1c0412f777473300adc98a7e2a"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        allMoney.innerHTML = `${currencySymbol}${iNum.toFixed(2)}`; // 显示两位小数",
+              "file_path": "index.html",
+              "line_start": 97,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        oDiv.appendChild(allMoney);",
+              "file_path": "index.html",
+              "line_start": 98,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    for (var i = 0; i < aLi.length; i++) {",
+              "file_path": "index.html",
+              "line_start": 30,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        },
+        {
+          "behavior_id": "B-5-4-real-time-total-update-on-add",
+          "status": "WARNING",
+          "covered_by_records": [],
+          "runtime_confirmed_by_records": [
+            "E2ESD_Bench_01::5::1",
+            "E2ESD_Bench_01::5::4"
+          ],
+          "killed_by_mutants": [
+            "E2ESD_Bench_01-m137c2855bb5b",
+            "E2ESD_Bench_01-m76d462f36706",
+            "E2ESD_Bench_01-m819be1db6300",
+            "E2ESD_Bench_01-mca5115e03cb8"
+          ],
+          "survived_mutants": [
+            "E2ESD_Bench_01-m1a7468a55232",
+            "E2ESD_Bench_01-m4f3d9524fe2a",
+            "E2ESD_Bench_01-m60f1ff8eb429"
+          ],
+          "evidence": [
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_1-b0f32ddf33/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e856e7c2d3dc91b0577667297148404c21a91ee51f4f6944bdfac3152fad6b2d"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "runtime.behave_json",
+              "quote": null,
+              "file_path": null,
+              "line_start": null,
+              "line_end": null,
+              "artifact": {
+                "kind": "behave_json",
+                "path": "/home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/E2ESD_Bench_01_5_4-ab076e8a0b/artifacts/baseline_attempt_0/behave.json",
+                "description": "Behave JSON result",
+                "sha256": "e1dcd951cbdd5c30f0392f4f20a570b075d0cb1c0412f777473300adc98a7e2a"
+              }
+            },
+            {
+              "field": "source_model.dom_anchors",
+              "quote": "#allMoney",
+              "file_path": "index.html",
+              "line_start": 91,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        aLi[i].ondragstart = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 31,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondrop = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 45,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        allMoney.innerHTML = `${currencySymbol}${iNum.toFixed(2)}`; // 显示两位小数",
+              "file_path": "index.html",
+              "line_start": 97,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "        oDiv.appendChild(allMoney);",
+              "file_path": "index.html",
+              "line_start": 98,
+              "line_end": null,
+              "artifact": null
+            },
+            {
+              "field": "application_source",
+              "quote": "    oDiv.ondragover = function (ev) {",
+              "file_path": "index.html",
+              "line_start": 41,
+              "line_end": null,
+              "artifact": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "project_id": "E2ESD_Bench_02",
+  "requirement_id": "4",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "4.dom_removal_on_delete",
+      "kind": "normal",
+      "preconditions": [
+        "A note is present in the page and has an associated delete button with data-testid=\"delete-note-button\""
+      ],
+      "actor_actions": [
+        "Click the note's delete button (data-testid=\"delete-note-button\")"
+      ],
+      "expected_observables": [
+        "The targeted note's DOM node is no longer present on the page immediately after the click"
+      ],
+      "state_effects": [
+        "No visual trace of the deleted note remains in the DOM"
+      ],
+      "ui_anchors": [
+        "button[data-testid=\"delete-note-button\"]",
+        "the note container element that previously displayed the note text"
+      ],
+      "constraints": [
+        "Removal must occur immediately upon the click (the note must no longer appear on the page after the click)"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "must be immediately removed from the DOM so it no longer appears on the page",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "4.localstorage_removal_on_delete",
+      "kind": "persistence",
+      "preconditions": [
+        "The note to be deleted exists as an entry in the application's stored notes array in localStorage"
+      ],
+      "actor_actions": [
+        "Click the note's delete button (data-testid=\"delete-note-button\")"
+      ],
+      "expected_observables": [
+        "The deleted note's entry is removed from the stored notes array in localStorage (the note is no longer present in localStorage data)"
+      ],
+      "state_effects": [
+        "localStorage no longer contains the deleted note's entry in the stored notes array"
+      ],
+      "ui_anchors": [
+        "button[data-testid=\"delete-note-button\"]"
+      ],
+      "constraints": [
+        "The removal from localStorage must be a consequence of the same delete click action (no separate manual persistence step required)"
+      ],
+      "observability": "storage",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "the corresponding entry must also be removed from localStorage",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

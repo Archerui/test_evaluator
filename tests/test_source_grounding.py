@@ -1,12 +1,21 @@
 from pathlib import Path
 
-from test_evaluator.grounding import ground_selectors
+from test_evaluator.grounding import _contract_selector, ground_selectors
+from test_evaluator.scoring import attach_source_grounding
 from test_evaluator.schemas import (
+    EvaluationRun,
+    ProjectReport,
     ProjectInventory,
     RequirementContract,
+    RequirementReport,
+    SelectorGroundingItem,
     SelectorGroundingInput,
+    SelectorGroundingOutput,
     SourceModelInput,
+    StaticFacts,
+    Status,
     TestRecord as Record,
+    TestReport as Report,
 )
 from test_evaluator.source_model import build_source_model
 from test_evaluator.static_verifier import extract_static_facts
@@ -86,6 +95,17 @@ def test_source_model_extracts_static_and_dynamic_behavior(tmp_path: Path) -> No
     assert output.status.value == "PASS"
 
 
+def test_contract_selector_requires_an_explicit_test_id_assignment() -> None:
+    assert _contract_selector('button with data-testid="save-button"') == (
+        '[data-testid="save-button"]'
+    )
+    assert _contract_selector("button with data-testid: save-button") == (
+        '[data-testid="save-button"]'
+    )
+    assert _contract_selector('items with data-testid like "product-item-1"') is None
+    assert _contract_selector("same data-testid as the existing cart entry") is None
+
+
 def test_grounding_matches_dynamic_id_and_reports_missing_literal(tmp_path: Path) -> None:
     _, _, source_output = _source_fixture(tmp_path)
     record = _record("status")
@@ -120,3 +140,75 @@ def test_grounding_matches_dynamic_id_and_reports_missing_literal(tmp_path: Path
     assert missing.status.value == "FAIL"
     assert any(item.selector == "#does-not-exist" and not item.source_exists for item in missing.selectors)
     assert missing.findings[0].evidence[0].line_start is not None
+
+
+def test_source_grounding_penalizes_only_test_owned_selector_mismatches() -> None:
+    def make_run(test_id: str) -> EvaluationRun:
+        report = Report(
+            record_key=f"Bench::1::{test_id}",
+            project_id="Bench",
+            requirement_id="1",
+            test_id=test_id,
+            confidence_coverage=1.0,
+            risk="low",
+            static_facts=StaticFacts(python_parseable=True, scenario_present=True),
+        )
+        return EvaluationRun(
+            mode="full",
+            tests=[report],
+            requirements=[
+                RequirementReport(
+                    suite_key="Bench::1",
+                    project_id="Bench",
+                    requirement_id="1",
+                    test_count=1,
+                )
+            ],
+            projects=[ProjectReport(project_id="Bench", test_count=1, requirement_count=1)],
+        )
+
+    expected_selector = '[data-testid="required-result"]'
+    contract_mismatch = SelectorGroundingOutput(
+        agent="selector_grounding",
+        run_id="run",
+        mode="full",
+        record_key="Bench::1::1",
+        dimension="source_grounding",
+        status=Status.FAIL,
+        confidence=0.95,
+        selectors=[
+            SelectorGroundingItem(
+                selector=expected_selector,
+                source_exists=False,
+                stability="stable",
+                purpose="oracle_target",
+            )
+        ],
+        missing_source_anchors=[expected_selector],
+    )
+    source_run = make_run("1")
+    attach_source_grounding(source_run, {"Bench::1::1": contract_mismatch})
+    assert source_run.tests[0].dimension_scores["source_grounding"] is None
+    assert source_run.tests[0].risk == "low"
+    assert next(
+        review for review in source_run.tests[0].reviews if review.agent == "selector_grounding"
+    ).status is Status.UNKNOWN
+
+    test_mismatch = contract_mismatch.model_copy(
+        update={
+            "record_key": "Bench::1::2",
+            "selectors": [
+                SelectorGroundingItem(
+                    selector="#invented-by-test",
+                    source_exists=False,
+                    stability="stable",
+                    purpose="oracle_target",
+                )
+            ],
+            "missing_source_anchors": [],
+        }
+    )
+    test_run = make_run("2")
+    attach_source_grounding(test_run, {"Bench::1::2": test_mismatch})
+    assert test_run.tests[0].dimension_scores["source_grounding"] == 0.0
+    assert test_run.tests[0].risk == "major"

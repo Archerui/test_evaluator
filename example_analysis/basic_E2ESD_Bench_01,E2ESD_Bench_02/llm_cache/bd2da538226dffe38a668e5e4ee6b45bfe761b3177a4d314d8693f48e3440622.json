@@ -1,0 +1,63 @@
+{
+  "agent": "oracle_critic",
+  "record_key": "E2ESD_Bench_02::3::3",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "oracle_strength",
+  "status": "FAIL",
+  "confidence": 0.85,
+  "findings": [
+    {
+      "criterion": "Behaviour 3.1-create-enters-edit — The textarea (data-testid=\"note-textarea\") should be visible immediately upon note creation",
+      "status": "FAIL",
+      "severity": "critical",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Upon creation, the note should immediately enter edit mode: the textarea (data-testid=\"note-textarea\") is visible for user input, while the main content area (data-testid=\"note-main\") remains hidden.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "textarea.is_displayed()",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The test's check for the textarea uses textarea.is_displayed(), which static_facts classifies as an element_attribute_proxy (a DOM attribute observation). That assertion only inspects the element's visible state in the DOM and does not prove the application has entered the required 'edit mode' state (for example, an internal edit-mode flag or persistence behavior). Because the core observable (entering edit mode immediately) is only validated via a DOM attribute proxy, regressions that break the actual edit-mode semantics could still pass the test.",
+      "suggested_fix": "Strengthen the oracle: assert a concrete application state change in addition to DOM visibility (for example, check a dedicated edit-mode attribute/class on the note element, or verify the note's persisted state in localStorage immediately after creation). If the app exposes an internal flag or data-* attribute when edit mode is active, assert its exact value rather than relying solely on is_displayed()."
+    },
+    {
+      "criterion": "Behaviour 3.1-create-enters-edit — The main content area (data-testid=\"note-main\") should be hidden immediately upon note creation",
+      "status": "FAIL",
+      "severity": "critical",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Upon creation, the note should immediately enter edit mode: the textarea (data-testid=\"note-textarea\") is visible for user input, while the main content area (data-testid=\"note-main\") remains hidden.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "not main_content.is_displayed()",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The test asserts the main content is hidden by checking main_content.is_displayed() and negating it; static_facts marks this as an element_attribute_proxy. This only verifies DOM visibility, not that the application correctly switched to edit mode at the state or persistence level. Thus the observable required by the behaviour contract is not strongly asserted and a UI-only or timing regression could let broken behaviour slip through.",
+      "suggested_fix": "Make the negative assertion stronger: check for an explicit edit-mode indicator (class, attribute, or JS-exposed property) or validate that the non-edit representation is removed/empty in the DOM and that the note's edit state is reflected in persisted storage (e.g., localStorage) immediately after creation."
+    }
+  ]
+}

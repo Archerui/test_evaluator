@@ -1,0 +1,107 @@
+[
+{
+  "description": [
+    "The system should calculate and display the total price of all products in the cart, updating the total each time a product is added."
+  ],
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "features/test.feature:5",
+      "name": "[Normal] Add the same product multiple times and verify total price",
+      "status": "passed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "features/test.feature:6",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:45"
+          },
+          "name": "the webpage is loaded with a list of products",
+          "result": {
+            "duration": 1.5980751514434814,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "When",
+          "location": "features/test.feature:7",
+          "match": {
+            "arguments": [
+              {
+                "name": "product_testid",
+                "value": "product-item-3"
+              },
+              {
+                "name": "drop_area_testid",
+                "value": "drop-area"
+              }
+            ],
+            "location": "features/steps/steps.py:51"
+          },
+          "name": "the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"",
+          "result": {
+            "duration": 1.0390870571136475,
+            "status": "passed"
+          },
+          "step_type": "when"
+        },
+        {
+          "keyword": "And",
+          "location": "features/test.feature:8",
+          "match": {
+            "arguments": [
+              {
+                "name": "product_testid",
+                "value": "product-item-3"
+              },
+              {
+                "name": "drop_area_testid",
+                "value": "drop-area"
+              }
+            ],
+            "location": "features/steps/steps.py:51"
+          },
+          "name": "the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"",
+          "result": {
+            "duration": 1.0120460987091064,
+            "status": "passed"
+          },
+          "step_type": "when"
+        },
+        {
+          "keyword": "Then",
+          "location": "features/test.feature:9",
+          "match": {
+            "arguments": [
+              {
+                "name": "total_price_id",
+                "value": "allMoney"
+              },
+              {
+                "name": "expected_price",
+                "value": "$70.00"
+              }
+            ],
+            "location": "features/steps/steps.py:70"
+          },
+          "name": "the total price displayed in the element with id \"allMoney\" should be \"$70.00\"",
+          "result": {
+            "duration": 1.0135979652404785,
+            "status": "passed"
+          },
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "features/test.feature:1",
+  "name": "Calculate and display the total price of products in the cart",
+  "status": "passed",
+  "tags": []
+}
+]

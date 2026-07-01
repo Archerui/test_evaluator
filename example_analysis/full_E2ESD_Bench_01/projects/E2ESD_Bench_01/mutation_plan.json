@@ -1,0 +1,736 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "mutants": [
+    {
+      "mutant_id": "E2ESD_Bench_01-m33557c7e5dc6",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "event_name",
+      "file_path": "index.html",
+      "line_start": 21,
+      "original": "window.onload = function () {",
+      "mutated": "window.on__mutated_load__ = function () {",
+      "behavior_candidates": [
+        "1.1",
+        "1.3",
+        "3.normal.product_list_visible_on_load",
+        "B-5-1-add-single-product-updates-total"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mca5115e03cb8",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "event_name",
+      "file_path": "index.html",
+      "line_start": 31,
+      "original": "        aLi[i].ondragstart = function (ev) {",
+      "mutated": "        aLi[i].on__mutated_dragstart__ = function (ev) {",
+      "behavior_candidates": [
+        "1.2",
+        "1.3",
+        "1.4",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m1a7468a55232",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "event_name",
+      "file_path": "index.html",
+      "line_start": 41,
+      "original": "    oDiv.ondragover = function (ev) {",
+      "mutated": "    oDiv.on__mutated_dragover__ = function (ev) {",
+      "behavior_candidates": [
+        "1.2",
+        "1.3",
+        "1.4",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m137c2855bb5b",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "event_name",
+      "file_path": "index.html",
+      "line_start": 45,
+      "original": "    oDiv.ondrop = function (ev) {",
+      "mutated": "    oDiv.on__mutated_drop__ = function (ev) {",
+      "behavior_candidates": [
+        "1.4",
+        "1.5",
+        "1.6",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 62,
+      "original": "            oSpan.innerHTML = 1;",
+      "mutated": "            oSpan.innerHTML = \"\";",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 63,
+      "original": "            oP.appendChild(oSpan);",
+      "mutated": "            /* mutation: DOM update removed */",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 67,
+      "original": "            oSpan.innerHTML = sTitle;",
+      "mutated": "            oSpan.innerHTML = \"\";",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 68,
+      "original": "            oP.appendChild(oSpan);",
+      "mutated": "            /* mutation: DOM update removed */",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 72,
+      "original": "            oSpan.innerHTML = sMoney;",
+      "mutated": "            oSpan.innerHTML = \"\";",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 73,
+      "original": "            oP.appendChild(oSpan);",
+      "mutated": "            /* mutation: DOM update removed */",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 75,
+      "original": "            oDiv.appendChild(oP);",
+      "mutated": "            /* mutation: DOM update removed */",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m1da5859e33ed",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 84,
+      "original": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;",
+      "mutated": "                    box1[i].innerHTML = \"\";",
+      "behavior_candidates": [
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m76d462f36706",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 97,
+      "original": "        allMoney.innerHTML = `${currencySymbol}${iNum.toFixed(2)}`; // 显示两位小数",
+      "mutated": "        allMoney.innerHTML = \"\"; // 显示两位小数",
+      "behavior_candidates": [
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m819be1db6300",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "dom_update",
+      "file_path": "index.html",
+      "line_start": 98,
+      "original": "        oDiv.appendChild(allMoney);",
+      "mutated": "        /* mutation: DOM update removed */",
+      "behavior_candidates": [
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m0cec907a22db",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "string_literal",
+      "file_path": "index.html",
+      "line_start": 23,
+      "original": "    var oDiv = document.getElementById('div1');",
+      "mutated": "    var oDiv = document.getElementById('__mutated_div1__');",
+      "behavior_candidates": [
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m976254f1b78e",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "string_literal",
+      "file_path": "index.html",
+      "line_start": 79,
+      "original": "            var box1 = document.getElementsByClassName('box1');",
+      "mutated": "            var box1 = document.getElementsByClassName('__mutated_box1__');",
+      "behavior_candidates": [
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mca040c016b3e",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "string_literal",
+      "file_path": "index.html",
+      "line_start": 80,
+      "original": "            var box2 = document.getElementsByClassName('box2');",
+      "mutated": "            var box2 = document.getElementsByClassName('__mutated_box2__');",
+      "behavior_candidates": [
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m6c6926cf32e9",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "comparison",
+      "file_path": "index.html",
+      "line_start": 83,
+      "original": "                if (box2[i].innerHTML == sTitle) {",
+      "mutated": "                if (box2[i].innerHTML != sTitle) {",
+      "behavior_candidates": [
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m3a3759d24959",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 26,
+      "original": "    var iNum = 0; // 总金额",
+      "mutated": "    var iNum = 1; // 总金额",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-md72a1bf9a3c3",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 30,
+      "original": "    for (var i = 0; i < aLi.length; i++) {",
+      "mutated": "    for (var i = 1; i < aLi.length; i++) {",
+      "behavior_candidates": [
+        "1.1",
+        "1.3",
+        "1.5",
+        "1.6",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m60f1ff8eb429",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 37,
+      "original": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+      "mutated": "            ev.dataTransfer.setDragImage(this, 0, 1);",
+      "behavior_candidates": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-m4f3d9524fe2a",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 37,
+      "original": "            ev.dataTransfer.setDragImage(this, 0, 0);",
+      "mutated": "            ev.dataTransfer.setDragImage(this, 1, 0);",
+      "behavior_candidates": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total",
+        "B-5-4-real-time-total-update-on-add"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mf968e5b179f6",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 62,
+      "original": "            oSpan.innerHTML = 1;",
+      "mutated": "            oSpan.innerHTML = 0;",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mb448823926e0",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 77,
+      "original": "            obj[sTitle] = 1;",
+      "mutated": "            obj[sTitle] = 0;",
+      "behavior_candidates": [],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-mb178dd83a3e6",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 82,
+      "original": "            for (var i = 0; i < box2.length; i++) {",
+      "mutated": "            for (var i = 1; i < box2.length; i++) {",
+      "behavior_candidates": [
+        "1.1",
+        "1.3",
+        "1.5",
+        "1.6",
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop",
+        "3.normal.cart_total_updates_and_formats_currency",
+        "B-5-1-add-single-product-updates-total",
+        "B-5-2-sum-multiple-products-updates-total",
+        "B-5-3-repeated-drops-increment-quantity-and-affect-total"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::1::1",
+        "E2ESD_Bench_01::1::2",
+        "E2ESD_Bench_01::1::3",
+        "E2ESD_Bench_01::1::4",
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4",
+        "E2ESD_Bench_01::5::1",
+        "E2ESD_Bench_01::5::2",
+        "E2ESD_Bench_01::5::3",
+        "E2ESD_Bench_01::5::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-ma456a4d75b65",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "numeric_literal",
+      "file_path": "index.html",
+      "line_start": 84,
+      "original": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;",
+      "mutated": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 0;",
+      "behavior_candidates": [
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    },
+    {
+      "mutant_id": "E2ESD_Bench_01-ma7e0eb5c1fe0",
+      "project_id": "E2ESD_Bench_01",
+      "operator": "arithmetic",
+      "file_path": "index.html",
+      "line_start": 84,
+      "original": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) + 1;",
+      "mutated": "                    box1[i].innerHTML = parseInt(box1[i].innerHTML) - 1;",
+      "behavior_candidates": [
+        "3.normal.add_multiple_distinct_products_create_separate_entries",
+        "3.normal.add_same_product_multiple_times_increments_quantity",
+        "3.normal.add_single_product_via_drag_and_drop"
+      ],
+      "impacted_record_keys": [
+        "E2ESD_Bench_01::3::1",
+        "E2ESD_Bench_01::3::2",
+        "E2ESD_Bench_01::3::3",
+        "E2ESD_Bench_01::3::4"
+      ],
+      "suspected_equivalent": false
+    }
+  ],
+  "skipped_candidates": []
+}

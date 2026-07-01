@@ -1,0 +1,759 @@
+{
+  "source": "full_mutation_outcomes",
+  "scoring_effect": "none",
+  "observation_count": 80,
+  "matched_count": 42,
+  "accuracy": 0.525,
+  "confusion": {
+    "likely_detected__killed": 42,
+    "likely_detected__survived": 38
+  },
+  "by_fault_class": {
+    "dom_update": {
+      "observations": 68,
+      "matched": 36,
+      "accuracy": 0.5294117647058824
+    },
+    "string_literal": {
+      "observations": 12,
+      "matched": 6,
+      "accuracy": 0.5
+    }
+  },
+  "observations": [
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-826a2afed0",
+      "mutant_id": "E2ESD_Bench_01-m1da5859e33ed",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-979d83d02b",
+      "mutant_id": "E2ESD_Bench_01-m0cec907a22db",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-979d83d02b",
+      "mutant_id": "E2ESD_Bench_01-m976254f1b78e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::1",
+      "hypothesis_id": "static-979d83d02b",
+      "mutant_id": "E2ESD_Bench_01-mca040c016b3e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-556e1510d4",
+      "mutant_id": "E2ESD_Bench_01-m1da5859e33ed",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-8026eecd53",
+      "mutant_id": "E2ESD_Bench_01-m0cec907a22db",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-8026eecd53",
+      "mutant_id": "E2ESD_Bench_01-m976254f1b78e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::2",
+      "hypothesis_id": "static-8026eecd53",
+      "mutant_id": "E2ESD_Bench_01-mca040c016b3e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-160a45d158",
+      "mutant_id": "E2ESD_Bench_01-m1da5859e33ed",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-a6ee90c20a",
+      "mutant_id": "E2ESD_Bench_01-m0cec907a22db",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-a6ee90c20a",
+      "mutant_id": "E2ESD_Bench_01-m976254f1b78e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::3",
+      "hypothesis_id": "static-a6ee90c20a",
+      "mutant_id": "E2ESD_Bench_01-mca040c016b3e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-ae5f815cef",
+      "mutant_id": "E2ESD_Bench_01-m1da5859e33ed",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-e517328f59",
+      "mutant_id": "E2ESD_Bench_01-m0cec907a22db",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-e517328f59",
+      "mutant_id": "E2ESD_Bench_01-m976254f1b78e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::3::4",
+      "hypothesis_id": "static-e517328f59",
+      "mutant_id": "E2ESD_Bench_01-mca040c016b3e",
+      "fault_class": "string_literal",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-m76d462f36706",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::1",
+      "hypothesis_id": "static-d648d3f3df",
+      "mutant_id": "E2ESD_Bench_01-m819be1db6300",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-m76d462f36706",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::2",
+      "hypothesis_id": "static-dcc7ff281a",
+      "mutant_id": "E2ESD_Bench_01-m819be1db6300",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-m76d462f36706",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::3",
+      "hypothesis_id": "static-89ad967076",
+      "mutant_id": "E2ESD_Bench_01-m819be1db6300",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-m6c3c5fe4be37",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-mc5efa4ace1b0",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-m385c97ea419c",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-m1a63cbe1144f",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-mbb6fadc93d33",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-mc59b50551451",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-m5972e8c6ca40",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "survived",
+      "matched": false
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-m76d462f36706",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    },
+    {
+      "record_key": "E2ESD_Bench_01::5::4",
+      "hypothesis_id": "static-45ba4746fb",
+      "mutant_id": "E2ESD_Bench_01-m819be1db6300",
+      "fault_class": "dom_update",
+      "prediction": "likely_detected",
+      "actual": "killed",
+      "matched": true
+    }
+  ],
+  "recommendations": [
+    {
+      "fault_class": "dom_update",
+      "issue": "static_overconfidence",
+      "observation_count": 32,
+      "action": "Require a more direct or more specific assertion path before predicting likely_detected for this generic fault class."
+    },
+    {
+      "fault_class": "string_literal",
+      "issue": "static_overconfidence",
+      "observation_count": 6,
+      "action": "Require a more direct or more specific assertion path before predicting likely_detected for this generic fault class."
+    }
+  ]
+}

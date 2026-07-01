@@ -69,7 +69,7 @@ def analyze_dynamic_oracle(request: DynamicOracleInput) -> DynamicOracleOutput:
             ]
         findings.append(
             Finding(
-                criterion=f"Dynamic oracle distinguishes mutant {result.mutant_id}",
+                criterion=f"Dynamic oracle fails to distinguish mutant {result.mutant_id}",
                 status=Status.FAIL,
                 severity=Severity.MAJOR,
                 confidence=1.0,

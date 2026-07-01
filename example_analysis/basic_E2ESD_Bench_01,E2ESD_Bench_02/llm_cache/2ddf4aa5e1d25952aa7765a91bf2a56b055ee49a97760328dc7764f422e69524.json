@@ -1,0 +1,71 @@
+{
+  "agent": "bdd_traceability",
+  "record_key": "E2ESD_Bench_02::2::3",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "spec_alignment",
+  "status": "PASS",
+  "confidence": 0.78,
+  "findings": [
+    {
+      "criterion": "Scenario asserts the required precondition, actor action, and the primary expected observable (raw input displayed) for the invalid-markdown-on-exit behaviour.",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "When the user enters \"This is not **valid Markdown\" into the textarea with data-testid \"note-textarea\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "Then the main display area with data-testid \"note-main\" should render \"This is not **valid Markdown\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The behaviour contract requires that an invalid/unmatched Markdown input in the textarea and exiting edit mode via the Edit button results in the main display showing the raw input. The scenario supplies the invalid input in the noted textarea, performs the Edit-button exit action, and asserts that the main display renders the exact raw string. These steps directly map to the contract's precondition, actor action, and primary observable.",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "Scenario does not assert the required constraint that the app remains responsive / shows no crash or unhandled error when exiting edit mode with invalid Markdown.",
+      "status": "WARNING",
+      "severity": "major",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "Then the main display area with data-testid \"note-main\" should render \"This is not **valid Markdown\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The behaviour contract explicitly requires that invalid Markdown must not cause crashes or unhandled errors and that the app remains responsive as a user-observable outcome. The scenario asserts only that the main display shows the raw text; it does not include any step or assertion that verifies the app did not crash or that no unhandled error is visible to the user.",
+      "suggested_fix": "Add an explicit Then step that verifies the app remains responsive or that no error/crash indicator is visible after exiting edit mode (for example: check that the page is still interactive, no error banner/text is present, or a visible 'edit' control remains enabled)."
+    }
+  ]
+}

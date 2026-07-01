@@ -2,9 +2,12 @@ from test_evaluator.reporting import render_markdown, render_project_markdown
 from test_evaluator.schemas import (
     AgentReview,
     EvaluationRun,
+    FailureAttribution,
     ProjectReport,
     RequirementReport,
     RunHealth,
+    RuntimeResult,
+    RuntimeTrace,
     StaticFacts,
     Status,
     TestReport as Report,
@@ -103,3 +106,58 @@ def test_basic_report_exposes_dimension_and_evidence_unknowns() -> None:
     project_markdown = render_project_markdown(run, "Bench")
     assert "| Test | Basic | Basic Evidence | Unknown dimensions | Risk |" in project_markdown
     assert "Full test quality" not in project_markdown
+
+
+def test_full_report_exposes_failure_origin_and_test_quality_effect() -> None:
+    runtime = RuntimeResult(
+        record_key="Bench::1::1",
+        status="fail",
+        error_type="assertion_failure",
+        failed_step="Then the result is visible",
+        duration_seconds=1.25,
+    )
+    report = Report(
+        record_key=runtime.record_key,
+        project_id="Bench",
+        requirement_id="1",
+        test_id="1",
+        scenario_type="Normal",
+        confidence_coverage=0.55,
+        basic_confidence_coverage=1.0,
+        full_confidence_coverage=0.55,
+        risk="low",
+        dimension_scores={
+            "spec_alignment": 1.0,
+            "step_traceability": 1.0,
+            "oracle_strength": 1.0,
+            "robustness": 1.0,
+            "runtime_result": None,
+        },
+        static_facts=StaticFacts(python_parseable=True, scenario_present=True),
+        runtime=runtime,
+        runtime_trace=RuntimeTrace(
+            record_key=runtime.record_key,
+            execution_status=runtime,
+            likely_failure_cause="app_bug",
+            failure_attribution=FailureAttribution(
+                origin="application_defect",
+                confidence=0.78,
+                test_quality_effect="neutral",
+                reasoning="The test is supported; the observed application state is incorrect.",
+                signals=["basic_semantics_pass", "assertion_observed_mismatch"],
+            ),
+        ),
+    )
+    run = EvaluationRun(
+        mode="full",
+        tests=[report],
+        requirements=[],
+        projects=[ProjectReport(project_id="Bench", test_count=1, requirement_count=0)],
+    )
+
+    markdown = render_markdown(run)
+
+    assert "| Runtime | Failure origin | Stability |" in markdown
+    assert "application_defect | neutral | 78%" in markdown
+    assert "### Failure Attribution Details" in markdown
+    assert "The test is supported; the observed application state is incorrect." in markdown

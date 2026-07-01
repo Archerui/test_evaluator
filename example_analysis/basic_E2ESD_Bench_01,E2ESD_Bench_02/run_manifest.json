@@ -1,0 +1,189 @@
+{
+  "checkpoints": [
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:06:58.223135+00:00",
+      "input_hash": null,
+      "output_artifacts": [],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:06:58.223120+00:00",
+      "state": "CREATED",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:06:58.224858+00:00",
+      "input_hash": "0b39af902a42ee0e135ad704935fe664ab6c8bcb6abb45ed37a91f19c532af81",
+      "output_artifacts": [
+        {
+          "description": "DISCOVER_INPUTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/01_discover_inputs.json",
+          "sha256": "99d33ece860d7b88003d983e237c0a2930f0f5489a62fa3143daa1cd6e3e9f32"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:06:58.224426+00:00",
+      "state": "DISCOVER_INPUTS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:06:58.231533+00:00",
+      "input_hash": "77c38746c8b26702c43d7f14703f955af9148924211743a0825da15bc45976ba",
+      "output_artifacts": [
+        {
+          "description": "LOAD_RECORDS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/02_load_records.json",
+          "sha256": "20a8618307dde67fef4ea33b62e8d9830e1d9c2022a9aa20de33052406c4fdc2"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:06:58.225207+00:00",
+      "state": "LOAD_RECORDS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:06:58.324144+00:00",
+      "input_hash": "7472d3173c91e7576c8a39414337f27dac0ac5ac25dff05d73a22987e05b50c5",
+      "output_artifacts": [
+        {
+          "description": "STATIC_VERIFY checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/03_static_verify.json",
+          "sha256": "dddacdf283e578f88bfabfeb30337b0d4807f53da47d78cf99c6893cf362b231"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:06:58.232688+00:00",
+      "state": "STATIC_VERIFY",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:12:03.196302+00:00",
+      "input_hash": "e8b6cee376763a209a32b3e1f5945efebb3dbc3810b86dd27d506d2bfac67225",
+      "output_artifacts": [
+        {
+          "description": "BUILD_REQUIREMENT_CONTRACTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/04_build_requirement_contracts.json",
+          "sha256": "e45e4d72532695dec7daa909cedf97e4723c83ad38be3b19b287ab9a783e69e4"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:06:58.324828+00:00",
+      "state": "BUILD_REQUIREMENT_CONTRACTS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:31:26.164897+00:00",
+      "input_hash": "f21d9d05edf3612506edc735c2d81d2ec604879f126cc8b1d6216fe177886bf5",
+      "output_artifacts": [
+        {
+          "description": "BASIC_PARALLEL_REVIEWS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/05_basic_parallel_reviews.json",
+          "sha256": "9a46eb72c13c6f330cdf533c7c2e8cda5752c450a360089f076c6ceb1272e074"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:12:03.198584+00:00",
+      "state": "BASIC_PARALLEL_REVIEWS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:38:11.315423+00:00",
+      "input_hash": "b61e647bf1f3aac3a44a19a15c555923fffcd41aa4fb39400918d08bf97d55e3",
+      "output_artifacts": [
+        {
+          "description": "BASIC_SUITE_REVIEW checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/06_basic_suite_review.json",
+          "sha256": "ac29fe3843ab88ee6c5cdb0eb5224b7d07465b1ea034654c6158c1dbcd3695a0"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:31:26.171223+00:00",
+      "state": "BASIC_SUITE_REVIEW",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:38:11.334885+00:00",
+      "input_hash": "34c931e24382686d40a3bfbbc1a37a88219092305f50e535a82aeb7c5e273772",
+      "output_artifacts": [
+        {
+          "description": "BASIC_COORDINATE checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/07_basic_coordinate.json",
+          "sha256": "8536a0fcf2925f9d919f6f81fd3d3acc3436a084d796c3c327e7f117c26863fc"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:38:11.319357+00:00",
+      "state": "BASIC_COORDINATE",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:38:11.348814+00:00",
+      "input_hash": "023a599db1ecfdd64de99d009ce0a66e03f943e1ae3ab64ce8765d24fae049d0",
+      "output_artifacts": [
+        {
+          "description": "WRITE_REPORTS checkpoint",
+          "kind": "checkpoint",
+          "path": "checkpoints/20_write_reports.json",
+          "sha256": "b391cad127c3d35699063b9b8e688c8bf240d2fd7282bb01387d1e82238fde1b"
+        }
+      ],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:38:11.343425+00:00",
+      "state": "WRITE_REPORTS",
+      "status": "succeeded"
+    },
+    {
+      "attempts": 1,
+      "error_summary": null,
+      "finished_at": "2026-07-01T16:38:11.349252+00:00",
+      "input_hash": null,
+      "output_artifacts": [],
+      "recoverable": true,
+      "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+      "started_at": "2026-07-01T16:38:11.349244+00:00",
+      "state": "COMPLETED",
+      "status": "succeeded"
+    }
+  ],
+  "config_hash": "d00c241ed820baf7b74a25344f7b409c0122ea77e3838986a883f17fdb5d3189",
+  "current_state": "COMPLETED",
+  "mode": "basic",
+  "mutant_status": {},
+  "output_dir": "/home/rkr/siemens/test_evaluator/example_analysis",
+  "project_status": {},
+  "record_status": {},
+  "run_id": "bf022d265aa3458b81af1598e2c1faf1",
+  "semantic_mode": "live"
+}

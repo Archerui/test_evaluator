@@ -71,9 +71,19 @@ def _line(text: str, offset: int) -> int:
 
 def _contract_selector(anchor: str) -> str | None:
     candidate = _canonical(anchor)
-    test_id = re.search(r"data-test(?:id|-id)\s*[=: ]\s*['\"]?([\w${}.-]+)", candidate)
+    # Only treat explicit assignments as literal selectors. Natural-language
+    # phrases such as ``data-testid like \"product-item-1\"`` and
+    # ``same data-testid as the existing item`` describe examples/relations;
+    # the old whitespace alternative incorrectly produced selectors named
+    # ``like`` and ``as`` from them.
+    test_id = re.search(
+        r"\bdata-test(?:id|-id)\b\s*(?:=|:)\s*(?:['\"](?P<quoted>[\w${}.-]+)['\"]|(?P<bare>[\w${}.-]+))",
+        candidate,
+        re.IGNORECASE,
+    )
     if test_id:
-        return f'[data-testid="{test_id.group(1)}"]'
+        value = test_id.group("quoted") or test_id.group("bare")
+        return f'[data-testid="{value}"]'
     if candidate.startswith(("#", ".", "[", "//")):
         return candidate
     return None

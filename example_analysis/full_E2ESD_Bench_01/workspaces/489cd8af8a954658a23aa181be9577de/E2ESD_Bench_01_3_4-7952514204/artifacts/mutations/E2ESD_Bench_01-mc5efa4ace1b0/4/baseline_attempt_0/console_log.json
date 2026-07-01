@@ -1,0 +1,32 @@
+[
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/997ef04fc750d1b9/795251420477a27c/app/img/img1.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928125632
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/997ef04fc750d1b9/795251420477a27c/app/img/img2.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928125633
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/997ef04fc750d1b9/795251420477a27c/app/img/img3.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928125633
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/997ef04fc750d1b9/795251420477a27c/app/img/img4.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928125633
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/997ef04fc750d1b9/795251420477a27c/app/index.html 36:28 Uncaught TypeError: ev.dataTransfer.setDragImage is not a function",
+    "source": "javascript",
+    "timestamp": 1782928127673
+  }
+]

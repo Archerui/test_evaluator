@@ -4,11 +4,13 @@ from pathlib import Path
 from test_evaluator.coverage import collect_coverage
 from test_evaluator.runtime_trace import trace_runtime
 from test_evaluator.schemas import (
+    AgentReview,
     ArtifactRef,
     CoverageInput,
     ProjectInventory,
     RuntimeResult,
     RuntimeTraceInput,
+    SelectorGroundingOutput,
     StaticFacts,
     Status,
     TestRecord as Record,
@@ -30,6 +32,45 @@ def _record() -> Record:
 
 def _facts() -> StaticFacts:
     return StaticFacts(python_parseable=True, scenario_present=True, sleep_count=1)
+
+
+def _semantic_reviews(*, step: Status = Status.PASS) -> list[AgentReview]:
+    return [
+        AgentReview(
+            agent="bdd_traceability",
+            record_key=_record().record_key,
+            dimension="spec_alignment",
+            status=Status.PASS,
+            confidence=0.9,
+        ),
+        AgentReview(
+            agent="step_code",
+            record_key=_record().record_key,
+            dimension="step_traceability",
+            status=step,
+            confidence=0.9,
+        ),
+        AgentReview(
+            agent="oracle_critic",
+            record_key=_record().record_key,
+            dimension="oracle_strength",
+            status=Status.PASS,
+            confidence=0.9,
+        ),
+    ]
+
+
+def _grounding(status: Status = Status.PASS, *, missing: list[str] | None = None):
+    return SelectorGroundingOutput(
+        agent="selector_grounding",
+        run_id="run",
+        mode="full",
+        record_key=_record().record_key,
+        dimension="source_grounding",
+        status=status,
+        confidence=0.9,
+        missing_source_anchors=missing or [],
+    )
 
 
 def _workspace(tmp_path: Path) -> WorkspaceSpec:
@@ -84,7 +125,9 @@ def test_runtime_trace_distinguishes_environment_and_test_failures(tmp_path: Pat
             static_facts=_facts(),
         )
     )
-    assert selector.runtime_trace.likely_failure_cause == "selector_issue"
+    assert selector.runtime_trace.likely_failure_cause == "indeterminate"
+    assert selector.runtime_trace.failure_attribution.origin == "indeterminate"
+    assert selector.runtime_trace.failure_attribution.test_quality_effect == "unknown"
     assert selector.runtime_trace.flaky_risk == "medium"
     assert selector.findings
 
@@ -116,6 +159,78 @@ def test_runtime_trace_distinguishes_environment_and_test_failures(tmp_path: Pat
         "network",
         "browser_api",
     }
+
+
+def test_runtime_failure_attribution_protects_test_quality_from_application_failures() -> None:
+    application = trace_runtime(
+        RuntimeTraceInput(
+            run_id="run",
+            record=_record(),
+            runtime=RuntimeResult(
+                record_key=_record().record_key,
+                status="fail",
+                error_type="assertion_failure",
+                failed_step="Then unit",
+            ),
+            static_facts=_facts(),
+            reviews=_semantic_reviews(),
+            selector_grounding=_grounding(),
+        )
+    )
+
+    attribution = application.runtime_trace.failure_attribution
+    assert attribution.origin == "application_defect"
+    assert attribution.test_quality_effect == "neutral"
+    assert application.status is Status.UNKNOWN
+
+
+def test_runtime_failure_attribution_penalizes_evidence_backed_test_defects() -> None:
+    test_defect = trace_runtime(
+        RuntimeTraceInput(
+            run_id="run",
+            record=_record(),
+            runtime=RuntimeResult(
+                record_key=_record().record_key,
+                status="fail",
+                error_type="assertion_failure",
+                failed_step="Then unit",
+            ),
+            static_facts=_facts(),
+            reviews=_semantic_reviews(step=Status.FAIL),
+            selector_grounding=_grounding(),
+        )
+    )
+
+    attribution = test_defect.runtime_trace.failure_attribution
+    assert attribution.origin == "test_defect"
+    assert attribution.test_quality_effect == "penalize"
+    assert test_defect.status is Status.FAIL
+
+
+def test_runtime_failure_attribution_keeps_required_source_mismatch_neutral() -> None:
+    mismatch = trace_runtime(
+        RuntimeTraceInput(
+            run_id="run",
+            record=_record(),
+            runtime=RuntimeResult(
+                record_key=_record().record_key,
+                status="fail",
+                error_type="selector_not_found",
+                failed_step="Then unit",
+            ),
+            static_facts=_facts(),
+            reviews=_semantic_reviews(),
+            selector_grounding=_grounding(
+                Status.FAIL,
+                missing=['[data-testid="required-result"]'],
+            ),
+        )
+    )
+
+    attribution = mismatch.runtime_trace.failure_attribution
+    assert attribution.origin == "contract_or_dataset_mismatch"
+    assert attribution.test_quality_effect == "neutral"
+    assert mismatch.status is Status.UNKNOWN
 
 
 def test_coverage_normalizes_cdp_ranges(tmp_path: Path) -> None:

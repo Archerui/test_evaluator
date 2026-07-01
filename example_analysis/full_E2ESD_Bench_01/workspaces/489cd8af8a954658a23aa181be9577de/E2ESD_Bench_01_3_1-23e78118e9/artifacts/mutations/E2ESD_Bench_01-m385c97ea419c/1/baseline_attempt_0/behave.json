@@ -1,0 +1,103 @@
+[
+{
+  "description": [
+    "The system should add the product to the cart display, showing the product's title, price, and quantity when a product item is dropped into the drop area."
+  ],
+  "elements": [
+    {
+      "keyword": "Scenario",
+      "location": "features/test.feature:5",
+      "name": "[Normal] Add a single product to the cart",
+      "status": "failed",
+      "steps": [
+        {
+          "keyword": "Given",
+          "location": "features/test.feature:6",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:35"
+          },
+          "name": "the webpage is loaded",
+          "result": {
+            "duration": 1.5425028800964355,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "And",
+          "location": "features/test.feature:7",
+          "match": {
+            "arguments": [
+              {
+                "name": "data_testid",
+                "value": "product-item-1"
+              }
+            ],
+            "location": "features/steps/steps.py:41"
+          },
+          "name": "the product item with data-testid \"product-item-1\" is visible",
+          "result": {
+            "duration": 1.0161635875701904,
+            "status": "passed"
+          },
+          "step_type": "given"
+        },
+        {
+          "keyword": "When",
+          "location": "features/test.feature:8",
+          "match": {
+            "arguments": [],
+            "location": "features/steps/steps.py:49"
+          },
+          "name": "the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"",
+          "result": {
+            "duration": 1.0166125297546387,
+            "status": "passed"
+          },
+          "step_type": "when"
+        },
+        {
+          "keyword": "Then",
+          "location": "features/test.feature:9",
+          "match": {
+            "arguments": [
+              {
+                "name": "expected_title",
+                "value": "The Essence of JavaScript"
+              }
+            ],
+            "location": "features/steps/steps.py:56"
+          },
+          "name": "the cart display should show a product with title \"The Essence of JavaScript\"",
+          "result": {
+            "duration": 0.01589655876159668,
+            "error_message": "ASSERT FAILED: Expected title 'The Essence of JavaScript' not found in cart display",
+            "status": "failed"
+          },
+          "step_type": "then"
+        },
+        {
+          "keyword": "And",
+          "location": "features/test.feature:10",
+          "name": "the price \"$40\"",
+          "step_type": "then"
+        },
+        {
+          "keyword": "And",
+          "location": "features/test.feature:11",
+          "name": "the quantity \"1\"",
+          "step_type": "then"
+        }
+      ],
+      "tags": [],
+      "type": "scenario"
+    }
+  ],
+  "keyword": "Feature",
+  "location": "features/test.feature:1",
+  "name": "Add product to cart display when dropped into the drop area",
+  "status": "failed",
+  "tags": []
+}
+]

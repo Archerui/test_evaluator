@@ -1,0 +1,182 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "requirement_id": "3",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "3.normal.product_list_visible_on_load",
+      "kind": "normal",
+      "preconditions": [
+        "The application page is loaded"
+      ],
+      "actor_actions": [
+        "Observe the product list area after page load"
+      ],
+      "expected_observables": [
+        "A list of products is visible where each product shows an image, title, and price"
+      ],
+      "state_effects": [
+        "Product list DOM nodes are present and rendered"
+      ],
+      "ui_anchors": [
+        "product list container (items with data-testid like \"product-item-1\", \"product-item-2\")",
+        "product image elements (src attributes referencing img/img1.jpg, img/img2.jpg, ...)",
+        "product title and price text within each product item"
+      ],
+      "constraints": [
+        "No interaction is required; observation happens immediately after page load"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "When the page loads, the user can see a list of products, each with an image, title, and price.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal.add_single_product_via_drag_and_drop",
+      "kind": "normal",
+      "preconditions": [
+        "Page is loaded and product items are visible",
+        "Drop area is present with id=\"div1\" (data-testid=\"drop-area\")"
+      ],
+      "actor_actions": [
+        "Click and hold a product item element (e.g. data-testid=\"product-item-1\"), drag it over the drop area (id=\"div1\" / data-testid=\"drop-area\"), and release the mouse button to drop"
+      ],
+      "expected_observables": [
+        "After drop, the cart display shows the product title in .box2, the unit price in .box3, and quantity in .box1 for the added item"
+      ],
+      "state_effects": [
+        "The cart DOM is updated to include the dropped product entry with title, unit price, and quantity = 1"
+      ],
+      "ui_anchors": [
+        "draggable product items (data-testid=\"product-item-1\", data-testid=\"product-item-2\", ...)",
+        "drop target: #div1 (data-testid=\"drop-area\")",
+        "cart fields: .box2 (title), .box3 (unit price), .box1 (quantity)"
+      ],
+      "constraints": [
+        "The drop must occur over the element with id=\"div1\" (data-testid=\"drop-area\") for the cart to update"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal.add_same_product_multiple_times_increments_quantity",
+      "kind": "normal",
+      "preconditions": [
+        "A product already exists in the cart with quantity >= 1",
+        "Product items and drop area are present"
+      ],
+      "actor_actions": [
+        "Drag the same product item (same data-testid) and drop it again onto the drop area"
+      ],
+      "expected_observables": [
+        "The displayed quantity for that product in .box1 increments (e.g. 1 -> 2) rather than creating a separate entry"
+      ],
+      "state_effects": [
+        "Cart state increments the quantity counter for the existing product entry; no duplicate entries for the same product"
+      ],
+      "ui_anchors": [
+        "cart entry for the product showing .box1 (quantity) and .box2 (title) to identify the product",
+        "draggable product item with same data-testid as the existing cart entry"
+      ],
+      "constraints": [
+        "Repeated drops of the same product must affect the existing cart entry (matching by product identity) rather than adding an independent new entry"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "If the user drops the same product into the cart multiple times, the system increments the quantity of that product in the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal.add_multiple_distinct_products_create_separate_entries",
+      "kind": "normal",
+      "preconditions": [
+        "Multiple different product items are visible in the source list",
+        "Drop area is present"
+      ],
+      "actor_actions": [
+        "Drag product-item-A and drop into the drop area, then drag product-item-B and drop into the drop area"
+      ],
+      "expected_observables": [
+        "Each distinct dropped product appears as its own cart entry with its title (.box2), unit price (.box3), and quantity (.box1)"
+      ],
+      "state_effects": [
+        "Cart state contains separate entries for each distinct product, each with its own quantity and unit price"
+      ],
+      "ui_anchors": [
+        "product items by data-testid (different ids for distinct products)",
+        "cart entries showing .box2 (title), .box3 (unit price), .box1 (quantity)"
+      ],
+      "constraints": [
+        "Distinct products (different product identity) should not merge into a single cart entry"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system supports adding both different and repeated products.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal.cart_total_updates_and_formats_currency",
+      "kind": "normal",
+      "preconditions": [
+        "Cart contains one or more product entries with unit prices displayed",
+        "Total display area exists at the bottom of the cart"
+      ],
+      "actor_actions": [
+        "Add one or more products to the cart (via drag-and-drop) and observe the cart total area"
+      ],
+      "expected_observables": [
+        "The total cost displayed at the bottom of the cart updates to the sum of (unit price * quantity) for all cart entries and is shown with a currency symbol and two decimal places"
+      ],
+      "state_effects": [
+        "Cart total value is recalculated after each add and reflected in the UI"
+      ],
+      "ui_anchors": [
+        "cart total area at the bottom of the cart (visible summary showing currency-formatted total)"
+      ],
+      "constraints": [
+        "Formatting must include an appropriate currency symbol and two decimal places (e.g. $12.34); total must reflect current cart contents"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "source_requirements",
+          "quote": "The system calculates the total cost of all products in the cart and displays it at the bottom of the cart area, formatted with the appropriate currency symbol and two decimal places.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

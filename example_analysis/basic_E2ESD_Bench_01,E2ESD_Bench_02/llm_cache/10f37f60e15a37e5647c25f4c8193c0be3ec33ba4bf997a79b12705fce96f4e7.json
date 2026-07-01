@@ -1,0 +1,102 @@
+{
+  "status": "WARNING",
+  "confidence": 0.72,
+  "findings": [
+    {
+      "criterion": "B1_capture_on_dragstart: dragstart must populate the browser DataTransfer with title and price",
+      "status": "WARNING",
+      "severity": "major",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The drag event should capture the title and price of the product being dragged.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product title \"The Essence of JavaScript\" should be captured",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "Scenarios assert that a drag event is initiated and that title and price values are 'captured', but none of the supplied scenarios explicitly observe or assert the browser DataTransfer API contents (the behaviour contract's observable). The requirement's observability is 'browser_api', so proof should reference DataTransfer population (e.g., reading event.dataTransfer during dragstart).",
+      "suggested_fix": "Add or update a scenario to explicitly assert the DataTransfer contents during dragstart (e.g., verify event.dataTransfer.getData('text/plain') or equivalent contains both title and price)."
+    },
+    {
+      "criterion": "B2_product_item_structure_and_identifiers: product items must be li[draggable=\"true\"] and include image, title, price nodes with data-testid attributes",
+      "status": "WARNING",
+      "severity": "minor",
+      "confidence": 0.74,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Each product item contains an image, a title, and a price, identified by data-testid attributes such as 'product-item-1', 'product-title-1', and 'product-price-1'.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "When the user drags the product item with data-testid \"product-item-1\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "Scenarios reference product-item data-testids and perform drag actions, but none explicitly assert the DOM structure required by the contract (that the element is an li with draggable=\"true\") nor verify presence of the image, title, and price nodes each with the indicated data-testid patterns. The scenarios therefore provide partial evidence (data-testid usage) but not full structural proof.",
+      "suggested_fix": "Add assertions in at least one scenario that product items match li[draggable=\"true\"] and contain child nodes for image, title, and price with the expected data-testid attributes (e.g., check existence of [data-testid=\"product-title-1\"] and [data-testid=\"product-price-1\"])."
+    },
+    {
+      "criterion": "Suite scenario corpus: redundancy and variety of Normal/Edge/Error coverage",
+      "status": "WARNING",
+      "severity": "minor",
+      "confidence": 0.62,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product title \"The Essence of JavaScript\" should be captured",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product title \"JavaScript: The Definitive Guide\" should be captured",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product title \"Mastering JavaScript\" should be captured",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The suite includes three scenarios that exercise dragging products with different concrete titles/prices (highest, lowest, and a normal case). These are data variants of the same behaviour (capture-on-drag) and provide some edge-value checks, but they are near-duplicates rather than exercising additional behavioural dimensions (e.g., different DOM structures, varied dragstart timing, or explicit DataTransfer checks). The error scenario does add a negative case (non-draggable element).",
+      "suggested_fix": "Consolidate repetitive data-variant scenarios if desired and add orthogonal scenarios to exercise other dimensions: explicit DataTransfer reading, varying DOM node types, interrupted drags, or delayed dragstart handlers."
+    }
+  ],
+  "behavior_coverage": [
+    {
+      "behavior_id": "B1_capture_on_dragstart",
+      "status": "WARNING"
+    },
+    {
+      "behavior_id": "B2_product_item_structure_and_identifiers",
+      "status": "WARNING"
+    }
+  ]
+}

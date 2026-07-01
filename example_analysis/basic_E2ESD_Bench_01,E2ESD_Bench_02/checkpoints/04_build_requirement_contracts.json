@@ -1,0 +1,1051 @@
+{
+  "contracts": {
+    "E2ESD_Bench_01::1": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "User begins a drag (dragstart) on a product li element that has draggable=\"true\""
+          ],
+          "behavior_id": "B1_capture_on_dragstart",
+          "constraints": [
+            "Capture must occur during the drag (e.g., dragstart) so the title and price are available for transfer via the browser DataTransfer API",
+            "The dragged element must be a product li element (see UI anchors)"
+          ],
+          "expected_observables": [
+            "The drag event's DataTransfer is populated with the product's title and the product's price (both values captured for transfer)"
+          ],
+          "kind": "normal",
+          "observability": "browser_api",
+          "preconditions": [
+            "Product list is rendered and the user can interact with product items"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "The drag event should capture the title and price of the product being dragged."
+            }
+          ],
+          "state_effects": [],
+          "ui_anchors": [
+            "li[draggable=\"true\"]",
+            "[data-testid^=\"product-item-\"]",
+            "[data-testid^=\"product-title-\"]",
+            "[data-testid^=\"product-price-\"]"
+          ]
+        },
+        {
+          "actor_actions": [
+            "User views or attempts to drag a product item"
+          ],
+          "behavior_id": "B2_product_item_structure_and_identifiers",
+          "constraints": [
+            "Product item structure must include image, title, and price nodes and expose data-testid attributes such as 'product-item-N', 'product-title-N', and 'product-price-N'"
+          ],
+          "expected_observables": [
+            "Each product is represented by an li element with draggable=\"true\" and contains an image, a title element, and a price element identifiable by data-testid attributes (example patterns shown)"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Product list is rendered"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "Each product item contains an image, a title, and a price, identified by data-testid attributes such as 'product-item-1', 'product-title-1', and 'product-price-1'."
+            }
+          ],
+          "state_effects": [],
+          "ui_anchors": [
+            "li[draggable=\"true\"]",
+            "[data-testid=\"product-item-1\"]",
+            "[data-testid=\"product-title-1\"]",
+            "[data-testid=\"product-price-1\"]"
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_01",
+      "requirement_id": "1",
+      "suite_key": "E2ESD_Bench_01::1"
+    },
+    "E2ESD_Bench_01::3": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "User drags a product item (e.g. element with data-testid=\"product-item-1\") and drops it onto the designated drop area (id=\"div1\" / data-testid=\"drop-area\")."
+          ],
+          "behavior_id": "3.normal_add_item_on_drop",
+          "constraints": [
+            "The add action is triggered by dragging a product item into the element identified by id=\"div1\" or data-testid=\"drop-area\"."
+          ],
+          "expected_observables": [
+            "A new cart entry for the dropped product is displayed after the drop (visible in the cart UI area)."
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Product list is rendered and contains one or more product items with data-testid attributes (e.g. data-testid=\"product-item-1\").",
+            "Designated drop area is present (id=\"div1\", data-testid=\"drop-area\")."
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart."
+            }
+          ],
+          "state_effects": [
+            "Cart state contains an entry for the dropped product."
+          ],
+          "ui_anchors": [
+            "data-testid=\"product-item-1\" (source product items)",
+            "data-testid=\"product-item-2\"",
+            "id=\"div1\"",
+            "data-testid=\"drop-area\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User drops a product item into the designated drop area."
+          ],
+          "behavior_id": "3.normal_show_product_title_in_box2",
+          "constraints": [
+            "The product title must appear specifically in the element(s) matching selector .box2."
+          ],
+          "expected_observables": [
+            "The dropped product's title is visible in the cart UI at selector .box2."
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A product item has been dropped into the designated drop area (see add_item_on_drop)."
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "the product title appears in .box2, the unit price in .box3, and the quantity in .box1."
+            }
+          ],
+          "state_effects": [
+            "Cart display includes the product title mapped to .box2 for the added item."
+          ],
+          "ui_anchors": [
+            ".box2 (product title in cart display)",
+            "data-testid=\"product-item-1\"",
+            "id=\"div1\"",
+            "data-testid=\"drop-area\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User drops a product item into the designated drop area."
+          ],
+          "behavior_id": "3.normal_show_unit_price_in_box3",
+          "constraints": [
+            "The unit price must be presented specifically in element(s) matching selector .box3."
+          ],
+          "expected_observables": [
+            "The dropped product's unit price is visible in the cart UI at selector .box3."
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A product item has been dropped into the designated drop area."
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "the product title appears in .box2, the unit price in .box3, and the quantity in .box1."
+            }
+          ],
+          "state_effects": [
+            "Cart display includes the product's unit price mapped to .box3 for the added item."
+          ],
+          "ui_anchors": [
+            ".box3 (unit price in cart display)",
+            ".box2",
+            ".box1",
+            "data-testid=\"product-item-1\"",
+            "id=\"div1\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User drags and drops the same product item again into the designated drop area."
+          ],
+          "behavior_id": "3.normal_increment_quantity_for_repeated_products",
+          "constraints": [
+            "Repeated adds of the same product must update the quantity visible in .box1 rather than creating a duplicate unrelated entry."
+          ],
+          "expected_observables": [
+            "The quantity shown for that product increases in the cart display at selector .box1 (reflecting the repeated add)."
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A given product has already been added to the cart (one or more entries visible)."
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "The system supports adding both different and repeated products."
+            }
+          ],
+          "state_effects": [
+            "Cart quantity for the repeated product increments accordingly (single observable: .box1 updated)."
+          ],
+          "ui_anchors": [
+            ".box1 (quantity in cart display)",
+            "data-testid=\"product-item-1\"",
+            "id=\"div1\"",
+            "data-testid=\"drop-area\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User drags and drops two different product items into the designated drop area (id=\"div1\" / data-testid=\"drop-area\")."
+          ],
+          "behavior_id": "3.normal_show_multiple_different_products",
+          "constraints": [
+            "Different products dropped must result in distinct cart entries, each mapping title->.box2, price->.box3, quantity->.box1."
+          ],
+          "expected_observables": [
+            "Both different products appear in the cart display (separate entries), each showing their title in .box2, price in .box3, and quantity in .box1."
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Multiple distinct product items are available in the product list (e.g. data-testid=\"product-item-1\", data-testid=\"product-item-2\")."
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "The system supports adding both different and repeated products."
+            }
+          ],
+          "state_effects": [
+            "Cart state contains distinct entries for each different product added."
+          ],
+          "ui_anchors": [
+            "data-testid=\"product-item-1\"",
+            "data-testid=\"product-item-2\"",
+            "id=\"div1\"",
+            "data-testid=\"drop-area\"",
+            ".box1",
+            ".box2",
+            ".box3"
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_01",
+      "requirement_id": "3",
+      "suite_key": "E2ESD_Bench_01::3"
+    },
+    "E2ESD_Bench_01::5": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "Drag one or more products from the product list and drop them into the cart area"
+          ],
+          "behavior_id": "5.normal.total_sum_and_display",
+          "constraints": [
+            "Total must equal the arithmetic sum of item prices",
+            "Total must include the appropriate currency symbol",
+            "Total must be formatted to two decimal places",
+            "Total must be displayed inside <div id=\"allMoney\">"
+          ],
+          "expected_observables": [
+            "The <div id=\"allMoney\"> element's text equals the numeric sum of the dropped product prices formatted with the currency symbol and two decimal places (example: \"$80.00\")"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Product list is visible with predefined product prices",
+            "Cart drop area is present"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "The system calculates the total price by summing the prices of all products in the cart"
+            }
+          ],
+          "state_effects": [
+            "Cart contains the dropped products",
+            "Displayed total reflects the sum of the cart's product prices"
+          ],
+          "ui_anchors": [
+            "product list (source of draggable items)",
+            "cart drop area (target for drops)",
+            "<div id=\"allMoney\"> (total display)"
+          ]
+        },
+        {
+          "actor_actions": [
+            "Add product(s) whose prices sum to a whole-dollar value into the cart"
+          ],
+          "behavior_id": "5.normal.trailing_zero_format",
+          "constraints": [
+            "Always display exactly two digits after the decimal point",
+            "Include the appropriate currency symbol"
+          ],
+          "expected_observables": [
+            "The <div id=\"allMoney\"> element shows two decimal places including trailing zeros (example: \"$80.00\")"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Product prices chosen sum to an integer-dollar amount (no cents)"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00')"
+            }
+          ],
+          "state_effects": [
+            "Displayed total uses fixed two-decimal formatting even for whole-dollar totals"
+          ],
+          "ui_anchors": [
+            "<div id=\"allMoney\">"
+          ]
+        },
+        {
+          "actor_actions": [
+            "Add product(s) whose prices produce a fractional-cent total into the cart"
+          ],
+          "behavior_id": "5.edge.rounding_to_two_decimals",
+          "constraints": [
+            "Final displayed total must be presented with exactly two decimal places",
+            "Currency symbol must be present alongside the rounded/formatted value"
+          ],
+          "expected_observables": [
+            "The <div id=\"allMoney\"> element shows the total rounded/formatted to two decimal places with the currency symbol (for example, a computed 19.995 displays as \"$20.00\")"
+          ],
+          "kind": "edge",
+          "observability": "dom",
+          "preconditions": [
+            "Product prices chosen result in a sum with more than two decimal digits (e.g., fractional cents)"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "formatting the total to two decimal places"
+            }
+          ],
+          "state_effects": [
+            "Displayed total is the two-decimal representation of the numeric sum"
+          ],
+          "ui_anchors": [
+            "<div id=\"allMoney\">"
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_01",
+      "requirement_id": "5",
+      "suite_key": "E2ESD_Bench_01::5"
+    },
+    "E2ESD_Bench_02::1": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "Click the Add note button (id=\"add\", class=\"add\", data-testid=\"add-note-button\")"
+          ],
+          "behavior_id": "add_note_appends_div_note",
+          "constraints": [
+            "The created element must be a <div> whose class attribute includes \"note\" and it must be appended to document.body (not only elsewhere in the DOM)"
+          ],
+          "expected_observables": [
+            "A new <div> element with class \"note\" is added as a child of the document body"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Application is loaded and the Add note button is present (id=\"add\", class=\"add\", data-testid=\"add-note-button\")"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "a new note is created and appended to the document body as a <div> element with the class \"note\"."
+            }
+          ],
+          "state_effects": [
+            "Document body contains one additional element matching div.note"
+          ],
+          "ui_anchors": [
+            "button#add (id=\"add\", class=\"add\", data-testid=\"add-note-button\")",
+            "body > div.note"
+          ]
+        },
+        {
+          "actor_actions": [
+            "Inspect the content of the newly created note element"
+          ],
+          "behavior_id": "note_contains_visible_empty_textarea",
+          "constraints": [
+            "The textarea must be visible to the user and contain zero-length content (empty)"
+          ],
+          "expected_observables": [
+            "Inside the note there is a visible <textarea> element with data-testid=\"note-textarea\" and its value/text is empty"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A note element (div.note) exists after activating Add note"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "Inside each note, there is a visible, empty <textarea> (data-testid=\"note-textarea\") for user input."
+            }
+          ],
+          "state_effects": [
+            "The note contains an empty textarea ready for user input"
+          ],
+          "ui_anchors": [
+            "div.note textarea[data-testid=\"note-textarea\"]"
+          ]
+        },
+        {
+          "actor_actions": [
+            "Click the Add note button multiple times in rapid succession"
+          ],
+          "behavior_id": "multiple_rapid_clicks_create_separate_notes",
+          "constraints": [
+            "Each click must produce a distinct note element (no replacement of existing notes); each created note must include its own textarea element"
+          ],
+          "expected_observables": [
+            "For each rapid click, a separate div.note is created and appended to document.body; the count of div.note increases by the number of clicks and each created note includes its own textarea[data-testid=\"note-textarea\"]"
+          ],
+          "kind": "edge",
+          "observability": "dom",
+          "preconditions": [
+            "Application is loaded and the Add note button is present (id=\"add\", class=\"add\", data-testid=\"add-note-button\")"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "The application supports multiple rapid clicks on the \"Add note\" button, with each click creating a separate note, each containing its own textarea."
+            }
+          ],
+          "state_effects": [
+            "Multiple distinct note elements exist in the DOM, each containing its own textarea"
+          ],
+          "ui_anchors": [
+            "button#add (data-testid=\"add-note-button\")",
+            "body > div.note",
+            "div.note textarea[data-testid=\"note-textarea\"]"
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_02",
+      "requirement_id": "1",
+      "suite_key": "E2ESD_Bench_02::1"
+    },
+    "E2ESD_Bench_02::2": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "User types Markdown text into the textarea (data-testid=\"note-textarea\")"
+          ],
+          "behavior_id": "2.1-realtime-render",
+          "constraints": [
+            "Rendering must occur in real-time as characters are entered (no manual toggle or save required to see updates)",
+            "This behavior addresses user-observable updates only (DOM rendering), not verification of underlying Markdown library calls"
+          ],
+          "expected_observables": [
+            "The main display area (data-testid=\"note-main\") updates continuously as the user types, showing rendered HTML corresponding to the Markdown input (real-time update)"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "The note is in edit mode and the textarea (data-testid=\"note-textarea\") is visible and focused"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "As the user types Markdown (e.g., # Heading, **bold**, _italic_, [link](...)), the content is dynamically rendered in the main display area (data-testid=\"note-main\") in real-time, with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>)."
+            }
+          ],
+          "state_effects": [
+            "Visible content of note-main reflects latest typed Markdown without requiring an explicit save"
+          ],
+          "ui_anchors": [
+            "data-testid=\"note-textarea\"",
+            "data-testid=\"note-main\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User enters inline Markdown such as **Bold** or _italic_ into the textarea"
+          ],
+          "behavior_id": "2.2-inline-formatting-html",
+          "constraints": [
+            "Rendered output must show HTML formatting rather than escaped literal Markdown for supported inline syntax"
+          ],
+          "expected_observables": [
+            "The main display area (data-testid=\"note-main\") renders the corresponding HTML tags for inline styles (e.g., **Bold** appears as <strong>Bold</strong>)"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "The note is in edit mode with the textarea (data-testid=\"note-textarea\") visible"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>)"
+            }
+          ],
+          "state_effects": [
+            "Displayed note content contains HTML elements representing the Markdown semantics"
+          ],
+          "ui_anchors": [
+            "data-testid=\"note-textarea\"",
+            "data-testid=\"note-main\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User exits edit mode by clicking the Edit button (data-testid=\"edit-note-button\")"
+          ],
+          "behavior_id": "2.3-handle-invalid-markdown-on-exit",
+          "constraints": [
+            "If the Markdown is invalid (e.g., unmatched symbols), the app must not crash or show an unhandled error; it should display the raw input on exit as the user-observable outcome"
+          ],
+          "expected_observables": [
+            "The main display area (data-testid=\"note-main\") shows the raw input text (verbatim), and the app remains responsive (no crash or unhandled error visible to the user)"
+          ],
+          "kind": "edge",
+          "observability": "dom",
+          "preconditions": [
+            "The textarea (data-testid=\"note-textarea\") contains invalid or unmatched Markdown syntax (e.g., an unmatched **)"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\")."
+            }
+          ],
+          "state_effects": [
+            "Displayed note content reflects the raw/unchanged input when exiting edit mode with invalid Markdown"
+          ],
+          "ui_anchors": [
+            "data-testid=\"note-textarea\"",
+            "data-testid=\"edit-note-button\"",
+            "data-testid=\"note-main\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "User modifies the note content by typing or deleting characters in the textarea"
+          ],
+          "behavior_id": "2.4-immediate-localstorage-persistence",
+          "constraints": [
+            "This behavior concerns observable storage state; it does not assert internal implementation details beyond the presence of updated content in localStorage"
+          ],
+          "expected_observables": [
+            "localStorage reflects the current state of the note immediately after changes (the stored note content matches the latest textarea content without requiring an explicit save)"
+          ],
+          "kind": "persistence",
+          "observability": "storage",
+          "preconditions": [
+            "A note is being edited in the textarea (data-testid=\"note-textarea\")"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "All changes should be reflected immediately in local storage to persist the current state of the note."
+            }
+          ],
+          "state_effects": [
+            "localStorage keys representing the note contain the updated content corresponding to the latest edits"
+          ],
+          "ui_anchors": [
+            "data-testid=\"note-textarea\""
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_02",
+      "requirement_id": "2",
+      "suite_key": "E2ESD_Bench_02::2"
+    },
+    "E2ESD_Bench_02::3": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "Click the Add note button (data-testid=\"add-note-button\")"
+          ],
+          "behavior_id": "3.1-create-enters-edit",
+          "constraints": [
+            "Transition to edit mode must occur immediately upon creation"
+          ],
+          "expected_observables": [
+            "The textarea (data-testid=\"note-textarea\") is visible for user input",
+            "The main content area (data-testid=\"note-main\") is hidden"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "Application page is loaded"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "Upon creation, the note should immediately enter edit mode: the textarea (data-testid=\"note-textarea\") is visible for user input, while the main content area (data-testid=\"note-main\") remains hidden."
+            }
+          ],
+          "state_effects": [
+            "A new note is created and its UI state is set to edit mode"
+          ],
+          "ui_anchors": [
+            "data-testid=\"add-note-button\"",
+            "data-testid=\"note-textarea\"",
+            "data-testid=\"note-main\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "Click the Edit button (data-testid=\"edit-note-button\") to switch to view mode"
+          ],
+          "behavior_id": "3.2-toggle-to-view-shows-main",
+          "constraints": [
+            "Clicking the Edit button toggles the UI into view mode where the main content is shown and the textarea is hidden"
+          ],
+          "expected_observables": [
+            "The main content area (data-testid=\"note-main\") is visible displaying formatted content",
+            "The textarea (data-testid=\"note-textarea\") is hidden"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A note exists (for example, currently in edit mode)"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "Users can switch between edit and view modes by clicking the \"Edit\" button (data-testid=\"edit-note-button\"). In view mode, the main content area becomes visible to display the formatted content, and the textarea is hidden; in edit mode, this behavior is reversed."
+            }
+          ],
+          "state_effects": [
+            "The note's UI state changes to view mode"
+          ],
+          "ui_anchors": [
+            "data-testid=\"edit-note-button\"",
+            "data-testid=\"note-main\"",
+            "data-testid=\"note-textarea\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "Click the Edit button (data-testid=\"edit-note-button\") to switch to edit mode"
+          ],
+          "behavior_id": "3.3-toggle-to-edit-shows-textarea",
+          "constraints": [
+            "Clicking the Edit button toggles the UI back into edit mode where the textarea is shown and the main content is hidden"
+          ],
+          "expected_observables": [
+            "The textarea (data-testid=\"note-textarea\") is visible for user input",
+            "The main content area (data-testid=\"note-main\") is hidden"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A note exists and is currently in view mode"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "In view mode, the main content area becomes visible to display the formatted content, and the textarea is hidden; in edit mode, this behavior is reversed."
+            }
+          ],
+          "state_effects": [
+            "The note's UI state changes to edit mode"
+          ],
+          "ui_anchors": [
+            "data-testid=\"edit-note-button\"",
+            "data-testid=\"note-textarea\"",
+            "data-testid=\"note-main\""
+          ]
+        },
+        {
+          "actor_actions": [
+            "Type or modify text inside the textarea (data-testid=\"note-textarea\")"
+          ],
+          "behavior_id": "3.4-autosave-to-localstorage",
+          "constraints": [
+            "Saves must be automatic (no explicit save button) and preserve state across sessions"
+          ],
+          "expected_observables": [
+            "Local storage is updated automatically with the note's latest text",
+            "After a page reload, the note's content reflects the last typed changes"
+          ],
+          "kind": "persistence",
+          "observability": "storage",
+          "preconditions": [
+            "A note exists and the textarea (data-testid=\"note-textarea\") is visible (edit mode)"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "All changes typed into the textarea should be automatically saved to local storage, preserving the note’s state across sessions."
+            }
+          ],
+          "state_effects": [
+            "The note's persisted representation in localStorage is updated to include the typed changes"
+          ],
+          "ui_anchors": [
+            "data-testid=\"note-textarea\""
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_02",
+      "requirement_id": "3",
+      "suite_key": "E2ESD_Bench_02::3"
+    },
+    "E2ESD_Bench_02::4": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "Click the note's delete button (data-testid=\"delete-note-button\")"
+          ],
+          "behavior_id": "4.dom_removal_on_delete",
+          "constraints": [
+            "Removal must occur immediately upon the click (the note must no longer appear on the page after the click)"
+          ],
+          "expected_observables": [
+            "The targeted note's DOM node is no longer present on the page immediately after the click"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A note is present in the page and has an associated delete button with data-testid=\"delete-note-button\""
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "must be immediately removed from the DOM so it no longer appears on the page"
+            }
+          ],
+          "state_effects": [
+            "No visual trace of the deleted note remains in the DOM"
+          ],
+          "ui_anchors": [
+            "button[data-testid=\"delete-note-button\"]",
+            "the note container element that previously displayed the note text"
+          ]
+        },
+        {
+          "actor_actions": [
+            "Click the note's delete button (data-testid=\"delete-note-button\")"
+          ],
+          "behavior_id": "4.localstorage_removal_on_delete",
+          "constraints": [
+            "The removal from localStorage must be a consequence of the same delete click action (no separate manual persistence step required)"
+          ],
+          "expected_observables": [
+            "The deleted note's entry is removed from the stored notes array in localStorage (the note is no longer present in localStorage data)"
+          ],
+          "kind": "persistence",
+          "observability": "storage",
+          "preconditions": [
+            "The note to be deleted exists as an entry in the application's stored notes array in localStorage"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "the corresponding entry must also be removed from localStorage"
+            }
+          ],
+          "state_effects": [
+            "localStorage no longer contains the deleted note's entry in the stored notes array"
+          ],
+          "ui_anchors": [
+            "button[data-testid=\"delete-note-button\"]"
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_02",
+      "requirement_id": "4",
+      "suite_key": "E2ESD_Bench_02::4"
+    },
+    "E2ESD_Bench_02::5": {
+      "behaviors": [
+        {
+          "actor_actions": [
+            "User opens / reloads the Notes App webpage"
+          ],
+          "behavior_id": "5.1-retrieve-and-display",
+          "constraints": [
+            "Rendering must occur immediately after retrieval on page load; creation of DOM nodes is dynamic per stored entry"
+          ],
+          "expected_observables": [
+            "The application displays one rendered note element for each entry in the stored notes array",
+            "Rendered notes show their content (see behavior 5.3) or editing UI (see behavior 5.4) as appropriate"
+          ],
+          "kind": "normal",
+          "observability": "storage",
+          "preconditions": [
+            "localStorage contains a JSON-serialized array stored under the key 'notes'"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "When the Notes App webpage loads, it must retrieve all saved notes from localStorage and display them accordingly."
+            }
+          ],
+          "state_effects": [
+            "The internal notes variable is populated from localStorage by parsing JSON.parse(localStorage.getItem('notes'))"
+          ],
+          "ui_anchors": [
+            ".note (per-note container)",
+            "[data-testid=\"note-main\"] (note content display)",
+            "[data-testid=\"note-textarea\"] (note editor textarea)",
+            ".tools (per-note tools container)"
+          ]
+        },
+        {
+          "actor_actions": [
+            "The app renders a stored note into the page (e.g., on page load)"
+          ],
+          "behavior_id": "5.2-note-element-structure",
+          "constraints": [
+            "The specified data-testid attributes and class names must be present for each stored note element"
+          ],
+          "expected_observables": [
+            "Each rendered note is a div element with class 'note'",
+            "Inside each .note there is a div.tools containing an \"Edit\" button (data-testid=\"edit-note-button\") and a \"Delete\" button (data-testid=\"delete-note-button\")",
+            "Each .note contains a div.main (data-testid=\"note-main\") and a textarea (data-testid=\"note-textarea\")"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A stored notes array contains at least one entry"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "For each stored note, the app should dynamically create a div element with the class note, which includes a div with the class tools containing an \"Edit\" button (data-testid=\"edit-note-button\") and a \"Delete\" button (data-testid=\"delete-note-button\")."
+            }
+          ],
+          "state_effects": [
+            "A DOM node per stored note is created with the required sub-elements"
+          ],
+          "ui_anchors": [
+            ".note",
+            ".note > .tools",
+            "[data-testid=\"edit-note-button\"]",
+            "[data-testid=\"delete-note-button\"]",
+            "[data-testid=\"note-main\"]",
+            "[data-testid=\"note-textarea\"]"
+          ]
+        },
+        {
+          "actor_actions": [
+            "The app renders the stored non-empty note (e.g., on page load)"
+          ],
+          "behavior_id": "5.3-non-empty-note-displays-main",
+          "constraints": [
+            "Visibility semantics (visible vs hidden) must reflect the default display state described; the behavior does not mandate how visibility is implemented (CSS class, hidden attribute, inline style, etc.)"
+          ],
+          "expected_observables": [
+            "The note's div.main (data-testid=\"note-main\") is visible and shows the note text",
+            "The note's textarea (data-testid=\"note-textarea\") exists but is hidden by default"
+          ],
+          "kind": "normal",
+          "observability": "dom",
+          "preconditions": [
+            "A stored note entry contains non-empty content (non-empty string) in the notes array"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "Notes retrieved from localStorage should be rendered with their content displayed in the main div, with the textarea hidden by default."
+            }
+          ],
+          "state_effects": [
+            "Rendered note's display mode is set to show the main view and keep the textarea hidden"
+          ],
+          "ui_anchors": [
+            "[data-testid=\"note-main\"]",
+            "[data-testid=\"note-textarea\"]"
+          ]
+        },
+        {
+          "actor_actions": [
+            "The app renders the stored empty note (e.g., on page load)"
+          ],
+          "behavior_id": "5.4-empty-note-shows-textarea",
+          "constraints": [
+            "The requirement only specifies that empty-content notes show the textarea and hide the main view; do not assume specific placeholder text or focus behavior"
+          ],
+          "expected_observables": [
+            "The note's textarea (data-testid=\"note-textarea\") is shown to allow immediate editing",
+            "The note's div.main (data-testid=\"note-main\") is hidden"
+          ],
+          "kind": "edge",
+          "observability": "dom",
+          "preconditions": [
+            "A stored note entry has no content (the requirement describes this case as 'no content')"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "For notes that have no content, the application should instead show the textarea and hide the main div, allowing immediate editing."
+            }
+          ],
+          "state_effects": [
+            "Rendered note's display mode is set to editing with textarea visible"
+          ],
+          "ui_anchors": [
+            "[data-testid=\"note-textarea\"]",
+            "[data-testid=\"note-main\"]"
+          ]
+        },
+        {
+          "actor_actions": [
+            "User opens / reloads the Notes App webpage"
+          ],
+          "behavior_id": "5.5-no-notes-when-localStorage-empty",
+          "constraints": [
+            "The app must not render placeholder note elements when no notes are present; the requirement does not demand rendering of alternative UI (e.g., 'no notes' messaging)"
+          ],
+          "expected_observables": [
+            "No .note elements are present in the DOM"
+          ],
+          "kind": "persistence",
+          "observability": "dom",
+          "preconditions": [
+            "localStorage does not contain a 'notes' entry or the stored value is empty such that there are no saved notes"
+          ],
+          "source_evidence": [
+            {
+              "artifact": null,
+              "field": "fine_grained_reqs",
+              "file_path": null,
+              "line_end": null,
+              "line_start": null,
+              "quote": "If localStorage is empty, no notes should be shown."
+            }
+          ],
+          "state_effects": [
+            "The internal notes variable is empty or absent after attempting JSON.parse(localStorage.getItem('notes'))"
+          ],
+          "ui_anchors": [
+            ".note"
+          ]
+        }
+      ],
+      "project_id": "E2ESD_Bench_02",
+      "requirement_id": "5",
+      "suite_key": "E2ESD_Bench_02::5"
+    }
+  },
+  "warnings": []
+}

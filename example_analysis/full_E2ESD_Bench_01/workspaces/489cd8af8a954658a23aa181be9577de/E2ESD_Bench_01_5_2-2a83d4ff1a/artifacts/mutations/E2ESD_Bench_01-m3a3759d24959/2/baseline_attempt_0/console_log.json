@@ -1,0 +1,26 @@
+[
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4c6789766298ce75/2a83d4ff1adfa53a/app/img/img1.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928434239
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4c6789766298ce75/2a83d4ff1adfa53a/app/img/img2.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928434242
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4c6789766298ce75/2a83d4ff1adfa53a/app/img/img3.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928434242
+  },
+  {
+    "level": "SEVERE",
+    "message": "file:///home/rkr/siemens/test_evaluator/example_analysis/full_E2ESD_Bench_01/workspaces/489cd8af8a954658a23aa181be9577de/.mutation_workspaces/4c6789766298ce75/2a83d4ff1adfa53a/app/img/img4.jpg - Failed to load resource: net::ERR_FILE_NOT_FOUND",
+    "source": "network",
+    "timestamp": 1782928434242
+  }
+]

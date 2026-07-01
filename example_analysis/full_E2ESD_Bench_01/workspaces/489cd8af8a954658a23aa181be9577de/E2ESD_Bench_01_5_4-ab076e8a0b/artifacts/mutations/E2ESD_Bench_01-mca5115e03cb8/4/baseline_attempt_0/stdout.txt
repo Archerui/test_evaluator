@@ -1,0 +1,9 @@
+USING RUNNER: behave.runner:Runner
+
+Errored scenarios:
+  features/test.feature:5  [Edge] Add all available products to the cart and verify total price
+
+0 features passed, 0 failed, 1 error, 0 skipped
+0 scenarios passed, 0 failed, 1 error, 0 skipped
+5 steps passed, 0 failed, 1 error, 0 skipped
+Took 0min 15.810s

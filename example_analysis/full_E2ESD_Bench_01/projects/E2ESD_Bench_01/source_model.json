@@ -1,0 +1,734 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "source_root": "/home/rkr/siemens/test_evaluator/E2EDev/E2EDev_data/E2ESD_Bench_01/source_projcet",
+  "entry_html": "index.html",
+  "dom_anchors": [
+    {
+      "selector": "meta",
+      "tag": "meta",
+      "text": null,
+      "attributes": {
+        "content": "text/html; charset=utf-8",
+        "http-equiv": "Content-Type"
+      },
+      "file_path": "index.html",
+      "line_start": 5
+    },
+    {
+      "selector": "title",
+      "tag": "title",
+      "text": "拖放购物车",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 6
+    },
+    {
+      "selector": "style",
+      "tag": "style",
+      "text": "* { margin: 0; padding: 0; } li { list-style: none; } li { float: left; width: 200px; margin: 10px; } li img { width: 200px; } p { height: 30px; line-height: 30px; text-indent: 1em; font-weight: bold; border-bottom: 1px #333 dashed; } #div1",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 7
+    },
+    {
+      "selector": "script",
+      "tag": "script",
+      "text": "src=\"observe.js\"",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 19
+    },
+    {
+      "selector": "script",
+      "tag": "script",
+      "text": "window.onload = function () { var aLi = document.getElementsByTagName('li'); var oDiv = document.getElementById('div1'); var obj = {}; var iNum = 0; // 总金额 var allMoney = null; var currencySymbol = ''; // 记录货币符号 for (var i = 0; i < aLi.leng",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 20
+    },
+    {
+      "selector": "head",
+      "tag": "head",
+      "text": "拖放购物车 * { margin: 0; padding: 0; } li { list-style: none; } li { float: left; width: 200px; margin: 10px; } li img { width: 200px; } p { height: 30px; line-height: 30px; text-indent: 1em; font-weight: bold; border-bottom: 1px #333 dashed; }",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 4
+    },
+    {
+      "selector": "img",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-1",
+        "src": "img/img1.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 106
+    },
+    {
+      "selector": "[data-testid=\"product-image-1\"]",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-1",
+        "src": "img/img1.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 106
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "The Essence of JavaScript",
+      "attributes": {
+        "data-testid": "product-title-1",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 107
+    },
+    {
+      "selector": "[data-testid=\"product-title-1\"]",
+      "tag": "p",
+      "text": "The Essence of JavaScript",
+      "attributes": {
+        "data-testid": "product-title-1",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 107
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "$40",
+      "attributes": {
+        "data-testid": "product-price-1"
+      },
+      "file_path": "index.html",
+      "line_start": 108
+    },
+    {
+      "selector": "[data-testid=\"product-price-1\"]",
+      "tag": "p",
+      "text": "$40",
+      "attributes": {
+        "data-testid": "product-price-1"
+      },
+      "file_path": "index.html",
+      "line_start": 108
+    },
+    {
+      "selector": "li",
+      "tag": "li",
+      "text": "The Essence of JavaScript $40",
+      "attributes": {
+        "data-testid": "product-item-1",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 105
+    },
+    {
+      "selector": "[data-testid=\"product-item-1\"]",
+      "tag": "li",
+      "text": "The Essence of JavaScript $40",
+      "attributes": {
+        "data-testid": "product-item-1",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 105
+    },
+    {
+      "selector": "img",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-2",
+        "src": "img/img2.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 111
+    },
+    {
+      "selector": "[data-testid=\"product-image-2\"]",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-2",
+        "src": "img/img2.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 111
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "JavaScript: The Definitive Guide",
+      "attributes": {
+        "data-testid": "product-title-2",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 112
+    },
+    {
+      "selector": "[data-testid=\"product-title-2\"]",
+      "tag": "p",
+      "text": "JavaScript: The Definitive Guide",
+      "attributes": {
+        "data-testid": "product-title-2",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 112
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "$120",
+      "attributes": {
+        "data-testid": "product-price-2"
+      },
+      "file_path": "index.html",
+      "line_start": 113
+    },
+    {
+      "selector": "[data-testid=\"product-price-2\"]",
+      "tag": "p",
+      "text": "$120",
+      "attributes": {
+        "data-testid": "product-price-2"
+      },
+      "file_path": "index.html",
+      "line_start": 113
+    },
+    {
+      "selector": "li",
+      "tag": "li",
+      "text": "JavaScript: The Definitive Guide $120",
+      "attributes": {
+        "data-testid": "product-item-2",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 110
+    },
+    {
+      "selector": "[data-testid=\"product-item-2\"]",
+      "tag": "li",
+      "text": "JavaScript: The Definitive Guide $120",
+      "attributes": {
+        "data-testid": "product-item-2",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 110
+    },
+    {
+      "selector": "img",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-3",
+        "src": "img/img3.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 116
+    },
+    {
+      "selector": "[data-testid=\"product-image-3\"]",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-3",
+        "src": "img/img3.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 116
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "Mastering JavaScript",
+      "attributes": {
+        "data-testid": "product-title-3",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 117
+    },
+    {
+      "selector": "[data-testid=\"product-title-3\"]",
+      "tag": "p",
+      "text": "Mastering JavaScript",
+      "attributes": {
+        "data-testid": "product-title-3",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 117
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "$35",
+      "attributes": {
+        "data-testid": "product-price-3"
+      },
+      "file_path": "index.html",
+      "line_start": 118
+    },
+    {
+      "selector": "[data-testid=\"product-price-3\"]",
+      "tag": "p",
+      "text": "$35",
+      "attributes": {
+        "data-testid": "product-price-3"
+      },
+      "file_path": "index.html",
+      "line_start": 118
+    },
+    {
+      "selector": "li",
+      "tag": "li",
+      "text": "Mastering JavaScript $35",
+      "attributes": {
+        "data-testid": "product-item-3",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 115
+    },
+    {
+      "selector": "[data-testid=\"product-item-3\"]",
+      "tag": "li",
+      "text": "Mastering JavaScript $35",
+      "attributes": {
+        "data-testid": "product-item-3",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 115
+    },
+    {
+      "selector": "img",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-4",
+        "src": "img/img4.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 121
+    },
+    {
+      "selector": "[data-testid=\"product-image-4\"]",
+      "tag": "img",
+      "text": null,
+      "attributes": {
+        "data-testid": "product-image-4",
+        "src": "img/img4.jpg"
+      },
+      "file_path": "index.html",
+      "line_start": 121
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "The Art of DOM Programming",
+      "attributes": {
+        "data-testid": "product-title-4",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 122
+    },
+    {
+      "selector": "[data-testid=\"product-title-4\"]",
+      "tag": "p",
+      "text": "The Art of DOM Programming",
+      "attributes": {
+        "data-testid": "product-title-4",
+        "style": "font-size: 12px"
+      },
+      "file_path": "index.html",
+      "line_start": 122
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": "$45",
+      "attributes": {
+        "data-testid": "product-price-4"
+      },
+      "file_path": "index.html",
+      "line_start": 123
+    },
+    {
+      "selector": "[data-testid=\"product-price-4\"]",
+      "tag": "p",
+      "text": "$45",
+      "attributes": {
+        "data-testid": "product-price-4"
+      },
+      "file_path": "index.html",
+      "line_start": 123
+    },
+    {
+      "selector": "li",
+      "tag": "li",
+      "text": "The Art of DOM Programming $45",
+      "attributes": {
+        "data-testid": "product-item-4",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 120
+    },
+    {
+      "selector": "[data-testid=\"product-item-4\"]",
+      "tag": "li",
+      "text": "The Art of DOM Programming $45",
+      "attributes": {
+        "data-testid": "product-item-4",
+        "draggable": "true"
+      },
+      "file_path": "index.html",
+      "line_start": 120
+    },
+    {
+      "selector": "ul",
+      "tag": "ul",
+      "text": "The Essence of JavaScript $40 JavaScript: The Definitive Guide $120 Mastering JavaScript $35 The Art of DOM Programming $45",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 104
+    },
+    {
+      "selector": "div",
+      "tag": "div",
+      "text": null,
+      "attributes": {
+        "data-testid": "drop-area",
+        "id": "div1"
+      },
+      "file_path": "index.html",
+      "line_start": 126
+    },
+    {
+      "selector": "[data-testid=\"drop-area\"]",
+      "tag": "div",
+      "text": null,
+      "attributes": {
+        "data-testid": "drop-area",
+        "id": "div1"
+      },
+      "file_path": "index.html",
+      "line_start": 126
+    },
+    {
+      "selector": "#div1",
+      "tag": "div",
+      "text": null,
+      "attributes": {
+        "data-testid": "drop-area",
+        "id": "div1"
+      },
+      "file_path": "index.html",
+      "line_start": 126
+    },
+    {
+      "selector": "body",
+      "tag": "body",
+      "text": "The Essence of JavaScript $40 JavaScript: The Definitive Guide $120 Mastering JavaScript $35 The Art of DOM Programming $45",
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 103
+    },
+    {
+      "selector": "html",
+      "tag": "html",
+      "text": "拖放购物车 * { margin: 0; padding: 0; } li { list-style: none; } li { float: left; width: 200px; margin: 10px; } li img { width: 200px; } p { height: 30px; line-height: 30px; text-indent: 1em; font-weight: bold; border-bottom: 1px #333 dashed; }",
+      "attributes": {
+        "xmlns": "http://www.w3.org/1999/xhtml"
+      },
+      "file_path": "index.html",
+      "line_start": 3
+    },
+    {
+      "selector": "p",
+      "tag": "p",
+      "text": null,
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 59
+    },
+    {
+      "selector": "span",
+      "tag": "span",
+      "text": null,
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 60
+    },
+    {
+      "selector": "span",
+      "tag": "span",
+      "text": null,
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 65
+    },
+    {
+      "selector": "span",
+      "tag": "span",
+      "text": null,
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 70
+    },
+    {
+      "selector": "div",
+      "tag": "div",
+      "text": null,
+      "attributes": {},
+      "file_path": "index.html",
+      "line_start": 90
+    },
+    {
+      "selector": "span",
+      "tag": "span",
+      "text": null,
+      "attributes": {
+        "class": "box1"
+      },
+      "file_path": "index.html",
+      "line_start": 61
+    },
+    {
+      "selector": ".box1",
+      "tag": "span",
+      "text": null,
+      "attributes": {
+        "class": "box1"
+      },
+      "file_path": "index.html",
+      "line_start": 61
+    },
+    {
+      "selector": "span",
+      "tag": "span",
+      "text": null,
+      "attributes": {
+        "class": "box2"
+      },
+      "file_path": "index.html",
+      "line_start": 66
+    },
+    {
+      "selector": ".box2",
+      "tag": "span",
+      "text": null,
+      "attributes": {
+        "class": "box2"
+      },
+      "file_path": "index.html",
+      "line_start": 66
+    },
+    {
+      "selector": "span",
+      "tag": "span",
+      "text": null,
+      "attributes": {
+        "class": "box3"
+      },
+      "file_path": "index.html",
+      "line_start": 71
+    },
+    {
+      "selector": ".box3",
+      "tag": "span",
+      "text": null,
+      "attributes": {
+        "class": "box3"
+      },
+      "file_path": "index.html",
+      "line_start": 71
+    },
+    {
+      "selector": "div",
+      "tag": "div",
+      "text": null,
+      "attributes": {
+        "id": "allMoney"
+      },
+      "file_path": "index.html",
+      "line_start": 91
+    },
+    {
+      "selector": "#allMoney",
+      "tag": "div",
+      "text": null,
+      "attributes": {
+        "id": "allMoney"
+      },
+      "file_path": "index.html",
+      "line_start": 91
+    }
+  ],
+  "event_handlers": [
+    {
+      "event": "load",
+      "selector": null,
+      "function_name": "function",
+      "file_path": "index.html",
+      "line_start": 21,
+      "behavior_candidates": []
+    },
+    {
+      "event": "dragstart",
+      "selector": "li",
+      "function_name": "function",
+      "file_path": "index.html",
+      "line_start": 31,
+      "behavior_candidates": []
+    },
+    {
+      "event": "dragover",
+      "selector": "#div1",
+      "function_name": "function",
+      "file_path": "index.html",
+      "line_start": 41,
+      "behavior_candidates": []
+    },
+    {
+      "event": "drop",
+      "selector": "#div1",
+      "function_name": "function",
+      "file_path": "index.html",
+      "line_start": 45,
+      "behavior_candidates": []
+    }
+  ],
+  "state_effects": [
+    {
+      "kind": "dom_update",
+      "target": "aP",
+      "file_path": "index.html",
+      "line_start": 34,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "aP",
+      "file_path": "index.html",
+      "line_start": 35,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": ".box3",
+      "file_path": "index.html",
+      "line_start": 62,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "oP",
+      "file_path": "index.html",
+      "line_start": 63,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": ".box3",
+      "file_path": "index.html",
+      "line_start": 67,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "oP",
+      "file_path": "index.html",
+      "line_start": 68,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": ".box3",
+      "file_path": "index.html",
+      "line_start": 72,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "oP",
+      "file_path": "index.html",
+      "line_start": 73,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "#div1",
+      "file_path": "index.html",
+      "line_start": 75,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": ".box2",
+      "file_path": "index.html",
+      "line_start": 83,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": ".box1",
+      "file_path": "index.html",
+      "line_start": 84,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "#allMoney",
+      "file_path": "index.html",
+      "line_start": 97,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "dom_update",
+      "target": "#div1",
+      "file_path": "index.html",
+      "line_start": 98,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "calculation",
+      "target": "i",
+      "file_path": "index.html",
+      "line_start": 30,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "calculation",
+      "target": "i",
+      "file_path": "index.html",
+      "line_start": 82,
+      "behavior_candidates": []
+    },
+    {
+      "kind": "calculation",
+      "target": "iNum",
+      "file_path": "index.html",
+      "line_start": 95,
+      "behavior_candidates": []
+    }
+  ],
+  "external_apis": [],
+  "source_files": [
+    "index.html"
+  ],
+  "parse_warnings": []
+}

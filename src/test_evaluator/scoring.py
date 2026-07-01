@@ -69,15 +69,6 @@ STATUS_SCORE: dict[Status, float | None] = {
     Status.SKIPPED: None,
 }
 
-RUNTIME_SCORE: dict[str, float | None] = {
-    "pass": 1.0,
-    "fail": 0.0,
-    "timeout": 0.0,
-    "env_error": None,
-    "skipped": None,
-}
-
-
 def unknown_review(agent: str, record_key: str, dimension: str) -> AgentReview:
     return AgentReview(
         agent=agent,  # type: ignore[arg-type]
@@ -305,20 +296,35 @@ def coordinate_projects(test_reports: list[TestReport], requirement_reports: lis
 
 
 def attach_runtime_results(run: EvaluationRun, runtime_by_record: dict[str, RuntimeResult]) -> EvaluationRun:
-    """Attach baseline evidence without pretending partial full-mode evidence is a final full score."""
+    """Attach baseline evidence without charging non-test failures to test quality."""
 
     for report in run.tests:
         runtime = runtime_by_record.get(report.record_key)
         if runtime is None:
             continue
         report.runtime = runtime
-        report.dimension_scores["runtime_result"] = RUNTIME_SCORE[runtime.status]
-        if runtime.status == "fail":
+        attribution = report.runtime_trace.failure_attribution if report.runtime_trace else None
+        effect = attribution.test_quality_effect if attribution else None
+        if runtime.status == "pass":
+            runtime_score = 1.0
+        elif effect == "penalize":
+            runtime_score = 0.0
+        else:
+            # An application, environment, evaluator, or indeterminate failure
+            # is not evidence that the evaluated test is defective.
+            runtime_score = None
+        report.dimension_scores["runtime_result"] = runtime_score
+        report.hard_gates = [
+            gate
+            for gate in report.hard_gates
+            if gate not in {"baseline_test_failed", "baseline_test_timeout"}
+        ]
+        if runtime.status == "fail" and effect == "penalize":
             if "baseline_test_failed" not in report.hard_gates:
                 report.hard_gates.append("baseline_test_failed")
             if report.risk not in {"critical"}:
                 report.risk = "major"
-        elif runtime.status == "timeout":
+        elif runtime.status == "timeout" and effect == "penalize":
             if "baseline_test_timeout" not in report.hard_gates:
                 report.hard_gates.append("baseline_test_timeout")
             if report.risk not in {"critical"}:
@@ -329,28 +335,27 @@ def attach_runtime_results(run: EvaluationRun, runtime_by_record: dict[str, Runt
         suite_key = f"{report.project_id}::{report.requirement_id}"
         tests_by_suite.setdefault(suite_key, []).append(report)
     for requirement in run.requirements:
-        executed = [
-            report.runtime
+        scored = [
+            report.dimension_scores.get("runtime_result")
             for report in tests_by_suite.get(requirement.suite_key, [])
-            if report.runtime and report.runtime.status in {"pass", "fail", "timeout"}
+            if report.dimension_scores.get("runtime_result") is not None
         ]
         requirement.runtime_pass_rate = (
-            sum(result.status == "pass" for result in executed) / len(executed)
-            if executed
+            sum(score == 1.0 for score in scored) / len(scored)
+            if scored
             else None
         )
 
     for project in run.projects:
-        executed = [
-            report.runtime
+        scored = [
+            report.dimension_scores.get("runtime_result")
             for report in run.tests
             if report.project_id == project.project_id
-            and report.runtime
-            and report.runtime.status in {"pass", "fail", "timeout"}
+            and report.dimension_scores.get("runtime_result") is not None
         ]
         project.runtime_pass_rate = (
-            sum(result.status == "pass" for result in executed) / len(executed)
-            if executed
+            sum(score == 1.0 for score in scored) / len(scored)
+            if scored
             else None
         )
         project.risk_counts = dict(
@@ -369,25 +374,43 @@ def attach_stability_results(
             continue
         report.stability = stability
         findings: list[Finding] = []
+        review_status = stability.status
         if stability.flaky:
             outcomes = ", ".join(
                 f"run {attempt.run_index + 1}={attempt.status}" for attempt in stability.attempts
             )
+            attribution = report.runtime_trace.failure_attribution if report.runtime_trace else None
+            test_owned = bool(
+                (attribution and attribution.origin == "test_defect")
+                or report.static_facts.sleep_count
+            )
             findings.append(
                 Finding(
                     criterion="Repeated baseline runs are stable",
-                    status=Status.FAIL,
-                    severity=Severity.MAJOR,
-                    confidence=1.0,
+                    status=Status.FAIL if test_owned else Status.UNKNOWN,
+                    severity=Severity.MAJOR if test_owned else Severity.INFO,
+                    confidence=0.9 if test_owned else 0.5,
                     evidence=[Evidence(field="runtime.stability", quote=outcomes)],
-                    reasoning="The same unchanged test produced both passing and non-passing behavioral outcomes.",
-                    suggested_fix="Remove nondeterministic waits, external dependencies, or shared state and repeat the stability run.",
+                    reasoning=(
+                        "The unchanged test produced mixed outcomes and contains a test-owned instability signal such as a fixed sleep or an attributed test defect."
+                        if test_owned
+                        else "The unchanged test produced mixed outcomes, but the evidence cannot assign the instability to the test rather than the application or environment."
+                    ),
+                    suggested_fix=(
+                        "Replace nondeterministic waits or test-owned shared state and repeat the stability run."
+                        if test_owned
+                        else "Inspect application and environment stability before charging this result to test quality."
+                    ),
                 )
             )
-            if "flaky_runtime" not in report.hard_gates:
-                report.hard_gates.append("flaky_runtime")
-            if report.risk != "critical":
-                report.risk = "major"
+            if test_owned:
+                if "flaky_runtime" not in report.hard_gates:
+                    report.hard_gates.append("flaky_runtime")
+                if report.risk != "critical":
+                    report.risk = "major"
+                review_status = Status.FAIL
+            else:
+                review_status = Status.UNKNOWN
         report.reviews = [item for item in report.reviews if item.agent != "stability_analyzer"]
         report.reviews.append(
             AgentReview(
@@ -395,7 +418,7 @@ def attach_stability_results(
                 project_id=report.project_id,
                 record_key=report.record_key,
                 dimension="stability",
-                status=stability.status,
+                status=review_status,
                 confidence=1.0 if stability.completed_runs >= 2 else 0.5,
                 findings=findings,
             )
@@ -427,22 +450,50 @@ def attach_source_grounding(
         output = grounding_by_record.get(report.record_key)
         if output is None:
             continue
+        expected_missing = set(output.missing_source_anchors)
+        test_only_missing = [
+            item
+            for item in output.selectors
+            if not item.source_exists and item.selector not in expected_missing
+        ]
+        contract_only_mismatch = bool(
+            output.status is Status.FAIL and expected_missing and not test_only_missing
+        )
+        review_findings = output.findings
+        if contract_only_mismatch:
+            review_findings = [
+                finding.model_copy(
+                    update={
+                        "status": Status.UNKNOWN,
+                        "severity": Severity.INFO,
+                        "reasoning": (
+                            finding.reasoning
+                            + " This is retained as source/contract evidence and is not charged to test quality."
+                        ),
+                    }
+                )
+                for finding in output.findings
+            ]
         review = AgentReview(
             agent="selector_grounding",
             record_key=report.record_key,
             project_id=report.project_id,
             dimension="source_grounding",
-            status=output.status,
-            confidence=output.confidence,
-            findings=output.findings,
+            status=Status.UNKNOWN if contract_only_mismatch else output.status,
+            confidence=0.0 if contract_only_mismatch else output.confidence,
+            findings=review_findings,
         )
         report.reviews = [item for item in report.reviews if item.agent != "selector_grounding"]
         report.reviews.append(review)
-        report.dimension_scores["source_grounding"] = STATUS_SCORE[output.status]
-        if output.status is Status.FAIL and report.risk != "critical":
+        if contract_only_mismatch:
+            # The test followed a requirement/scenario anchor that the
+            # application source does not provide. This is source/contract
+            # evidence, not a test-quality failure.
+            report.dimension_scores["source_grounding"] = None
+        else:
+            report.dimension_scores["source_grounding"] = STATUS_SCORE[output.status]
+        if output.status is Status.FAIL and test_only_missing and report.risk != "critical":
             report.risk = "major"
-        elif output.status is Status.WARNING and report.risk in {"low", "unknown"}:
-            report.risk = "medium"
 
     for project in run.projects:
         project.risk_counts = dict(
@@ -486,7 +537,7 @@ def attach_mutation_results(
         ]
         findings = [
             Finding(
-                criterion=f"Test kills mutant {mutant.mutant_id}",
+                criterion=f"Mutant {mutant.mutant_id} survives this test",
                 status=Status.FAIL,
                 severity=Severity.MAJOR,
                 confidence=1.0,
@@ -558,17 +609,44 @@ def attach_runtime_traces(
         if output is None:
             continue
         report.runtime_trace = output.runtime_trace
-        report.reviews = [item for item in report.reviews if item.agent != "runtime_trace"]
-        report.reviews.append(
-            AgentReview(
-                agent="runtime_trace",
-                record_key=report.record_key,
-                project_id=report.project_id,
-                dimension="runtime_result",
-                status=output.status,
-                confidence=output.confidence,
-                findings=output.findings,
-            )
+        report.reviews = [
+            item
+            for item in report.reviews
+            if item.agent not in {"runtime_trace", "failure_attribution"}
+        ]
+        report.reviews.extend(
+            [
+                AgentReview(
+                    agent="runtime_trace",
+                    record_key=report.record_key,
+                    project_id=report.project_id,
+                    dimension="runtime_result",
+                    status=output.status,
+                    confidence=output.confidence,
+                    findings=[],
+                ),
+                AgentReview(
+                    agent="failure_attribution",
+                    record_key=report.record_key,
+                    project_id=report.project_id,
+                    dimension="runtime_attribution",
+                    status=(
+                        Status.PASS
+                        if output.runtime_trace.failure_attribution
+                        and output.runtime_trace.failure_attribution.test_quality_effect == "pass"
+                        else Status.FAIL
+                        if output.runtime_trace.failure_attribution
+                        and output.runtime_trace.failure_attribution.test_quality_effect == "penalize"
+                        else Status.UNKNOWN
+                    ),
+                    confidence=(
+                        output.runtime_trace.failure_attribution.confidence
+                        if output.runtime_trace.failure_attribution
+                        else 0.0
+                    ),
+                    findings=output.findings,
+                ),
+            ]
         )
     run.runtime_traces = {
         record_key: output.runtime_trace for record_key, output in outputs_by_record.items()

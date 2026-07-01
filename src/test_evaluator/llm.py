@@ -87,7 +87,7 @@ class OpenAIJsonAgent:
                     temporary.write_text(parsed.model_dump_json(indent=2), encoding="utf-8")
                     os.replace(temporary, cache_path)
                 return parsed
-            except ValidationError:
+            except (ValidationError, RuntimeError):
                 if attempt == 1:
                     raise
         raise RuntimeError("The structured response retry loop ended unexpectedly.")

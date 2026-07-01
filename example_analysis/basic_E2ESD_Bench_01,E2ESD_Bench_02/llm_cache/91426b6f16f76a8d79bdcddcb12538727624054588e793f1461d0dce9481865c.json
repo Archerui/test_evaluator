@@ -1,0 +1,63 @@
+{
+  "agent": "oracle_critic",
+  "record_key": "E2ESD_Bench_02::2::1",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "oracle_strength",
+  "status": "FAIL",
+  "confidence": 0.85,
+  "findings": [
+    {
+      "criterion": "Behavior 2.3 - When exiting edit mode with invalid/unmatched Markdown (e.g., unmatched **), the main display (data-testid=\"note-main\") must show the raw input verbatim and the app must remain responsive (no crash or unhandled error visible).",
+      "status": "FAIL",
+      "severity": "critical",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "assertions: 'h1_tag and h1_tag.text == expected_text' (classification: dom_observation) — only a positive-dom assertion for a valid markdown case is present; no assertion inspects raw verbatim text on exit for invalid markdown or checks for absence of crashes.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The provided test code only inputs valid Markdown (# Heading) and asserts the rendered <h1> text via a DOM observation. There is no scenario or assertion that inputs invalid/unmatched Markdown (e.g., unmatched **) nor any check that the note-main contains the raw verbatim textarea value on exiting edit mode. There is also no assertion that verifies the app remains responsive or that no unhandled error UI is shown. Because the required observables for this edge behavior (verbatim DOM content for invalid input and absence of visible crash/error) are not asserted, the oracle is insufficient to catch regressions for this behavior.",
+      "suggested_fix": "Add an explicit scenario that inputs an invalid Markdown string (e.g., \"unmatched **\" or \"**bold\") into [data-testid='note-textarea'], clicks the edit button, then assert that [data-testid='note-main'] displays the exact raw text (e.g., compare note-main.textContent or innerText to the original textarea value). Also assert the absence of error UI after exit (e.g., no visible error banner) and/or capture console logs or an error element to ensure no unhandled exception was surfaced to the user."
+    },
+    {
+      "criterion": "Normal-case assertion: When user enters valid Markdown '# Heading' and exits edit mode, the main display should render <h1>Heading</h1>.",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "step_code",
+          "quote": "assert h1_tag and h1_tag.text == expected_text, f\"Expected text '{expected_text}' but got '{rendered_html}'\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "Then the main display area with data-testid \"note-main\" should render \"<h1>Heading</h1>\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The test reads the DOM (note-main.innerHTML), parses it, finds an h1 element and asserts its text equals 'Heading'. This is a direct DOM observation of the rendered HTML and serves as a strong oracle for the normal Markdown rendering outcome, so it will detect regressions that change the rendered h1 text.",
+      "suggested_fix": null
+    }
+  ]
+}

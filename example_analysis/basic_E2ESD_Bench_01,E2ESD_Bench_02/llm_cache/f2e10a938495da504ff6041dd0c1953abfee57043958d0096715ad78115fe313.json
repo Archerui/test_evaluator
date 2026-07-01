@@ -1,0 +1,71 @@
+{
+  "agent": "bdd_traceability",
+  "record_key": "E2ESD_Bench_02::3::2",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "spec_alignment",
+  "status": "WARNING",
+  "confidence": 0.9,
+  "findings": [
+    {
+      "criterion": "Scenario expresses the toggle from edit mode to view mode via the Edit button",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "gherkin_scenario",
+          "quote": "When the user clicks the \"Edit\" button with data-testid \"edit-note-button\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "Then the note's textarea with data-testid \"note-textarea\" should be hidden",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "And the note's main content area with data-testid \"note-main\" should be visible",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The scenario provides a clear precondition (a note exists), a core user action (clicking the Edit button), and explicit Then outcomes asserting the textarea is hidden and the main content is visible. Those steps directly express the user-observable toggle between edit and view modes described in the requirement.",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "The behaviour contract '3.1-create-enters-edit' (click Add note -> immediately enter edit mode) is not exercised by this scenario",
+      "status": "WARNING",
+      "severity": "major",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Upon creation, the note should immediately enter edit mode: the textarea (data-testid=\"note-textarea\") is visible for user input, while the main content area (data-testid=\"note-main\") remains hidden.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "And a note is created with text \"Sample Note\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The requirement contract explicitly requires that clicking the Add note button causes the new note to immediately enter edit mode. The scenario instead uses a Given that a note already exists ('a note is created with text \"Sample Note\"') and does not perform the user action of clicking the Add note button, so it does not verify the creation -> immediate edit-mode transition.",
+      "suggested_fix": "Add a Normal scenario that performs the user action: 'When the user clicks the \"Add note\" button with data-testid \"add-note-button\"' and then asserts the textarea (data-testid=\"note-textarea\") is visible and the main content area (data-testid=\"note-main\") is hidden immediately after creation."
+    }
+  ]
+}

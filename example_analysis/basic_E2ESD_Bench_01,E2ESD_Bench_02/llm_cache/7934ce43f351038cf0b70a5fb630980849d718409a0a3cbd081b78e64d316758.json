@@ -1,0 +1,63 @@
+{
+  "agent": "oracle_critic",
+  "record_key": "E2ESD_Bench_02::2::3",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "oracle_strength",
+  "status": "WARNING",
+  "confidence": 0.6,
+  "findings": [
+    {
+      "criterion": "Main display shows raw input verbatim after exiting edit mode",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "step_code",
+          "quote": "assert expected_text in rendered_text, f\"Expected '{expected_text}' in '{rendered_text}'\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "classification: \"dom_observation\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The test performs an exact DOM text assertion: it reads text from the element with data-testid=\"note-main\" and asserts the literal string \"This is not **valid Markdown\" is present. According to static_facts this is a dom_observation, which is a strong oracle for the required observable (verbatim display of the raw input).",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "App remains responsive (no crash or unhandled error visible) when exiting edit mode with invalid Markdown",
+      "status": "WARNING",
+      "severity": "major",
+      "confidence": 0.45,
+      "evidence": [
+        {
+          "field": "step_code",
+          "quote": "main_display_area = WebDriverWait(context.driver, 10).until( EC.visibility_of_element_located((By.CSS_SELECTOR, \"[data-testid='note-main']\")) )",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "fine_grained_reqs",
+          "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The scenario requirement includes a resilience observable (no crash/unhandled error). The test does not explicitly assert absence of errors or check for crash indicators (e.g., no console errors, no visible error message, or that application code did not throw). The only related runtime check is locating the main display element (WebDriverWait for visibility) and reading its text; this is an indirect/partial constraint — it will detect a complete failure to render the element but does not prove there were no unhandled errors or that the app remained responsive in all ways. Therefore the oracle for \"no crash/unhandled error visible\" is partial, not strong.",
+      "suggested_fix": "Add explicit assertions for absence of error UI or console errors after exiting edit mode (for example, check for no visible error banner and inspect browser console logs for uncaught exceptions), or assert application-specific healthy state indicators immediately after clicking the Edit button."
+    }
+  ]
+}

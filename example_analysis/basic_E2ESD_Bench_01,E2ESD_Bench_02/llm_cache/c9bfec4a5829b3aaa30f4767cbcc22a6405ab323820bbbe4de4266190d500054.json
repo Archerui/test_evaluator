@@ -1,0 +1,115 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "requirement_id": "5",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "5.normal.total_sum_and_display",
+      "kind": "normal",
+      "preconditions": [
+        "Product list is visible with predefined product prices",
+        "Cart drop area is present"
+      ],
+      "actor_actions": [
+        "Drag one or more products from the product list and drop them into the cart area"
+      ],
+      "expected_observables": [
+        "The <div id=\"allMoney\"> element's text equals the numeric sum of the dropped product prices formatted with the currency symbol and two decimal places (example: \"$80.00\")"
+      ],
+      "state_effects": [
+        "Cart contains the dropped products",
+        "Displayed total reflects the sum of the cart's product prices"
+      ],
+      "ui_anchors": [
+        "product list (source of draggable items)",
+        "cart drop area (target for drops)",
+        "<div id=\"allMoney\"> (total display)"
+      ],
+      "constraints": [
+        "Total must equal the arithmetic sum of item prices",
+        "Total must include the appropriate currency symbol",
+        "Total must be formatted to two decimal places",
+        "Total must be displayed inside <div id=\"allMoney\">"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system calculates the total price by summing the prices of all products in the cart",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "5.normal.trailing_zero_format",
+      "kind": "normal",
+      "preconditions": [
+        "Product prices chosen sum to an integer-dollar amount (no cents)"
+      ],
+      "actor_actions": [
+        "Add product(s) whose prices sum to a whole-dollar value into the cart"
+      ],
+      "expected_observables": [
+        "The <div id=\"allMoney\"> element shows two decimal places including trailing zeros (example: \"$80.00\")"
+      ],
+      "state_effects": [
+        "Displayed total uses fixed two-decimal formatting even for whole-dollar totals"
+      ],
+      "ui_anchors": [
+        "<div id=\"allMoney\">"
+      ],
+      "constraints": [
+        "Always display exactly two digits after the decimal point",
+        "Include the appropriate currency symbol"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00')",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "5.edge.rounding_to_two_decimals",
+      "kind": "edge",
+      "preconditions": [
+        "Product prices chosen result in a sum with more than two decimal digits (e.g., fractional cents)"
+      ],
+      "actor_actions": [
+        "Add product(s) whose prices produce a fractional-cent total into the cart"
+      ],
+      "expected_observables": [
+        "The <div id=\"allMoney\"> element shows the total rounded/formatted to two decimal places with the currency symbol (for example, a computed 19.995 displays as \"$20.00\")"
+      ],
+      "state_effects": [
+        "Displayed total is the two-decimal representation of the numeric sum"
+      ],
+      "ui_anchors": [
+        "<div id=\"allMoney\">"
+      ],
+      "constraints": [
+        "Final displayed total must be presented with exactly two decimal places",
+        "Currency symbol must be present alongside the rounded/formatted value"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "formatting the total to two decimal places",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "artifacts": [
+    {
+      "description": "Repeated-run stability results for E2ESD_Bench_01",
+      "kind": "stability_report",
+      "path": "example_analysis/full_E2ESD_Bench_01/projects/E2ESD_Bench_01/stability_results.json",
+      "sha256": "4dc747c88c721ab07fb87171e0e978d2dcd159e0425e7a6a196744534f92b734"
+    }
+  ],
+  "reports": {
+    "E2ESD_Bench_01::1::1": {
+      "attempts": [
+        {
+          "duration_seconds": 5.026373684871942,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 4.394546141847968,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::1::1",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::1::2": {
+      "attempts": [
+        {
+          "duration_seconds": 7.113856738898903,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 6.469525848980993,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::1::2",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::1::3": {
+      "attempts": [
+        {
+          "duration_seconds": 5.009690855164081,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 4.9799710270017385,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::1::3",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::1::4": {
+      "attempts": [
+        {
+          "duration_seconds": 2.8570497441105545,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 2.902590834069997,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::1::4",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::3::1": {
+      "attempts": [
+        {
+          "duration_seconds": 7.449377448298037,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 7.456608941778541,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::3::1",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::3::2": {
+      "attempts": [
+        {
+          "duration_seconds": 11.639151079114527,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 11.567155833356082,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::3::2",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::3::3": {
+      "attempts": [
+        {
+          "duration_seconds": 7.92188631510362,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 7.950051665306091,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::3::3",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::3::4": {
+      "attempts": [
+        {
+          "duration_seconds": 7.192113815806806,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 6.951033698860556,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::3::4",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::5::1": {
+      "attempts": [
+        {
+          "duration_seconds": 2.856928605120629,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 2.85028589470312,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::5::1",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::5::2": {
+      "attempts": [
+        {
+          "duration_seconds": 4.019236888736486,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 4.060252070892602,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::5::2",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::5::3": {
+      "attempts": [
+        {
+          "duration_seconds": 5.017728365957737,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 5.411809809971601,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::5::3",
+      "requested_runs": 2,
+      "status": "PASS"
+    },
+    "E2ESD_Bench_01::5::4": {
+      "attempts": [
+        {
+          "duration_seconds": 5.903946068603545,
+          "error_type": null,
+          "run_index": 0,
+          "status": "pass"
+        },
+        {
+          "duration_seconds": 5.923072044271976,
+          "error_type": null,
+          "run_index": 1,
+          "status": "pass"
+        }
+      ],
+      "completed_runs": 2,
+      "flaky": false,
+      "pass_rate": 1.0,
+      "record_key": "E2ESD_Bench_01::5::4",
+      "requested_runs": 2,
+      "status": "PASS"
+    }
+  },
+  "warnings": []
+}

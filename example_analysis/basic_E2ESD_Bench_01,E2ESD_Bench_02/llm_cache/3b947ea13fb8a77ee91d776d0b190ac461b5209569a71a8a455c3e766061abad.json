@@ -1,0 +1,149 @@
+{
+  "project_id": "E2ESD_Bench_02",
+  "requirement_id": "3",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "3.1-create-enters-edit",
+      "kind": "normal",
+      "preconditions": [
+        "Application page is loaded"
+      ],
+      "actor_actions": [
+        "Click the Add note button (data-testid=\"add-note-button\")"
+      ],
+      "expected_observables": [
+        "The textarea (data-testid=\"note-textarea\") is visible for user input",
+        "The main content area (data-testid=\"note-main\") is hidden"
+      ],
+      "state_effects": [
+        "A new note is created and its UI state is set to edit mode"
+      ],
+      "ui_anchors": [
+        "data-testid=\"add-note-button\"",
+        "data-testid=\"note-textarea\"",
+        "data-testid=\"note-main\""
+      ],
+      "constraints": [
+        "Transition to edit mode must occur immediately upon creation"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Upon creation, the note should immediately enter edit mode: the textarea (data-testid=\"note-textarea\") is visible for user input, while the main content area (data-testid=\"note-main\") remains hidden.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.2-toggle-to-view-shows-main",
+      "kind": "normal",
+      "preconditions": [
+        "A note exists (for example, currently in edit mode)"
+      ],
+      "actor_actions": [
+        "Click the Edit button (data-testid=\"edit-note-button\") to switch to view mode"
+      ],
+      "expected_observables": [
+        "The main content area (data-testid=\"note-main\") is visible displaying formatted content",
+        "The textarea (data-testid=\"note-textarea\") is hidden"
+      ],
+      "state_effects": [
+        "The note's UI state changes to view mode"
+      ],
+      "ui_anchors": [
+        "data-testid=\"edit-note-button\"",
+        "data-testid=\"note-main\"",
+        "data-testid=\"note-textarea\""
+      ],
+      "constraints": [
+        "Clicking the Edit button toggles the UI into view mode where the main content is shown and the textarea is hidden"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Users can switch between edit and view modes by clicking the \"Edit\" button (data-testid=\"edit-note-button\"). In view mode, the main content area becomes visible to display the formatted content, and the textarea is hidden; in edit mode, this behavior is reversed.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.3-toggle-to-edit-shows-textarea",
+      "kind": "normal",
+      "preconditions": [
+        "A note exists and is currently in view mode"
+      ],
+      "actor_actions": [
+        "Click the Edit button (data-testid=\"edit-note-button\") to switch to edit mode"
+      ],
+      "expected_observables": [
+        "The textarea (data-testid=\"note-textarea\") is visible for user input",
+        "The main content area (data-testid=\"note-main\") is hidden"
+      ],
+      "state_effects": [
+        "The note's UI state changes to edit mode"
+      ],
+      "ui_anchors": [
+        "data-testid=\"edit-note-button\"",
+        "data-testid=\"note-textarea\"",
+        "data-testid=\"note-main\""
+      ],
+      "constraints": [
+        "Clicking the Edit button toggles the UI back into edit mode where the textarea is shown and the main content is hidden"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "In view mode, the main content area becomes visible to display the formatted content, and the textarea is hidden; in edit mode, this behavior is reversed.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.4-autosave-to-localstorage",
+      "kind": "persistence",
+      "preconditions": [
+        "A note exists and the textarea (data-testid=\"note-textarea\") is visible (edit mode)"
+      ],
+      "actor_actions": [
+        "Type or modify text inside the textarea (data-testid=\"note-textarea\")"
+      ],
+      "expected_observables": [
+        "Local storage is updated automatically with the note's latest text",
+        "After a page reload, the note's content reflects the last typed changes"
+      ],
+      "state_effects": [
+        "The note's persisted representation in localStorage is updated to include the typed changes"
+      ],
+      "ui_anchors": [
+        "data-testid=\"note-textarea\""
+      ],
+      "constraints": [
+        "Saves must be automatic (no explicit save button) and preserve state across sessions"
+      ],
+      "observability": "storage",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "All changes typed into the textarea should be automatically saved to local storage, preserving the note’s state across sessions.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

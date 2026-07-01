@@ -1,0 +1,45 @@
+{
+  "agent": "bdd_traceability",
+  "record_key": "E2ESD_Bench_01::3::1",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "spec_alignment",
+  "status": "PASS",
+  "confidence": 0.9,
+  "findings": [
+    {
+      "criterion": "Scenario expresses the required precondition, user action, and observable outcomes for adding a single product via drag-and-drop as specified by the behaviour contract 3.normal.add_single_product_via_drag_and_drop.",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "gherkin_scenario",
+          "quote": "Then the cart display should show a product with title \"The Essence of JavaScript\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The behaviour contract requires (1) product items be draggable into the drop area (data-testid=\"drop-area\") and (2) after drop the cart shows title, unit price, and quantity (quantity = 1). The scenario provides the precondition (page loaded and product visible), the explicit action (drag product-item-1 and drop into data-testid \"drop-area\"), and asserts the expected user-observable outcomes: title, price, and quantity. The scenario's drop target uses the required data-testid and the Then steps assert the same observable fields required by the contract (title, price, quantity = 1).",
+      "suggested_fix": null
+    }
+  ]
+}

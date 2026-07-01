@@ -1,0 +1,76 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "requirement_id": "1",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "B1_capture_on_dragstart",
+      "kind": "normal",
+      "preconditions": [
+        "Product list is rendered and the user can interact with product items"
+      ],
+      "actor_actions": [
+        "User begins a drag (dragstart) on a product li element that has draggable=\"true\""
+      ],
+      "expected_observables": [
+        "The drag event's DataTransfer is populated with the product's title and the product's price (both values captured for transfer)"
+      ],
+      "state_effects": [],
+      "ui_anchors": [
+        "li[draggable=\"true\"]",
+        "[data-testid^=\"product-item-\"]",
+        "[data-testid^=\"product-title-\"]",
+        "[data-testid^=\"product-price-\"]"
+      ],
+      "constraints": [
+        "Capture must occur during the drag (e.g., dragstart) so the title and price are available for transfer via the browser DataTransfer API",
+        "The dragged element must be a product li element (see UI anchors)"
+      ],
+      "observability": "browser_api",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The drag event should capture the title and price of the product being dragged.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "B2_product_item_structure_and_identifiers",
+      "kind": "normal",
+      "preconditions": [
+        "Product list is rendered"
+      ],
+      "actor_actions": [
+        "User views or attempts to drag a product item"
+      ],
+      "expected_observables": [
+        "Each product is represented by an li element with draggable=\"true\" and contains an image, a title element, and a price element identifiable by data-testid attributes (example patterns shown)"
+      ],
+      "state_effects": [],
+      "ui_anchors": [
+        "li[draggable=\"true\"]",
+        "[data-testid=\"product-item-1\"]",
+        "[data-testid=\"product-title-1\"]",
+        "[data-testid=\"product-price-1\"]"
+      ],
+      "constraints": [
+        "Product item structure must include image, title, and price nodes and expose data-testid attributes such as 'product-item-N', 'product-title-N', and 'product-price-N'"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Each product item contains an image, a title, and a price, identified by data-testid attributes such as 'product-item-1', 'product-title-1', and 'product-price-1'.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

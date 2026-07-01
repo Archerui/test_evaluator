@@ -1,0 +1,192 @@
+{
+  "project_id": "E2ESD_Bench_01",
+  "requirement_id": "3",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "3.normal_add_item_on_drop",
+      "kind": "normal",
+      "preconditions": [
+        "Product list is rendered and contains one or more product items with data-testid attributes (e.g. data-testid=\"product-item-1\").",
+        "Designated drop area is present (id=\"div1\", data-testid=\"drop-area\")."
+      ],
+      "actor_actions": [
+        "User drags a product item (e.g. element with data-testid=\"product-item-1\") and drops it onto the designated drop area (id=\"div1\" / data-testid=\"drop-area\")."
+      ],
+      "expected_observables": [
+        "A new cart entry for the dropped product is displayed after the drop (visible in the cart UI area)."
+      ],
+      "state_effects": [
+        "Cart state contains an entry for the dropped product."
+      ],
+      "ui_anchors": [
+        "data-testid=\"product-item-1\" (source product items)",
+        "data-testid=\"product-item-2\"",
+        "id=\"div1\"",
+        "data-testid=\"drop-area\""
+      ],
+      "constraints": [
+        "The add action is triggered by dragging a product item into the element identified by id=\"div1\" or data-testid=\"drop-area\"."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal_show_product_title_in_box2",
+      "kind": "normal",
+      "preconditions": [
+        "A product item has been dropped into the designated drop area (see add_item_on_drop)."
+      ],
+      "actor_actions": [
+        "User drops a product item into the designated drop area."
+      ],
+      "expected_observables": [
+        "The dropped product's title is visible in the cart UI at selector .box2."
+      ],
+      "state_effects": [
+        "Cart display includes the product title mapped to .box2 for the added item."
+      ],
+      "ui_anchors": [
+        ".box2 (product title in cart display)",
+        "data-testid=\"product-item-1\"",
+        "id=\"div1\"",
+        "data-testid=\"drop-area\""
+      ],
+      "constraints": [
+        "The product title must appear specifically in the element(s) matching selector .box2."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "the product title appears in .box2, the unit price in .box3, and the quantity in .box1.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal_show_unit_price_in_box3",
+      "kind": "normal",
+      "preconditions": [
+        "A product item has been dropped into the designated drop area."
+      ],
+      "actor_actions": [
+        "User drops a product item into the designated drop area."
+      ],
+      "expected_observables": [
+        "The dropped product's unit price is visible in the cart UI at selector .box3."
+      ],
+      "state_effects": [
+        "Cart display includes the product's unit price mapped to .box3 for the added item."
+      ],
+      "ui_anchors": [
+        ".box3 (unit price in cart display)",
+        ".box2",
+        ".box1",
+        "data-testid=\"product-item-1\"",
+        "id=\"div1\""
+      ],
+      "constraints": [
+        "The unit price must be presented specifically in element(s) matching selector .box3."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "the product title appears in .box2, the unit price in .box3, and the quantity in .box1.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal_increment_quantity_for_repeated_products",
+      "kind": "normal",
+      "preconditions": [
+        "A given product has already been added to the cart (one or more entries visible)."
+      ],
+      "actor_actions": [
+        "User drags and drops the same product item again into the designated drop area."
+      ],
+      "expected_observables": [
+        "The quantity shown for that product increases in the cart display at selector .box1 (reflecting the repeated add)."
+      ],
+      "state_effects": [
+        "Cart quantity for the repeated product increments accordingly (single observable: .box1 updated)."
+      ],
+      "ui_anchors": [
+        ".box1 (quantity in cart display)",
+        "data-testid=\"product-item-1\"",
+        "id=\"div1\"",
+        "data-testid=\"drop-area\""
+      ],
+      "constraints": [
+        "Repeated adds of the same product must update the quantity visible in .box1 rather than creating a duplicate unrelated entry."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system supports adding both different and repeated products.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "3.normal_show_multiple_different_products",
+      "kind": "normal",
+      "preconditions": [
+        "Multiple distinct product items are available in the product list (e.g. data-testid=\"product-item-1\", data-testid=\"product-item-2\")."
+      ],
+      "actor_actions": [
+        "User drags and drops two different product items into the designated drop area (id=\"div1\" / data-testid=\"drop-area\")."
+      ],
+      "expected_observables": [
+        "Both different products appear in the cart display (separate entries), each showing their title in .box2, price in .box3, and quantity in .box1."
+      ],
+      "state_effects": [
+        "Cart state contains distinct entries for each different product added."
+      ],
+      "ui_anchors": [
+        "data-testid=\"product-item-1\"",
+        "data-testid=\"product-item-2\"",
+        "id=\"div1\"",
+        "data-testid=\"drop-area\"",
+        ".box1",
+        ".box2",
+        ".box3"
+      ],
+      "constraints": [
+        "Different products dropped must result in distinct cart entries, each mapping title->.box2, price->.box3, quantity->.box1."
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system supports adding both different and repeated products.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

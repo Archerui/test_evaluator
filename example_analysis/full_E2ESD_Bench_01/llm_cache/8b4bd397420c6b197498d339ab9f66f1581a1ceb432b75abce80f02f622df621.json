@@ -1,0 +1,150 @@
+{
+  "status": "WARNING",
+  "confidence": 0.78,
+  "findings": [
+    {
+      "criterion": "At least one scenario demonstrates product list visibility on load",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product item with data-testid \"product-item-1\" is visible",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "A scenario explicitly includes a step asserting visibility of a product item after page load, which satisfies the product-list-on-load observability requirement.",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "Drag-and-drop add / single, repeated, and distinct product behaviors are exercised by scenarios",
+      "status": "PASS",
+      "severity": "minor",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\"\n    And the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-2\" and drops it into the cart container with data-testid \"drop-area\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "Scenarios cover: (a) adding a single product (scenario 1), (b) adding the same product twice to increment quantity (scenario 3), and (c) adding two distinct products to create separate entries (scenario 2). These correspond to the drag-and-drop add behaviors.",
+      "suggested_fix": null
+    },
+    {
+      "criterion": "Cart total calculation and currency formatting are asserted by the suite",
+      "status": "UNKNOWN",
+      "severity": "major",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "The system calculates the total cost of all products in the cart and displays it at the bottom of the cart area, formatted with the appropriate currency symbol and two decimal places.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "No supplied scenario asserts observing the cart total area, its numeric sum, or the required currency formatting. The behavior contract exists in requirements, but the scenario corpus lacks a matching Then-step to validate total display/formatting.",
+      "suggested_fix": "Add a scenario step that asserts the cart total area updates and shows the expected currency-formatted value (e.g. Then the cart total shows \"$160.00\")."
+    },
+    {
+      "criterion": "Edge scenario overlaps with Normal scenario (near-duplicate coverage for product-item-2)",
+      "status": "WARNING",
+      "severity": "minor",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "Then the cart display should show a product with title \"JavaScript: The Definitive Guide\"\n    And the price \"$120\"\n    And the quantity \"1\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "Then the cart display should show a product with title \"JavaScript: The Definitive Guide\"\n    And the price \"$120\"\n    And the quantity \"1\"",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The Edge scenario 'Add a product with a high price to the cart' repeats the same assertions as the Normal scenario that already drops product-item-2 with price \"$120\". This appears to be a near-duplicate; the edge dimension (what qualifies as 'high price' and any special handling) is not distinguished in the steps.",
+      "suggested_fix": "Differentiate the edge scenario by asserting an edge-specific outcome (e.g., formatting differences, overflow handling, or threshold-based behavior) or remove duplication."
+    },
+    {
+      "criterion": "Test scenarios are primarily data variants rather than distinct behavioral explorations",
+      "status": "WARNING",
+      "severity": "minor",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product item with data-testid \"product-item-1\" is visible",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "scenario_corpus",
+          "quote": "And the product item with data-testid \"product-item-2\" is visible",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The scenarios differ mainly by which product-item (data-testid) is used and expected title/price values. These are valuable as data variants, but do not expand behavioural coverage beyond the same drag/drop and display assertions.",
+      "suggested_fix": "Introduce scenarios that exercise alternative behaviors (e.g., dropping outside the drop area, partial drops, drag cancellation, or verifying cart entry uniqueness by product id) or add explicit cart-total and formatting checks."
+    }
+  ],
+  "behavior_coverage": [
+    {
+      "behavior_id": "3.normal.product_list_visible_on_load",
+      "status": "PASS"
+    },
+    {
+      "behavior_id": "3.normal.add_single_product_via_drag_and_drop",
+      "status": "PASS"
+    },
+    {
+      "behavior_id": "3.normal.add_same_product_multiple_times_increments_quantity",
+      "status": "PASS"
+    },
+    {
+      "behavior_id": "3.normal.add_multiple_distinct_products_create_separate_entries",
+      "status": "PASS"
+    },
+    {
+      "behavior_id": "3.normal.cart_total_updates_and_formats_currency",
+      "status": "UNKNOWN"
+    }
+  ]
+}

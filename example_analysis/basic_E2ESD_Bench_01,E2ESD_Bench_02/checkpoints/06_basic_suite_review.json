@@ -1,0 +1,936 @@
+{
+  "assessments": {
+    "E2ESD_Bench_01::1": {
+      "behavior_coverage": {
+        "B1_capture_on_dragstart": "WARNING",
+        "B2_product_item_structure_and_identifiers": "WARNING"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.72,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.78,
+            "criterion": "B1_capture_on_dragstart: dragstart must populate the browser DataTransfer with title and price",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The drag event should capture the title and price of the product being dragged."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"The Essence of JavaScript\" should be captured"
+              }
+            ],
+            "reasoning": "Scenarios assert that a drag event is initiated and that title and price values are 'captured', but none of the supplied scenarios explicitly observe or assert the browser DataTransfer API contents (the behaviour contract's observable). The requirement's observability is 'browser_api', so proof should reference DataTransfer population (e.g., reading event.dataTransfer during dragstart).",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add or update a scenario to explicitly assert the DataTransfer contents during dragstart (e.g., verify event.dataTransfer.getData('text/plain') or equivalent contains both title and price)."
+          },
+          {
+            "confidence": 0.74,
+            "criterion": "B2_product_item_structure_and_identifiers: product items must be li[draggable=\"true\"] and include image, title, price nodes with data-testid attributes",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Each product item contains an image, a title, and a price, identified by data-testid attributes such as 'product-item-1', 'product-title-1', and 'product-price-1'."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product item with data-testid \"product-item-1\""
+              }
+            ],
+            "reasoning": "Scenarios reference product-item data-testids and perform drag actions, but none explicitly assert the DOM structure required by the contract (that the element is an li with draggable=\"true\") nor verify presence of the image, title, and price nodes each with the indicated data-testid patterns. The scenarios therefore provide partial evidence (data-testid usage) but not full structural proof.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Add assertions in at least one scenario that product items match li[draggable=\"true\"] and contain child nodes for image, title, and price with the expected data-testid attributes (e.g., check existence of [data-testid=\"product-title-1\"] and [data-testid=\"product-price-1\"])."
+          },
+          {
+            "confidence": 0.62,
+            "criterion": "Suite scenario corpus: redundancy and variety of Normal/Edge/Error coverage",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"The Essence of JavaScript\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"JavaScript: The Definitive Guide\" should be captured"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the product title \"Mastering JavaScript\" should be captured"
+              }
+            ],
+            "reasoning": "The suite includes three scenarios that exercise dragging products with different concrete titles/prices (highest, lowest, and a normal case). These are data variants of the same behaviour (capture-on-drag) and provide some edge-value checks, but they are near-duplicates rather than exercising additional behavioural dimensions (e.g., different DOM structures, varied dragstart timing, or explicit DataTransfer checks). The error scenario does add a negative case (non-draggable element).",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Consolidate repetitive data-variant scenarios if desired and add orthogonal scenarios to exercise other dimensions: explicit DataTransfer reading, varying DOM node types, interrupted drags, or delayed dragstart handlers."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_01::1"
+      }
+    },
+    "E2ESD_Bench_01::3": {
+      "behavior_coverage": {
+        "3.normal_add_item_on_drop": "PASS",
+        "3.normal_increment_quantity_for_repeated_products": "UNKNOWN",
+        "3.normal_show_multiple_different_products": "UNKNOWN",
+        "3.normal_show_product_title_in_box2": "UNKNOWN",
+        "3.normal_show_unit_price_in_box3": "UNKNOWN"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.78,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "3.normal_add_item_on_drop — user drags a product into the drop area and a cart entry appears",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\""
+              }
+            ],
+            "reasoning": "Multiple Normal scenarios (e.g. scenario 1 and 2) perform a drag-and-drop of product items into the declared drop area and then assert that the cart display shows the product — this demonstrates the add-on-drop observable is exercised by the suite.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.78,
+            "criterion": "Selector-level mapping for cart fields (.box1/.box2/.box3) is not asserted by scenarios",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "the product title appears in .box2, the unit price in .box3, and the quantity in .box1."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the cart display should show a product with title \"The Essence of JavaScript\""
+              }
+            ],
+            "reasoning": "Requirement text explicitly requires mapping title->.box2, price->.box3, quantity->.box1, but scenario assertions only validate that the cart display contains title/price/quantity values. Scenarios do not assert that those values are rendered specifically in elements matching selectors .box2, .box3, or .box1, so the selector-level contract cannot be established from the corpus.",
+            "severity": "major",
+            "status": "UNKNOWN",
+            "suggested_fix": "Add assertions in scenarios that verify the product title is rendered in '.box2', the unit price in '.box3', and the quantity in '.box1' (e.g., locate .box2 and assert its text equals the expected title)."
+          },
+          {
+            "confidence": 0.72,
+            "criterion": "3.normal_increment_quantity_for_repeated_products & 3.normal_show_multiple_different_products — functional values present but selector mapping unproven",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the user drags the product with data-testid \"product-item-2\" and drops it into the cart container with data-testid \"drop-area\""
+              }
+            ],
+            "reasoning": "Scenario 3 demonstrates the quantity increments (quantity \"2\") when the same product is added twice, and scenario 2 shows two different products added. However, like other mapping behaviors, these scenarios do not tie the observed quantity or separate entries to the specific selector .box1 (or .box2/.box3 for distinct entries). The functional outcome is exercised, but the contract that the UI maps these to the specified selectors is unproven.",
+            "severity": "major",
+            "status": "UNKNOWN",
+            "suggested_fix": "Extend scenarios to assert both the value and its container selector (e.g., assert the quantity '2' is the text content of '.box1' for the relevant cart row)."
+          },
+          {
+            "confidence": 0.0,
+            "criterion": "Suite composition: near-duplicate / low negative-case coverage",
+            "evidence": [],
+            "reasoning": "The agent's claim was not retained because its quoted evidence could not be verified in the supplied CSV fields.",
+            "severity": "info",
+            "status": "UNKNOWN",
+            "suggested_fix": null
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_01::3"
+      }
+    },
+    "E2ESD_Bench_01::5": {
+      "behavior_coverage": {
+        "5.edge.rounding_to_two_decimals": "UNKNOWN",
+        "5.normal.total_sum_and_display": "PASS",
+        "5.normal.trailing_zero_format": "PASS"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.7,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "5.normal.total_sum_and_display",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$40.00\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$160.00\""
+              }
+            ],
+            "reasoning": "Multiple normal scenarios (single product, multiple different products) perform drag-and-drop actions and assert the #allMoney element equals a currency-formatted total, exercising the sum-and-display behaviour across data variants.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "5.normal.trailing_zero_format",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$70.00\""
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00')"
+              }
+            ],
+            "reasoning": "Scenarios assert whole-dollar totals with explicit two-decimal formatting (\".00\"), matching the requirement to always show two decimal places and the currency symbol.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.6,
+            "criterion": "5.edge.rounding_to_two_decimals",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "formatting the total to two decimal places"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the total price displayed in the element with id \"allMoney\" should be \"$240.00\""
+              }
+            ],
+            "reasoning": "No scenario supplies product prices that produce a fractional-cent total or explicitly verifies rounding behavior (example in requirement expects rounding like 19.995 -> \"$20.00\"). The provided edge scenario sums to an integer-dollar total and does not exercise rounding rules, so the rounding-to-two-decimals behaviour is unproven.",
+            "severity": "major",
+            "status": "UNKNOWN",
+            "suggested_fix": "Add an edge scenario that adds products whose prices sum to a fractional-cent value (e.g., 19.995) and assert the #allMoney text equals the correctly rounded two-decimal currency string (e.g., \"$20.00\")."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "UNKNOWN",
+        "suite_key": "E2ESD_Bench_01::5"
+      }
+    },
+    "E2ESD_Bench_02::1": {
+      "behavior_coverage": {
+        "E2ESD_Bench_02::1::meta": "SKIPPED",
+        "add_note_appends_div_note": "WARNING",
+        "body_append_verification": "SKIPPED",
+        "distinct_node_assertion": "SKIPPED",
+        "multiple_rapid_clicks_create_separate_notes": "WARNING",
+        "note_contains_visible_empty_textarea": "PASS",
+        "note_visibility_check": "SKIPPED",
+        "suite_metadata": "SKIPPED",
+        "unused_placeholder": "SKIPPED"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.68,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "note_contains_visible_empty_textarea",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And the new note contains an empty textarea with data-testid 'note-textarea'"
+              }
+            ],
+            "reasoning": "The Normal scenario explicitly asserts the presence of an empty, visible textarea with the required data-testid inside the newly created note, which matches the behaviour contract's expected observable.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.6,
+            "criterion": "add_note_appends_div_note",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then a new note is displayed on the page"
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "a new note is created and appended to the document body as a <div> element with the class \"note\"."
+              }
+            ],
+            "reasoning": "A scenario asserts that a new note is displayed, which demonstrates the app creates a visible note element. However, the behaviour contract requires specific structural constraints (the element must be a <div> whose class includes \"note\" and it must be appended to document.body). The provided scenarios do not assert the element type, class attribute, or that it is appended specifically to document.body, so the contract is only partially verified by the scenarios.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add or strengthen scenarios/steps that assert the created element is a <div> with class \"note\" and that it is appended to document.body (for example: assert document.body.querySelectorAll('div.note') increases by one and that the created node's parent is document.body)."
+          },
+          {
+            "confidence": 0.6,
+            "criterion": "multiple_rapid_clicks_create_separate_notes",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user clicks the 'Add note' button with data-testid 'add-note-button' rapidly"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then multiple new notes are displayed on the page"
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "The application supports multiple rapid clicks on the \"Add note\" button, with each click creating a separate note, each containing its own textarea."
+              }
+            ],
+            "reasoning": "The Edge scenario exercises rapid clicks and asserts multiple notes appear and each contains a textarea, which provides partial coverage of the edge behaviour. However, the behaviour contract requires a stronger guarantee: each rapid click must produce a distinct note (no replacement) and the count of div.note must increase by the number of clicks. The scenario does not assert a one-to-one correspondence with clicks, distinctness of created nodes, nor that notes are appended to document.body, leaving candidate gaps.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Extend the edge scenario to verify that the number of div.note elements increases by the number of clicks (e.g., record count before/after rapid clicks) and that each created note is a distinct element (not a replacement) and appended to document.body."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_02::1"
+      }
+    },
+    "E2ESD_Bench_02::2": {
+      "behavior_coverage": {
+        "2.1-realtime-render": "UNKNOWN",
+        "2.2-inline-formatting-html": "PASS",
+        "2.3-handle-invalid-markdown-on-exit": "PASS",
+        "2.4-immediate-localstorage-persistence": "UNKNOWN"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.81,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.8,
+            "criterion": "Real-time DOM rendering while typing (behavior 2.1-realtime-render) is not exercised by any scenario — scenarios only assert rendering after exiting edit mode.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "As the user types Markdown (e.g., # Heading, **bold**, _italic_, [link](...)), the content is dynamically rendered in the main display area (data-testid=\"note-main\") in real-time, with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>)."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user enters \"# Heading\" into the textarea with data-testid \"note-textarea\""
+              }
+            ],
+            "reasoning": "The requirement explicitly requires continuous real-time DOM updates as characters are entered. All provided scenarios type into the textarea and then click the Edit button to exit edit mode before asserting the rendered output; none assert that note-main updates continuously while typing. This leaves a candidate gap for the real-time aspect.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add at least one scenario that types incremental content and asserts intermediate updates to data-testid=\"note-main\" without exiting edit mode (e.g., type partial text and assert DOM contains corresponding interim rendering)."
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "Inline Markdown -> HTML rendering for inline styles (behavior 2.2-inline-formatting-html) is covered by the scenario corpus.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "with proper HTML formatting (e.g., **Bold** becomes <strong>Bold</strong>)"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the main display area with data-testid \"note-main\" should render \"<strong>Bold</strong> and <em>italic</em> text with <a href='http://example.com'>link</a>\""
+              }
+            ],
+            "reasoning": "The Edge scenario provides explicit input with inline Markdown and an expected assertion that the main display contains the corresponding HTML tags. This directly exercises the inline formatting contract (HTML output for **bold**, _italic_, and links).",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "Invalid/unmatched Markdown displayed verbatim on exit and no crash (behavior 2.3-handle-invalid-markdown-on-exit) is covered by the scenario corpus.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "invalid Markdown (e.g., unmatched **) does not cause crashes or errors, and instead displays the raw input when the user exits the edit mode by clicking the \"Edit\" button (data-testid=\"edit-note-button\")."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the main display area with data-testid \"note-main\" should render \"This is not **valid Markdown\""
+              }
+            ],
+            "reasoning": "The Error scenario inputs an unmatched '**' sequence and asserts the main display shows the raw string after exiting edit mode, matching the requirement that invalid Markdown should be shown verbatim and not crash the app.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.8,
+            "criterion": "Immediate persistence of edits to localStorage (behavior 2.4-immediate-localstorage-persistence) is not exercised by any scenario.",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "All changes should be reflected immediately in local storage to persist the current state of the note."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user enters \"# Heading\" into the textarea with data-testid \"note-textarea\""
+              }
+            ],
+            "reasoning": "None of the provided scenarios include any observable assertions against browser storage (localStorage) or steps that inspect persisted keys; they only assert DOM rendering. That leaves immediate persistence to storage as a candidate gap.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add scenarios that read localStorage after edits (or instrument storage) to assert the stored note content matches the latest textarea content immediately after typing (without requiring an explicit save)."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_02::2"
+      }
+    },
+    "E2ESD_Bench_02::3": {
+      "behavior_coverage": {
+        "3.1-create-enters-edit": "PASS",
+        "3.2-toggle-to-view-shows-main": "PASS",
+        "3.3-toggle-to-edit-shows-textarea": "PASS",
+        "3.4-autosave-to-localstorage": "UNKNOWN"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.75,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Behavior 3.1 — Create a new note immediately enters edit mode",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user clicks the \"Add note\" button with data-testid \"add-note-button\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the note's textarea with data-testid \"note-textarea\" should be visible"
+              }
+            ],
+            "reasoning": "Scenario E2ESD_Bench_02::3::1 explicitly exercises creating a note and asserts that the textarea is visible while the main area is hidden, matching the behavior contract's expected observables and immediate transition to edit mode.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "Behaviors 3.2 and 3.3 — Toggling between view and edit modes via the Edit button",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user clicks the \"Edit\" button with data-testid \"edit-note-button\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the note's textarea with data-testid \"note-textarea\" should be visible"
+              }
+            ],
+            "reasoning": "Scenarios E2ESD_Bench_02::3::2 and ::3::3 together cover toggling from edit->view and view->edit by exercising the Edit button and asserting visibility of note-main vs note-textarea, aligning with the contracts for 3.2 and 3.3.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.5,
+            "criterion": "Behavior 3.4 — Autosave to localStorage preserves edits across sessions",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "All changes typed into the textarea should be automatically saved to local storage, preserving the note’s state across sessions."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And a note is created with text \"Sample Note\""
+              }
+            ],
+            "reasoning": "No supplied scenario asserts storage behavior or page-reload persistence. The requirement explicitly demands automatic saves to localStorage, but the scenario corpus only checks UI visibility and uses pre-seeded note creation steps; there is no step that types into the textarea and verifies localStorage or reload persistence. Therefore this behavior is an unproven candidate gap.",
+            "severity": "major",
+            "status": "UNKNOWN",
+            "suggested_fix": "Add a scenario that types into data-testid=\"note-textarea\", verifies localStorage is updated (observability: storage), and reloads the page to assert the note's content persists."
+          },
+          {
+            "confidence": 0.8,
+            "criterion": "Near-duplicate / data-variant scenarios for create->edit (normal vs edge)",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user clicks the \"Add note\" button with data-testid \"add-note-button\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Scenario: [Edge] Create a note with empty content and verify edit mode"
+              }
+            ],
+            "reasoning": "Scenario E2ESD_Bench_02::3::4 (edge) repeats the same UI assertions as ::3::1 (normal) with only the input content differing (empty content). Treat these as a data variant rather than distinct behavioral coverage; this is acceptable if the intent was to test empty-content edge behavior, but it does not expand coverage of new behaviors beyond the create->edit contract.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "If edge-specific behavior (e.g., placeholder handling, validation, or autosave for empty notes) is required, add explicit assertions for those behaviors rather than reusing the same visibility checks."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_02::3"
+      }
+    },
+    "E2ESD_Bench_02::4": {
+      "behavior_coverage": {
+        "4.dom_removal_on_delete": "WARNING",
+        "4.localstorage_removal_on_delete": "PASS"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.76,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.72,
+            "criterion": "dom_removal_on_delete: The targeted note's DOM node is no longer present on the page immediately after the click",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the note is removed from the page"
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "must be immediately removed from the DOM so it no longer appears on the page"
+              }
+            ],
+            "reasoning": "At least one scenario asserts that the note is removed from the page, which covers the observable DOM-removal behaviour. However the behaviour contract requires removal to occur \"immediately upon the click\"; the scenarios state \"Then the note is removed from the page\" but do not explicitly assert immediacy (no explicit timing/synchronous check), so the timing constraint is unproven.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add an explicit assertion that the note is absent immediately after the click (e.g., check DOM absence without waiting or assert synchronous removal), or include a step that verifies no asynchronous delay between click and DOM removal."
+          },
+          {
+            "confidence": 0.85,
+            "criterion": "localstorage_removal_on_delete: The deleted note's entry is removed from localStorage as a consequence of the delete click",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And localStorage does not contain \"Sample Note\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "And localStorage contains \"Note 1\" and \"Note 3\" but not \"Note 2\""
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "the corresponding entry must also be removed from localStorage"
+              }
+            ],
+            "reasoning": "Scenarios explicitly check localStorage after performing the delete click and assert the deleted note is no longer present while other notes remain. This exercises the persistence consequence of the delete action and aligns with the requirement that localStorage entry is removed as a result of the click.",
+            "severity": "minor",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.8,
+            "criterion": "Scenario corpus composition: Normal vs Edge coverage and data-variant relationship",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Scenario: [Normal] Delete a note successfully"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Scenario: [Edge] Delete a note when multiple notes are present"
+              }
+            ],
+            "reasoning": "The suite contains a Normal scenario exercising single-note deletion and an Edge scenario exercising deletion among multiple notes; these are meaningful Normal/Edge variants and together demonstrate functional coverage across a common data variant.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.7,
+            "criterion": "Selector scoping & target disambiguation when multiple delete buttons exist",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user clicks the 'Delete' button with data-testid 'delete-note-button'"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the user clicks the 'Delete' button on the note with text \"Note 2\""
+              }
+            ],
+            "reasoning": "Scenarios reference clicking a button with data-testid 'delete-note-button' and also specify clicking the button on a note with particular text. If multiple notes render buttons with identical data-testid, tests should explicitly scope the selector to the target note container to prove the correct button instance is clicked. The current scenarios imply targeting by surrounding text but do not mandate selector scoping, leaving selector ambiguity as a candidate gap.",
+            "severity": "minor",
+            "status": "WARNING",
+            "suggested_fix": "Add explicit locator steps that scope the delete button to the specific note container (e.g., find the note element by text then click its descendant button[data-testid=\"delete-note-button\"]) to prove the correct button is targeted when multiple notes exist."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_02::4"
+      }
+    },
+    "E2ESD_Bench_02::5": {
+      "behavior_coverage": {
+        "5.1-retrieve-and-display": "PASS",
+        "5.2-note-element-structure": "WARNING",
+        "5.3-non-empty-note-displays-main": "WARNING",
+        "5.4-empty-note-shows-textarea": "WARNING",
+        "5.5-no-notes-when-localStorage-empty": "PASS"
+      },
+      "behavior_coverage_details": [],
+      "review": {
+        "agent": "suite_coverage",
+        "confidence": 0.75,
+        "dimension": "suite_adequacy",
+        "findings": [
+          {
+            "confidence": 0.9,
+            "criterion": "Behavior 5.1 — retrieve notes from localStorage and render one note per stored entry",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "When the Notes App webpage loads, it must retrieve all saved notes from localStorage and display them accordingly."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Given the localStorage contains notes with values \"Note 1\" and \"Note 2\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the page should display a note with text \"Note 1\" in a div with data-testid \"note-main\""
+              }
+            ],
+            "reasoning": "The Normal scenario provides a stored-notes precondition and asserts that each stored entry is displayed in a note main div (two concrete notes are checked). This establishes the retrieval-and-display behaviour at the UI level.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.9,
+            "criterion": "Behavior 5.5 — no notes are shown when localStorage is empty",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "If localStorage is empty, no notes should be shown."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Given the localStorage is empty"
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then no notes should be displayed on the page"
+              }
+            ],
+            "reasoning": "The Edge scenario explicitly covers the empty-localStorage case and asserts that no notes are present, matching behaviour 5.5.",
+            "severity": "info",
+            "status": "PASS",
+            "suggested_fix": null
+          },
+          {
+            "confidence": 0.6,
+            "criterion": "Behavior 5.2 — per-note DOM structure (.note, .tools, edit/delete buttons, textarea presence)",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "For each stored note, the app should dynamically create a div element with the class note, which includes a div with the class tools containing an \"Edit\" button (data-testid=\"edit-note-button\") and a \"Delete\" button (data-testid=\"delete-note-button\")."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the page should display a note with text \"Note 1\" in a div with data-testid \"note-main\""
+              }
+            ],
+            "reasoning": "The provided Normal scenario asserts that note text appears in a data-testid=\"note-main\" div but does not assert the surrounding .note container, .tools subelement, the presence of edit/delete buttons (data-testid values), or the textarea element. These required structural anchors are therefore unproven by the scenario corpus and constitute a candidate gap.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add/extend scenarios to assert per-note DOM structure: existence of .note wrapper, .tools container, buttons with data-testid \"edit-note-button\" and \"delete-note-button\", and a textarea with data-testid \"note-textarea\" for each stored entry."
+          },
+          {
+            "confidence": 0.6,
+            "criterion": "Behavior 5.3 & 5.4 — display mode for non-empty and empty notes (main visible / textarea hidden vs textarea shown)",
+            "evidence": [
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Notes retrieved from localStorage should be rendered with their content displayed in the main div, with the textarea hidden by default."
+              },
+              {
+                "artifact": null,
+                "field": "fine_grained_reqs",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "For notes that have no content, the application should instead show the textarea and hide the main div, allowing immediate editing."
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Then the page should display a note with text \"Note 1\" in a div with data-testid \"note-main\""
+              },
+              {
+                "artifact": null,
+                "field": "scenario_corpus",
+                "file_path": null,
+                "line_end": null,
+                "line_start": null,
+                "quote": "Scenario: [Edge] Display no notes when localStorage is empty"
+              }
+            ],
+            "reasoning": "The Normal scenario demonstrates that non-empty notes render their text in the note-main element, which partially covers 5.3. However, the scenario does not assert that the textarea is hidden for those notes. The provided scenarios do not include any case where a stored note has empty content, so behaviour 5.4 (empty-note shows textarea / hides main) is not exercised. Both behaviors are therefore only partially or not covered.",
+            "severity": "major",
+            "status": "WARNING",
+            "suggested_fix": "Add assertions in the Normal scenario to confirm the textarea is hidden for non-empty notes. Add a scenario where the stored notes array contains an empty-string entry and assert that that note shows the textarea (data-testid=\"note-textarea\") and hides the main view (data-testid=\"note-main\")."
+          }
+        ],
+        "project_id": null,
+        "record_key": null,
+        "status": "WARNING",
+        "suite_key": "E2ESD_Bench_02::5"
+      }
+    }
+  },
+  "warnings": []
+}

@@ -1,0 +1,187 @@
+{
+  "project_id": "E2ESD_Bench_02",
+  "requirement_id": "5",
+  "suite_key": null,
+  "behaviors": [
+    {
+      "behavior_id": "5.1-retrieve-and-display",
+      "kind": "normal",
+      "preconditions": [
+        "localStorage contains a JSON-serialized array stored under the key 'notes'"
+      ],
+      "actor_actions": [
+        "User opens / reloads the Notes App webpage"
+      ],
+      "expected_observables": [
+        "The application displays one rendered note element for each entry in the stored notes array",
+        "Rendered notes show their content (see behavior 5.3) or editing UI (see behavior 5.4) as appropriate"
+      ],
+      "state_effects": [
+        "The internal notes variable is populated from localStorage by parsing JSON.parse(localStorage.getItem('notes'))"
+      ],
+      "ui_anchors": [
+        ".note (per-note container)",
+        "[data-testid=\"note-main\"] (note content display)",
+        "[data-testid=\"note-textarea\"] (note editor textarea)",
+        ".tools (per-note tools container)"
+      ],
+      "constraints": [
+        "Rendering must occur immediately after retrieval on page load; creation of DOM nodes is dynamic per stored entry"
+      ],
+      "observability": "storage",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "When the Notes App webpage loads, it must retrieve all saved notes from localStorage and display them accordingly.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "5.2-note-element-structure",
+      "kind": "normal",
+      "preconditions": [
+        "A stored notes array contains at least one entry"
+      ],
+      "actor_actions": [
+        "The app renders a stored note into the page (e.g., on page load)"
+      ],
+      "expected_observables": [
+        "Each rendered note is a div element with class 'note'",
+        "Inside each .note there is a div.tools containing an \"Edit\" button (data-testid=\"edit-note-button\") and a \"Delete\" button (data-testid=\"delete-note-button\")",
+        "Each .note contains a div.main (data-testid=\"note-main\") and a textarea (data-testid=\"note-textarea\")"
+      ],
+      "state_effects": [
+        "A DOM node per stored note is created with the required sub-elements"
+      ],
+      "ui_anchors": [
+        ".note",
+        ".note > .tools",
+        "[data-testid=\"edit-note-button\"]",
+        "[data-testid=\"delete-note-button\"]",
+        "[data-testid=\"note-main\"]",
+        "[data-testid=\"note-textarea\"]"
+      ],
+      "constraints": [
+        "The specified data-testid attributes and class names must be present for each stored note element"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "For each stored note, the app should dynamically create a div element with the class note, which includes a div with the class tools containing an \"Edit\" button (data-testid=\"edit-note-button\") and a \"Delete\" button (data-testid=\"delete-note-button\").",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "5.3-non-empty-note-displays-main",
+      "kind": "normal",
+      "preconditions": [
+        "A stored note entry contains non-empty content (non-empty string) in the notes array"
+      ],
+      "actor_actions": [
+        "The app renders the stored non-empty note (e.g., on page load)"
+      ],
+      "expected_observables": [
+        "The note's div.main (data-testid=\"note-main\") is visible and shows the note text",
+        "The note's textarea (data-testid=\"note-textarea\") exists but is hidden by default"
+      ],
+      "state_effects": [
+        "Rendered note's display mode is set to show the main view and keep the textarea hidden"
+      ],
+      "ui_anchors": [
+        "[data-testid=\"note-main\"]",
+        "[data-testid=\"note-textarea\"]"
+      ],
+      "constraints": [
+        "Visibility semantics (visible vs hidden) must reflect the default display state described; the behavior does not mandate how visibility is implemented (CSS class, hidden attribute, inline style, etc.)"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "Notes retrieved from localStorage should be rendered with their content displayed in the main div, with the textarea hidden by default.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "5.4-empty-note-shows-textarea",
+      "kind": "edge",
+      "preconditions": [
+        "A stored note entry has no content (the requirement describes this case as 'no content')"
+      ],
+      "actor_actions": [
+        "The app renders the stored empty note (e.g., on page load)"
+      ],
+      "expected_observables": [
+        "The note's textarea (data-testid=\"note-textarea\") is shown to allow immediate editing",
+        "The note's div.main (data-testid=\"note-main\") is hidden"
+      ],
+      "state_effects": [
+        "Rendered note's display mode is set to editing with textarea visible"
+      ],
+      "ui_anchors": [
+        "[data-testid=\"note-textarea\"]",
+        "[data-testid=\"note-main\"]"
+      ],
+      "constraints": [
+        "The requirement only specifies that empty-content notes show the textarea and hide the main view; do not assume specific placeholder text or focus behavior"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "For notes that have no content, the application should instead show the textarea and hide the main div, allowing immediate editing.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    },
+    {
+      "behavior_id": "5.5-no-notes-when-localStorage-empty",
+      "kind": "persistence",
+      "preconditions": [
+        "localStorage does not contain a 'notes' entry or the stored value is empty such that there are no saved notes"
+      ],
+      "actor_actions": [
+        "User opens / reloads the Notes App webpage"
+      ],
+      "expected_observables": [
+        "No .note elements are present in the DOM"
+      ],
+      "state_effects": [
+        "The internal notes variable is empty or absent after attempting JSON.parse(localStorage.getItem('notes'))"
+      ],
+      "ui_anchors": [
+        ".note"
+      ],
+      "constraints": [
+        "The app must not render placeholder note elements when no notes are present; the requirement does not demand rendering of alternative UI (e.g., 'no notes' messaging)"
+      ],
+      "observability": "dom",
+      "source_evidence": [
+        {
+          "field": "fine_grained_reqs",
+          "quote": "If localStorage is empty, no notes should be shown.",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ]
+    }
+  ]
+}

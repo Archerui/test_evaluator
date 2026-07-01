@@ -1,7 +1,13 @@
 from pathlib import Path
 
 from test_evaluator.ingest import load_records
-from test_evaluator.orchestrator import EvaluationConfig, _select_records, evaluate
+from test_evaluator.orchestrator import (
+    EvaluationConfig,
+    _degraded_contract,
+    _select_records,
+    evaluate,
+)
+from test_evaluator.schemas import TestRecord as Record
 
 
 ROOT = Path(__file__).parents[1]
@@ -75,3 +81,20 @@ def test_requirement_and_record_key_filters_are_composable() -> None:
     )
 
     assert [record.record_key for record in selected] == [target.record_key]
+
+
+def test_degraded_requirement_contract_keeps_live_reviews_scoreable() -> None:
+    record = Record(
+        project_id="Bench",
+        requirement_id="1",
+        test_id="1",
+        requirement="Click Save and show a Saved status.",
+        scenario="Feature: Save\nScenario: Save\nWhen Save is clicked\nThen Saved is shown",
+        step_code="assert True",
+    )
+
+    contract = _degraded_contract(record)
+
+    assert len(contract.behaviors) == 1
+    assert contract.behaviors[0].expected_observables == [record.requirement]
+    assert contract.behaviors[0].source_evidence[0].field == "fine_grained_reqs"

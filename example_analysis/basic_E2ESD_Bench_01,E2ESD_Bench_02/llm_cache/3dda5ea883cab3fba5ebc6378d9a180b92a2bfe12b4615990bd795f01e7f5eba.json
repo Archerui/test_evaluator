@@ -1,0 +1,45 @@
+{
+  "agent": "oracle_critic",
+  "record_key": "E2ESD_Bench_01::1::1",
+  "suite_key": null,
+  "project_id": null,
+  "dimension": "oracle_strength",
+  "status": "PASS",
+  "confidence": 0.9,
+  "findings": [
+    {
+      "criterion": "B1_capture_on_dragstart: The dragstart handler must populate the browser DataTransfer with the product title and price and those values must be observable from the test.",
+      "status": "PASS",
+      "severity": "info",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "field": "step_code",
+          "quote": "return dataTransfer.getData('title');",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "step_code",
+          "quote": "return dataTransfer.getData('money');",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        },
+        {
+          "field": "static_facts",
+          "quote": "\"data_transfer_read_keys\": [\"money\", \"title\"]",
+          "file_path": null,
+          "line_start": null,
+          "line_end": null,
+          "artifact": null
+        }
+      ],
+      "reasoning": "The step definitions explicitly construct a DataTransfer, dispatch a DragEvent, and then call dataTransfer.getData('title') and dataTransfer.getData('money'). static_facts classifies these assertions as event_payload_observation with drag_event_dispatched=true and data_transfer_read_keys including both 'title' and 'money', which constitutes a strong oracle (direct inspection of the DataTransfer payload) for the behaviour contract. Suggested fix: null",
+      "suggested_fix": null
+    }
+  ]
+}

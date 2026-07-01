@@ -1,0 +1,9 @@
+USING RUNNER: behave.runner:Runner
+
+Failing scenarios:
+  features/test.feature:5  [Normal] Dragging a product item initiates a drag event
+
+0 features passed, 1 failed, 0 skipped
+0 scenarios passed, 1 failed, 0 skipped
+2 steps passed, 1 failed, 2 skipped
+Took 0min 4.834s
